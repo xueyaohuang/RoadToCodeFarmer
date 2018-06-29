@@ -13,4 +13,8 @@ class Solution {
         }
         return (tank + total) >= 0 ? start : -1;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 08636a71fc791f228e0060e22b8f5930a2b6b359
