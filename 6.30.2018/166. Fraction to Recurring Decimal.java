@@ -20,10 +20,9 @@ class Solution {
             sb.append(num / den);
             num %= den;
             if (map.containsKey(num)) {
-                int index = map.get(num);
-                sb.insert(index, "(");
+                sb.insert(map.get(num), "(");
                 sb.append(")");
-                break;
+                return sb.toString();
             }
             else {
                 map.put(num, sb.length());
