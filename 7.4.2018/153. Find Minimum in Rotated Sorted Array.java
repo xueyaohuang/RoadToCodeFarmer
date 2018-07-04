@@ -28,5 +28,5 @@ class Solution {
         return nums[start];
     }
 }
-// must use if (nums[end] < nums[mid]), such that we can cover the case that there is no rotation.
+// must use if (nums[end] < nums[mid]) not compare nums[start] to nums[end], such that we can cover the case that there is no rotation.
 
