@@ -1,17 +1,16 @@
 class Trie {
-
+    
     class TrieNode {
         char c;
         boolean isLeaf;
         TrieNode[] children;
-        
         public TrieNode(char ch) {
             c = ch;
             isLeaf = false;
             children = new TrieNode[26];
         }
     }
-    
+
     final TrieNode root;
     /** Initialize your data structure here. */
     public Trie() {
@@ -39,7 +38,7 @@ class Trie {
             }
             cur = cur.children[c - 'a'];
         }
-        return cur.isLeaf == true;
+        return cur.isLeaf;
     }
     
     /** Returns if there is any word in the trie that starts with the given prefix. */
