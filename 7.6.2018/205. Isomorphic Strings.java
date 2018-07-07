@@ -1,5 +1,32 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
+        if (s.equals(t)) {
+            return true;
+        }
+        char[] map = new char[256];
+        boolean[] used = new boolean[256];
+        char[] cs = s.toCharArray();
+        char[] ct = t.toCharArray();
+        for (int i = 0; i < cs.length; i++) {
+            if (map[cs[i]] == 0) {
+                if (used[ct[i]]) {
+                    return false;
+                }
+                map[cs[i]] = ct[i];
+                used[ct[i]] = true;
+            }
+            else {
+                if (map[cs[i]] != ct[i]) {
+                    return false;
+                }    
+            }
+        }
+        return true;
+    }
+}
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
         Map<Character, Character> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             char cs = s.charAt(i);
