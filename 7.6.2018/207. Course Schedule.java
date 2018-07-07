@@ -2,7 +2,7 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List<Integer>[] adj = new ArrayList[numCourses];
-        boolean[] visited = new boolean[numCourses];
+        int[] visited = new int[numCourses];
         for (int i = 0; i < numCourses; i++) {
             adj[i] = new ArrayList<Integer>();
         }
@@ -16,18 +16,20 @@ class Solution {
         }
         return true;
     }
-    private boolean hasCycle(List<Integer>[] adj, int i, boolean[] visited) {
-        if (visited[i]) {
+    private boolean hasCycle(List<Integer>[] adj, int i, int[] visited) {
+        if (visited[i] == 1) {
             return true;
         }
-        visited[i] = true;
+        if (visited[i] == 2) {
+            return false;
+        }
+        visited[i] = 1;
         for (int j = 0; j < adj[i].size(); j++) {
             if (hasCycle(adj, adj[i].get(j), visited)) {
                 return true;
             }
-            adj[i].remove(j); // this line of code is not a must. But it can boost the speed significantly.
         }
-        visited[i] = false;
+        visited[i] = 2;
         return false;
     }
 }
