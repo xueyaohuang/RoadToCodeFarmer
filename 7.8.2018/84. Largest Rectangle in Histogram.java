@@ -5,22 +5,24 @@ class Solution {
         }
         Stack<Integer> stack = new Stack<>();
         int area = 0;
-        for (int i = 0; i <= heights.length;) {
+        for (int i = 0; i <= heights.length; i++) {
             int h = i == heights.length ? 0 : heights[i];
             if (stack.isEmpty() || h >= heights[stack.peek()]) {
-                stack.push(i++);
+                stack.push(i);
             }
             else {
-                int left = stack.pop();
-                int w = stack.isEmpty() ? i : i - stack.peek() - 1;
-                area = Math.max(area, heights[left] * w);
+                while (!stack.isEmpty() && h < heights[stack.peek()]) {
+                    int left = stack.pop();
+                    int w = stack.isEmpty() ? i : i - stack.peek() - 1;
+                    area = Math.max(area, heights[left] * w);
+                }
+                stack.push(i);
             }
         }
         return area;
     }
 }
 // stack stores the indexes not heights[i].
-// Do not increase i in the for loop, increas i only when push index into stack.
 
 class Solution {
     public int largestRectangleArea(int[] heights) {
