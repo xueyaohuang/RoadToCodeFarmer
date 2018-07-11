@@ -15,3 +15,28 @@ class Solution {
         return res;
     }
 }
+
+class Solution {
+    public int depthSum(List<NestedInteger> nestedList) {
+        if (nestedList == null) {
+            return 0;
+        }
+        int sum = 0;
+        int depth = 1;
+        Queue<NestedInteger> queue = new LinkedList<>(nestedList);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                NestedInteger nl = queue.poll();
+                if (nl.isInteger()) {
+                    sum += nl.getInteger() * depth;
+                }
+                else {
+                    queue.addAll(nl.getList());
+                }
+            }
+            depth++;
+        }
+        return sum;
+    }
+}
