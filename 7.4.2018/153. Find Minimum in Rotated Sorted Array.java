@@ -1,7 +1,7 @@
 class Solution {
     public int findMin(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] > nums[i +1]) {
+            if (nums[i] > nums[i + 1]) {
                 return nums[i + 1];
             }
         }
@@ -28,5 +28,5 @@ class Solution {
         return nums[start];
     }
 }
-// must use if (nums[end] < nums[mid]) not compare nums[start] to nums[end], such that we can cover the case that there is no rotation.
+// must use if (nums[end] < nums[mid]) not compare nums[start] to nums[mid], such that we can cover the case that there is no rotation.
 
