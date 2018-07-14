@@ -1,8 +1,5 @@
 class Solution {
     public int totalHammingDistance(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int count = 0;
         for (int i = 0; i < 32; i++) {
             count += getHD(nums, i);
