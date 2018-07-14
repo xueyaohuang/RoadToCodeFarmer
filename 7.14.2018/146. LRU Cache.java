@@ -4,7 +4,8 @@ class LRUCache {
     final int CAPACITY;
     public LRUCache(int capacity) {
         CAPACITY = capacity;
-        map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true){
+        // do not use access order
+        map = new LinkedHashMap<Integer, Integer>(){
             protected boolean removeEldestEntry(Map.Entry eldest) {
                 return map.size() > CAPACITY;
             }
@@ -21,11 +22,35 @@ class LRUCache {
     
     public void put(int key, int value) {
         map.put(key, value);
+        moveToFront(key);
     }
     
     public void moveToFront(int key) {
         int value = map.get(key);
         map.remove(key);
+        map.put(key, value);
+    }
+}
+
+class LRUCache {
+
+    Map<Integer, Integer> map;
+    final int CAPACITY;
+    public LRUCache(int capacity) {
+        CAPACITY = capacity;
+        // use access order
+        map = new LinkedHashMap<Integer, Integer>(capacity, 1.0f, true){
+            protected boolean removeEldestEntry(Map.Entry eldest) {
+                return map.size() > CAPACITY;
+            }
+        };
+    }
+    
+    public int get(int key) {
+        return map.getOrDefault(key, -1);
+    }
+    
+    public void put(int key, int value) {
         map.put(key, value);
     }
 }
