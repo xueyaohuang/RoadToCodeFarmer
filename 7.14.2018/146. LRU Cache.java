@@ -12,10 +12,20 @@ class LRUCache {
     }
     
     public int get(int key) {
-        return map.getOrDefault(key, -1);
+        if (map.containsKey(key)) {
+            moveToFront(key);
+            return map.get(key);
+        }
+        return -1;
     }
     
     public void put(int key, int value) {
+        map.put(key, value);
+    }
+    
+    public void moveToFront(int key) {
+        int value = map.get(key);
+        map.remove(key);
         map.put(key, value);
     }
 }
