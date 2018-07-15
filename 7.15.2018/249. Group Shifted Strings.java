@@ -15,6 +15,7 @@ class Solution {
                 map.get(flag).add(str);
             }
         }
+        // map.values().forEach(temp -> res.add(temp)); However, it is very slow.
         for (String str : map.keySet()) {
             res.add(map.get(str));
         }
