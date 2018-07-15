@@ -19,6 +19,10 @@ class Solution {
         for (String str : map.keySet()) {
             res.add(map.get(str));
         }
+//         // also fast. map.values() returns a Collections view of the values.
+//         for (List<String> list : map.values()) {
+//             res.add(list);
+//         }
         return res;
     }
     private String transform(String s) {
