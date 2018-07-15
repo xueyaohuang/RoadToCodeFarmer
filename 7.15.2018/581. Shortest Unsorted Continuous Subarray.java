@@ -43,7 +43,7 @@ class Solution {
         while (r > 0 && nums[r] >= nums[r - 1]) {
             r--;
         }
-        // 找出中间一段的最大和最小值
+        // 找出中间一段的最大和最小值, 包括开头递增段的最后一个和结尾递增段的第一个，因为并不知道这两个值的大小关系。
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
         for (int i = l; i <= r; i++) {
