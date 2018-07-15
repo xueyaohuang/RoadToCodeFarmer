@@ -1,33 +1,34 @@
-
-class  Solution  {
+class Solution {
     public List<List<String>> groupStrings(String[] strings) {
-        List<List<String>> result =   new ArrayList<>();
         if (strings == null || strings.length == 0) {
-            return result;
+            return new ArrayList<>();
         }
-        Map<String, List<String>> mapping = new HashMap<>();
-        for (String s : strings) {
-            String flg = getFlag(s);
-            if (!mapping.containsKey(flg)) {
-                mapping.put(flg, new ArrayList<String>());
+        List<List<String>> res = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strings) {
+            String flag = transform(str);
+            if (map.containsKey(flag)) {
+                map.get(flag).add(str);
             }
-            mapping.get(flg).add(s);
+            else {
+                map.put(flag, new ArrayList<String>());
+                map.get(flag).add(str);
+            }
         }
-        for (String key : mapping.keySet()) {
-            result.add(mapping.get(key));
+        for (String str : map.keySet()) {
+            res.add(map.get(str));
         }
-        return result;
+        return res;
     }
-    
-    private String getFlag(String s) {
-        char[] chars = s.toCharArray();
-        int dist = (int)(chars[0] - 'a');
-        for (int i = 0; i < chars.length; i++) {
-            chars[i] -= dist;
-            if (chars[i] < 'a') {
-                chars[i] += 26;
+    private String transform(String s) {
+        char[] ca = s.toCharArray();
+        int charValue = ca[0] - 'a';
+        for (int i = 0; i < ca.length; i++) {
+            ca[i] -= charValue;
+            if (ca[i] < 'a') {
+                ca[i] += 26;
             }
         }
-        return new String(chars);
+        return String.valueOf(ca);
     }
 }
