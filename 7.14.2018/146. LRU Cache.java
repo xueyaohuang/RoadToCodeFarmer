@@ -85,25 +85,23 @@ class LRUCache {
     }
     
     private void moveToHead(DLinkNode node){
-        this.removeNode(node);
-        this.addNode(node);
+        removeNode(node);
+        addNode(node);
     }
     
     private DLinkNode popTail(){
         DLinkNode res =  tail.pre;
-        this.removeNode(res);
+        removeNode(res);
         return res;
     }
     
     public LRUCache(int capacity) {
-        this.count = 0;
+        count = 0;
         this.capacity = capacity;
         head = new DLinkNode();
         tail = new DLinkNode();
-        head.pre = null;
         head.post = tail;
         tail.pre = head;
-        tail.post = null;
     }
     
     public int get(int key) {
@@ -111,30 +109,28 @@ class LRUCache {
         if(node == null) {
             return -1;
         }
-        this.moveToHead(node);
+        moveToHead(node);
         return node.val;
     }
     
     public void put(int key, int value) {
         DLinkNode node = cache.get(key);
         if(node == null){
-            DLinkNode newNode = new DLinkNode();
-            newNode.key =key;
-            newNode.val = value;
+            DLinkNode newNode = new DLinkNode(key, value);
             
-            this.cache.put(key, newNode);
-            this.addNode(newNode);
-            ++count;
+            cache.put(key, newNode);
+            addNode(newNode);
+            count++;
             
             if(count > capacity){
                 DLinkNode tail = popTail();
-                this.cache.remove(tail.key);
-                --count;
+                cache.remove(tail.key);
+                count--;
             }
         }
         else{
             node.val = value;
-            this.moveToHead(node);
+            moveToHead(node);
         }
     }
 }
@@ -143,6 +139,19 @@ class DLinkNode{
     int val;
     int key;
     DLinkNode pre;
-    DLinkNode post;
-   
+    DLinkNode post; 
+    
+    public DLinkNode() {}
+    
+    public DLinkNode(int key, int value) {
+        this.key = key;
+        this.val = value;
+    }
 }
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
