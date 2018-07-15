@@ -55,103 +55,87 @@ class LRUCache {
     }
 }
 
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
-
 class LRUCache {
-    DLinkNode head, tail;
-    HashMap<Integer, DLinkNode> cache = new HashMap<>();
-    private int count;
+    
+    class DoubleLinkNode {
+        int key;
+        int value;
+        DoubleLinkNode pre;
+        DoubleLinkNode post;
+        public DoubleLinkNode() {}
+        public DoubleLinkNode(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+    
+    private Map<Integer, DoubleLinkNode> map;
+    private DoubleLinkNode head;
+    private DoubleLinkNode tail;
     private int capacity;
-        
-    private void addNode(DLinkNode node){
-        node.pre = head;
-        node.post = head.post;
-        
-        head.post.pre = node;
-        head.post = node;
-    }
-    
-    private void removeNode(DLinkNode node){
-        DLinkNode pre = node.pre;
-        DLinkNode post = node.post;
-        
-        pre.post = post;
-        post.pre = pre;
-    }
-    
-    private void moveToHead(DLinkNode node){
-        removeNode(node);
-        addNode(node);
-    }
-    
-    private DLinkNode popTail(){
-        DLinkNode res =  tail.pre;
-        removeNode(res);
-        return res;
-    }
-    
+    private int count;
+
     public LRUCache(int capacity) {
-        count = 0;
+        map = new HashMap<Integer, DoubleLinkNode>();
         this.capacity = capacity;
-        head = new DLinkNode();
-        tail = new DLinkNode();
+        count = 0;
+        head = new DoubleLinkNode();
+        tail = new DoubleLinkNode();
         head.post = tail;
         tail.pre = head;
     }
     
     public int get(int key) {
-        DLinkNode node = cache.get(key);
-        if(node == null) {
+        DoubleLinkNode node = map.get(key);
+        if (node == null) {
             return -1;
         }
         moveToHead(node);
-        return node.val;
+        return node.value;
     }
     
     public void put(int key, int value) {
-        DLinkNode node = cache.get(key);
-        if(node == null){
-            DLinkNode newNode = new DLinkNode(key, value);
-            
-            cache.put(key, newNode);
+        DoubleLinkNode node = map.get(key);
+        if (node == null) {
+            DoubleLinkNode newNode = new DoubleLinkNode(key, value);
+            map.put(key, newNode);
             addNode(newNode);
             count++;
             
-            if(count > capacity){
-                DLinkNode tail = popTail();
-                cache.remove(tail.key);
+            if (count > capacity) {
+                DoubleLinkNode preTail = popTail();
+                map.remove(preTail.key);
                 count--;
             }
         }
-        else{
-            node.val = value;
+        else {
+            node.value = value;
             moveToHead(node);
         }
     }
-}
-
-class DLinkNode{
-    int val;
-    int key;
-    DLinkNode pre;
-    DLinkNode post; 
     
-    public DLinkNode() {}
-    
-    public DLinkNode(int key, int value) {
-        this.key = key;
-        this.val = value;
+    private void addNode(DoubleLinkNode node) {
+        node.pre = head;
+        node.post = head.post;
+        head.post.pre = node;
+        head.post = node;
     }
+    
+    private void removeNode(DoubleLinkNode node) {
+        DoubleLinkNode post = node.post;
+        DoubleLinkNode pre = node.pre;
+        pre.post = post;
+        post.pre = pre; 
+    }
+    
+    private void moveToHead(DoubleLinkNode node) {
+        removeNode(node);
+        addNode(node);
+    }
+    
+    private DoubleLinkNode popTail() {
+        DoubleLinkNode node = tail.pre;
+        removeNode(node);
+        return node;
+    }    
 }
-
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
