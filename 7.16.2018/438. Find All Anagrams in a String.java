@@ -34,3 +34,32 @@ class Solution {
         return res;
     }
 }
+
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> res = new ArrayList<>();
+        int[] map = new int[256];
+        for (char c : p.toCharArray()) {
+            map[c]++;
+        }
+        int left = 0;
+        int count =0;
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            if (map[c]-- > 0) {
+                count++;
+            }
+            while (count == p.length()) {
+                char c1 = s.charAt(left);
+                if (count == right - left + 1) {
+                    res.add(left);
+                }
+                if (map[c1]++ >= 0) {
+                    count--;
+                }
+                left++;
+            }
+        }
+        return res;
+    }
+}
