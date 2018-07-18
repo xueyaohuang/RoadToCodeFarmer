@@ -31,3 +31,33 @@ class Solution {
         return res;
     }
 }
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        rightViewHelper(root, res, 0);
+        return res;
+    }
+    private void rightViewHelper(TreeNode root, List<Integer> res, int level) {
+        if (root == null) {
+            return;
+        }
+        if (res.size() == level) {
+            res.add(root.val);
+        }
+        rightViewHelper(root.right, res, level + 1);
+        rightViewHelper(root.left, res, level + 1);    
+    }
+}
