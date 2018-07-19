@@ -36,3 +36,30 @@ class Solution {
         return prev;
     }
 }
+
+class Solution {
+    public ListNode plusOne(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+        while (fast.next != null) {
+            if (fast.val != 9) {
+                slow = fast;
+            }
+            fast = fast.next;
+        }
+        if (fast.val != 9) {
+            fast.val += 1;
+            return dummy.next;
+        }
+        else {
+            slow.val += 1;
+            while (slow.next != null) {
+                slow = slow.next;
+                slow.val = 0;
+            }
+        }
+        return dummy.val == 0 ? dummy.next : dummy;
+    }
+}
