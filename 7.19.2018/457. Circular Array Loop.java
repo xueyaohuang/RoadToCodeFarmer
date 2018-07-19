@@ -1,37 +1,32 @@
-public class Solution {
+class Solution {
     public boolean circularArrayLoop(int[] nums) {
-        int n = nums.length;
-        for (int i = 0; i < n; i++) {
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
             if (nums[i] == 0) {
                 continue;
             }
-            // slow/fast pointer
-            int j = i, k = getIndex(i, nums);
-            while (nums[k] * nums[i] > 0 && nums[getIndex(k, nums)] * nums[i] > 0) {
+            int j = i;
+            int k = next(nums, i);
+            while (nums[k] * nums[i] > 0 && nums[next(nums, k)] * nums[i] > 0) {
                 if (j == k) {
-                    // check for loop with only one element
-                    if (j == getIndex(j, nums)) {
+                    if (next(nums, j) == j) {
                         break;
                     }
                     return true;
                 }
-                j = getIndex(j, nums);
-                k = getIndex(getIndex(k, nums), nums);
+                j = next(nums, j);
+                k = next(nums, next(nums, k));
             }
-            // loop not found, set all element along the way to 0
             j = i;
-            int val = nums[i];
-            while (nums[j] * val > 0) {
-                int next = getIndex(j, nums);
+            while (nums[j] * nums[i] > 0) {
                 nums[j] = 0;
-                j = next;
+                j = next(nums, j);
             }
         }
         return false;
     }
-    
-    public int getIndex(int i, int[] nums) {
-        int n = nums.length;
-        return i + nums[i] >= 0? (i + nums[i]) % n: n + ((i + nums[i]) % n);
+    private int next(int[] nums, int i) {
+        int len = nums.length;
+        return i + nums[i] >= 0 ? (i + nums[i]) % len : len + (i + nums[i]) % len;
     }
 }
