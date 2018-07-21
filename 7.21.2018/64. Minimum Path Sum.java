@@ -1,3 +1,4 @@
+// O(m*n) extra space
 class Solution {
     public int minPathSum(int[][] grid) {
         if (grid == null || grid.length == 0) {
@@ -20,6 +21,7 @@ class Solution {
     }
 }
 
+// O(n) extra space
 class Solution {
     public int minPathSum(int[][] grid) {
         if (grid == null || grid.length == 0) {
@@ -41,3 +43,5 @@ class Solution {
         return res[n - 1];
     }
 }
+
+// no extra space. Modify grid.
