@@ -1,20 +1,31 @@
-public class Vector2D {
+public class Vector2D implements Iterator<Integer> {
 
-    private Iterator<List<Integer>> i;
-    private Iterator<Integer> j;
-
+    private Iterator<List<Integer>> matrix;
+    private Iterator<Integer> vector;
+    
     public Vector2D(List<List<Integer>> vec2d) {
-        i = vec2d.iterator();
+        matrix = vec2d.iterator();
     }
 
-    public int next() {
-        hasNext();
-        return j.next();
+    @Override
+    public Integer next() {
+        return vector.next();
     }
 
-    public boolean hasNext() {
-        while ((j == null || !j.hasNext()) && i.hasNext())
-            j = i.next().iterator();
-        return j != null && j.hasNext();
+    @Override
+    public boolean hasNext() { // 必须检查vector有下一个，而不是matrix有下一个
+        while ((vector == null || !vector.hasNext()) && (matrix.hasNext())) {
+            vector = matrix.next().iterator();
+        }
+        if (vector == null) {
+            return false;
+        }
+        return vector.hasNext();
     }
 }
+
+/**
+ * Your Vector2D object will be instantiated and called as such:
+ * Vector2D i = new Vector2D(vec2d);
+ * while (i.hasNext()) v[f()] = i.next();
+ */
