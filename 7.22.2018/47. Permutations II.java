@@ -16,7 +16,7 @@ class Solution {
         }
         
         for(int i = 0; i < nums.length; ++i) {
-            if (i > 0 && nums[i - 1] == nums[i] && visited[i - 1] == 1) {
+            if (i > 0 && nums[i - 1] == nums[i] && visited[i - 1] == 1) { // 跳过重复，考虑顺序就i > 0 && ...,不考虑顺序就i > start && ...
                 continue;
             }
             if(visited[i] == 0) {
