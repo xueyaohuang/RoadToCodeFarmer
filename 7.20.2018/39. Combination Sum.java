@@ -19,3 +19,5 @@ class Solution {
     }
 }
 //没有重复结果是由Combination，在recursion里i从start开始，而不是从0开始保证的。
+//与Combination Sum 2的区别还在于
+
