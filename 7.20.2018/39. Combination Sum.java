@@ -19,5 +19,5 @@ class Solution {
     }
 }
 //没有重复结果是由Combination，在recursion里i从start开始，而不是从0开始保证的。
-//与Combination Sum 2的区别还在于
+//与Combination Sum 2的区别还在于这个题输入是没有重复元素的，所以不用sort，然后检查if (i > start && candidates[i] == candidates[i - 1])。
 
