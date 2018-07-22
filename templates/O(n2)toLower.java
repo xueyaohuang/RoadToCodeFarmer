@@ -1,3 +1,9 @@
+// sort + two pointer(i = 0, j = nums.length - 1)
+// e.g. 3 sum, 259. 3Sum Smaller
+
+
+
+
 // 739. Daily Temperatures
 
 class Solution {
