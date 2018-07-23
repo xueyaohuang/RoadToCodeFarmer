@@ -77,42 +77,45 @@ public TreeNode predecessor(TreeNode root, TreeNode p) {
 
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        List<TreeNode> ls = new ArrayList<>();
-        traverse(root, ls);
-        for(int i = 0; i < ls.size() - 1; i++){
-            if(ls.get(i) == p){
-                return ls.get(i + 1);
+        List<TreeNode> list = new ArrayList<>();
+        inorderTraversal(root, list);
+        for (int i = 0; i + 1 < list.size(); i++) {
+            if (list.get(i) == p) {
+                return list.get(i + 1);
             }
         }
         return null;
     }
-    private void traverse(TreeNode root, List<TreeNode> ls){
-        if(root == null) return;
-        else{
-            traverse(root.left, ls);
-            ls.add(root);
-            traverse(root.right, ls);
+    private void inorderTraversal(TreeNode root, List<TreeNode> list) {
+        if (root == null) {
+            return;
         }
+        inorderTraversal(root.left, list);
+        list.add(root);
+        inorderTraversal(root.right, list);
     }
 }
 
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        TreeNode cur=root;
-        Stack<TreeNode>stk=new Stack<>();
-        
-        while(cur!=null || !stk.isEmpty()){
-            while(cur!=null){
-                stk.push(cur);
-                cur=cur.left;
-            }
-            cur=stk.pop();
-            if(cur.val>p.val){
-                return cur;
-            }
-            cur=cur.right;            
+        if (root == null) {
+            return null;
         }
-        
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            else {
+                cur = stack.pop();
+                if (cur.val > p.val) {
+                    return cur;
+                }
+                cur = cur.right;
+            }
+        }
         return null;
     }
 }
