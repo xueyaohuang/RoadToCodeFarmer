@@ -110,7 +110,7 @@ class Solution {
             }
             else {
                 cur = stack.pop();
-                if (cur.val > p.val) {
+                if (cur.val > p.val) { // 第一个值比p大的node，就是p的successor
                     return cur;
                 }
                 cur = cur.right;
