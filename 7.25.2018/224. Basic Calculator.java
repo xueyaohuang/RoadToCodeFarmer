@@ -1,3 +1,4 @@
+// 这种带括号，前向运算的题，套路是用若干个stack，遇到'('把暂时结果push进stack，遇到')'把结果pop出来，与()里面的结果结合
 class Solution {
     public int calculate(String s) {
         Stack<Integer> temp = new Stack<>(); // 记录暂时的累加结果
