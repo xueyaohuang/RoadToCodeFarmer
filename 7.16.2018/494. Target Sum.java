@@ -1,17 +1,24 @@
 class Solution {
-    public int findTargetSumWays(int[] nums, int s) {
+    public int findTargetSumWays(int[] nums, int S) {
         int sum = 0;
-        for (int n : nums)
-            sum += n;
-        return sum < s || s < -sum || (s + sum) % 2 > 0 ? 0 : subsetSum(nums, (s + sum) >>> 1); 
-    }   
-
-    public int subsetSum(int[] nums, int s) {
-        int[] dp = new int[s + 1]; 
+        for (int i : nums) {
+            sum += i;
+        }
+        if (sum < S || -sum > S || (sum + S) % 2 == 1) {
+            return 0;
+        }
+        int target = (sum + S) / 2;
+        return subSetSum(nums, target);
+    }
+    
+    private int subSetSum(int[] nums, int target) {
+        int[] dp = new int[target + 1];
         dp[0] = 1;
-        for (int n : nums)
-            for (int i = s; i >= n; i--)
-                dp[i] += dp[i - n]; 
-        return dp[s];
-    } 
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = target; j >= nums[i]; j--) {
+                dp[j] += dp[j - nums[i]];
+            }
+        }
+        return dp[target];
+    }
 }
