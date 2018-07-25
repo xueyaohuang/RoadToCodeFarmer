@@ -1,70 +1,82 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+// based on level order traversal
 public class Codec {
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        // use level order to code root.val to string, save the null as a single character like "#"
-        if(root == null){
+        if (root == null) {
             return null;
         }
-        
         StringBuilder sb = new StringBuilder();
-        Queue<TreeNode> bfs = new LinkedList<TreeNode>();
-        
-        bfs.offer(root);
-        sb.append((char)('0' + root.val));
-        while(!bfs.isEmpty()){
-            TreeNode node = bfs.poll();
-            if(node.left != null){
-                bfs.offer(node.left);
-                sb.append((char)('0' + node.left.val));
+        sb.append(root.val).append(','); //必须要","，否则没法分清有几位数字，比如123，可能是1，23，也可能是1，2，3，还可能是12, 3
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (node.left != null) {
+                queue.add(node.left);
+                sb.append(node.left.val).append(','); //入队的同时append
+            } else {
+                sb.append('#').append(',');
             }
-            else{
-                sb.append('#');
-            }
-            if(node.right != null){
-                bfs.offer(node.right);
-                sb.append((char)('0' + node.right.val));
-            }
-            else{
-                sb.append('#');
+            if (node.right != null) {
+                queue.add(node.right);
+                sb.append(node.right.val).append(',');
+            } else {
+                sb.append('#').append(',');
             }
         }
-        while(sb.charAt(sb.length() - 1) == '#'){
-            sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1); //删除最后一个逗号
+        while (sb.charAt(sb.length() - 1) == '#') { // 删除右半子树多余的井号和逗号
+            int size = sb.length();
+            sb.delete(size - 2, size); // 一次删逗号和井号, "，#"，所以长度是2
         }
         return sb.toString();
-        
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        if(data == null){
+        if (data == null) {
             return null;
         }
-        TreeNode root = new TreeNode(data.charAt(0) - '0');
-        // use queue to store the nodes in the previous layer
-        int pointer = 1;
-        Queue<TreeNode> bfs = new LinkedList<TreeNode>();
-        bfs.offer(root);
-        while(pointer < data.length()){
-            TreeNode node = bfs.poll();
-            if(data.charAt(pointer) != '#'){
-                node.left = new TreeNode(data.charAt(pointer) - '0');
-                bfs.offer(node.left);
+        String[] tree = data.split(",");
+        int len = tree.length;
+        TreeNode root = new TreeNode(Integer.parseInt(tree[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int idx = 1;
+        while (!queue.isEmpty() && idx < len) {
+            TreeNode node = queue.poll();
+            if (!tree[idx].equals("#")) {
+                node.left = new TreeNode(Integer.parseInt(tree[idx]));
+                queue.add(node.left);
             }
-            pointer ++;
-            if(pointer >= data.length()){
+            idx++;
+            if (idx >= len) { // 重要
                 break;
             }
-            if(data.charAt(pointer) != '#'){
-                node.right = new TreeNode(data.charAt(pointer) - '0');
-                bfs.offer(node.right);
+            if (!tree[idx].equals("#")) {
+                node.right = new TreeNode(Integer.parseInt(tree[idx]));
+                queue.add(node.right);
             }
-            pointer ++;
+            idx++;
         }
         return root;
     }
 }
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.deserialize(codec.serialize(root));
 
 public class Codec {
     private static final String spliter = ",";
