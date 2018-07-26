@@ -1,7 +1,7 @@
 # Leetcode-practice
 
 1. Top 100 Liked Questions
-72, 218, 76, 10, 32
+ 218, 76, 10, 32
 
 2. Top Amazon Questions
 126
@@ -25,8 +25,3 @@
 
 
 9 BB all
-
-
-7.23 227
-7.20 209
-7.19 239, 315
