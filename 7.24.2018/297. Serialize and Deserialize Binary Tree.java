@@ -78,41 +78,47 @@ public class Codec {
 // Codec codec = new Codec();
 // codec.deserialize(codec.serialize(root));
 
+// preorder traversal.
 public class Codec {
-    private static final String spliter = ",";
-    private static final String NN = "X";
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
         StringBuilder sb = new StringBuilder();
-        buildString(root, sb);
+        serializeHelper(root, sb);
         return sb.toString();
     }
 
-    private void buildString(TreeNode node, StringBuilder sb) {
-        if (node == null) {
-            sb.append(NN).append(spliter);
-        } else {
-            sb.append(node.val).append(spliter);
-            buildString(node.left, sb);
-            buildString(node.right,sb);
+    private void serializeHelper(TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            sb.append('#').append(',');
+            return;
         }
+        sb.append(root.val).append(',');
+        serializeHelper(root.left, sb);
+        serializeHelper(root.right, sb);
     }
+
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        Deque<String> nodes = new LinkedList<>();
-        nodes.addAll(Arrays.asList(data.split(spliter)));
-        return buildTree(nodes);
-    }
-    
-    private TreeNode buildTree(Deque<String> nodes) {
-        String val = nodes.remove();
-        if (val.equals(NN)) return null;
-        else {
-            TreeNode node = new TreeNode(Integer.valueOf(val));
-            node.left = buildTree(nodes);
-            node.right = buildTree(nodes);
-            return node;
+        if (data == null) {
+            return null;
         }
+        Queue<String> queue = new LinkedList<>();
+        queue.addAll(Arrays.asList(data.split(",")));
+        return deserializeHelper(queue);
+    }
+
+    private TreeNode deserializeHelper(Queue<String> queue) {
+        String str = queue.poll();
+        if (str.equals("#")) {
+            return null;
+        }
+        TreeNode root = new TreeNode(Integer.parseInt(str));
+        root.left = deserializeHelper(queue);
+        root.right = deserializeHelper(queue);
+        return root;
     }
 }
