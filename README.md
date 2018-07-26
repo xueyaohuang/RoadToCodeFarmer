@@ -1,6 +1,6 @@
 # Leetcode-practice
 
-1 Top 100 Liked Questions
+1 Top 100 Liked Questions\\
 72, 218, 76, 10, 32
 
 2 Top Amazon Questions
