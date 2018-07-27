@@ -158,4 +158,41 @@ class Solution {
 }
 
 // DFS
-
+class Solution {
+    public boolean areSentencesSimilarTwo(String[] words1, String[] words2, String[][] pairs) {
+        if (words1.length != words2.length) {
+            return false;
+        }
+        Map<String, Set<String>> map = new HashMap<>();
+        for (String[] strs : pairs) {
+            map.putIfAbsent(strs[0], new HashSet<String>());
+            map.putIfAbsent(strs[1], new HashSet<String>());
+            map.get(strs[0]).add(strs[1]);
+            map.get(strs[1]).add(strs[0]);
+        }
+        for (int i = 0; i < words1.length; i++) {
+            if (words1[i].equals(words2[i])) {
+                continue;
+            } 
+            if (!map.containsKey(words1[i])) {
+                return false;
+            }
+            if (!dfs(words1[i], words2[i], map, new HashSet<>())) {
+                return false;
+            } 
+        }
+        return true;
+    }
+    private boolean dfs(String s, String t, Map<String, Set<String>> map, Set<String> visited) {
+        if (map.get(s).contains(t)) {
+            return true;
+        }
+        visited.add(s);
+        for (String ss : map.get(s)) {
+            if (!visited.contains(ss) && dfs(ss, t, map, visited)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
