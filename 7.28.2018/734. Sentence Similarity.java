@@ -14,15 +14,11 @@ class Solution {
             if (words1[i].equals(words2[i])) {
                 continue;
             } else {
-                if (map.containsKey(words1[i]) && map.get(words1[i]).contains(words2[i])) {
-                    continue;
+                if (!(map.containsKey(words1[i]) && map.get(words1[i]).contains(words2[i]))) {
+                    return false;
                 }
-                if (map.containsKey(words2[i]) && map.get(words2[i]).contains(words1[i])) {
-                    continue;
-                }
-                return false;
             }
         }
-            return true;
+        return true;
     }
 }
