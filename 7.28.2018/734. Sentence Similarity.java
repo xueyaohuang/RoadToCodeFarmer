@@ -13,11 +13,10 @@ class Solution {
         for (int i = 0; i < words1.length; i++) {
             if (words1[i].equals(words2[i])) {
                 continue;
-            } else {
-                if (!(map.containsKey(words1[i]) && map.get(words1[i]).contains(words2[i]))) {
-                    return false;
-                }
-            }
+            } 
+            if (!(map.containsKey(words1[i]) && map.get(words1[i]).contains(words2[i]))) {
+                return false;
+            } 
         }
         return true;
     }
