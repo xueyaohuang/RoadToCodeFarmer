@@ -42,3 +42,37 @@ class Solution {
     }
 }
 
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+
+        if (preorder == null || preorder.length == 0 || preorder.length != inorder.length) {
+            return null;
+        }
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<inorder.length;i++)
+            map.put(inorder[i], i);
+
+        TreeNode root=new TreeNode(preorder[0]);
+        TreeNode p=root;
+        Stack<TreeNode> tree=new Stack<>();
+        tree.push(p);
+
+        for(int i=1;i<preorder.length;i++){
+            int temp=map.get(preorder[i]);
+            TreeNode node=new TreeNode(preorder[i]);
+
+            if(temp<map.get(tree.peek().val)){
+                p.left=node;
+                p=p.left;
+            }
+            else {
+                while(!tree.isEmpty()&&temp>map.get(tree.peek().val))
+                    p=tree.pop();
+                p.right=node;
+                p=p.right;
+            }
+            tree.push(node);
+        }
+        return root;
+    }
+}
