@@ -56,3 +56,45 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+        Map<String, String> emailUser = new HashMap<>(); // k: email, v: name
+        Map<String, Set<String>> emailGraph = new HashMap<>(); // k: email, v: emails of the same username. Build the email graph.
+        Set<String> visited = new HashSet<>();
+        List<List<String>> res = new ArrayList<>();
+        for (List<String> acc : accounts) {
+            String name = acc.get(0);
+            for (int i = 1; i < acc.size(); i++) {
+                String email = acc.get(i);
+                if (!emailGraph.containsKey(email)) {
+                    emailGraph.put(email, new HashSet<String>());
+                }
+                if (i != 1) {
+                    emailGraph.get(email).add(acc.get(i - 1));
+                    emailGraph.get(acc.get(i - 1)).add(email);
+                }
+                emailUser.put(email, name);
+            }
+        }
+        for (String email : emailUser.keySet()) {
+            List<String> acc = new LinkedList<>();
+            if (visited.add(email)) {  
+                dfs(emailGraph, acc, visited, email);
+                Collections.sort(acc);
+                acc.add(0, emailUser.get(email));
+                res.add(acc);
+            }
+        }
+        return res;
+    }
+    private void dfs(Map<String, Set<String>> emailGraph, List<String> acc, Set<String> visited, String email) {
+        acc.add(email);
+        for (String eml : emailGraph.get(email)) {
+            if (visited.add(eml)) {
+                dfs(emailGraph, acc, visited, eml);
+            }
+        }
+    }
+}
