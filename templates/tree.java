@@ -181,34 +181,87 @@ class Solution {
 
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-
         if (preorder == null || preorder.length == 0 || preorder.length != inorder.length) {
             return null;
         }
-        HashMap<Integer,Integer> map=new HashMap<>();
-        for(int i=0;i<inorder.length;i++)
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0;i < inorder.length; i++) {
             map.put(inorder[i], i);
+        }
+        TreeNode root = new TreeNode(preorder[0]);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        TreeNode p = root;
+        for (int i = 1; i < preorder.length; i++) {
+            int idx = map.get(preorder[i]);
+            TreeNode node = new TreeNode(preorder[i]);
+            if (idx < map.get(stack.peek().val)) {
+                p.left = node;
+                p = p.left;
+            } else {
+                while (!stack.isEmpty() && idx > map.get(stack.peek().val)) {
+                    p = stack.pop();
+                }
+                p.right = node;
+                p = p.right;
+            }
+            stack.push(node);
+        }
+        return root;
+    }
+}
 
-        TreeNode root=new TreeNode(preorder[0]);
-        TreeNode p=root;
-        Stack<TreeNode> tree=new Stack<>();
-        tree.push(p);
 
-        for(int i=1;i<preorder.length;i++){
-            int temp=map.get(preorder[i]);
-            TreeNode node=new TreeNode(preorder[i]);
+// 106. Construct Binary Tree from Inorder and Postorder Traversal
 
-            if(temp<map.get(tree.peek().val)){
-                p.left=node;
-                p=p.left;
+class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if (inorder == null || inorder.length == 0) {
+            return null;
+        }
+        return buildTreeHelper(inorder, postorder, postorder.length - 1, 0, inorder.length - 1);
+    }
+    private TreeNode buildTreeHelper(int[] inorder, int[] postorder, int postEnd, int inStart, int inEnd) {
+        if (postEnd < 0 || inStart > inEnd) {
+            return null;
+        }
+        TreeNode root = new TreeNode(postorder[postEnd]);
+        int rootIdx = 0;
+        for (int i = 0; i < inorder.length; i++) {
+            if (inorder[i] == root.val) {
+                rootIdx = i;
+                break;
+            }
+        }
+        root.left = buildTreeHelper(inorder, postorder, postEnd - (inEnd - rootIdx) - 1, inStart, rootIdx - 1);
+        root.right = buildTreeHelper(inorder, postorder, postEnd - 1, rootIdx + 1, inEnd);
+        return root;
+    }
+}
+
+class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        int length = postorder.length;
+        if(length < 1) return null;
+        
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = new TreeNode(postorder[length - 1]);
+        TreeNode cur = root;
+        
+        for(int i = length - 2, j = length - 1; i >= 0; i--) {
+            if(cur.val != inorder[j]) {
+                cur.right = new TreeNode(postorder[i]);
+                stack.push(cur);
+                cur = cur.right;
             }
             else {
-                while(!tree.isEmpty()&&temp>map.get(tree.peek().val))
-                    p=tree.pop();
-                p.right=node;
-                p=p.right;
+                j--;
+                while(!stack.isEmpty() && stack.peek().val == inorder[j]) {
+                    cur = stack.pop();
+                    j--;
+                }
+                cur = cur.left = new TreeNode(postorder[i]);
             }
-            tree.push(node);
         }
         return root;
     }
