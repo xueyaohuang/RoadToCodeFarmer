@@ -78,7 +78,7 @@ class DListNode {
 }
 ```
 
-LinkedList 基本操作
+### LinkedList 基本操作
 
 * 单向链表reverse
 ```
@@ -140,8 +140,11 @@ public DListNode reverse(DListNode head) {
      post.prev = pre; 
  }
 ```
+* 当链表的 head 有可能变化（被修改或者被删除）时，使用 dummy node ，最终返回 dummy.next 即新的链表。
 
-
+* fast，slow快慢指针。在单链表中让快指针每次向前移动2，慢指针则每次向前移动1，快慢两个指针都从链表头开始遍历。快慢指针在链表相关问题中主要有两个应用：
+  * 快速找出未知长度单链表的中间节点 设置两个指针 *fast、*slow 都指向单链表的头节点，其中*fast的移动速度是*slow的2倍，当*fast指向末尾节点的时候，slow正好就在中间了。
+  * 判断单链表是否有环 利用快慢指针的原理，同样设置两个指针 *fast、*slow 都指向单链表的头节点，其中 *fast的移动速度是*slow的2倍。如果 *fast = NULL，说明该单链表 以 NULL结尾，不是循环链表；如果 *fast = *slow，则快指针追上慢指针，说明该链表是循环链表。
 
 
 
