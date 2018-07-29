@@ -1,3 +1,5 @@
+# String, StringBuilder, StringBuffer
+
 1. String不是primitive type, String object 是 immutable, StringBuffer 与 StringBuilder 是mutable。 String.replace()并没有改变当前string，而是生成一个新的String object。
 
 2. StringBuffer 与 StringBuilder： 前者保证线程安全，后者不是，但单线程下效率高一些，一般使用 StringBuilder.  他们有一样的methods。
