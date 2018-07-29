@@ -1,5 +1,19 @@
 # Leetcode-practice
 
+Shuati diary.
+
+Segment Tree，BIT，Trie，Union Find  
+HashMap, HashSet, PriorityQueue, heap  
+TreeSet，TreeMap，Deque，LinkedHashMap  
+DFS，BFS，topological sort, dfs/bfs connected, dfs/bfs circle, Sliding Window，sweep line  
+sorting, quick select, kmp  
+flood fill  
+
+LC 76 怎么想都想不到，看答案感觉这解法真厉害，做多了才发现，有一种方法叫Sliding Window。LC 56，看了答案才知道，还有个扫描线算法。之前想了那么多，都是错误的方向。LC 200，看似简单的dfs，bfs，最后才知道flood fill。。。LC 215，quick select
+
+链接：https://www.zhihu.com/question/31092580/answer/453117660
+
+
 1. Top 100 Liked Questions
  218, 76, 10, 32
 
