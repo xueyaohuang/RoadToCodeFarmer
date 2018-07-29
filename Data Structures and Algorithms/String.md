@@ -56,3 +56,6 @@
       Splits this string around matches of the given regular expression.
     * static String	valueOf(primitive type b), valueOf(char[] data), valueOf(Object obj)  
       Returns the string representation of the boolean argument.
+      
+Why is char[] preferred over String for passwords?
+[Answer Here](https://stackoverflow.com/questions/8881291/why-is-char-preferred-over-string-for-passwords?rq=1)
