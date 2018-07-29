@@ -55,6 +55,96 @@ PriorityQueue is a Queue implementation that does not impose any insertion restr
 
 By contrast, ArrayBlockingQueue is an implementation in which offer and add behave differently, depending on how the queue was instantiated.
 
+```ListNode```
+```
+public class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+class DListNode {
+    int val;
+    DListNode prev;
+    DListNode next;
+    DListNode(int val) {
+        this.val = val;
+        this.prev = null;
+        this.next = null;
+    }
+}
+```
+
+LinkedList 基本操作
+
+* 单向链表reverse
+```
+// iterative method 
+public ListNode reverse(ListNode head) {
+    ListNode prev = null;
+    while (head != null) {
+        ListNode next = head.next;
+        head.next = prev;
+        prev = head;
+        head = next;
+    }
+    return prev;
+}
+
+// recursive method 
+public ListNode reverse(ListNode head) {
+    if (head == null || head.next == null) {
+        return head;
+    }
+    ListNode next = head.next;
+    ListNode newHead = reverse(next);
+    next.next = head;
+    head.next = null;
+    return newHead;
+}
+
+```
+* 双向链表reverse
+```
+public DListNode reverse(DListNode head) {
+    DListNode curr = null;
+    while (head != null) {
+        curr = head;
+        head = curr.next;
+        curr.next = curr.prev;
+        curr.prev = head;
+    }
+    return curr;
+}
+```
+* 单向链表删除一个node，但是只知道要删除的node。Since we couldn't enter the preceding node, we can not delete the given node. We can just copy the next node to the given node and delete the next one.
+```
+ public void deleteNode(ListNode node) {
+     if (node != null && node.next != null) {
+         ListNode next = node.next;
+         node.val = next.val;
+         node.next = next.next;
+         next.next = null;
+     }
+ }
+```
+* 双向链表删除一个node
+```
+ public void deleteNode(DListNode node) {
+     DListNode post = node.post;
+     DListNode pre = node.pre;
+     pre.next = post;
+     post.prev = pre; 
+ }
+```
+
+
+
+
+
 ## ArrayList vs LinkedList
 
 [ArrayList vs LinkedList Excellent comparison](https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist)
