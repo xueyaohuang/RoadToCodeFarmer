@@ -13,6 +13,8 @@ LC 76 怎么想都想不到，看答案感觉这解法真厉害，做多了才�
 
 链接：https://www.zhihu.com/question/31092580/answer/453117660
 
+[A general approach to level order traversal questions in Java](https://leetcode.com/problems/binary-tree-level-order-traversal/discuss/114449/A-general-approach-to-level-order-traversal-questions-in-Java)
+
 
 1. Top 100 Liked Questions
  218, 76, 10, 32
