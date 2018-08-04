@@ -140,6 +140,86 @@ public DListNode reverse(DListNode head) {
      post.prev = pre; 
  }
 ```
+
+* 链表求长度
+```
+public int getLength(ListNode head) {
+    int len = 0;
+    ListNode node = head; // 最好不要改变输入
+    while (node != null) {
+        node = node.next;
+        len++;
+    }
+    return len;
+}
+```
+
+* 链表判断是否有环
+```
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode fast = head.next; // fast也可以从head开始
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+* 找到链表环的起始点
+```
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                ListNode node = head;
+                while (node != slow) {
+                    node = node.next;
+                    slow = slow.next;
+                }
+                return slow;
+            }
+        }
+        return null;
+    }
+}
+```
+
+* 两个链表找交点
+```
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        ListNode nodeA = headA;
+        ListNode nodeB = headB;
+        while (nodeA != nodeB) {
+            nodeA = nodeA == null ? headB : nodeA.next; // 注意是判断nodeA == null而不是nodeA.next == null
+            nodeB = nodeB == null ? headA : nodeB.next;
+        }
+        return nodeA;
+    }
+}
+// 方法2：求出两个链表的长度，长的链表先走一段，使两个链表的头对齐。然后开始一起往前走，知道相等的时候停下返回。
+```
+
 * 当链表的 head 有可能变化（被修改或者被删除）时，使用 dummy node ，最终返回 dummy.next 即新的链表。
 
 * fast，slow快慢指针。在单链表中让快指针每次向前移动2，慢指针则每次向前移动1，快慢两个指针都从链表头开始遍历。快慢指针在链表相关问题中主要有两个应用：
