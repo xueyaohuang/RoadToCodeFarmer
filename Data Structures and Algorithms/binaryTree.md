@@ -157,3 +157,36 @@ class Solution {
     }
 }
 ```
+
+__level-order__
+```
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (! queue.isEmpty()) {
+            // 如果不需要知道每一层具体有哪些，可以不需要size，直接BFS，返回的是List<Integer>而不是List<List<Integer>>
+            int size = queue.size(); 
+            List<Integer> temp = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+                temp.add(node.val);
+            }
+            res.add(temp);
+        }
+        return res;
+    }
+}
+
+```
+5. __BST__ 使用中序遍历可得到有序数组，这是二叉查找树的又一个重要特征。
