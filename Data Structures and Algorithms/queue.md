@@ -8,7 +8,9 @@
 1. 优先队列中的每个元素都有各自的优先级，优先级最高的元素最先得到服务。优先队列可以使用数组或链表实现，从时间和空间复杂度来说，往往用二叉堆来实现。
 
 2. Java中提供PriorityQueue类，基于 priority heap 实现，非synchronized，故多线程下应使用PriorityBlockingQueue. 默认为自然序（小根堆），需要其他排序方式可自行实现Comparator接口，选用合适的构造器初始化。使用迭代器遍历时不保证有序！有序访问时需要使用Arrays.sort(pq.toArray()).
-3. * enqueuing and dequeuing: offer, poll, remove() and add - O(logn)
+3. * PriorityQueue<Integer> pq = new PriorityQueue<>(); natural order
+   * PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+   * enqueuing and dequeuing: offer, poll, remove() and add - O(logn)
    * Object: remove(Object) and contains(Object) - O(n)
    * retrieval: peek, element, and size - O(1).
    
