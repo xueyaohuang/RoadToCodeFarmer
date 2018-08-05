@@ -38,7 +38,7 @@ class Solution {
 }
 ```
 
-* Search for __subsequence__
+* Search for __subsequence__ , 详见LC 392.
 
 ```
 class Solution {
