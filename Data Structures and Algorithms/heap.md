@@ -1,4 +1,5 @@
 * Java implementation of min heap
+* [Excellent introduction](https://www.geeksforgeeks.org/binary-heap/)
 
 ```
 import java.util.ArrayList;
