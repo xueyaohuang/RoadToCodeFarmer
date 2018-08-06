@@ -129,10 +129,6 @@ public class MinHeap {
 
     private int parent(int i) {
 
-        if (i % 2 == 1) {
-            return i / 2;
-        }
-
         return (i - 1) / 2;
     }
 
