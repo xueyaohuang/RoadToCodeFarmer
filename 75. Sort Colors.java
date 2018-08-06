@@ -1,3 +1,4 @@
+// 2在最后，所以要多移动num of 0 和 num of 1 个距离。
 class Solution {
     public void sortColors(int[] nums) {
         int len = nums.length;
