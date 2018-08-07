@@ -13,8 +13,18 @@ for (Map.Entry<String, Integer> entry : map.entrySet()) {
 }
 ```
 
+3. [Hashmap vs Hashtable](https://www.geeksforgeeks.org/differences-between-hashmap-and-hashtable-in-java/)
+
 ## TreeMap
 
+1. TreeMap uses a red-black tree in the background which makes sure that there are no duplicates; additionally it also maintains the elements in a sorted order.
+
+2. For operations like add, remove, containsKey, time complexity is O(log n where n is number of elements present in TreeMap.
+3. HashMap implements Hashing, while TreeMap implements Red-Black Tree(a Self Balancing Binary Search Tree). Therefore all differences between Hashing and Balanced Binary Search Tree apply here.
+4. Both HashMap and TreeMap have their counterparts HashSet and TreeSet. HashSet and TreeSet implement Set interface. In HashSet and TreeSet, we have only key, no value, these are mainly used to see presence/absence in a set.
+
 ## LinkedHashMap
+
+1. 
 
 LRU cache
