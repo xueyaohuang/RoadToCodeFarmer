@@ -3,7 +3,8 @@
 1. Java中，Set有HashSet, TreeSet 或 LinkedHashSet三种实现。
 2. HashSet基于散列函数实现，无序，查询速度最快；TreeSet基于红-黑树实现，有序。
 3. HashSet的基本操作，add, remove, contains and size都是O(1)的复杂度。
-4. * Underlying data structure for HashSet is hashtable.
+4. Java的set可以有最多一个null。
+5. * Underlying data structure for HashSet is hashtable.
    * Objects that you insert in HashSet are not guaranteed to be inserted in same order. 
    * Objects are inserted based on their hash code.
    * NULL elements are allowed in HashSet.
