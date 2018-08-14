@@ -15,7 +15,7 @@ if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '
 
 ___例子___
 
-* 200 
+* 200 Number of Islands
 
 ```
 class Solution {
