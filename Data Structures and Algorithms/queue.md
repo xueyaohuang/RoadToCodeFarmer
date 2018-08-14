@@ -33,3 +33,43 @@ offerFirst(e)，offerLast(e)，pollFirst()，pollLast()，peekFirst()，peekLast
 
 ## Monotonic queue
 
+239 Sliding Window Maximum
+
+* Deque. The algorithm is amortized O(n) as each element is put and polled once.
+
+If an element in the deque and it is out of i-(k-1), we discard them. We just need to poll from the head.
+
+We then discard elements smaller than a[i] from the tail. 
+
+As a result elements in the deque are ordered in both sequence in array and their value. At each step the head of the deque is the max element in [i-(k-1),i]
+
+```
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return new int[0];
+        }
+        int len = nums.length;
+        int[] res = new int[len - k + 1];
+        int idx = 0;
+        // dq存的是index，不是nums[i]。
+        Deque<Integer> dq = new ArrayDeque<>();
+        for (int i = 0; i < len; i++) {
+            // 删除超出window范围的index
+            while (!dq.isEmpty() && dq.peek() < i - k + 1) {
+                dq.poll();
+            }
+            // 删除小于nums[i]的index
+            while (!dq.isEmpty() && nums[dq.peekLast()] < nums[i]) {
+                dq.pollLast();
+            }
+            dq.offer(i);
+            if (i >= k - 1) {
+                res[idx++] = nums[dq.peek()];
+            }
+        }
+        return res;
+    }
+}
+```
+
