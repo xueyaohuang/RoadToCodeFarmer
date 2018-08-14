@@ -13,10 +13,8 @@ class Solution {
             return root;
         }
         TreeNode temp = root.left;
-        root.left = root.right;
-        root.right = temp;
-        root.left = invertTree(root.left);
-        root.right = invertTree(root.right);
+        root.left = invertTree(root.right);
+        root.right = invertTree(temp);
         return root;
     }
 }
