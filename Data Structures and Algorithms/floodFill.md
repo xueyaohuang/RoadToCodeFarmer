@@ -12,6 +12,13 @@ if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '
 
 4. 之后把matrix[i][j]改一下之类的操作，然后进入上下左右四个方向上的recursion。
 
+```
+folldFill(grid, i - 1, j);
+folldFill(grid, i + 1, j);
+folldFill(grid, i, j - 1);
+folldFill(grid, i, j + 1);
+```
+
 
 ___例子___
 
