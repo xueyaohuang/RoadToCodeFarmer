@@ -17,4 +17,6 @@ class DirectedGraphNode {
 }
 ```
 
+Adj list也可以用现成的数据结构，比如HashMap<Node, ArrayList<Node>>, ArryList<Node>[], node有时可以用Integer表示。
+
 参见LC
