@@ -14,5 +14,5 @@
     * Shortest Path for unweighted graph
     * Finding all nodes within one connected component. We can either use Breadth First or Depth First Traversal to find all nodes reachable from a given node.
     * Cycle detection in undirected graph: In undirected graphs, either Breadth First Search or Depth First Search can be used to detect cycle. In directed graph, only depth first search can be used.
-    * To test if a graph is Bipartite We can either use Breadth First or Depth First Traversal.
+    * To test if a graph is Bipartite We can either use Breadth First or Depth First Traversal. --> 2-colorable.
     * Path Finding We can either use Breadth First or Depth First Traversal to find if there is a path between two vertices.
