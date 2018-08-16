@@ -20,10 +20,10 @@ class Solution {
         if (digits[0].charAt(0) == '0') {
             return "0";
         }
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < digits.length; i++) {
-            res += digits[i];
+            res.append(digits[i]);
         }
-        return res;
+        return res.toString();
     }
 }
