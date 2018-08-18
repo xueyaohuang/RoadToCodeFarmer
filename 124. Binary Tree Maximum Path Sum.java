@@ -13,6 +13,7 @@ class Solution {
         maxDownPath(root);
         return max;
     }
+    // 返回从当前node往下最大的sum，sum包括当前node的值
     private int maxDownPath(TreeNode root) {
         if (root == null) {
             return 0;
