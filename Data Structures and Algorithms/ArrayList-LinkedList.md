@@ -154,6 +154,19 @@ public int getLength(ListNode head) {
 }
 ```
 
+* 找链表中点
+```
+ public ListNode findMiddle(ListNode head) {
+     ListNode slow = head;
+     ListNode fast = head.next;
+     while (fast != null && fast.next != null) {
+         slow = slow.next;
+         fast = fast.next.next;
+     }
+     return slow;
+ }
+```
+
 * 链表判断是否有环
 ```
 public class Solution {
