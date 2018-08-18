@@ -26,3 +26,24 @@ public class Solution {
         return nums[nums.length/2];
     }
 }
+
+# method3
+class Solution {
+    public int majorityElement(int[] nums) {
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            int isOne = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if ((nums[j] & (1 << i)) != 0) {
+                    isOne++;
+                } else {
+                    isOne--;
+                }
+            }
+            if (isOne > 0) {
+                res |= (1 << i);
+            }
+        }
+        return res;
+    }
+}
