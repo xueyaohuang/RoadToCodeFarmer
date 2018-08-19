@@ -6,8 +6,7 @@ Segment Tree，BIT，Trie，Union Find
 HashMap, HashSet, PriorityQueue, heap  
 TreeSet，TreeMap，Deque，LinkedHashMap  
 DFS，BFS，topological sort, dfs/bfs connected, dfs/bfs circle, Sliding Window，sweep line  
-sorting, quick select, kmp  
-flood fill  
+sorting
 
 LC 76 怎么想都想不到，看答案感觉这解法真厉害，做多了才发现，有一种方法叫Sliding Window。
 
