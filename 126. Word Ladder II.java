@@ -1,76 +1,78 @@
 class Solution {
-    public List<List<String>> findLadders(String start, String end, List<String> wordList){
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        if (!wordList.contains(endWord)) {
+            return new ArrayList<List<String>>();
+        }
         List<List<String>> res = new ArrayList<>();
-
+        Map<String, List<String>> map = new HashMap<>();
         Set<String> wordSet = new HashSet<>(wordList);
-        if(!wordSet.contains(end))
-            return res;
-
-        Map<String, List<String>> map = new HashMap<>(wordList.size());
-
-        Set<String> startSet = new HashSet<>();
-        startSet.add(start);
-
+        Set<String> beginSet = new HashSet<>();
         Set<String> endSet = new HashSet<>();
-        endSet.add(end);
-
-        if(!helper(wordSet, startSet, endSet, map, true))
+        beginSet.add(beginWord);
+        endSet.add(endWord);
+        if (!constructPath(beginSet, endSet, wordSet, map, true)) {
             return res;
-
+        }
         List<String> curList = new ArrayList<>();
-        curList.add(start);
-
-        generateStr(start, end, map, curList, res);
-
+        curList.add(beginWord);
+        generateList(beginWord, endWord, res, curList, map);
         return res;
     }
-
-    private boolean helper(Set<String> wordSet, Set<String> startSet, Set<String> endSet, Map<String, List<String>> map, boolean isForward){
-        if(startSet.isEmpty() || endSet.isEmpty())
+    
+    private boolean constructPath(Set<String> beginSet, Set<String> endSet, Set<String> wordSet, Map<String, List<String>> map, boolean isForward) {
+        if (beginSet.isEmpty() || endSet.isEmpty()) {
             return false;
+        }
+        wordSet.removeAll(beginSet);
         boolean found = false;
-        wordSet.removeAll(startSet);
-        Set<String> nextStart = new HashSet<>();
-        for(String cur : startSet){
-            char[] curChs = cur.toCharArray();
-            for(int i = 0; i < curChs.length; i++){
-                char tmpC = curChs[i];
-                for(char c = 'a'; c <= 'z'; c++){
-                    if(curChs[i] == c)
+        Set<String> nextBegin = new HashSet<>();
+        for (String s : beginSet) {
+            char[] sc = s.toCharArray();
+            for (int i = 0; i < sc.length; i++) {
+                char origin = sc[i];
+                for (char c = 'a'; c <= 'z'; c++) {
+                    if (c == origin) {
                         continue;
-                    curChs[i] = c;
-                    String tmp = new String(curChs);
-                    if(!wordSet.contains(tmp))
+                    }
+                    sc[i] = c;
+                    String newStr = new String(sc);
+                    if (!wordSet.contains(newStr)) {
                         continue;
-                    nextStart.add(tmp);
-                    String key = isForward ? cur : tmp;
-                    String value = isForward ? tmp : cur;
-                    if(!map.containsKey(key))
+                    }
+                    nextBegin.add(newStr);
+                    String key = isForward ? s : newStr;
+                    String value = isForward ? newStr : s;
+                    if (!map.containsKey(key)) {
                         map.put(key, new ArrayList<>());
+                    }
                     map.get(key).add(value);
-                    if(endSet.contains(tmp))
+                    if (endSet.contains(newStr)) {
                         found = true;
+                    }
                 }
-                curChs[i] = tmpC;
+                sc[i] = origin;
             }
         }
-        if(found)
+        if (found) {
             return true;
-        if(nextStart.size() > endSet.size())
-            return helper(wordSet, endSet, nextStart, map, !isForward);
-        return helper(wordSet, nextStart, endSet, map, isForward);
+        }
+        if (nextBegin.size() > endSet.size()) {
+            return constructPath(endSet, nextBegin, wordSet, map, !isForward);
+        }
+        return constructPath(nextBegin, endSet, wordSet, map, isForward);
     }
-
-    private void generateStr(String beginWord, String endWord, Map<String, List<String>> map, List<String> curList, List<List<String>> res){
-        if(beginWord.equals(endWord)){
+    
+    private void generateList(String beginWord, String endWord, List<List<String>> res, List<String> curList, Map<String, List<String>> map) {
+        if (beginWord.equals(endWord)) {
             res.add(new ArrayList<>(curList));
             return;
         }
-        if(!map.containsKey(beginWord))
+        if (!map.containsKey(beginWord)) {
             return;
-        for(String cur : map.get(beginWord)){
-            curList.add(cur);
-            generateStr(cur, endWord, map, curList, res);
+        }
+        for (String s : map.get(beginWord)) {
+            curList.add(s);
+            generateList(s, endWord, res, curList, map);
             curList.remove(curList.size() - 1);
         }
     }
