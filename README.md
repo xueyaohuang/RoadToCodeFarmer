@@ -18,9 +18,6 @@ LC 76 怎么想都想不到，看答案感觉这解法真厉害，做多了才�
 1. Top 100 Liked Questions
  218, 76, 10, 32
 
-2. Top Amazon Questions
-126
-
 3 Top Facebook Questions
 273, 301
 
