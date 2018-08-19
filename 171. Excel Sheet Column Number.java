@@ -1,3 +1,4 @@
+// 实际上就是26进制数。满26进一。
 class Solution {
     public int titleToNumber(String s) {
         if (s == null || s.length() == 0) {
