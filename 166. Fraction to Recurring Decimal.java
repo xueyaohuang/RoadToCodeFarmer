@@ -13,6 +13,9 @@ class Solution {
             return sb.toString();
         }
         sb.append(".");
+        // 因为前面num申明是long，所以这里map也要是Long
+        // key：num
+        // value：num在result string中的位置，为了检查出循环
         Map<Long, Integer> map = new HashMap<>();
         map.put(num, sb.length());
         while (num != 0) {
