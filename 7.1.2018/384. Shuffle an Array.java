@@ -1,11 +1,15 @@
 // https://www.geeksforgeeks.org/shuffle-a-given-array/
+/*
+Fisher–Yates shuffle Algorithm : O(n), assuming that the function rand() takes O(1) time.
+数学归纳法证明：某个数在ith position的概率是1/n = (n-1)/n * (n-2)/(n-1) * ... * (n-i)/(n-i+1) * (1)/(n-i)
+*/
 
 class Solution {
     
-    private int[] sol;
+    int[] sol;
 
     public Solution(int[] nums) {
-        sol = nums;
+        sol = nums.clone();
     }
     
     /** Resets the array to its original configuration and return it. */
@@ -15,18 +19,18 @@ class Solution {
     
     /** Returns a random shuffling of the array. */
     public int[] shuffle() {
-        int[] shuf = sol.clone();
-        for (int i = 1; i < sol.length; i++) {
+        int[] shu = sol.clone();
+        for (int i = 0; i < shu.length; i++) {// i可以从前往后，也可以从后往前
             int j = (int) (Math.random() * (i + 1));
-            swap(shuf, i, j);
+            swap(shu, i, j);
         }
-        return shuf;
+        return shu;
     }
     
     private void swap(int[] nums, int i, int j) {
-        int temp = nums[j];
-        nums[j] = nums[i];
-        nums[i] = temp;
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
 
