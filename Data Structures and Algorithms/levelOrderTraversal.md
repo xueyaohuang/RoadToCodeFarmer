@@ -300,5 +300,36 @@ class Solution {
 
 6. Find Largest Value in Each Tree Row
 
+```
+class Solution {
+    public List<Integer> largestValues(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<Integer>();
+        }
+        List<Integer> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int max = Integer.MIN_VALUE;
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                max = Math.max(max, node.val);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            res.add(max);
+        }
+        return res;
+    }
+}
+
+
+```
+
 
 7. Populating Next Right Pointers in Each Node
