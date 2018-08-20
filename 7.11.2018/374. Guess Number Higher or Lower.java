@@ -7,24 +7,18 @@ public class Solution extends GuessGame {
     public int guessNumber(int n) {
         int start = 1;
         int end = n;
-        while (start + 1 < end) {
+        while (start < end) {
             int mid = start + (end - start) / 2;
             if (guess(mid) == 0) {
                 return mid;
             }
             else if (guess(mid) == -1) {
-                end = mid;
+                end = mid - 1;
             }
             else {
-                start = mid;
+                start = mid + 1;
             }
         }
-        if (guess(start) == 0) {
-            return start;
-        }
-        else if (guess(end) == 0) {
-            return end;
-        }
-        return 0;
+        return start;
     }
 }
