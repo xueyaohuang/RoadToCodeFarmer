@@ -24,13 +24,12 @@ class Solution {
     }
 }
 
-public class Solution {
+class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        Stack<TreeNode> stack = new Stack<>();
         Map<TreeNode, TreeNode> parent = new HashMap<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
         parent.put(root, null);
         stack.push(root);
-
         while (!parent.containsKey(p) || !parent.containsKey(q)) {
             TreeNode node = stack.pop();
             if (node.left != null) {
@@ -42,13 +41,14 @@ public class Solution {
                 stack.push(node.right);
             }
         }
-        Set<TreeNode> ancestors = new HashSet<>();
+        Set<TreeNode> set = new HashSet<>();
         while (p != null) {
-            ancestors.add(p);
+            set.add(p);
             p = parent.get(p);
         }
-        while (!ancestors.contains(q))
+        while (!set.contains(q)) {
             q = parent.get(q);
+        }
         return q;
     }
 }
