@@ -31,3 +31,22 @@ class Solution {
         return res;
     }
 }
+
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        int left = countNodes(root.left);
+        if (k <= left) {
+            return kthSmallest(root.left, k);
+        }
+        else if (k > left + 1) {
+            return kthSmallest(root.right, k - left - 1);
+        }
+        return root.val;
+    }
+    private int countNodes(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+}
