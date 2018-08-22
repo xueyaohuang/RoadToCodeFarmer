@@ -5,19 +5,19 @@ class Solution {
         int high = matrix[len - 1][len - 1];
         int low = matrix[0][0];
         
-        while (low <= high) {
+        while (low < high) {
             int mid = low + (high - low) / 2;
-            int count = numLessThan(matrix, mid);
+            int count = numNoMoreThan(matrix, mid);
             if (count < k) {
                 low = mid + 1;
             } else {
-                high = mid - 1;
+                high = mid;
             }
         }
         return low;       
     }
     
-    private int numLessThan(int[][] matrix, int val) {
+    private int numNoMoreThan(int[][] matrix, int val) {
         
         int len = matrix.length;
         int i = len - 1;
