@@ -1,22 +1,35 @@
 // best 
 class Solution {
-    int k;
-    TreeNode root;
+    private TreeNode root;
+    private int k;
     public boolean findTarget(TreeNode root, int k) {
-        this.k = k;
+        if (root == null) {
+            return false;
+        }
         this.root = root;
+        this.k = k;
         return dfs(root);
     }
+    
     private boolean dfs(TreeNode node) {
-        if (null == node) return false;
-        return dfs(node.left) || k > node.val && (search(root, k - node.val) || dfs(node.right));
+        if (node == null) {
+            return false;
+        }
+        // 注意是search(root, k - node.val),不是search(node, k - node.val)
+        return dfs(node.left) || (k != 2 * node.val && search(root, k - node.val)) || dfs(node.right);
     }
-    private boolean search(TreeNode node, int value) {
-        if (null == node) return false;
-//        System.out.println("Search: "+value +", in "+node.val);
-        if (value == node.val) return true;
-        if (value < node.val) return search(node.left, value);
-        return search(node.right, value);
+    
+    private boolean search(TreeNode node, int target) {
+        if (node == null) {
+            return false;
+        }
+        if (node.val == target) {
+            return true;
+        } else if (node.val < target) {
+            return search(node.right, target);
+        } else {
+            return search(node.left, target);
+        }
     }
 }
 
