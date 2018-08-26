@@ -1,3 +1,4 @@
+// 两种方法都是只数最左上角
 // 把不能加的排除，剩下的加，快一些。
 class Solution {
     public int countBattleships(char[][] board) {
