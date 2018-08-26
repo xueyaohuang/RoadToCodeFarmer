@@ -15,6 +15,8 @@ class Solution {
                 end--;
             }
         }
-        return nums[end];
+        return nums[start]; // 如果用while (start < end)，结束时start==end，所以返回nums[start]或是nums[end]都行
     }
 }
+// Would allow duplicates affect the run-time complexity? How and why?
+// worst O(n) time complexity.
