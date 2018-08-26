@@ -3,7 +3,7 @@ class Solution {
         int count = 0;
         int[] freq = new int[256];
         for (char c : s.toCharArray()) {
-            freq[c - '\0']++;
+            freq[c - '\0']++;  // '\0'是mull
         }
         for (int i : freq) {
             if (i % 2 == 1) {
