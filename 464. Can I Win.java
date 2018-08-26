@@ -20,7 +20,7 @@ class Solution {
         }
         for (int i = max - 1; i >= 0; i--) { // try every choosable integer
             if ((state & (1 << i)) == 0) { // if not used
-                if (!canFirstWin(state | (1 << i), max, total - i - 1)) {
+                if (!canFirstWin(state | (1 << i), max, total - i - 1)) { // 换人走了，所以 !canFirstWin
                     memo[state] = 1;
                     return true;
                 }
