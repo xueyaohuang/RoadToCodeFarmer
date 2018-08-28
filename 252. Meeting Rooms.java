@@ -7,6 +7,8 @@
  *     Interval(int s, int e) { start = s; end = e; }
  * }
  */
+
+// 
 class Solution {
     public boolean canAttendMeetings(Interval[] intervals) {
         if (intervals == null || intervals.length == 0) {
