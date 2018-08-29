@@ -36,10 +36,10 @@ class Solution {
                     return false;
                 }
             }
-            else if (! map.containsValue(ct)) {
+            else if (! map.containsValue(ct)) { // 如果没有cs这个key，并且也没有ct这个value，put这一对
                 map.put(cs, ct);
             }
-            else {
+            else { // 如果没有cs这个key，但是有ct这个value，返回false
                 return false;
             }
         }
@@ -49,6 +49,7 @@ class Solution {
 
 class Solution {
     public boolean isIsomorphic(String s, String t) {
+        // HashMap put method returns the previous value associated with key, or null if there was no mapping for key.
         Map<Character, Integer> maps = new HashMap<>();
         Map<Character, Integer> mapt = new HashMap<>();
         for (Integer i = 0; i < s.length(); i++) {
