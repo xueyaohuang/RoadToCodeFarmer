@@ -12,7 +12,7 @@ class Solution {
                     cur /= 10;
                 }
                 cur++;
-                while (cur % 10 == 0) {
+                while (cur % 10 == 0) { // 比如从19，下一个应该是2，如果没有这个while，会是20.
                     cur /= 10;
                 }
             }
