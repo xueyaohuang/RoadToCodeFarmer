@@ -54,6 +54,7 @@ class Solution {
         if (root == null) {
             return;
         }
+        // size == level 说明到了下一层的第一个，由于先加right，所以就是right side view
         if (res.size() == level) {
             res.add(root.val);
         }
