@@ -1,3 +1,4 @@
+// O(n)，每个index都被push进stack一次，pop一次
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
         if (temperatures == null || temperatures.length == 0) {
@@ -48,6 +49,7 @@ class Solution {
                 res[i] = 1;
             }
             else {
+                // 前面没有更暖和的了
                 if (res[i + 1] == 0) {
                    res[i] = 0;
                 }
