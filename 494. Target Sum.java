@@ -1,17 +1,20 @@
 class Solution {
     public int findTargetSumWays(int[] nums, int S) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
         int sum = 0;
         for (int i : nums) {
             sum += i;
         }
+        // 都用加号也不够和都用减号也不够
         if (sum < S || -sum > S || (sum + S) % 2 == 1) {
             return 0;
         }
-        int target = (sum + S) / 2;
-        return subSetSum(nums, target);
+        return subsetSum(nums, (sum + S) / 2);
     }
     
-    private int subSetSum(int[] nums, int target) {
+    private int subsetSum(int[] nums, int target) {
         int[] dp = new int[target + 1];
         dp[0] = 1;
         for (int i = 0; i < nums.length; i++) {
