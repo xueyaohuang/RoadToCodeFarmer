@@ -7,6 +7,30 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+class Solution {
+    int len = 0;
+    public int longestUnivaluePath(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        longestUnivaluePathHelper(root, root.val);
+        return len;
+    }
+    private int longestUnivaluePathHelper(TreeNode root, int val) {
+        if (root == null) {
+            return 0;
+        }
+        int left = longestUnivaluePathHelper(root.left, root.val);
+        int right = longestUnivaluePathHelper(root.right, root.val);
+        len = Math.max(len, left + right);
+        if (root.val == val) {
+            return Math.max(left, right) + 1;
+        }
+        return 0;
+    }
+}
+
 class Solution {
     int len = 0;
     public int longestUnivaluePath(TreeNode root) {
