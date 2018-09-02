@@ -7,16 +7,15 @@ class Solution {
             for (int i = j - 1; i >= 1; i--) {
                 if (i == j - 1) {
                     dp[i][j] = i;
-                }
-                else {
-                    int max = Integer.MAX_VALUE;
+                } else {
+                    dp[i][j] = Integer.MAX_VALUE;
                     for (int k = i + 1; k < j; k++) {
+                        // 不知道target是在k的左边还是右边，所以为了保证能猜出来，要取较大的那个
                         int min = k + Math.max(dp[i][k - 1], dp[k + 1][j]);
-                        max = Math.min(max, min);
+                        dp[i][j] = Math.min(dp[i][j], min);
                     }
-                    dp[i][j] = max;
-                }              
-            }     
+                }
+            }
         }
         return dp[1][n];
     }
