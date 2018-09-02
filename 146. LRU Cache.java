@@ -130,7 +130,7 @@ class LRUCache {
             
             if (count > capacity) {
                 DoubleLinkNode preTail = popTail();
-                map.remove(preTail.key);
+                map.remove(preTail.key); // 注意要从map中移除
                 count--;
             }
         }
