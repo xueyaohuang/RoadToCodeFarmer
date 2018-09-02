@@ -1,3 +1,5 @@
+// time O(n^3), space O(n^2)
+// dp[i][j]: 在i到j之间猜对需要最少的钱。
 class Solution {
     public int getMoneyAmount(int n) {
         int[][] dp = new int[n + 1][n + 1];
