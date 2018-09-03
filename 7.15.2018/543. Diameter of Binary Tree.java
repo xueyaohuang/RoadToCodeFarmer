@@ -8,6 +8,25 @@
  * }
  */
 
+class Solution {
+    int diameter = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        longestFromHere(root);
+        return diameter;
+    }
+    private int longestFromHere(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int left = longestFromHere(node.left);
+        int right = longestFromHere(node.right);
+        diameter = Math.max(diameter, left + right);
+        return 1 + Math.max(left, right);
+    }
+}
 
 class Solution {
     int len = 0;
