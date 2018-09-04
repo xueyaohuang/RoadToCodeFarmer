@@ -19,7 +19,7 @@ class Solution {
         return list;
     }
     private void addPath(TreeNode root, List<String> list, StringBuilder sb) {
-        sb.append(root.val + "");
+        sb.append(root.val);
         if (root.left == null && root.right == null) {
             list.add(sb.toString());
         }
