@@ -17,9 +17,9 @@ class Solution {
             for (int j = sum; j >= i; j--) {
                 dp[j] = dp[j] || dp[j - i];
             }
-        }
-        if (dp[sum]) {
-            return true;
+            if (dp[sum]) {
+                return true;
+            }
         }
         return dp[sum];
     }
