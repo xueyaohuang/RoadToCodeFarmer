@@ -35,3 +35,28 @@ class Solution {
         return width;
     }
 }
+
+class Solution {
+    public int widthOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        List<Integer> leftMost = new ArrayList<>();
+        int width = 0;
+        width = dfs(root, 0, 0, width, leftMost);
+        return width;
+    }
+    
+    private int dfs(TreeNode root, int depth, int idx, int width, List<Integer> leftMost) {
+        if (root == null) {
+            return 0;
+        }
+        if (depth == leftMost.size()) {
+            leftMost.add(idx);
+        }
+        int left = dfs(root.left, depth + 1, idx * 2, width, leftMost);
+        int right = dfs(root.right, depth + 1, idx * 2 + 1, width, leftMost);
+        width = Math.max(Math.max(left, right), idx - leftMost.get(depth) + 1);
+        return width;
+    }
+}
