@@ -8,7 +8,6 @@ class Solution {
             val=-1;
             list=new LinkedList();
         }
-        
     }
     
     List<List<Integer>> res=new LinkedList();
@@ -45,8 +44,5 @@ class Solution {
             if(word.charAt(i++)!=word.charAt(j--)) return false;
         }
         return true;
-    }
-    
-    
-    
+    }  
 }
