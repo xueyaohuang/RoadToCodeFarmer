@@ -28,26 +28,62 @@ class Solution {
     }
 }
 
- public TreeNode buildTree(int[] inorder, int[] postorder) {
+class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        int length = postorder.length;
+        if(length < 1) return null;
         
-        if( inorder.length == 0 ) return null;
-        // last element in the postorder is the root of the tree
-         TreeNode root = new TreeNode(postorder[postorder.length-1]);
-         Stack<TreeNode> st = new Stack<>();
-         st.push(root);
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = new TreeNode(postorder[length - 1]);
+        TreeNode cur = root;
         
-        for(int i=postorder.length-2, j = inorder.length-1;i>=0;--i){
-            //postorder[i] is the right child till the element in inorder traversal is not equal (i.e.rightmost node)
-            if( st.peek().val != inorder[j] ){
-                st.push(st.peek().right = new TreeNode(postorder[i]));
-            }else{
-                TreeNode temp = null;
-                //pop  till all the elements matching inorder elements are removed 
-                while(!st.empty() && st.peek().val == inorder[j]){
-                     temp = st.pop(); j--;
+        for(int i = length - 2, j = length - 1; i >= 0; i--) {
+            if(cur.val != inorder[j]) {
+                cur.right = new TreeNode(postorder[i]);
+                stack.push(cur);
+                cur = cur.right;
+            }
+            else {
+                j--;
+                while(!stack.isEmpty() && stack.peek().val == inorder[j]) {
+                    cur = stack.pop();
+                    j--;
                 }
-                st.push(temp.left =  new TreeNode(postorder[i])); //continue in post-order fashion
-            } 
+                cur = cur.left = new TreeNode(postorder[i]);
+            }
         }
-       return root;
+        return root;
+    }
+}
+
+class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if (postorder == null || postorder.length == 0 || postorder.length != inorder.length) {
+            return null;
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0;i < inorder.length; i++) {
+            map.put(inorder[i], i);
+        }
+        TreeNode root = new TreeNode(postorder[postorder.length - 1]);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        TreeNode p = root;
+        for (int i = postorder.length - 2; i >= 0; i--) {
+            int idx = map.get(postorder[i]);
+            TreeNode node = new TreeNode(postorder[i]);
+            if (idx > map.get(stack.peek().val)) {
+                p.right = node;
+                p = p.right;
+            } else {
+                while (!stack.isEmpty() && idx < map.get(stack.peek().val)) {
+                    p = stack.pop();
+                }
+                p.left = node;
+                p = p.left;
+            }
+            stack.push(node);
+        }
+        return root;
+    }
 }
