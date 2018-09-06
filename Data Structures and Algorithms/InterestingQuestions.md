@@ -4,4 +4,15 @@
 
 3. [python 参数传递](https://www.cnblogs.com/zhijun/p/6559983.html)
 
-4. [java参数传递, 第二、三个回答](https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value)
+4. [java参数传递, 第二、三个回答](https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value)  
+
+Primitives are not passed by references (or objects for that matter).
+```
+int i = 1;
+moo(i);
+public void moo(int a) {
+   a = 3;
+}
+System.out.println(i);
+```
+Prints out 1
