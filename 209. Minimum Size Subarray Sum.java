@@ -1,18 +1,22 @@
 // O(n), 一头进，一头出
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
-        int minLen = Integer.MAX_VALUE;
+        
+        int min = Integer.MAX_VALUE;
         int len = nums.length;
-        int sum = 0;
         int j = 0;
+        int sum = 0;
+        
         for (int i = 0; i < len; i++) {
             sum += nums[i];
             while (sum >= s) {
-                minLen = Math.min(minLen, i - j + 1);
-                sum -= nums[j++];
-            } 
+                min = Math.min(min, i - j + 1);
+                sum -= nums[j];
+                j++;
+            }
         }
-        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+        
+        return min == Integer.MAX_VALUE ? 0 : min;
     }
 }
 
