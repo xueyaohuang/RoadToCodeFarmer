@@ -1,7 +1,7 @@
 class Solution {
     public int lengthLongestPath(String input) {
         String[] strs = input.split("\n");
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         int maxLen = 0;
         stack.push(0); // "dummy" length
         for (String s : strs) {
