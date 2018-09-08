@@ -12,12 +12,17 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        return pathFromHere(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+        // 开头不一定是root，所以要遍历开头
+        // pathSum(root.left, sum) ， pathSum(root.right, sum) 就是在遍历开头，因为sum没变
+        return pathSumFromHere(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
     }
-    private int pathFromHere(TreeNode node, int sum) {
-        if (node == null) {
+    
+    private int pathSumFromHere(TreeNode root, int sum) { // 定义清楚这个函数是干啥的
+        if (root == null) {
             return 0;
         }
-        return (node.val == sum ? 1 : 0) + pathFromHere(node.left, sum - node.val) + pathFromHere(node.right, sum - node.val);
+        // 结尾不一定是leaf，所以要遍历结尾
+        // pathSumFromHere(root.left xxx), pathSumFromHere(root.right xxx)就是在遍历结尾，因为sum减去了parent的val
+        return (root.val == sum ? 1 : 0) + pathSumFromHere(root.left, sum - root.val) + pathSumFromHere(root.right, sum - root.val);
     }
 }
