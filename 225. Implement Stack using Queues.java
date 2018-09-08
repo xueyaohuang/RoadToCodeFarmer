@@ -9,6 +9,7 @@ class MyStack {
     
     /** Push element x onto stack. */
     public void push(int x) {
+        // after you add one element to the queue, rotate the queue to make the tail be the head.
         queue.add(x);
         for (int i = 1; i < queue.size(); i++) {
             queue.add(queue.poll());
