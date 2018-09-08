@@ -7,6 +7,8 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+// 用preStart确定root
+// 用inStart和inEnd确定子树的范围
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return treeHelper(0, 0, inorder.length - 1, preorder, inorder);
