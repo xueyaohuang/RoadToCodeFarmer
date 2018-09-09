@@ -24,3 +24,22 @@ public class Solution {
         }
     }
 }
+
+public class Solution {
+    public void connect(TreeLinkNode root) {
+        // recursion终止条件
+        if (root == null || root.left == null) {
+            return;
+        }
+        
+        // 把当前这一层要干的全部事情说清楚
+        root.left.next = root.right;
+        if (root.next != null) {
+            root.right.next = root.next.left;
+        }
+        
+        // 进入左右子树的递归
+        connect(root.left);
+        connect(root.right);
+    }
+}
