@@ -9,23 +9,39 @@
  */
 // 用preStart确定root
 // 用inStart和inEnd确定子树的范围
+// Space: O(N)
+// Because each node we create a helper(), the recursion stack will cost O(N)
+
+// Time: O(N log N) for a balanced tree, O(N^2) for a skew tree
+// As mentioned above, the helper() runs O(N) time, and for each helper(), there is a for-loop to search the inorder index.
+
+// For a balanced tree, the range of the search will be reduced by half each time, so the search costs O(log n)
+// Therefore the time is O(N) * O(log N) = O(N log N)
+
+// For a skew tree, the range of the search will only be reduced by 1, so the search still costs O(N)
+// Therefore the time is O(N) * O(N) = O(N^2)
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return treeHelper(0, 0, inorder.length - 1, preorder, inorder);
+        if (preorder == null || preorder.length == 0) {
+            return null;
+        }
+        return buildTreeHelper(preorder, inorder, 0, 0, inorder.length - 1);
     }
-    private TreeNode treeHelper(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder) {
+    
+    private TreeNode buildTreeHelper(int[] preorder, int[] inorder, int preStart, int inStart, int inEnd) {
         if (preStart >= preorder.length || inStart > inEnd) {
             return null;
         }
         TreeNode root = new TreeNode(preorder[preStart]);
-        int rootIndex = 0;
+        int rootIdx = 0;
         for (int i = 0; i < inorder.length; i++) {
             if (inorder[i] == root.val) {
-                rootIndex = i;
+                rootIdx = i;
+                break;
             }
         }
-        root.left = treeHelper(preStart + 1, inStart, rootIndex - 1, preorder, inorder);
-        root.right = treeHelper(preStart + rootIndex - inStart + 1, rootIndex + 1, inEnd, preorder, inorder);
+        root.left = buildTreeHelper(preorder, inorder, preStart + 1, inStart, rootIdx - 1);
+        root.right = buildTreeHelper(preorder, inorder, preStart + rootIdx - inStart + 1, rootIdx + 1, inEnd);
         return root;
     }
 }
