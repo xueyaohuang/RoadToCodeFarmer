@@ -30,19 +30,18 @@ class Solution {
             return root;
         }
         int sum = 0;
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        while (!stack.isEmpty() || p != null) {
-            if (p != null) {
-                stack.push(p);
-                p = p.right;
-            }
-            else {
-                TreeNode node = stack.pop();
-                int temp = node.val;
-                node.val += sum;
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode node = root;
+        while (!stack.isEmpty() || node != null) {
+            if (node != null) {
+                stack.push(node);
+                node = node.right;
+            } else {
+                TreeNode cur = stack.pop();
+                int temp = cur.val;
+                cur.val += sum;
                 sum += temp;
-                p = node.left;
+                node = cur.left; // 注意是node = cur.left，不是cur = cur.left
             }
         }
         return root;
