@@ -28,20 +28,23 @@ class Solution {
 
 class Solution {
     public void flatten(TreeNode root) {
+        if (root == null) {
+            return;
+        }
         TreeNode node = root;
         while (node != null) {
             TreeNode left = node.left;
             TreeNode right = node.right;
             if (left != null) {
-                TreeNode temp = left;
-                while (temp.right != null) {
-                    temp = temp.right;
+                TreeNode cur = left;
+                while (cur.right != null) {
+                    cur = cur.right;
                 }
-                temp.right = right;
+                cur.right = right;
                 node.left = null;
                 node.right = left;
-            } 
+            }
             node = node.right;
-        }        
+        }
     }
 }
