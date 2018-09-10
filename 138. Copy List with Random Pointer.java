@@ -11,6 +11,7 @@ public class Solution {
         if (head == null) {
             return null;
         }
+        // key是原始的list node，value是deep copy的list node
         Map<RandomListNode, RandomListNode> map = new HashMap<>();
         RandomListNode node = head;
         while (node != null) {
@@ -18,6 +19,7 @@ public class Solution {
             node = node.next;
         }
         node = head;
+        // 把map的value collections里的所有nodes连接起来
         while (node != null) {
             map.get(node).next = map.get(node.next);
             map.get(node).random = map.get(node.random);
