@@ -25,6 +25,6 @@ public class Solution {
             map.get(node).random = map.get(node.random);
             node = node.next;
         }
-        return map.get(head);
+        return map.get(head); // 注意最后返回map.get(head)而不是map.get(node)
     }
 }
