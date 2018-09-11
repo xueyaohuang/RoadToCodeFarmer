@@ -54,4 +54,38 @@ class Solution {
 
 
 // kmp
-
+// 思路还是  find the longest palindrome substring starts from 0
+// build a string: s + "#" + reverse(s), and run kmp on it
+// the last element of kmp PrefixArray will be our solution
+// We add "#" here to force the match in reverse(s) starts from its first index, 否则s和reverse s连起来可能构成palindrome，最后一个元素的值可能大于s的长度
+// ex. catacb # bcatac
+// kmp table:
+// c a t a c b # b c a t a c
+// 0 0 0 0 1 0 0 0 1 2 3 4 5
+// In the last cell, we got a value 5. It means in s we have a substring of length 5 that is palindrome.
+class Solution {
+    public String shortestPalindrome(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        String str = s + "|" + sb.reverse().toString();
+        int[] table = kmpTable(str);
+        int len = table.length;
+        StringBuilder addToFront = new StringBuilder(s.substring(table[len - 1]));
+        return addToFront.reverse().append(s).toString();
+        
+    }
+    
+    private int[] kmpTable(String s) {
+        int len = s.length();
+        int[] table = new int[len];
+        for (int i = 1, j = 0; i < len; i++) {
+            while (j > 0 && s.charAt(i) != s.charAt(j)) {
+                j = table[j - 1];
+            }
+            if (s.charAt(i) == s.charAt(j)) {
+                j++;
+            }
+            table[i] = j;
+        }
+        return table;
+    }
+}
