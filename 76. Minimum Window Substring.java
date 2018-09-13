@@ -25,6 +25,7 @@ class Solution {
                     head = start;
                     minLen = end - head + 1;
                 }
+                // ++freq[cstart] > 0表示，移走的这个char是t中出现的
                 if (++freq[cstart] > 0) { // freq[cend]无论如何都会++，并且是先++再判断
                     count--;
                 }
