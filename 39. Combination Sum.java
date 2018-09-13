@@ -13,7 +13,7 @@ class Solution {
             if (target >= candidates[i]) { // target >= candidates[i]才能加，避免检查target < 0 的情况。
                 temp.add(candidates[i]);
                 backtrack(candidates, res, temp, target - candidates[i], i);
-                temp.remove(temp.size() - 1);
+                temp.remove(temp.size() - 1); // 返回上一级recursion，所以要移除当前level递归加入的元素
             }
         }
     }
