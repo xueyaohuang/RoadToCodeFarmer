@@ -12,7 +12,7 @@ class Solution {
         for (int i = start; i < candidates.length; i++) {
             if (target >= candidates[i]) { // target >= candidates[i]才能加，避免检查target < 0 的情况。
                 temp.add(candidates[i]);
-                backtrack(candidates, res, temp, target - candidates[i], i);
+                backtrack(candidates, res, temp, target - candidates[i], i); // 由于set中的元素可以重复使用多次，所以recursio还是从i开始
                 temp.remove(temp.size() - 1); // 返回上一级recursion，所以要移除当前level递归加入的元素
             }
         }
