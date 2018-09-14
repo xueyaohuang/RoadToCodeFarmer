@@ -1,9 +1,9 @@
 // 前三个都是backtrack枚举。
-// 1. for loop需要start这个参数，因为是combination，不能每次都从0开始。如果res中，每个list中可以有重复的元素，recursion里的start还是从i开始，
-// 比如I，如果不能有重复，则要从i+1开始，比如II,III。
-// 2. recursion一开始，先设置好递归的退出条件。
-// 3. temp.remove(temp.size() - 1)， 返回上一级recursion，所以要移除当前level递归加入的元素
-// 4. 如果给定的set（nums）里面有重复元素，但是res里的list又不能有重复组合（某一个list里，可以有重复元素），需要sort nums。
+// 1. combination问题中，for loop需要start这个参数，因为是combination，不能每次都从0开始。permutation问题不需要start，每次从头开始枚举。
+// 2. 如果给定nums中的元素能重复使用，recursion里的start还是从i开始，比如I，如果不能重复使用，则要从i+1开始，比如II,III。
+// 3. recursion一开始，先设置好递归的退出条件。
+// 4. temp.remove(temp.size() - 1)， 返回上一级recursion，所以要移除当前level递归加入的元素
+// 5. 如果给定的set（nums）里面有重复元素，但是res里的list又不能有重复组合（某一个list里，可以有重复元素），需要sort nums。注意u第二点的区别。
 
 // 39. Combination Sum.java
 class Solution {
