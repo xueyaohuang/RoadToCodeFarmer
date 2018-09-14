@@ -1,6 +1,30 @@
 class Solution {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();
+        dfs(k, n, res, new ArrayList<>(), 1);
+        return res;
+    }
+    
+    private void dfs(int k, int n, List<List<Integer>> res, List<Integer> temp, int start) {
+        if (temp.size() == k) { // size == k一定退出
+            if (n == 0) { // 只有n == 0才加入res
+                res.add(new ArrayList<>(temp));
+            }
+            return;
+        }
+        for (int i = start; i <= 9; i++) {
+            if (i <= n) {
+                temp.add(i);
+                dfs(k, n - i, res, temp, i + 1);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+}
+
+class Solution {
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> res = new ArrayList<>();
         helper(k, n, 1, res, new ArrayList<Integer>());
         return res;
     }
