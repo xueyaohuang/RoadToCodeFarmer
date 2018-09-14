@@ -6,15 +6,12 @@ Segment Tree，BIT，Trie，Union Find，LinkedHashMap
 DFS，BFS，topological sort, dfs/bfs connected, dfs/bfs circle, Sliding Window，sweep line  
 sorting
 
-LC 76 怎么想都想不到，看答案感觉这解法真厉害，做多了才发现，有一种方法叫Sliding Window。
-
 链接：https://www.zhihu.com/question/31092580/answer/453117660
 
-[A general approach to level order traversal questions in Java](https://leetcode.com/problems/binary-tree-level-order-traversal/discuss/114449/A-general-approach-to-level-order-traversal-questions-in-Java)
 
 
 1. Top 100 Liked Questions
- 218, 76, 10, 32
+ 218, 10, 32
 
 3 Top Facebook Questions
 273, 301
@@ -37,6 +34,3 @@ LC 76 怎么想都想不到，看答案感觉这解法真厉害，做多了才�
 9 BB all
 
 cc150
-
-老用户，购买衣服，下次不再推荐，购买礼包，下次还推荐。
-只追求召回率的话很容易，热门物品前三位推荐上去就行了，必定上90%。但是意义不大，因为你不推荐热门，中国玩家也会买。还是要看找回钻石数量。
