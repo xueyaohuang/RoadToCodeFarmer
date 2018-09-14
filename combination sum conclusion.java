@@ -3,7 +3,7 @@
 // 比如I，如果不能有重复，则要从i+1开始，比如II,III。
 // 2. recursion一开始，先设置好递归的退出条件。
 // 3. temp.remove(temp.size() - 1)， 返回上一级recursion，所以要移除当前level递归加入的元素
-// 4. 如果给定的set（nums）里面有重复元素，但是res里的list又不能有重复组合，需要sort nums。
+// 4. 如果给定的set（nums）里面有重复元素，但是res里的list又不能有重复组合（某一个list里，可以有重复元素），需要sort nums。
 
 // 39. Combination Sum.java
 class Solution {
@@ -43,7 +43,7 @@ class Solution {
             return;
         }
         for (int i = start; i < candidates.length; i++) {
-            if (i > start && candidates[i] == candidates[i - 1]) { // i > start && ...跳过重复，如果是permutation，则是i > 0 && ...
+            if (i > start && candidates[i] == candidates[i - 1]) { // i > start && ...跳过重复，如果是permutation，则是i > 0 && ...。第一个重复元素
                 continue;
             }
             if (target >= candidates[i]) {
@@ -54,6 +54,14 @@ class Solution {
         }
     }
 }
+// 给定的set（nums）里面有重复元素，但是res里的list又不能有重复组合（某一个list里，可以有重复元素）。
+// 比如
+// [2,1,2,7,6,1,2,3,4,2]
+// 7
+// 结果是 [[1,1,2,3],[1,2,2,2],[1,2,4],[1,6],[2,2,3],[3,4],[7]]
+// [2,1,2,7,6,1,2,3,4,2] 排完序是[1,1,2,2,2,2,3,4,6,7]
+// 如果list中有重复的元素，那么他们是在不同层recursion加进去的。同一个层的递归不会出现重复元素。
+// 比如[1,2,2,2]，三个2分别是不同level的recursion加进去的。
 
 // 216. Combination Sum III
 class Solution {
