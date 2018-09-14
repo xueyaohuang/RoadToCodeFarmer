@@ -1,3 +1,4 @@
+// 先用二分法或者牛顿法求出整数平方根start，再判断start * start == num？
 class Solution {
     public boolean isPerfectSquare(int num) {
         int start = 1;
