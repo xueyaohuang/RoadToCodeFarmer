@@ -35,8 +35,8 @@ class Solution {
         }
         for (int i = 0; i < nums.length; i++) {
             if (!visited[i]) {
-                visited[i] = true;
                 temp.add(nums[i]);
+                visited[i] = true;
                 dfs(nums, res, temp, visited);
                 temp.remove(temp.size() - 1);
                 visited[i] = false; // 要返回上一层recursion，在remove nums[i]后，还要把nums[i]的标记设置成false
