@@ -1,3 +1,4 @@
+// 凡是涉及到遍历所有排列，组合的问题，都可以用backtrack。
 // backtrack, 如果设置了start参数，就是遍历所有可能的combination。如果没有start，每次递归都从第一个element开始，则便利所有可能的permutation。
 // 这个题就是枚举所有可能的组合，没有任何限制，相当于没有退出条件，上来就把temp加入res。
 // 这种方法，从头到尾一直用同一个temp在尝试各种组合。
