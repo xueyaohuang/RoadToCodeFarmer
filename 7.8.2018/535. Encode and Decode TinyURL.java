@@ -7,7 +7,8 @@ public class Codec {
         Random random = new Random();
         String url = "";
         String shortUrl = "http://tinyurl.com/";
-        // It's possible that a randomly generated code has already been generated before. In that case, another random code is generated instead. Repeat until we have a code that's not already in use.
+        // It's possible that a randomly generated code has already been generated before.
+        // In that case, another random code is generated instead. Repeat until we have a code that's not already in use.
         while (!map.containsValue(longUrl)) {
             for (int i = 0; i < 6; i++) {
                 int idx = random.nextInt(dict.length());
