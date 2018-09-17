@@ -1,5 +1,6 @@
 public class Codec {
     
+    // key:shortUrl, value:longUrl
     private HashMap<String, String> map = new HashMap<>();
     String dict = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     // Encodes a URL to a shortened URL.
@@ -7,11 +8,11 @@ public class Codec {
         Random random = new Random();
         String url = "";
         String shortUrl = "http://tinyurl.com/";
-        // It's possible that a randomly generated code has already been generated before.
-        // In that case, another random code is generated instead. Repeat until we have a code that's not already in use.
+        int dictLen = dict.length();
+        // It's possible that a randomly generated code has already been generated before. In that case, another random code is generated instead. Repeat until we have a code that's not already in use.
         while (!map.containsValue(longUrl)) {
             for (int i = 0; i < 6; i++) {
-                int idx = random.nextInt(dict.length());
+                int idx = random.nextInt(dictLen);
                 url += dict.charAt(idx);
             }
             shortUrl = "http://tinyurl.com/" + url;
