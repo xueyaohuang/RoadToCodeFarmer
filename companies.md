@@ -1,7 +1,25 @@
-* [tigergraph](https://boards.greenhouse.io/tigergraph/jobs/1251173) Software Engineer 9.17自投
+# 已投
+1. [tigergraph](https://boards.greenhouse.io/tigergraph/jobs/1251173) Software Engineer 9.17自投
 
-* [MicroSoft](https://careers.microsoft.com/us/en/actioncenter)  9.17自投
+2. [MicroSoft](https://careers.microsoft.com/us/en/actioncenter)  9.17自投
 
-* [granular](https://granular.ag/)  9.17 周权内推
+3. [granular](https://granular.ag/)  9.17 周权内推
 
-* [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.17 发邮件联系未回复
+4. [Akuna](https://akunacapital.com/job-details?jobid=1243545&gh_jid=1243545)  9.17自投
+
+5. [Amazon](https://www.amazonuniversity.jobs/dashboard) 找内推 Jiekai Wang，Pu Chen。
+
+
+
+
+
+
+# 待投
+1. [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.17 发邮件联系未回复
+
+2. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer  
+
+3. [Alation](https://alation.com/careers/posting/?posting-id=fd8dae88-5abd-4740-99e9-4ab871aea60f)  Software Engineer
+
+
+Hi Pu, I am Xueyao Huang from The University of Chicago, majoring in computer science (master's degree). I am looking for software engineer full-time jobs. Could you please help to refer me for 2019 Software Development Engineer(ID: 697789) at Amazon? Thank you very much! I am looking forward to hearing from you.
