@@ -1,3 +1,5 @@
+// 存数字和存字母的stack分开
+// res经常变
 class Solution {
     public String decodeString(String s) {
         Stack<Integer> countStack = new Stack<>();
