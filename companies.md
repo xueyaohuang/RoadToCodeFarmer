@@ -21,5 +21,10 @@
 
 3. [Alation](https://alation.com/careers/posting/?posting-id=fd8dae88-5abd-4740-99e9-4ab871aea60f)  Software Engineer
 
+4. [TuSimple](https://boards.greenhouse.io/tusimple/jobs/4023145002)  联系内推（https://www.linkedin.com/in/yi-luo-b15348b3/）
 
-Hi Pu, I am Xueyao Huang from The University of Chicago, majoring in computer science (master's degree). I am looking for software engineer full-time jobs. Could you please help to refer me for 2019 Software Development Engineer(ID: 697789) at Amazon? Thank you very much! I am looking forward to hearing from you.
+
+Hi , I am Xueyao Huang from The University of Chicago, majoring in computer science. I am looking for software engineer full-time jobs. Could you please help to refer me for  at ? Thank you very much! I am looking forward to hearing from you.
+
+
+
