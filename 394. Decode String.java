@@ -1,5 +1,6 @@
 // 存数字和存字母的stack分开
-// res经常变
+// res经常变，注意什么时候push res进栈
+// 遇到]，要把当前括号里的res搞清楚，但并不急于push，遇到[才push。
 class Solution {
     public String decodeString(String s) {
         Stack<Integer> countStack = new Stack<>();
@@ -15,7 +16,7 @@ class Solution {
                 countStack.push(count);
             }
             else if (s.charAt(idx) == '[') {
-                strStack.push(res);
+                strStack.push(res); 
                 res = "";
                 idx++;
             }
