@@ -38,7 +38,7 @@ class Solution {
         for (int i = 1; i < n - 1; i++) {
             balloons[i] = nums[i - 1];   
         }
-        for (int j = 2; j < n; j++) { // 区间长度
+        for (int j = 2; j < n; j++) { // j = 区间end - 区间start，最小单元是三个气球，所以j从2开始
             for (int i = 0; i + j < n; i++) { // 区间开始位置
                 optimize(balloons, dp, i, i + j);
             }
