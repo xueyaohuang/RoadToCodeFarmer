@@ -7,9 +7,11 @@
 
 4. [Akuna](https://akunacapital.com/job-details?jobid=1243545&gh_jid=1243545)  9.17自投
 
-5. [Amazon](https://www.amazonuniversity.jobs/dashboard) 找内推 Jiekai Wang，Pu Chen。
+5. [Amazon](https://www.amazonuniversity.jobs/dashboard) 找内推 Jiekai Wang，Pu Chen。 mima Y。。。。00
 
+6. [google](https://careers.google.com/jobs#!t=jo&jid=/google/software-engineer-university-graduate-1600-amphitheatre-pkwy-mountain-view-ca-4204620153&) 找内推 https://www.linkedin.com/in/zhan-chen-02753a82/
 
+7. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer uchicago邮箱 mima：Y。。。  https://careers.bloomberg.com/account
 
 
 
@@ -17,11 +19,13 @@
 # 待投
 1. [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.17 发邮件联系未回复
 
-2. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer  
+
 
 3. [Alation](https://alation.com/careers/posting/?posting-id=fd8dae88-5abd-4740-99e9-4ab871aea60f)  Software Engineer
 
-4. [TuSimple](https://boards.greenhouse.io/tusimple/jobs/4023145002)  联系内推（https://www.linkedin.com/in/yi-luo-b15348b3/）
+4. [TuSimple](https://boards.greenhouse.io/tusimple/jobs/4023145002)  联系内推（https://www.linkedin.com/in/yi-luo-b15348b3/ )
+
+5. [pure storage](https://boards.greenhouse.io/purestorage/jobs/1284017)  联系内推(https://www.linkedin.com/in/sheng-xie-a706a0a4/)
 
 
 Hi , I am Xueyao Huang from The University of Chicago, majoring in computer science. I am looking for software engineer full-time jobs. Could you please help to refer me for  at ? Thank you very much! I am looking forward to hearing from you.
