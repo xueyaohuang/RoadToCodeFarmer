@@ -9,14 +9,19 @@
  */
 class Solution {
     public TreeNode upsideDownBinaryTree(TreeNode root) {
+        if (root == null || root.left == null) {
+            return root;
+        }
+        
         TreeNode cur = root;
-        TreeNode prev = null;
         TreeNode next = null;
-        TreeNode temp = null;
+        TreeNode prev = null;
+        TreeNode prevRight = null;
+        
         while (cur != null) {
             next = cur.left;
-            cur.left = temp;
-            temp = cur.right;
+            cur.left = prevRight;
+            prevRight = cur.right;
             cur.right = prev;
             prev = cur;
             cur = next;
