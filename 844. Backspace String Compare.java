@@ -1,7 +1,7 @@
 class Solution {
     public boolean backspaceCompare(String S, String T) {
-        Stack<Character> stackS = new Stack<>();
-        Stack<Character> stackT = new Stack<>();
+        Deque<Character> stackS = new ArrayDeque<>();
+        Deque<Character> stackT = new ArrayDeque<>();
         for (char s : S.toCharArray()) {
             if (s == '#') {
                 if (!stackS.isEmpty()) {
