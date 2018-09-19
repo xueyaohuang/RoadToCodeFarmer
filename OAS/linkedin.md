@@ -39,7 +39,9 @@ class Solution {
 * simple queries. 我是对2个数组排序，遍历第二个数组，two pointers
 
 ```
-array nums1, nums2
+Arrays.sort(nums1);
+Arrays.sort(nums2);
+int len = nums.length;
 int[] res = new int[len];
 int idx = 0;
 for (int i = 0; i < len; i++) {
@@ -49,3 +51,16 @@ for (int i = 0; i < len; i++) {
     res[i] = idx;
 }
 ```
+
+* [数组排序，先按照频率，后按照数值](https://leetcode.com/problems/top-k-frequent-words/description/)
+* [数组求最大和，最多允许跳过一个连续的元素，不能一次跳两个以上](https://www.geeksforgeeks.org/maximum-sum-subarray-removing-one-element/)
+* [graph connected components](https://leetcode.com/problems/number-of-islands/description/)
+* 一堆用户名,有一样的在后面加个数字以便区分。。。：[alice, alice, alice]->[alice, alice1, alice2]
+count = 1, 
+if str[i].equals(str[i+1]) append count, count++. 
+else count = 1.
+* 给一个list，对其中一样的数字increment by 1，直到没有重复的数字为止。：[1,2,2,3,3]->[1,2,3,4,5]
+sort, if nums[i+1]<=nums[i], nums[i+1]=nums[i] + 1
+* 有很多火柴棍，每一次扔掉所有最小的棍子，然后剩余的棍子都减去扔掉的棍子，求直到没有棍子的时候 每次剩余棍子的数量
+sort, 从小到大，len依次减去相同数字的个数
+* 
