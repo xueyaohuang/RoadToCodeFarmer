@@ -11,6 +11,7 @@ class Solution {
         int[] temp = new int[len1 + len2 - 1];
         char[] ca1 = num1.toCharArray();
         char[] ca2 = num2.toCharArray();
+        // 重点在于这2个for loop
         for (int i = 0; i < len1; i++) {
             for (int j = 0; j < len2; j++) {
                 temp[i + j] += (ca1[i] - '0') * (ca2[j] - '0'); // be careful here, temp[i + j] += ...
