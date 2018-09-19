@@ -7,9 +7,9 @@
 
 4. [Akuna](https://akunacapital.com/job-details?jobid=1243545&gh_jid=1243545)  9.17自投
 
-5. [Amazon](https://www.amazonuniversity.jobs/dashboard) 找内推 Jiekai Wang，Pu Chen。 mima Y。。。。00
+5. [Amazon](https://www.amazonuniversity.jobs/dashboard) 内推 Jiekai Wang
 
-6. [google](https://careers.google.com/jobs#!t=jo&jid=/google/software-engineer-university-graduate-1600-amphitheatre-pkwy-mountain-view-ca-4204620153&) 找内推 https://www.linkedin.com/in/zhan-chen-02753a82/
+6. [google](https://careers.google.com/jobs#!t=jo&jid=/google/software-engineer-university-graduate-1600-amphitheatre-pkwy-mountain-view-ca-4204620153&) 内推 https://www.google.com/about/careers/applications/
 
 7. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer uchicago邮箱 mima：Y。。。  https://careers.bloomberg.com/account
 
