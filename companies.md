@@ -13,15 +13,22 @@
 
 7. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer uchicago邮箱 mima：Y。。。  https://careers.bloomberg.com/account
 
+8. [NetApp](https://career4.successfactors.com/portalcareer?_s.crb=5Rvw4%252bIGwuWBZDhMNA81p88MEm4%253d)  内推
+
+# 找内推，未搞定
+
 8. https://www.linkedin.com/in/jinzhangcmu/  paypal
 
 9. https://www.linkedin.com/in/jiawen-peng/ fortinet
 
+10. https://www.linkedin.com/in/yangtang-nu/  GrubHub
+
+11. [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.17 发邮件联系未回复
 
 
 
 # 待投
-1. [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.17 发邮件联系未回复
+
 
 
 
