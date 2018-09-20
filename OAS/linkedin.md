@@ -61,6 +61,31 @@ if str[i].equals(str[i+1]) append count, count++.
 else count = 1.
 * 给一个list，对其中一样的数字increment by 1，直到没有重复的数字为止。：[1,2,2,3,3]->[1,2,3,4,5]
 sort, if nums[i+1]<=nums[i], nums[i+1]=nums[i] + 1
+```
+HashMap<Integer, Integer> map = new HashMap<>();
+        HashSet<Integer> set = new HashSet<>();
+        int sum = 0;
+        for (int num : arr) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+            set.add(num);
+            sum += num;
+        }
+        int diff = 0;
+        for (int key : map.keySet()) {
+            int freq = map.get(key);
+            if (freq > 1) {
+                int y = key + 1;
+                for (int i = 0; i < freq - 1; i++) {
+                    while (set.contains(y)) {
+                        y++;
+                    }
+                    set.add(y);
+                    diff += y - key;
+                }
+            }
+        }
+        return sum + diff;
+```
 * 有很多火柴棍，每一次扔掉所有最小的棍子，然后剩余的棍子都减去扔掉的棍子，求直到没有棍子的时候 每次剩余棍子的数量
 sort, 从小到大，len依次减去相同数字的个数
 * 
