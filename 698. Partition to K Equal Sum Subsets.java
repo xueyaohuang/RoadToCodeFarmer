@@ -23,11 +23,13 @@ class Solution {
             if (!visited[i]) {
                 visited[i] = true;
                 sum += nums[i];
+                // 找好一个sum，继续找，直到找完k个
                 if (sum == target) {
                     if (partitionHelper(nums, 0, k - 1, target, visited, 0)) {
                         return true;
                     }
                 }
+                // sum < target还可以继续完成当前sum。若sum > target，就要返回上层recursion。
                 else if (sum < target) {
                     if (partitionHelper(nums, i + 1, k, target, visited, sum)) {
                         return true;
