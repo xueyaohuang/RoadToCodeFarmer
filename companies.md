@@ -25,6 +25,8 @@
 
 11. [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.17 发邮件联系未回复
 
+12. https://www.linkedin.com/in/yiming-zang-466421b0/ twitter
+
 
 
 # 待投
