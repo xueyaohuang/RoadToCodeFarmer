@@ -1,3 +1,4 @@
+// 这种尝试所有可能组合的题，基本上就是backtracking
 class Solution {
     public boolean canPartitionKSubsets(int[] nums, int k) {
         if (nums == null || k <= 0 || nums.length < k) {
@@ -32,6 +33,7 @@ class Solution {
                         return true;
                     }
                 }
+                // 返回上层recursion，把当前加入的num[i]去掉
                 visited[i] = false;
                 sum -= nums[i];
             }
