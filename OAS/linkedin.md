@@ -56,9 +56,26 @@ for (int i = 0; i < len; i++) {
 * [数组求最大和，最多允许跳过一个连续的元素，不能一次跳两个以上](https://www.geeksforgeeks.org/maximum-sum-subarray-removing-one-element/)
 * [graph connected components](https://leetcode.com/problems/number-of-islands/description/)
 * 一堆用户名,有一样的在后面加个数字以便区分。。。：[alice, alice, alice]->[alice, alice1, alice2]
-count = 1, 
-if str[i].equals(str[i+1]) append count, count++. 
-else count = 1.
+```
+    public static List<String> modifyNames(String[] names) {
+        if (names == null || names.length == 0) {
+            return new ArrayList<>();
+        }
+        List<String> res = new ArrayList<>();
+        Map<String, Integer> map = new HashMap<>();
+        for (String name : names) {
+            if (!map.containsKey(name)) {
+                res.add(name);
+            } else {
+                String surffix = String.valueOf(map.get(name));
+                res.add(name + surffix);
+            }
+            map.put(name, map.getOrDefault(name, 0) + 1);
+        }
+        return res;
+    }
+```
+
 * 给一个list，对其中一样的数字increment by 1，直到没有重复的数字为止。：[1,2,2,3,3]->[1,2,3,4,5]
 sort, if nums[i+1]<=nums[i], nums[i+1]=nums[i] + 1
 ```
