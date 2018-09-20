@@ -13,6 +13,8 @@
 
 7. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer uchicago邮箱 mima：Y。。。  https://careers.bloomberg.com/account
 
+8. https://www.linkedin.com/in/jinzhangcmu/  paypal
+
 
 
 
