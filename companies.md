@@ -15,6 +15,15 @@
 
 8. [NetApp](https://career4.successfactors.com/portalcareer?_s.crb=5Rvw4%252bIGwuWBZDhMNA81p88MEm4%253d)  内推
 
+9. airbnb qbaobaobao内推（未回复），三番china组
+
+10. paloton
+
+11. classpass
+
+12. factset
+
+
 # 找内推，未搞定
 
 8. https://www.linkedin.com/in/jinzhangcmu/  paypal
