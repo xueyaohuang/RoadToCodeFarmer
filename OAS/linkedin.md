@@ -105,4 +105,5 @@ HashMap<Integer, Integer> map = new HashMap<>();
 ```
 * 有很多火柴棍，每一次扔掉所有最小的棍子，然后剩余的棍子都减去扔掉的棍子，求直到没有棍子的时候 每次剩余棍子的数量
 sort, 从小到大，len依次减去相同数字的个数
+https://www.hackerrank.com/contests/101feb14/challenges/cut-the-sticks/submissions/code/1310424704
 * 
