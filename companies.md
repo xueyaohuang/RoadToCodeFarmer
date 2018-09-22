@@ -7,17 +7,17 @@
 
 4. [Akuna](https://akunacapital.com/job-details?jobid=1243545&gh_jid=1243545)  9.17自投
 
-5. [Amazon](https://www.amazonuniversity.jobs/dashboard) 内推 Jiekai Wang
+5. [Amazon](https://www.amazonuniversity.jobs/dashboard) 内推 Jiekai Wang 9.19
 
-6. [google](https://careers.google.com/jobs#!t=jo&jid=/google/software-engineer-university-graduate-1600-amphitheatre-pkwy-mountain-view-ca-4204620153&) 内推 https://www.google.com/about/careers/applications/
+6. [google](https://careers.google.com/jobs#!t=jo&jid=/google/software-engineer-university-graduate-1600-amphitheatre-pkwy-mountain-view-ca-4204620153&) 内推 https://www.google.com/about/careers/applications/  9.19
 
-7. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer uchicago邮箱 mima：Y。。。  https://careers.bloomberg.com/account
+7. [Bloomberg](https://careers.bloomberg.com/job/detail/68821?el=Students+and+Recent+Graduates&lc=New+York&lc=San+Francisco) 2019 Software Engineer uchicago邮箱 mima：Y。。。  https://careers.bloomberg.com/account  9.19
 
-8. [NetApp](https://career4.successfactors.com/portalcareer?_s.crb=5Rvw4%252bIGwuWBZDhMNA81p88MEm4%253d)  内推
+8. [NetApp](https://career4.successfactors.com/portalcareer?_s.crb=5Rvw4%252bIGwuWBZDhMNA81p88MEm4%253d)  内推  9.20
 
-9. airbnb qbaobaobao内推（未回复），三番china组
+9. airbnb qbaobaobao内推（未回复），三番china组  9.20
 
-10. [grubhub](https://careers-grubhub.icims.com/jobs/5940/software-engineer-i/job?mode=submit_apply)  内推
+10. [grubhub](https://careers-grubhub.icims.com/jobs/5940/software-engineer-i/job?mode=submit_apply)  内推  9.20
 
 10. paloton
 
@@ -27,10 +27,12 @@
 
 13. [servicenow](https://app.jobvite.com/js/jobseeker/applications.html?1=1&#/details/plS4BlwI)  9.21内推
 
+14. [paypal](https://paypal.rolepoint.com/?shorturl=N6mSe&jobapp=ahBzfnJvbGVwb2ludC1wcm9kchsLEg5Kb2JBcHBsaWNhdGlvbhiAgNCztrzlCQw#job/ahBzfnJvbGVwb2ludC1wcm9kchALEgNKb2IYgIDQo-eq-QgM) https://wd1.myworkdaysite.com/en-US/recruiting/paypal/jobs/userHome 内推
+
 
 # 找内推，未搞定
 
-8. https://www.linkedin.com/in/jinzhangcmu/  paypal
+
 
 9. https://www.linkedin.com/in/jiawen-peng/ fortinet
 
