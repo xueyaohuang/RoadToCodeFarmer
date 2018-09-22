@@ -106,4 +106,19 @@ HashMap<Integer, Integer> map = new HashMap<>();
 * 有很多火柴棍，每一次扔掉所有最小的棍子，然后剩余的棍子都减去扔掉的棍子，求直到没有棍子的时候 每次剩余棍子的数量
 sort, 从小到大，len依次减去相同数字的个数
 https://www.hackerrank.com/contests/101feb14/challenges/cut-the-sticks/submissions/code/1310424704
-* 
+* zombies找相同, [lc friend cycle](https://leetcode.com/problems/friend-circles/description/)
+
+* 给一个String s， 找s的substring中，字典序最大的substring
+
+```
+public static String largestSubstring(String s) {
+    String ss = "";
+    for (int i = 0; i < s.length(); i++) {
+        String cur = s.substring(i);
+        if (cur.compareTo(ss) > 0) {
+            ss = cur;
+        }
+    }
+    return ss;
+}
+```
