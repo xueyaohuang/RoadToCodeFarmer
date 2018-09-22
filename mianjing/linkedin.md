@@ -76,39 +76,39 @@ for (int i = 0; i < len; i++) {
     }
 ```
 
-* 给一个list，对其中一样的数字increment by 1，直到没有重复的数字为止。：[1,2,2,3,3]->[1,2,3,4,5]
+* minimum unique array sum 给一个list，对其中一样的数字increment by 1，直到没有重复的数字为止。：[1,2,2,3,3]->[1,2,3,4,5]
 sort, if nums[i+1]<=nums[i], nums[i+1]=nums[i] + 1
 ```
-HashMap<Integer, Integer> map = new HashMap<>();
-        HashSet<Integer> set = new HashSet<>();
-        int sum = 0;
-        for (int num : arr) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-            set.add(num);
-            sum += num;
-        }
-        int diff = 0;
-        for (int key : map.keySet()) {
-            int freq = map.get(key);
-            if (freq > 1) {
-                int y = key + 1;
-                for (int i = 0; i < freq - 1; i++) {
-                    while (set.contains(y)) {
-                        y++;
-                    }
-                    set.add(y);
-                    diff += y - key;
+    HashMap<Integer, Integer> map = new HashMap<>();
+    HashSet<Integer> set = new HashSet<>();
+    int sum = 0;
+    for (int num : arr) {
+        map.put(num, map.getOrDefault(num, 0) + 1);
+        set.add(num);
+        sum += num;
+    }
+    int diff = 0;
+    for (int key : map.keySet()) {
+        int freq = map.get(key);
+        if (freq > 1) {
+            int y = key + 1;
+            for (int i = 0; i < freq - 1; i++) {
+                while (set.contains(y)) {
+                    y++;
                 }
+                set.add(y);
+                diff += y - key;
             }
         }
-        return sum + diff;
+    }
+    return sum + diff;
 ```
 * 有很多火柴棍，每一次扔掉所有最小的棍子，然后剩余的棍子都减去扔掉的棍子，求直到没有棍子的时候 每次剩余棍子的数量
 sort, 从小到大，len依次减去相同数字的个数
 https://www.hackerrank.com/contests/101feb14/challenges/cut-the-sticks/submissions/code/1310424704
 * zombies找相同, [lc friend cycle](https://leetcode.com/problems/friend-circles/description/)
 
-* 给一个String s， 找s的substring中，字典序最大的substring
+* last substring 给一个String s， 找s的substring中，字典序最大的substring
 
 ```
 public static String largestSubstring(String s) {
@@ -120,5 +120,93 @@ public static String largestSubstring(String s) {
         }
     }
     return ss;
+}
+```
+
+* 给定一个数组counts, 每个index代表一个ID，每个element代表ID所在的组的大小，组里只能有element这么多个ID，把element一样的ID归到一个或多个组里，按从小到大顺序输出所有组
+
+```
+import java.util.*;
+
+public class MyClass {
+    
+    public static List<List<Integer>> someSort(int[] count) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        List<List<Integer>> res = new ArrayList<>();
+        int len = count.length;
+        for (int i = 0; i < len; i++) {
+            if (!map.containsKey(count[i])) {
+                map.put(count[i], new ArrayList<Integer>());
+            }
+            map.get(count[i]).add(i);
+        }
+        
+        for (int i : map.keySet()) {
+            Iterator<Integer> iter = map.get(i).iterator();
+            int num = map.get(i).size();
+            int numLists = num / i;
+            for (int j = 0; j < numLists; j++) {
+                List<Integer> temp = new ArrayList<>();
+                for (int k = 0; k < i; k++) {
+                    temp.add(iter.next());
+                }
+                res.add(temp);
+            }
+        }
+        Collections.sort(res, (a, b) -> a.get(0) - b.get(0));
+        return res;
+    }
+    
+    public static void main(String args[]) {
+        int[] count = new int[]{3,3,3,3,3,1,3};
+        List<List<Integer>> res = someSort(count);
+
+        System.out.println(res);
+    }
+}
+```
+
+* 把数字按binary格式里的1的个数排序 [5, 16,11,6] => [16, 5, 6, 11]
+
+
+```
+import java.util.*;
+
+public class MyClass {
+    
+    public static List<Integer> someSort(int[] nums) {
+        List<Integer>[] bucket = new ArrayList[32];
+        List<Integer> res = new ArrayList<>();
+        
+        for (int i : nums) {
+            int numBits = countBits(i);
+            if (bucket[numBits] == null) {
+                bucket[numBits] = new ArrayList<>();
+            }
+            bucket[numBits].add(i);
+        }
+        for (List<Integer> list : bucket) {
+            if (list != null) {
+                res.addAll(list);
+            }
+        }
+        return res;
+    }
+    
+    private static int countBits(int n) {
+        int count = 0;
+        while (n != 0) {
+            n &= n - 1;
+            count++;
+        }
+        return count;
+    }
+    
+    public static void main(String args[]) {
+        int[] nums = new int[]{3, 5, 6, 1, 2, 4 };
+        List<Integer> res = someSort(nums);
+
+        System.out.println(res);
+    }
 }
 ```
