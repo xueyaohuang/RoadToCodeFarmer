@@ -1,9 +1,10 @@
 // DFS
+// 这就是topological sort，当完成对一个点的访问后，加入list中，dfs是逆序，所以要用stack。
 class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         List<Integer>[] adj = new ArrayList[numCourses];
         int[] visited = new int[numCourses];
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         for (int i = 0; i < numCourses; i++) {
             adj[i] = new ArrayList<Integer>();
         }
@@ -22,7 +23,7 @@ class Solution {
         }
         return res;
     }
-    private boolean hasCycle(List<Integer>[] adj, int i, int[] visited, Stack<Integer> stack) {
+    private boolean hasCycle(List<Integer>[] adj, int i, int[] visited, Deque<Integer> stack) {
         // visit[i] == 1 means is visiting
         if (visited[i] == 1) {
             return true;
@@ -44,6 +45,7 @@ class Solution {
 }
 
 // BFS
+// 这就是topological sort，当完成对一个点的访问后，加入list中，bfs是正序，所以直接加。
 class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         List<Integer>[] adj = new ArrayList[numCourses];
@@ -76,7 +78,7 @@ class Solution {
             }
         }
         if (canFinish == numCourses) {
-            int[] ans = new int[res.size()];
+            int[] ans = new int[numCourses];
             int i = 0;
             for (int num : res) {
                 ans[i++] = num;
