@@ -25,7 +25,7 @@
 
 12. factset
 
-13. [servicenow](https://app.jobvite.com/js/jobseeker/applications.html?1=1&#/details/plS4BlwI)
+13. [servicenow](https://app.jobvite.com/js/jobseeker/applications.html?1=1&#/details/plS4BlwI)  9.21内推
 
 
 # 找内推，未搞定
