@@ -27,9 +27,11 @@
 
 13. [servicenow](https://app.jobvite.com/js/jobseeker/applications.html?1=1&#/details/plS4BlwI)  9.21内推
 
-14. [paypal](https://paypal.rolepoint.com/?shorturl=N6mSe&jobapp=ahBzfnJvbGVwb2ludC1wcm9kchsLEg5Kb2JBcHBsaWNhdGlvbhiAgNCztrzlCQw#job/ahBzfnJvbGVwb2ludC1wcm9kchALEgNKb2IYgIDQo-eq-QgM) https://wd1.myworkdaysite.com/en-US/recruiting/paypal/jobs/userHome 内推
+14. [paypal](https://paypal.rolepoint.com/?shorturl=N6mSe&jobapp=ahBzfnJvbGVwb2ludC1wcm9kchsLEg5Kb2JBcHBsaWNhdGlvbhiAgNCztrzlCQw#job/ahBzfnJvbGVwb2ludC1wcm9kchALEgNKb2IYgIDQo-eq-QgM) https://wd1.myworkdaysite.com/en-US/recruiting/paypal/jobs/userHome 9.21  内推
 
-15. [facebook]()
+15. [facebook]()  9.21  内推
+
+
 # 找内推，未搞定
 
 
