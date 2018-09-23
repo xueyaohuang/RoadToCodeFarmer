@@ -38,7 +38,7 @@
 18. [TuSimple](https://boards.greenhouse.io/tusimple/jobs/4023145002)  自己投
 
 
-ibm，lyfy，woerma，ebay，twitter，visa
+ibm，lyfy，woerma，ebay，twitter，visa， argo ai
 
 
 # 找内推，未搞定
