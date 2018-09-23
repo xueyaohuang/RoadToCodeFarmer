@@ -106,6 +106,42 @@ sort, if nums[i+1]<=nums[i], nums[i+1]=nums[i] + 1
 * 有很多火柴棍，每一次扔掉所有最小的棍子，然后剩余的棍子都减去扔掉的棍子，求直到没有棍子的时候 每次剩余棍子的数量
 sort, 从小到大，len依次减去相同数字的个数
 https://www.hackerrank.com/contests/101feb14/challenges/cut-the-sticks/submissions/code/1310424704
+
+```
+    static int[] cutTheSticks(int[] arr) {
+        
+        if (arr == null || arr.length == 0) {
+            return new int[0];
+        }
+        
+        int len = arr.length;
+        int n = len;
+        Arrays.sort(arr);
+        List<Integer> res = new ArrayList<>();
+        res.add(len);
+        int i = 1;
+        int j = 0;
+        
+        while (i < len) {
+            while (i < len && arr[i] == arr[j]) {
+                i++;
+            }
+            n -= i - j;
+            if (n != 0) {
+                res.add(n);
+            }
+            j = i;
+            i++;
+        }
+        int[] ans = new int[res.size()];
+        for (int k = 0; k < ans.length; k++) {
+            ans[k] = res.get(k);
+        }
+        return ans;
+
+    }
+```
+
 * zombies找相同, [lc friend cycle](https://leetcode.com/problems/friend-circles/description/)
 
 * last substring 给一个String s， 找s的substring中，字典序最大的substring
