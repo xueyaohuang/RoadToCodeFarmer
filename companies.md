@@ -31,6 +31,12 @@
 
 15. [facebook]()  9.21  内推
 
+16. [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.22 自投
+
+17. [Nvidia](https://nvidia.wd5.myworkdayjobs.com/en-US/UniversityJobs/userHome?shared_id=ZjcwMTkyYWEtMzAyYy00OGVkLWIxOWMtN2NjMjU2NTU4ZmEz)  郭成内推
+
+18. [TuSimple](https://boards.greenhouse.io/tusimple/jobs/4023145002)  自己投
+
 
 # 找内推，未搞定
 
@@ -38,9 +44,6 @@
 
 9. https://www.linkedin.com/in/jiawen-peng/ fortinet
 
-10. https://www.linkedin.com/in/yangtang-nu/  GrubHub
-
-11. [Petuum](https://www.linkedin.com/jobs/search/?currentJobId=841872460&f_C=13197574&locationId=OTHERS.worldwide) Software Engineer - Back End 9.17 发邮件联系未回复
 
 12. https://www.linkedin.com/in/yiming-zang-466421b0/ twitter
 
