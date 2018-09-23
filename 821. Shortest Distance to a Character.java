@@ -1,3 +1,5 @@
+//First forward pass to find shortest distant to character on left.
+//Second backward pass to find shortest distant to character on right.
 class Solution {
     public int[] shortestToChar(String S, char C) {
 
