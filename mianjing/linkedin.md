@@ -34,7 +34,7 @@ class Solution {
 }
 ```
 
-* 给定一个string s, 两个integer L和R，先把s往左shift L次，再把s往右shift R次；举例说的话就是s = 'abcd', L = 1, R = 2, 输出结果就是'bcda' (wrong??)我用了做差后加上长度，取关于长度余数得到了左移步数，然后就是部分reverse再整体reverse
+* 给定一个string s, 两个integer L和R，先把s往左shift L次，再把s往右shift R次；举例说的话就是s = 'abcd', L = 1, R = 2, 输出结果就是'bcda' (wrong??)我用了做差后加上长度，取关于长度余数得到了左移步数，然后就是部分reverse再整体reverse   https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/189.%20Rotate%20Array.java
 
 * simple queries. 我是对2个数组排序，遍历第二个数组，two pointers
 
