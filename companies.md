@@ -15,11 +15,9 @@
 
 8. [NetApp](https://career4.successfactors.com/portalcareer?_s.crb=5Rvw4%252bIGwuWBZDhMNA81p88MEm4%253d)  内推  9.20
 
-9. airbnb qbaobaobao内推（未回复），三番china组  9.20
+9. airbnb qbaobaobao内推，三番china组  9.24
 
 10. [grubhub](https://careers-grubhub.icims.com/jobs/5940/software-engineer-i/job?mode=submit_apply)  内推  9.20
-
-10. paloton
 
 11. classpass
 
@@ -37,8 +35,17 @@
 
 18. [TuSimple](https://boards.greenhouse.io/tusimple/jobs/4023145002)  自己投
 
+19. [twitter](https://careers.twitter.com/en/work-for-twitter/201808/2019-university-application-full-time-internship.html) 自己投 9.24
 
-ibm，lyfy，woerma，ebay，twitter，visa， argo ai
+20. [mongoDB](https://www.mongodb.com/careers/jobs/1291056) 9.21
+
+21. ibm
+
+22. argo ai
+
+23 walmart labs 内推
+
+ibm，lyfy，ebay，visa， 
 
 
 # 找内推，未搞定
