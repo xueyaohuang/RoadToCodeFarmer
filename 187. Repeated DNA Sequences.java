@@ -20,6 +20,19 @@ class Solution {
 
 class Solution {
     public List<String> findRepeatedDnaSequences(String s) {
+        List<String> res = new ArrayList<>();
+        HashSet<String> set = new HashSet<String>();
+        for (int i = 0; i < s.length() - 9; i++) {
+            if (!set.add(s.substring(i, i + 10)) && ! res.contains(s.substring(i, i + 10))) {
+                res.add(s.substring(i, i + 10));
+            }
+        }
+        return res;            
+    }
+}
+
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
         List<String> res = new ArrayList<String>();
         if (s == null || s.length() < 10) {
             return res;
