@@ -2,10 +2,11 @@ public class Solution {
     // you need treat n as an unsigned value
     public int reverseBits(int n) {
         int res = 0;
+        // 注意不能写成 while (n != 0)，这样的话会在最前面补0
         for (int i = 0; i < 32; i++) {
             res <<= 1;
             res += n & 1;
-            n >>>= 1;         
+            n >>>= 1;
         }
         return res;
     }
@@ -27,6 +28,10 @@ public class Solution {
 int reverseBits(int n) {
   return Integer.reverse(n);
 }
+
+//How to optimize if this function is called multiple times? 
+//We can divide an int into 4 bytes, and reverse each byte then combine into an int. 
+//For each byte, we can use cache to improve performance.
 public class Solution {
     // you need treat n as an unsigned value
     HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
@@ -41,7 +46,6 @@ public class Solution {
             }
             n >>= 8;
         }
-        
         return res;
     }
     
