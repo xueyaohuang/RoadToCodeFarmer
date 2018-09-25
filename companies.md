@@ -43,9 +43,11 @@
 
 22. argo ai
 
-23 walmart labs 内推
+23 [walmart ecommerce](https://sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=25222&siteid=5022#Applications) 内推
 
-ibm，lyfy，ebay，visa， 
+24 Thumbtack 找内推
+
+lyfy，ebay，visa， 
 
 
 # 找内推，未搞定
@@ -66,7 +68,6 @@ ibm，lyfy，ebay，visa，
 
 3. [Alation](https://alation.com/careers/posting/?posting-id=fd8dae88-5abd-4740-99e9-4ab871aea60f)  Software Engineer
 
-4. [TuSimple](https://boards.greenhouse.io/tusimple/jobs/4023145002)  联系内推（https://www.linkedin.com/in/yi-luo-b15348b3/ )
 
 5. [pure storage](https://boards.greenhouse.io/purestorage/jobs/1284017)  联系内推(https://www.linkedin.com/in/sheng-xie-a706a0a4/)
 
