@@ -3,6 +3,7 @@ class NumArray {
     FenwickTree sums;
     int[] nums;
 
+    //init O(nlogn)
     public NumArray(int[] nums) {
         int len = nums.length;
         sums = new FenwickTree(len);
