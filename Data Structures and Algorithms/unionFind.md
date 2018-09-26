@@ -38,6 +38,12 @@ public class UF {
             p = parent[p];
         }
         return p;
+        
+//        recursive way        
+//        if (p != parent[p]) {
+//            parent[p] = find(parent[p]);
+//        }
+//        return parent[p];
     }
 
     /**
@@ -72,10 +78,10 @@ public class UF {
      * @throws IllegalArgumentException unless
      *         both {@code 0 <= p < n} and {@code 0 <= q < n}
      */
-    public void union(int p, int q) {
+    public boolean union(int p, int q) {  // return true if not connected， o/w false
         int rootP = find(p);
         int rootQ = find(q);
-        if (rootP == rootQ) return;
+        if (rootP == rootQ) false;
 
         // make root of smaller rank point to root of larger rank
         if (rank[rootP] < rank[rootQ]) {
@@ -87,6 +93,7 @@ public class UF {
             rank[rootP]++;
         }
         count--;
+        return true;
     }
 }
 ```
