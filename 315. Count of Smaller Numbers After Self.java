@@ -82,3 +82,60 @@ class Solution {
         return res;
     }
 }
+
+class Solution {
+    
+    class FenwichTree {
+        int[] sums;
+
+        public FenwichTree(int n) {
+            sums = new int[n + 1];
+        }
+
+        public void update(int i, int delta) {
+            while (i < sums.length) {
+                sums[i] += delta;
+                i += i & -i;
+            }
+        }
+
+        public int query(int i) {
+            int sumEndHere = 0;
+            while (i > 0) {
+                sumEndHere += sums[i];
+                i -= i & -i;
+            }
+            return sumEndHere;
+        }
+    }
+    
+    public List<Integer> countSmaller(int[] nums) {
+        
+        if (nums == null || nums.length == 0) {
+            return new ArrayList<>();
+        }
+        
+        int len = nums.length;
+        int[] copy = Arrays.copyOf(nums, nums.length);
+        Arrays.sort(copy);
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+        
+        
+        int rank = 0;
+        for (int i = 0; i < len; i++) {
+            if (i == 0 || copy[i] != copy[i - 1]) {
+                rank++;
+                map.put(copy[i], rank);
+            }
+        }
+        
+        FenwichTree ft = new FenwichTree(rank);
+        for (int i = len - 1; i >= 0; i--) {
+            res.add(ft.query(map.get(nums[i]) - 1));
+            ft.update(map.get(nums[i]), 1);
+        }
+        Collections.reverse(res);
+        return res;
+    }
+}
