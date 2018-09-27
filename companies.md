@@ -39,6 +39,10 @@
 
 20. [mongoDB](https://www.mongodb.com/careers/jobs/1291056) 9.21
 
+21. uber 内推 9.21
+
+22. [datadog](https://www.datadoghq.com/careers/detail/?gh_jid=503669)
+
 21. ibm
 
 22. argo ai
