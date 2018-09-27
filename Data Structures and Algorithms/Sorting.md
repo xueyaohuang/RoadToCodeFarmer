@@ -1,3 +1,5 @@
+[wiki summary](https://en.wikipedia.org/wiki/Sorting_algorithm)
+
 ## Bucket Sort
 桶排序和归并排序有那么点点类似，也使用了归并的思想。大致步骤如下：
 1. 设置一个定量的数组当作空桶。
