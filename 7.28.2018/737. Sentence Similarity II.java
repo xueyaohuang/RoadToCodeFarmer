@@ -38,36 +38,52 @@ class Solution {
     
     class UnionFind {
         
-        int[] childParent;
+        int[] parent;
+        int[] rank;
         
-        public UnionFind(int size) {
-            childParent = new int[size];
-            for (int i = 0; i < size; i++) {
-                childParent[i] = i;
+        public UnionFind(int n) {
+            parent = new int[n];
+            rank = new int[n];
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
             }
         }
         
-        public int findRoot(int child) {
-            while (child != childParent[child]) {
-                child = childParent[child];
+        public int find(int p) {
+            if (p != parent[p]) {
+                parent[p] = find(parent[p]);
             }
-            return child;
+            return parent[p];
         }
         
         public boolean isConnected(Integer a, Integer b) {
+            
             if (a == null || b == null) {
                 return false;
             }
-            int rootA = findRoot(a);
-            int rootB = findRoot(b);
+
+            int rootA = find(a);
+            int rootB = find(b);
             return rootA == rootB;
         }
         
-        public void connect(int a, int b) {
-            int rootA = findRoot(a);
-            int rootB = findRoot(b);
-            childParent[rootA] = rootB;
-        }      
+        public boolean union(int a, int b) {
+            int rootA = find(a);
+            int rootB = find(b);
+            if (rootA == rootB) {
+                return false;
+            }
+            if (rank[rootA] > rank[rootB]) {
+                parent[rootB] = rootA;
+            } else if (rank[rootA] < rank[rootB]) {
+                parent[rootA] = rootB;
+            } else {
+                parent[rootB] = rootA;
+                rank[rootA]++;
+            }
+            return true;
+        }
+        
     }
     
     public boolean areSentencesSimilarTwo(String[] words1, String[] words2, String[][] pairs) {
@@ -93,7 +109,7 @@ class Solution {
         UnionFind uf = new UnionFind(size);
         
         for (String[] pair : pairs) {
-            uf.connect(map.get(pair[0]), map.get(pair[1]));
+            uf.union(map.get(pair[0]), map.get(pair[1]));
         }
         
         for (int i = 0; i < words1.length; i++) {
