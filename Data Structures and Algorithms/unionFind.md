@@ -1,5 +1,11 @@
 unionfind 的构造函数，根据题目会有不同。
 LC 200, 547, 684
+
+Time complexity:
+union and find operation: O(log*n) amortized time.
+log*n is never larger than 5 in our universe! So union and find is amortized O(1).
+https://en.wikipedia.org/wiki/Proof_of_O(log*n)_time_complexity_of_union%E2%80%93find  
+https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
 ```
 public class UF {
 
@@ -7,14 +13,6 @@ public class UF {
     private byte[] rank;   // rank[i] = rank of subtree rooted at i (never more than 31)
     private int count;     // number of components
 
-    /**
-     * Initializes an empty union–find data structure with {@code n} sites
-     * {@code 0} through {@code n-1}. Each site is initially in its own 
-     * component.
-     *
-     * @param  n the number of sites
-     * @throws IllegalArgumentException if {@code n < 0}
-     */
     public UF(int n) {
         count = n;
         parent = new int[n];
@@ -25,13 +23,7 @@ public class UF {
         }
     }
 
-    /**
-     * Returns the component identifier for the component containing site {@code p}.
-     *
-     * @param  p the integer representing one site
-     * @return the component identifier for the component containing site {@code p}
-     * @throws IllegalArgumentException unless {@code 0 <= p < n}
-     */
+
     public int find(int p) {
         while (p != parent[p]) {
             parent[p] = parent[parent[p]];    // path compression by halving
@@ -46,38 +38,17 @@ public class UF {
 //        return parent[p];
     }
 
-    /**
-     * Returns the number of components.
-     *
-     * @return the number of components (between {@code 1} and {@code n})
-     */
+
     public int count() {
         return count;
     }
   
-    /**
-     * Returns true if the the two sites are in the same component.
-     *
-     * @param  p the integer representing one site
-     * @param  q the integer representing the other site
-     * @return {@code true} if the two sites {@code p} and {@code q} are in the same component;
-     *         {@code false} otherwise
-     * @throws IllegalArgumentException unless
-     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
-     */
+
     public boolean isConnected(int p, int q) {
         return find(p) == find(q);
     }
   
-    /**
-     * Merges the component containing site {@code p} with the 
-     * the component containing site {@code q}.
-     *
-     * @param  p the integer representing one site
-     * @param  q the integer representing the other site
-     * @throws IllegalArgumentException unless
-     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
-     */
+
     public boolean union(int p, int q) {  // return true if not connected， o/w false
         int rootP = find(p);
         int rootQ = find(q);
