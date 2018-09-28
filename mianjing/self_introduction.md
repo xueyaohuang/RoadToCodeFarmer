@@ -56,10 +56,22 @@ simplify this feature engineering process, use collaborative filtering, only nee
 e.g. rating, click history, buy history, try on history)
 
 数据处理：  
-1. user data logs store in hadoop file systems
-2. if i do off-line test, try different algorithms  
+1. user data logs store in hadoop file systems  
+2. build the data processing pipeline using pyspark sql, cache the data as spark dataframe  
+3. train the recommender model, als = ALS(rank=16, maxIter=5, seed=0,implicitPrefs=True)  
+4. get predict data and item， write recommended items to redis cluster  
+3. if i do off-line test, try different algorithms  
    use hive to get useful data, do some data processing using python scripts. and feed data into recommendation model
    off-line test: 1 month user data, predict the purchase behivour next day.
+
+circuit breaker and monitor:
+the recommender program is called by scheduler, just in case it's killed, we should give some default recommendations.  
+Collaborated with service performance team
+
+爬虫 crawler：
+user's reviews and comments on steam
+有能人改变了scrapy的队列调度（change the scrapy queue），将起始的网址从start_urls里分离出来，改为从redis读取，多个客户端可以同时读取同一个redis，从而实现了分布式的爬虫。就算在同一台电脑上，也可以多进程的运行爬虫，在大规模抓取的过程中非常有效。
+
 
 
 
@@ -113,6 +125,12 @@ through the design of Resistive Switching Random Access Memory.
   4. Promote team success and continually invent ways to improve team productivity.  
   5. Write user-level document and code review peers' deliverables.  
   6. Perform unit and end-to-end regression testing of the deliverables.
+  
+* 为啥选我们公司
+  1. impressive product/solution. real-time graph analytics platform used in fraud detection, supply-chain integliance and many other fields. 
+  2. I believe tiger graph has a promising future
+  3. my interest perfectly matches the job and technology stack. I like data analytics and building software infrastructures.
+  wil not fight with product manager.
   
 * 问公司问题
   1. Sure, as you know, Tigrt Graph has started its busienss a few years ago,
