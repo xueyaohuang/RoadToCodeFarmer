@@ -2,12 +2,11 @@
 
 I'm currently a graduate cadidate at master program in computer science at UChicago. As you can see on my resume, 
 I have a Electrical Engineering background in both undergraduate and graduate school. But I changed my career to computer
-science because I have a huge interest in software engineering and in data analytics. So, over the past year at the UChicago,
+science because I have a huge interest in software engineering. So, over the past year at the UChicago,
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know Tiger Graph through its website, and I get very interested in the company's business of building
-a real-time graph analytics platform. I'm hoping to join the team and get to know more about the engineering practice.  
+And I had a chance to get to know Tiger Graph through its website, and I get very interested in the company's business of building a real-time graph analytics platform. I'm hoping to join the team and get to know more about the engineering practice.  
 
 ==============================================================================================================================  
 I am currently doing my Master's degree in computer science at University of Chicago. And I will graduate this December.  
@@ -33,6 +32,15 @@ one conference papaer: international memory worshop
 
 * 最有挑战的项目
 
+During my internship, I tried different models for the game store recommender system.  
+The training data set i used is very large, and the models has tons of parameters, so i often encounter out of memory problems
+I did some research on memory management and tried many approaches to solve this  
+1. reduce intermediate variable during data processing, this imporoves a little.
+2. python garbage collection, delete some already used variable manully, and call the garbage collection function. This does not work well.  
+3. Then I traced the memory usage and found that during the model prediction stage, the memory increased rapidlly. I need to reduce the testing data in one batch.
+   So I set the training and prediction apart. I first train the model and save the it. Then I split the testing data into multiple chunks and predict one by one. It solved the out of memory problem.
+   
+why not spark, b/c spark doesn't has that built-in algorithm (xgboost)
 
 
 * 网易实习项目
@@ -68,6 +76,14 @@ use ALS to get the user/item factor matrix, and predict the blank value.
 sort the unrated item of a user, output top 5, that's the recommendation.  
 
 * Gigadevice工作项目
+
+design Nand flash memory, test team will test lots of chips from the foundry.  
+test data are stored on hadoop, I use hive sql to retrieve test data  
+property: endurance, data retention, thredshold voltage, on state current and many others  
+Analyzed test data, the data distribution  
+to guide the chip design.
+
+crc: A CRC is an error-detecting code commonly used in digital networks and storage devices to detect accidental changes to raw data. The CRC Component provides 8-, 16- and 32-bit functions to drive data through the CRC hardware, which returns the remainder after dividing the input data stream by a pre-defined generator polynomial (defined by the standard). 
 
 
 * 硕士研究
@@ -110,9 +126,8 @@ through the design of Resistive Switching Random Access Memory.
      
    Actually I have two more questions that I wanted to ask
      
-  2. i know im not yet hired (LOL: very professional), but I want to ask you about TG's career
-  development for the software engineers. for example, are there any training sessions or workshops that incoming
-  software engineers can learn more about emerging technologies?
+  2. I want to ask you about TG's career development for the software engineers. for example, are there any
+  training sessions or workshops that incoming software engineers can learn more about emerging technologies?
   
   that's great
   
