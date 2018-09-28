@@ -144,8 +144,8 @@ https://www.hackerrank.com/contests/101feb14/challenges/cut-the-sticks/submissio
 
 * zombies找相同, [lc friend cycle](https://leetcode.com/problems/friend-circles/description/)
 
-* last substring 给一个String s， 找s的substring中，字典序最大的substring
-
+* last substring 给一个String s， 找s的substring中，字典序最大的substring  
+two pointer可以O(n)  
 ```
 public static String largestSubstring(String s) {
     String ss = "";
