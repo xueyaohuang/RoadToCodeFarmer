@@ -1,7 +1,7 @@
 class Trie {
     
     class TrieNode {
-        char c;
+        char c; // 这个题并不需要c
         boolean isLeaf;
         TrieNode[] children;
         public TrieNode(char ch) {
@@ -49,6 +49,62 @@ class Trie {
                 return false;
             }
             cur = cur.children[c - 'a'];
+        }
+        return true;
+    }
+}
+
+// 没有char c的版本
+class Trie {
+
+    class TrieNode {
+        TrieNode[] children;
+        boolean isLeaf;
+        public TrieNode() {
+            children = new TrieNode[26];
+            isLeaf = false;
+        }
+    }
+
+    private TrieNode root;
+    
+    /** Initialize your data structure here. */
+    public Trie() {
+        root  = new TrieNode();
+    }
+    
+    /** Inserts a word into the trie. */
+    public void insert(String word) {
+        TrieNode curr = root;
+        for (char c : word.toCharArray()) {
+            if (curr.children[c - 'a'] == null) {
+                curr.children[c - 'a'] = new TrieNode();
+            }
+            curr = curr.children[c - 'a'];
+        }
+        curr.isLeaf = true;
+    }
+    
+    /** Returns if the word is in the trie. */
+    public boolean search(String word) {
+        TrieNode curr = root;
+        for (char c : word.toCharArray()) {
+            if (curr.children[c - 'a'] == null) {
+                return false;
+            }
+            curr = curr.children[c - 'a'];
+        }
+        return curr.isLeaf;
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String prefix) {
+        TrieNode curr = root;
+        for (char c : prefix.toCharArray()) {
+            if (curr.children[c - 'a'] == null) {
+                return false;
+            }
+            curr = curr.children[c - 'a'];
         }
         return true;
     }
