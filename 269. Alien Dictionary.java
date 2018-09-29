@@ -1,49 +1,61 @@
 // BFS
-public String alienOrder(String[] words) {
-    Map<Character, Set<Character>> map=new HashMap<Character, Set<Character>>();
-    Map<Character, Integer> degree=new HashMap<Character, Integer>();
-    String result="";
-    if(words==null || words.length==0) return result;
-    for(String s: words){
-        for(char c: s.toCharArray()){
-            degree.put(c,0);
+class Solution {
+    public String alienOrder(String[] words) {
+        if (words == null || words.length == 0) {
+            return "";
         }
-    }
-    for(int i=0; i<words.length-1; i++){
-        String cur=words[i];
-        String next=words[i+1];
-        int length=Math.min(cur.length(), next.length());
-        for(int j=0; j<length; j++){
-            char c1=cur.charAt(j);
-            char c2=next.charAt(j);
-            if(c1!=c2){
-                Set<Character> set=new HashSet<Character>();
-                if(map.containsKey(c1)) set=map.get(c1);
-                if(!set.contains(c2)){
-                    set.add(c2);
-                    map.put(c1, set);
-                    degree.put(c2, degree.get(c2)+1);
+        Map<Character, Integer> inDegree = new HashMap<>();
+        Map<Character, Set<Character>> charAfter = new HashMap<>();
+        
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                inDegree.put(c, 0);
+            }
+        }
+        
+        for (int i = 0; i + 1 < words.length; i++) {
+            String word1 = words[i];
+            String word2 = words[i + 1];
+            int len = Math.min(word1.length(), word2.length());
+            for (int j = 0; j < len; j++) {
+                char c1 = word1.charAt(j);
+                char c2 = word2.charAt(j);
+                if (c1 != c2) {
+                    if (!charAfter.containsKey(c1)) {
+                        charAfter.put(c1, new HashSet<Character>());
+                    }
+                    if (!charAfter.get(c1).contains(c2)) {
+                        charAfter.get(c1).add(c2);
+                        inDegree.put(c2, inDegree.get(c2) + 1);
+                    }
+                    break;
+                }  
+            } 
+        }
+        
+        Queue<Character> queue = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
+        for (char c : inDegree.keySet()) {
+            if (inDegree.get(c) == 0) {
+                queue.offer(c);
+            }
+        }
+        
+        while (!queue.isEmpty()) {
+            char c = queue.poll();
+            sb.append(c);
+            if (charAfter.containsKey(c)) {
+                for (char chAfterC : charAfter.get(c)) {
+                    inDegree.put(chAfterC, inDegree.get(chAfterC) - 1);
+                    if (inDegree.get(chAfterC) == 0) {
+                        queue.offer(chAfterC);
+                    }
                 }
-                break;
             }
         }
+        
+        return sb.length() == inDegree.size() ? sb.toString() : "";   
     }
-    Queue<Character> q=new LinkedList<Character>();
-    for(char c: degree.keySet()){
-        if(degree.get(c)==0) q.add(c);
-    }
-    while(!q.isEmpty()){
-        char c=q.remove();
-        result+=c;
-        if(map.containsKey(c)){
-            for(char c2: map.get(c)){
-                degree.put(c2,degree.get(c2)-1);
-                if(degree.get(c2)==0) q.add(c2);
-            }
-        }
-    }
-    if(result.length()!=degree.size()) return "";
-    return result;
 }
 
 // DFS
