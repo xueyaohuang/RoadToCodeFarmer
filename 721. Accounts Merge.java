@@ -1,70 +1,86 @@
 class Solution {
     
     class Account {
+        
         String name;
         List<String> emails;
-        Account parent;
         int rank;
+        Account parent;
+        
         public Account(String name) {
             this.name = name;
-            this.emails = new ArrayList<String>();
-            this.parent = this;
+            this.emails = new ArrayList<>();
             this.rank = 0;
+            this.parent = this;
         }
+        
     }
     
-    public Account findRoot(Account acc) {
-        if (acc.parent != acc) {
-            acc.parent = findRoot(acc.parent);
+    public Account find(Account p) {  // path compress, get a flat tree
+        if (p != p.parent) {
+            p.parent = find(p.parent);
         }
-        return acc.parent;
+        return p.parent;
     }
-    public void connect(Account a, Account b) {
-        Account rootA = findRoot(a);
-        Account rootB = findRoot(b);
-        if (rootA.rank > rootB.rank) {
-            rootB.parent = rootA;
-        } else if (rootA.rank < rootB.rank) {
-            rootA.parent = rootB;
+    
+    public void union(Account p, Account q) {  // use rank to accelerate
+        Account rootp = find(p);
+        Account rootq = find(q);
+        if (rootp == rootq) {
+            return;
+        }
+        if (rootp.rank > rootq.rank) {
+            rootq.parent = rootp;
+        } else if (rootp.rank < rootq.rank) {
+            rootp.parent = rootq;
         } else {
-            rootB.parent = rootA;
-            rootA.rank++;
-        }    
+            rootq.parent = rootp;
+            rootp.rank++;
+        }
     }
     
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
-        Map<String, Account> map = new HashMap<>();
-        List<Account> list = new ArrayList<>();
+        
+        // k: email, v: account
+        Map<String, Account> accountMap = new HashMap<>();
+        List<Account> accountList = new ArrayList<>();
         List<List<String>> res = new ArrayList<>();
-        for (List<String> acc : accounts) {
-            String name = acc.get(0);
-            Account newAcc = new Account(name);
-            for (int i = 1; i < acc.size(); i++) {
-                String email = acc.get(i);
-                if (map.containsKey(email)) {
-                    connect(newAcc, map.get(email));
+        
+        for (List<String> account : accounts) {
+            String name = account.get(0);
+            Account acc = new Account(name);
+            int size = account.size();
+            
+            for (int i = 1; i < size; i++) {
+                String email = account.get(i);
+                if (accountMap.containsKey(email)) {  // 必须检查
+                    union(acc, accountMap.get(email));
                 } else {
-                    newAcc.emails.add(email);
-                    map.put(email, newAcc);
+                    acc.emails.add(email);
+                    accountMap.put(email, acc);
                 }
             }
-            list.add(newAcc);
+            accountList.add(acc);
         }
-        for (Account acc : list) {
+        
+        for (Account acc : accountList) {
             if (acc.parent != acc) {
-                Account root = findRoot(acc);
-                root.emails.addAll(acc.emails);
+                Account accRoot = find(acc);
+                accRoot.emails.addAll(acc.emails);
             }
         }
-        for (Account acc : list) {
+        
+        for (Account acc : accountList) {
             if (acc.parent == acc) {
-                List<String> temp = new ArrayList<>();
-                temp.add(acc.name);
-                Collections.sort(acc.emails, (s1, s2) -> s1.compareTo(s2));
-                temp.addAll(acc.emails);
-                res.add(temp);
+                List<String> curAccount = new ArrayList<>();
+                curAccount.add(acc.name);
+                Collections.sort(acc.emails);
+//                 Collections.sort(acc.emails, (e1, e2) -> e1.compareTo(e2));
+                curAccount.addAll(acc.emails);
+                res.add(curAccount);
             }
         }
+        
         return res;
     }
 }
@@ -72,10 +88,12 @@ class Solution {
 
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
+        
         Map<String, String> emailUser = new HashMap<>(); // k: email, v: name
-        Map<String, Set<String>> emailGraph = new HashMap<>(); // k: email, v: emails of the same username. Build the email graph.
+        Map<String, Set<String>> emailGraph = new HashMap<>(); // k: email, v: emails of the same user. Build the email graph.
         Set<String> visited = new HashSet<>();
         List<List<String>> res = new ArrayList<>();
+        
         for (List<String> acc : accounts) {
             String name = acc.get(0);
             for (int i = 1; i < acc.size(); i++) {
