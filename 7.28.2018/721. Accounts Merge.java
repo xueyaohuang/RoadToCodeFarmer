@@ -1,25 +1,37 @@
 class Solution {
+    
     class Account {
         String name;
         List<String> emails;
         Account parent;
+        int rank;
         public Account(String name) {
             this.name = name;
             this.emails = new ArrayList<String>();
             this.parent = this;
+            this.rank = 0;
         }
     }
+    
     public Account findRoot(Account acc) {
-        while (acc.parent != acc) {
-            acc = acc.parent;
+        if (acc.parent != acc) {
+            acc.parent = findRoot(acc.parent);
         }
-        return acc;
+        return acc.parent;
     }
     public void connect(Account a, Account b) {
         Account rootA = findRoot(a);
         Account rootB = findRoot(b);
-        rootA.parent = rootB;
+        if (rootA.rank > rootB.rank) {
+            rootB.parent = rootA;
+        } else if (rootA.rank < rootB.rank) {
+            rootA.parent = rootB;
+        } else {
+            rootB.parent = rootA;
+            rootA.rank++;
+        }    
     }
+    
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         Map<String, Account> map = new HashMap<>();
         List<Account> list = new ArrayList<>();
@@ -48,7 +60,7 @@ class Solution {
             if (acc.parent == acc) {
                 List<String> temp = new ArrayList<>();
                 temp.add(acc.name);
-                Collections.sort(acc.emails);
+                Collections.sort(acc.emails, (s1, s2) -> s1.compareTo(s2));
                 temp.addAll(acc.emails);
                 res.add(temp);
             }
