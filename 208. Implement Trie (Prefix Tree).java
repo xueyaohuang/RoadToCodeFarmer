@@ -21,7 +21,7 @@ class Trie {
     public void insert(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            if (cur.children[c - 'a'] == null) {
+            if (cur.children[c - 'a'] == null) { // 注意要检查是否是null
                 cur.children[c - 'a'] = new TrieNode(c);
             }
             cur = cur.children[c - 'a'];
