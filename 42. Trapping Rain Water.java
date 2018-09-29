@@ -26,3 +26,27 @@ class Solution {
         return max;
     }
 }
+
+class Solution {
+    public int trap(int[] height) {
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+        int lowerHeight = 0;
+        int left = 0;
+        int right = height.length - 1;
+        int area = 0;
+        while (left < right) {
+            while (left < right && height[left] <= lowerHeight) {
+                area += lowerHeight - height[left];
+                left++;
+            }
+            while (left < right && height[right] <= lowerHeight) {
+                area += lowerHeight - height[right];
+                right--;
+            }
+            lowerHeight = Math.min(height[left], height[right]);
+        }
+        return area;
+    }
+}
