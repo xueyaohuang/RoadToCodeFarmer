@@ -50,7 +50,7 @@
 
 23 [walmart ecommerce](https://sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=25222&siteid=5022#Applications) 内推
 
-24 Thumbtack 找内推
+24 [Thumbtack](https://boards.greenhouse.io/thumbtack/jobs/38623) 自己投 9.30
 
 25 [tripadvsor](https://careers.tripadvisor.com/) 自己投 9.30
 
