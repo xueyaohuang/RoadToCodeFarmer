@@ -5,32 +5,42 @@ class Solution {
             return 0;
         }
         int len = s.length();
-        int num = 0;
         int res = 0;
+        int num = 0;
+        
+        // 最前面相当于有个加号
         char sign = '+';
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
+        
         for (int i = 0; i < len; i++) {
             char c = s.charAt(i);
+            
+            // 注意数字可能是多位
             if (Character.isDigit(c)) {
-                num = num * 10 + (c - '0');
+                num = num * 10 + c - '0';
             }
-            if(i == len - 1 || (c != ' ' && !Character.isDigit(c))) {
+            
+            // c是operator
+            // 注意检查i == len - 1，最后的时候也要清算
+            if (i == len - 1 || (c != ' ' && !Character.isDigit(c))) {
                 if (sign == '+') {
                     stack.push(num);
                 } else if (sign == '-') {
                     stack.push(-num);
-                } else if (sign == '*') {
+                } else if (sign == '*') {  // 当时*或者/的时候，需要与前面的数一起运算
                     stack.push(stack.pop() * num);
                 } else {
                     stack.push(stack.pop() / num);
                 }
-                num = 0;
                 sign = c;
-            } 
+                num = 0;
+            }
         }
+        
         for (int i : stack) {
             res += i;
         }
+        
         return res;
     }
 }
