@@ -1,3 +1,33 @@
+// 自己的方法
+class Solution {
+    public boolean findTarget(TreeNode root, int k) {
+        if (root == null) {
+            return false;
+        }
+        Set<Integer> set = new HashSet<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        set.add(root.val);
+        
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (set.contains(k - node.val) && k - node.val != node.val) {
+                return true;
+            }
+            if (node.left != null) {
+                queue.offer(node.left);
+                set.add(node.left.val);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+                set.add(node.right.val);
+            }
+        }
+        
+        return false;
+    }
+}
+
 // best 
 class Solution {
     private TreeNode root;
