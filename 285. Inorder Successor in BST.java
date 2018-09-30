@@ -44,6 +44,7 @@ class Solution {
     }     
 }
 
+// 二分，o(nlgn)
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if (root == null) {
