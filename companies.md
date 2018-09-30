@@ -37,11 +37,12 @@
 
 19. [twitter](https://careers.twitter.com/en/work-for-twitter/201808/2019-university-application-full-time-internship.html) 自己投 9.24
 
-20. [mongoDB](https://www.mongodb.com/careers/jobs/1291056) 9.21
+20. [mongoDB](https://www.mongodb.com/careers/jobs/1291056) 9.21 内推
 
 21. uber 内推 9.21
 
-22. [datadog](https://www.datadoghq.com/careers/detail/?gh_jid=503669)
+22. [datadog](https://www.datadoghq.com/careers/detail/?gh_jid=503669)  自己投  9.26
+[datagod new grad](https://www.datadoghq.com/careers/detail/?gh_jid=1256478)  自己投  9.30
 
 21. ibm
 
@@ -51,17 +52,13 @@
 
 24 Thumbtack 找内推
 
+25 [tripadvsor](https://careers.tripadvisor.com/) 自己投 9.30
+
 lyfy，ebay，visa， 
 
 
 # 找内推，未搞定
 
-
-
-9. https://www.linkedin.com/in/jiawen-peng/ fortinet
-
-
-12. https://www.linkedin.com/in/yiming-zang-466421b0/ twitter
 
 
 
@@ -72,8 +69,6 @@ lyfy，ebay，visa，
 
 3. [Alation](https://alation.com/careers/posting/?posting-id=fd8dae88-5abd-4740-99e9-4ab871aea60f)  Software Engineer
 
-
-5. [pure storage](https://boards.greenhouse.io/purestorage/jobs/1284017)  联系内推(https://www.linkedin.com/in/sheng-xie-a706a0a4/)
 
 
 Hi , I am Xueyao Huang from The University of Chicago, majoring in computer science. I am looking for software engineer full-time jobs. Could you please help to refer me for  at ? Thank you very much! I am looking forward to hearing from you.
