@@ -101,3 +101,54 @@ class Solution {
         return root;
     }
 }
+
+// 给定一个BST的preorder traverse array，返回这个BST的root。
+// 与上面类似
+// Time: O(N log N) for a balanced tree, O(N^2) for a skew tree
+
+public class Solution {
+    
+    public static TreeNode buildBST(int[] preorder) {
+        if (preorder == null || preorder.length == 0) {
+            return null;
+        }
+        return buildBSTHelper(preorder, 0, preorder.length - 1);
+    }
+    
+    private static TreeNode buildBSTHelper(int[] preorder, int rootIdx, int end) {
+        if (rootIdx >= preorder.length || rootIdx > end) {
+            return null;
+        }
+        
+        TreeNode root = new TreeNode(preorder[rootIdx]);
+        int rightRootidx = rootIdx + 1;
+        while (rightRootidx < preorder.length && preorder[rightRootidx] < preorder[rootIdx]) {
+            rightRootidx++;
+        }
+        
+        root.left = buildBSTHelper(preorder, rootIdx + 1, rightRootidx - 1);
+        root.right = buildBSTHelper(preorder, rightRootidx, end);
+        
+        return root;
+        
+    }
+    
+    private static void printTreeInorder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        printTreeInorder(root.left);
+        System.out.println(root.val);
+        printTreeInorder(root.right);
+    }
+    
+    public static void main(String args[]) {
+
+        int[] preorder = {5,3,1,4,9,6,11,10};
+        
+        TreeNode root = buildBST(preorder);
+        
+        printTreeInorder(root);
+
+    }
+}
