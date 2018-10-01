@@ -54,9 +54,11 @@
 
 25 [tripadvsor](https://careers.tripadvisor.com/) 自己投 9.30
 
-26[visa](https://my.smartrecruiters.com/public/4b0bd4bb-8e86-44ee-86ba-b9d66f6e7197?lang=en) 9.30
+26[visa](https://my.smartrecruiters.com/public/4b0bd4bb-8e86-44ee-86ba-b9d66f6e7197?lang=en) 自投 9.30
 
-lyfy，ebay，visa， 
+27 [twilio]()  内推 9.30
+
+lyfy，ebay 
 
 
 # 找内推，未搞定
