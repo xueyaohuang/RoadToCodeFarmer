@@ -135,11 +135,13 @@ through the design of Resistive Switching Random Access Memory.
   wil not fight with product manager.
   
 * 问公司问题
-  1. Sure, as you know, Tigrt Graph has started its busienss a few years ago,
+  1. 对小公司：Sure, as you know, Tigrt Graph has started its busienss a few years ago,
      so - i believe it has a lot of opportunities in the market place. But, i want
      to ask you what's the comapny's short term goal in its engineering practice
      for the next few years? For example can we provide service in self-driving? I believe 
      it's a huge market.
+     
+     Sure, as you know, there are some other companies which provide cloud computing services, such as amazon, microsoft, vmware, ect. i believe it has a lot of opportunities in the market place. But, i want to ask you what advantage do we have over the other companies? what's the comapny's short term goal for the next few years?
      
    oh, that's very good
    i like it
