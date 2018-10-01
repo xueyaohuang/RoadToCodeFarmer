@@ -157,13 +157,13 @@ billing functions.
      
    Actually I have two more questions that I wanted to ask
      
-  2. I want to ask you about TG's career development for the software engineers. for example, are there any
+  2. I want to ask you about service now's career development for the software engineers. for example, are there any
   training sessions or workshops that incoming software engineers can learn more about emerging technologies?
   
   that's great
   
-  3. lastly, I want to ask about your experience at TG. I'm sure you have a lot of experience 
-     in other companies as well. But, I wanna know what is the most exciting part in working at TG compared to
+  3. lastly, I want to ask about your experience at service now. I'm sure you have a lot of experience 
+     in other companies as well. But, I wanna know what is the most exciting part in working at service now compared to
      other companies.
      
 ==============================================================================================================================
