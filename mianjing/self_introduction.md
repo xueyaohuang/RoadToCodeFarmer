@@ -6,7 +6,9 @@ science because I have a huge interest in software engineering. So, over the pas
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know Tiger Graph through its website, and I get very interested in the company's business of building a real-time graph analytics platform. I'm hoping to join the team and get to know more about the engineering practice.  
+And I had a chance to get to know Tiger Graph through its website, and I get very interested in the company's business of building a real-time graph analytics platform. I'm hoping to join the team and get to know more about the engineering practice. 
+
+I have a solid foundation in algorithms, data structures and software development. During my master's degree, I have had many courses that will be helpful, such as Databases, Cloud Computing, Big Data and Advanced Data Analytics. I am familiar with big data development, application and demonstrated my skills in building data analytics platform during my internship.
 
 ==============================================================================================================================  
 I am currently doing my Master's degree in computer science at University of Chicago. And I will graduate this December.  
