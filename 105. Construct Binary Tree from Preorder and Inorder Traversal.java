@@ -152,3 +152,55 @@ public class Solution {
 
     }
 }
+
+// O(n) time, since rootIdx goes from 0 to preorder.length - 1
+public class Solution {
+    
+    int rootIdx = 0;
+    
+    public TreeNode buildBST(int[] preorder) {
+        if (preorder == null || preorder.length == 0) {
+            return null;
+        }
+        return buildBSTHelper(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+    
+    private TreeNode buildBSTHelper(int[] preorder, int min, int max) {
+        if (rootIdx >= preorder.length) {
+            return null;
+        }
+        if (preorder[rootIdx] <= min || preorder[rootIdx] >= max) {
+            return null;
+        }
+        
+        TreeNode root = new TreeNode(preorder[rootIdx]);
+        rootIdx++;
+        root.left = buildBSTHelper(preorder, min, root.val);
+        root.right = buildBSTHelper(preorder, root.val, max);
+        
+        return root;
+        
+    }
+    
+    private void printTreeInorder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        printTreeInorder(root.left);
+        System.out.println(root.val);
+        printTreeInorder(root.right);
+    }
+    
+    public static void main(String args[]) {
+        
+        Solution sol = new Solution();
+
+        int[] preorder = { 20, 10, 5, 1, 7, 15, 30, 25, 35, 32, 40 };
+        
+        TreeNode root = sol.buildBST(preorder);
+        
+        sol.printTreeInorder(root);
+
+    }
+}
+
