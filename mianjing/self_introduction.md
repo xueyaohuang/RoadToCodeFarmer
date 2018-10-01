@@ -6,7 +6,7 @@ science because I have a huge interest in software engineering. So, over the pas
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know Tiger Graph through its website, and I get very interested in the company's business of building a real-time graph analytics platform. I'm hoping to join the team and get to know more about the engineering practice. 
+And I had a chance to get to know Servicenow through its website, and I get very interested in the company's business of providing cloud services to enterprises. I'm hoping to join the team and get to know more about the engineering practice. 
 
 I have a solid foundation in algorithms, data structures and software development. During my master's degree, I have had many courses that will be helpful, such as Databases, Cloud Computing, Big Data and Advanced Data Analytics. I am familiar with big data development, application and demonstrated my skills in building data analytics platform during my internship.
 
@@ -115,7 +115,16 @@ u add different voltage on the memristor array, the conductance trainable.
 bridge the gap between access speed of main memory (10ns) and flash (100K ns), 
 through the design of Resistive Switching Random Access Memory.
 
+# 云计算项目
 
+Developed a fully functional software as a service. genomics annotation application on AWS with Gunicorn, Flask, SQLAlchemy
+and PostgreSQL.
+• Incorporated Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker to
+decouple back-end services.
+• Implemented fast searching for user jobs with DynamoDB, stored user files using S3.
+• Achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch.
+• Integrated external SaaS providers, like Globus Auth for user identification, Stripe for managing subscription and
+billing functions.
 
 
 # About the company
