@@ -117,14 +117,16 @@ through the design of Resistive Switching Random Access Memory.
 
 # 云计算项目
 
-Developed a fully functional software as a service. genomics annotation application on AWS with Gunicorn, Flask, SQLAlchemy
-and PostgreSQL.
-• Incorporated Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker to
-decouple back-end services.
-• Implemented fast searching for user jobs with DynamoDB, stored user files using S3.
-• Achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch.
-• Integrated external SaaS providers, like Globus Auth for user identification, Stripe for managing subscription and
-billing functions.
+Developed a software as a service on AWS. It's about genomics annotation application.  
+genomics annotator and web application.  
+users submit a genomics file on the web, genomics annotator will analysis the file and generate a result. Users can then download the result.  
+Integrated external SaaS providers, like Globus Auth for user identification, Stripe for managing subscription and
+billing functions.  
+
+Inorder to decouple back-end services, I use Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker.  
+The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances.    
+Implemented fast searching for user jobs with DynamoDB, stored user files using S3.
+
 
 
 # About the company
