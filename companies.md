@@ -60,6 +60,10 @@
 
 28[linkedin] 547内推 9.27
 
+29[factual](https://www.factual.com/company/careers/?gh_jid=276588) 10.2 自己投
+
+30 [DataMinr](https://boards.greenhouse.io/dataminr/jobs/1288907) 找内推
+
 lyfy，ebay 
 
 
