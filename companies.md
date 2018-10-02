@@ -58,6 +58,8 @@
 
 27 [twilio]()  内推 9.30
 
+28[linkedin] 547内推 9.27
+
 lyfy，ebay 
 
 
