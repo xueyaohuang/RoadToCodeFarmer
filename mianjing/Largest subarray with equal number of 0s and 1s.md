@@ -12,7 +12,7 @@ public class MyClass {
         int curSum = 0;
         int len = nums.length;
         int maxLen = 0;
-        map.put(-1, 0);
+        map.put(0, -1);
         for (int i = 0; i < len; i++) {
             curSum += nums[i] == 0 ? -1 : 1;
             if (map.containsKey(curSum)) {
@@ -52,7 +52,7 @@ public class MyClass {
         int curSum = 0;
         int len = nums.length;
         int maxLen = 0;
-        map.put(-1, 0);
+        map.put(0, -1);
         int j = 0;
         for (int i = 0; i < len; i++) {
             if (nums[i] != 0 && nums[i] != 1) {
