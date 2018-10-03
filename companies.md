@@ -70,7 +70,7 @@
 
 33 [dataminr](https://boards.greenhouse.io/dataminr/jobs/1288907)  10.3 zijitou
 
-34
+34 [twosigma](https://careers.twosigma.com/careers/Profile)  10.3  zijitou
 
 lyfy，ebay 
 
