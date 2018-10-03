@@ -64,6 +64,8 @@
 
 30 [DataMinr](https://boards.greenhouse.io/dataminr/jobs/1288907) 找内推
 
+31 [EA GAMES]() 卢汀内推
+
 lyfy，ebay 
 
 
