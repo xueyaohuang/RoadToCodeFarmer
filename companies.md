@@ -44,7 +44,7 @@
 22. [datadog](https://www.datadoghq.com/careers/detail/?gh_jid=503669)  自己投  9.26
 [datagod new grad](https://www.datadoghq.com/careers/detail/?gh_jid=1256478)  自己投  9.30
 
-21. ibm
+21. [ibm](https://krb-sjobs.brassring.com/TGnewUI/Search/home/HomeWithPreLoad?PageType=JobDetails&partnerid=26059&AL=1&siteid=5016&AReq=178418BR&codes=IBM_CareerWebSite#Applications) 10.3 zijitou
 
 22. argo ai
 
@@ -65,6 +65,12 @@
 30 [DataMinr](https://boards.greenhouse.io/dataminr/jobs/1288907) 找内推
 
 31 [EA GAMES]() 卢汀内推
+
+32 [databricks](https://databricks.com/company/careers?gh_jid=4023277002) 10.3 zijitou
+
+33 [dataminr](https://boards.greenhouse.io/dataminr/jobs/1288907)  10.3 zijitou
+
+34
 
 lyfy，ebay 
 
