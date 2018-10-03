@@ -1,3 +1,4 @@
+// 实际上就是0-1背包问题。前i个string可以看成前i个物品，背包重量被来时一维的，在这里变成2维的m，n。string总个数个数对应物品总价值。
 // Time Complexity: O(kl + kmn), where k is the length of input string array and l is the average length of a string within the array.
 // space complexity can be optimized.
 class Solution {
