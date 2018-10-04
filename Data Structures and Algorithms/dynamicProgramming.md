@@ -70,11 +70,27 @@ for (int i = 1; i <= n; i++) {
 ```
 关于的完全背包再说一点，基本的recurrence是:  
 ```
-dp[i][j] = max(dp[i - 1][j - k * weight[i]] +k * value[i]) // 0 <= k * weight[i] <= m
+for (int i = 1; i <= n; i++) {
+    for (int j = w[i]; j <= W; j++) {
+        dp[i][j] = max(dp[i - 1][j - k * weight[i]] +k * value[i]) // 0 <= k * weight[i] <= m
+    }
+}
 ```
 其实可以写成  
 ```
-dp[i][j] = max(dp[i][j - weight[i]] + value[i])
+for (int i = 1; i <= n; i++) {
+    for (int j = w[i]; j <= W; j++) {
+        dp[i][j] = max(dp[i][j], dp[i][j - weight[i]] + value[i])
+    }
+}
+```
+这样所有的更新都是依赖于第i轮，而不是第i-1轮，很自然地降维成下面的代码，注意内层的for loop顺序是从小到大。 
+```
+for (int i = 1; i <= n; i++) {
+    for (int j = w[i]; j <= W; j++) {
+        dp[j] = Math.max(dp[j], dp[j - w[i]] + v[i]);
+    }
+}
 ```
 注意，区别在于2点，意识没了k，而是第二种还是i的状态（dp[i][j - weight[i]]， 而不是dp[i - 1][j - weight[i]]）。
 
