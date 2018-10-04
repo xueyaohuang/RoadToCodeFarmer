@@ -6,7 +6,8 @@
   top down (with memoization)  recursion + memoization
   
 ## 分类
-1. 矩阵坐标型
+1. 矩阵坐标型   
+   unique path
 2. 序列型（单序列，双序列）
    如LIS, LCS
 3. knapsack变种。牢记0-1背包和非0-1背包。   
