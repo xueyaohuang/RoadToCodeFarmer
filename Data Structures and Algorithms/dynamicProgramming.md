@@ -19,6 +19,10 @@
    coin change I II
    * sunset sum
 4. 区间型，如矩阵乘法，戳气球
+
+## 优化空间复杂度
+
+很多问题都可以把空间复杂度降维，一般可以降维的原因都是最外面for loop on i，第i轮的更新只依赖于第i-1轮，不依赖于i-2和更前面的。比如lc518 Coin Change 2，按
  
 ## loop顺序问题，for loop逆序，每个元素用1次（0-1背包），正序每个元素用多次（完全背包）。  
 for loop, 有时候从小到大，有时候从大到小，原因只有1个。
@@ -57,13 +61,22 @@ for (int i = 1; i <= n; i++) {
 反之，完全背包的特点恰好是每种物品可选无限件，所以在考虑“加选一件第i种物品”这种策略时，却正需要一个可能已选入第i种物品的子结果f[i][j-w[i]],
 把0-1背包内层的for loop顺序就是完全背包。
 ```
-// 完全背包，这两个for loop可以换位置
+// 完全背包，这两个for loop可以换位置（因为是取最大值，不是数个数，数个数的话nested for loop不能随便换位置，详见下面的section）
 for (int i = 1; i <= n; i++) {
     for (int j = w[i]; j <= W; j++) {
         dp[j] = Math.max(dp[j], dp[j - w[i]] + v[i]);
     }
 }
 ```
+关于的完全背包再说一点，基本的recurrence是:  
+```
+dp[i][j] = max(dp[i - 1][j - k * weight[i]] +k * value[i]) // 0 <= k * weight[i] <= m
+```
+其实可以写成  
+```
+dp[i][j] = max(dp[i][j - weight[i]] + value[i])
+```
+注意，区别在于2点，意识没了k，而是第二种还是i的状态（dp[i][j - weight[i]]， 而不是dp[i - 1][j - weight[i]]）。
 
 比如474 Ones and Zeroes这个题，与0-1背包非常类似，只是重量维度由一维变成2维，所以在优化空间复杂度时，把第i个string这个维度取消掉，
 后面的m和n都要从大到小loop，这样才能保证用的是第i-1轮的数据更新。  
@@ -190,3 +203,26 @@ That would make only two combinations for amount 3:
 1 + 1 + 1 - taken as previous value of dp[3], calculated for coin value 1  
 1 + 2 - taken from dp[amount - 2]  
 Hopefully it shows why we don't have duplicates - all combinations are started with lowest coins, there is no way to have lowest coin at the end. You can think that you have all SORTED combinations.
+
+再比如lc 377 Combination Sum IV  
+这个题是要数重复的，比如(1, 1, 2)和(1, 2, 1)，(2, 1, 1)算是3个不同的，代码如下：  
+可以看到先loop i，里面loop nums，这样可以数出不同顺序的组合。  
+```
+class Solution {
+    public int combinationSum4(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int[] count = new int[target + 1];
+        count[0] = 1;
+        for (int i = 1; i <= target; i++) {
+            for (int num : nums) {
+                if (num <= i) {
+                    count[i] += count[i - num];
+                }
+            }
+        }
+        return count[target];
+    }
+}
+```
