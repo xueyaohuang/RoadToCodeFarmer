@@ -46,7 +46,7 @@
 
 21. [ibm](https://krb-sjobs.brassring.com/TGnewUI/Search/home/HomeWithPreLoad?PageType=JobDetails&partnerid=26059&AL=1&siteid=5016&AReq=178418BR&codes=IBM_CareerWebSite#Applications) 10.3 zijitou
 
-22. argo ai
+22. [argo ai]()   10.4 ZIJITOU
 
 23 [walmart ecommerce](https://sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=25222&siteid=5022#Applications) 内推
 
@@ -58,7 +58,7 @@
 
 27 [twilio]()  内推 9.30
 
-28[linkedin] 547内推 9.27
+28 [linkedin] 547内推 9.27
 
 29[factual](https://www.factual.com/company/careers/?gh_jid=276588) 10.2 自己投
 
@@ -71,8 +71,14 @@
 33 [dataminr](https://boards.greenhouse.io/dataminr/jobs/1288907)  10.3 zijitou
 
 34 [twosigma](https://careers.twosigma.com/careers/Profile)  10.3  zijitou
+ 
+35 [SAP](https://career5.successfactors.eu/portalcareer?_s.crb=CzzvIMxnTrMQQjj5kqCwHMdx3Uw%253d)  10.4 ZIJITOU
 
-lyfy，ebay 
+36 [Pinterest]() 10.4 ZIJITOU
+
+37 [lyfT]() 
+
+38 ebay 
 
 
 # 找内推，未搞定
