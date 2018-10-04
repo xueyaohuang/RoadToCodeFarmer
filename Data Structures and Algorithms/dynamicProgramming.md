@@ -142,3 +142,51 @@ public static int coinnonrep(int[] coins, int s) {
     return dp[s];                                                   
 } 
 ```
+
+## 两重 nested for loop，谁先谁后区别是数不数元素顺序不同的组合。
+
+518 Coin Change 2  
+
+```
+class Solution {
+    public int change(int amount, int[] coins) {
+        if (amount == 0) {
+            return 1;
+        }
+        if (coins == null || coins.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[amount + 1];
+        int len = coins.length;
+        dp[0] = 1;
+        
+        for (int coin : coins) {
+            for (int i = 1; i <= amount; i++) {
+                if (i >= coin) {
+                    dp[i] += dp[i - coin];
+                }
+            }
+        }
+        return dp[amount];
+    }
+}
+```
+注意上面两个for loop，先loop的coin，里面loop amount，这样是没有重复的，比如 3=1+2和3=2+1 只count 1，不算重复的组合，也就是说元素的顺序不重要。
+如果先loop amount，再loop coin，那么结果3=1+2和3=2+1 会count 2.
+
+1. If outer loop is amount, you are considering every coin at every stage.  
+Let's start with amount 2: it can be made from 2 and 1 + 1, so 2 combinations.   
+For amount 3 you would consider every coin again, which would mean that you're trying dp[amount - 1] and dp[amount - 2], which is: 2 (as there are 2 combinations for amount 2) and 1 (1 combination for amount 1).  
+So in this case you have 3 combinations for amount 3:  
+1 + 2 - taken from dp[amount - 2]  
+2 + 1, 1 + 1 + 1 - taken from dp[amount - 1]  
+You can see is one duplicate: 1 + 2 and 2 + 1  
+
+2. If outer loop is coins, you are NOT considering every coing at every stage  
+Let's assume you've already calculated all dps for coin with value 1. So for every amount there is just one combination, dp array looks like that: [1, 1, 1, 1, 1...]  
+Now we are doing all calculations with value 2. We are at amount 2, so again, amount 2 has 2 combinations: 1 + 1 and 2. Makes sense, no duplicates.  
+For amount 3 you are NOT considering every coin again - you are just considering ending every combination with 2, so ONLY dp[amount - 2].  
+That would make only two combinations for amount 3:  
+1 + 1 + 1 - taken as previous value of dp[3], calculated for coin value 1  
+1 + 2 - taken from dp[amount - 2]  
+Hopefully it shows why we don't have duplicates - all combinations are started with lowest coins, there is no way to have lowest coin at the end. You can think that you have all SORTED combinations.
