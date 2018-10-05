@@ -7,7 +7,8 @@
   
 ## 分类
 1. 矩阵坐标型   
-   unique path
+   unique path  
+   seams in a grid  
 2. 序列型（单序列，双序列）  
    如LIS,  
    LCS,[又分substring和subsequence的区别](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/718.%20Maximum%20Length%20of%20Repeated%20Subarray.java)
@@ -21,7 +22,9 @@
    coin change I II
    * subset sum
    * rod cutting
-4. 区间型，如矩阵乘法，戳气球
+4. 区间型，如矩阵乘法，戳气球  
+   一个特点是这一串东西一通操作后，最后得到一个结果
+   dp数组通常是2维，但是三个for loop，dp[i][j]是这个序列某两个点之间的最优值，但是还要扫一遍这个区间内的split点。
 
 ## 优化空间复杂度
 
