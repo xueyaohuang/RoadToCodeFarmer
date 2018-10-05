@@ -23,6 +23,8 @@ class Solution {
 }
 
 // 如果是subsequence，那么就是
+// print out the LCS, 一般都是用while loop从后往前打印
+// https://www.geeksforgeeks.org/printing-longest-common-subsequence/
 
 class Solution {
     public int findLength(int[] A, int[] B) {
