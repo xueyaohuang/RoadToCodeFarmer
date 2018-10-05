@@ -9,7 +9,8 @@
 1. 矩阵坐标型   
    unique path
 2. 序列型（单序列，双序列）
-   如LIS, LCS
+   如LIS, 
+   LCS,[又分substring和subsequence的区别](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/718.%20Maximum%20Length%20of%20Repeated%20Subarray.java)
 3. knapsack变种。牢记0-1背包和非0-1背包。   
    * 0-1背包问题本质：给一堆东西，从中选出若干组合在一起，达到某各指标最大化，同时满足一定的限定条件。  
    问题大小的维度：a.物品数，b.限制条件大小。  
