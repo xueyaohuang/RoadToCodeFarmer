@@ -27,10 +27,8 @@ class Solution {
             return;
         }
         visited[i] = 1;
-        if (adjList[i] != null) {
-            for (int j : adjList[i]) {
-                dfs(j, adjList, visited);
-            }
+        for (int j : adjList[i]) {
+            dfs(j, adjList, visited);
         }
         visited[i] = 2;
     }
