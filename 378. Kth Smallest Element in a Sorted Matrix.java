@@ -1,3 +1,4 @@
+// O(nlg(max-min))
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
         
@@ -33,5 +34,73 @@ class Solution {
             }
         }        
         return res;
+    }
+}
+
+// O(mnlgk)
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k, Collections.reverseOrder());
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (pq.size() < k) {
+                    pq.offer(matrix[i][j]);
+                } else {
+                    if (matrix[i][j] < pq.peek()) {
+                        pq.poll();
+                        pq.offer(matrix[i][j]);
+                    }
+                }
+            }
+        }
+        return pq.peek();
+    }
+}
+
+// O(klgk)
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        
+        for (int j = 0; j < n; j++) {
+            pq.offer(new int[]{matrix[0][j], 0, j});
+        }
+        
+        for (int i = 0; i < k - 1; i++) {
+            int[] cur = pq.poll();
+            if (cur[1] != m - 1) {
+                pq.offer(new int[]{matrix[cur[1] + 1][cur[2]], cur[1] + 1, cur[2]});
+            }
+        }
+        return pq.peek()[0];
+    }
+}
+
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
+            public int compare(int[] a, int[] b) {
+                return a[0] - b[0];
+            }
+        });
+        
+        for (int j = 0; j < n; j++) {
+            pq.offer(new int[]{matrix[0][j], 0, j});
+        }
+        
+        for (int i = 0; i < k - 1; i++) {
+            int[] cur = pq.poll();
+            if (cur[1] != m - 1) {
+                pq.offer(new int[]{matrix[cur[1] + 1][cur[2]], cur[1] + 1, cur[2]});
+            }
+        }
+        return pq.peek()[0];
     }
 }
