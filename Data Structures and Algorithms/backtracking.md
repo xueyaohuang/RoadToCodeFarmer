@@ -5,3 +5,5 @@
 [46. Permutations.java](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/46.%20Permutations.java)  
 [47. Permutations II.java](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/47.%20Permutations%20II.java)  
 [131. Palindrome Partitioning.java](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/131.%20Palindrome%20Partitioning.java)  
+[93. Restore IP Addresses](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/93.%20Restore%20IP%20Addresses.java)
+[140. Word Break II](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/140.%20Word%20Break%20II.java)
