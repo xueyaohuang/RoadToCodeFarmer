@@ -50,6 +50,8 @@ class Solution {
     }
 }
 
+// binary search
+// 这种题，直接求不好求，但是可以知道结果的范围，然后在这个范围内用binary search，类似的还有下面这个题。
 class Solution {
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
@@ -86,6 +88,79 @@ class Solution {
             }
         }
         return start;
+    }
+}
+
+// Place k elements such that minimum distance is maximized
+// https://www.geeksforgeeks.org/place-k-elements-such-that-minimum-distance-is-maximized/
+import java.util.*;
+
+public class MyClass {
+    
+    public static int largestMinDist(int[] nums, int k) { 
+        // Sort the positions 
+        Arrays.sort(nums); 
+      
+        // Initialize result. 
+        int res = 0; 
+        int n = nums.length;
+        // Consider the maximum possible distance 
+        int start = 0;
+        int end = nums[n-1] - nums[0]; 
+      
+        // Do binary search for largest 
+        // minimum distance 
+        while (start < end) { 
+            int mid = (start + end) / 2; 
+      
+            // If it is possible to place k  
+            // elements with minimum distance mid,  
+            // search for higher distance. 
+            if (canPlace(mid, nums, n, k)) { 
+                // Change value of variable max to 
+                // mid if all elements can be 
+                // successfully placed 
+                res = Math.max(res, mid); 
+                start = mid + 1; 
+            } else {   // If not possible to place k elements,  search for lower distance 
+                end = mid;
+            }
+        } 
+        return res; 
+    } 
+    
+    public static boolean canPlace(int mid, int[] nums, int n, int k) { 
+        // Place first element at arr[0] position 
+        int cur = nums[0]; 
+      
+        // Initialize count of elements placed. 
+        int count = 1; 
+      
+        // Try placing k elements with minimum 
+        // distance mid. 
+        for (int i = 1; i < n; i++) { 
+            if (nums[i] - cur >= mid) { 
+                // Place next element if its 
+                // distance from the previously 
+                // placed element is greater 
+                // than current mid 
+                cur = nums[i]; 
+                count++; 
+      
+                // Return if all elements are  
+                // placed successfully 
+                if (count == k) {
+                    return true; 
+                }
+            } 
+        } 
+        return false; 
+    } 
+    
+    public static void main(String args[]) {
+        int nums[] = {1, 2, 7, 5, 11, 12}; 
+        int k = 3; 
+        System.out.print(largestMinDist(nums, k)); 
     }
 }
 
