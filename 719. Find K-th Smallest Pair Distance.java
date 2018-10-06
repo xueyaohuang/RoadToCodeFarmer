@@ -72,8 +72,9 @@ class Solution {
             // }
             int j = 0;
             int count = 0;
+            // 求出距离小于等于mid的pair的个数
             for (int i = 0; i < len; i++) {
-                while (j < len && nums[j] - nums[i] <= mid) {
+                while (j < len && nums[j] - nums[i] <= mid) { // 注意这里必须有等号，否则有可能等于mid的距离有很多但是只数了一个
                     j++;
                 }
                 count += j - 1 - i;
@@ -87,3 +88,4 @@ class Solution {
         return start;
     }
 }
+
