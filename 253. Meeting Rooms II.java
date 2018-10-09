@@ -7,6 +7,37 @@
  *     Interval(int s, int e) { start = s; end = e; }
  * }
  */
+
+// 最差O(n^2)
+class Solution {
+    public int minMeetingRooms(Interval[] intervals) {
+        if (intervals == null || intervals.length == 0) {
+            return 0;
+        }
+        Arrays.sort(intervals, (a, b) -> a.start - b.start);
+        // list的size代表需要room个数，list的元素是这个room的结束时间。
+        List<Integer> list = new ArrayList<>();
+        int rooms = 1;
+        list.add(intervals[0].end);
+        for (int i = 1; i < intervals.length; i++) {
+            int j = 0;
+            for (; j < list.size(); j++) {
+                // 找到一个可以继续开会的房间就break，或者遍历完list都没找到也break
+                if (list.get(j) <= intervals[i].start) {
+                    break;
+                }
+            }
+            if (j < list.size()) {  // go to jth meeting room
+                list.set(j, intervals[i].end);
+            } else {
+                list.add(intervals[i].end);
+                rooms++;
+            }  
+        }
+        return list.size(); // return room;
+    }
+}
+
 class Solution {
     public int minMeetingRooms(Interval[] intervals) {
         if (intervals == null || intervals.length == 0) {
