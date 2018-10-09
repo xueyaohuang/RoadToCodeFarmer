@@ -164,6 +164,9 @@ Implemented fast searching for user jobs with DynamoDB, stored user files using 
   
   that's great
   
+  many other competiors google, linkedin has graph database, could you introduce tigrtgraphs advantages and disadvantages over 
+  the other companies?
+  
   3. lastly, I want to ask about your experience at service now. I'm sure you have a lot of experience 
      in other companies as well. But, I wanna know what is the most exciting part in working at service now compared to
      other companies.
