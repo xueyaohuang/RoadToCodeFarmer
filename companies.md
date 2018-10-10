@@ -82,6 +82,8 @@
 
 39 [blackrock](https://careers.blackrock.com/applythankyou?jobSeqNo=BLACUS4128&status=thankyou&jobTitle=Java%20Software%20Engineer%20(NOSQL%20/J2EE%20/%20Spring%20/%20JavaScript%20/HTML)&jobId=R181944)  10.6  zijitou
 
+40 vmware 10.10 zijitou
+
 
 # 找内推，未搞定
 
