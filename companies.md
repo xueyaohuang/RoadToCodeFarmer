@@ -84,6 +84,8 @@
 
 40 vmware 10.10 zijitou
 
+41 alation 10.10 zijitou
+
 
 # 找内推，未搞定
 
