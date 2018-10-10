@@ -190,3 +190,142 @@ class Solution {
 
 ```
 5. __BST__ 使用中序遍历可得到有序数组，这是二叉查找树的又一个重要特征。
+BST的search，insert，delete。
+```
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    public TreeNode(int val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class BinarySearchTree {
+    
+    TreeNode root; 
+  
+    public BinarySearchTree() {  
+        root = null;  
+    }
+    
+    // A utility function to search a given key in BST 
+    public TreeNode search(TreeNode root, int key) { 
+        // Base Cases: root is null or key is present at root 
+        if (root == null || root.val == key) {
+            return root;
+        }
+            
+        // val is greater than root's key 
+        if (root.val > key) {
+            return search(root.left, key); 
+        }
+        // val is less than root's key 
+        return search(root.right, key); 
+    }
+    
+    public void insert(int key) { 
+       this.root = insertIntoBST(root, key); 
+    } 
+      
+    /* A recursive function to insert a new key in BST */
+    private TreeNode insertIntoBST(TreeNode root, int val) {
+        if (root == null) {
+            return new TreeNode(val);
+        }
+        if (root.val < val) {
+            root.right = insertIntoBST(root.right, val);
+        }
+        if (root.val > val) {
+            root.left = insertIntoBST(root.left, val);
+        }
+        return root;
+    }
+    
+    public void deleteKey(int key) { 
+        this.root = deleteFromBST(root, key); 
+    }
+    
+    // 1. root 没有子节点，或者只有一个子节点
+    // 2. root有 有两个子节点
+    private TreeNode deleteFromBST(TreeNode root, int key) {
+        if (root == null) {
+            return root;
+        }
+        if (root.val == key) {
+            // 1. root 没有子节点，或者只有一个子节点
+            if (root.left == null || root.right == null) {
+                return root.left == null ? root.right : root.left;
+            } else { // 2. root有 有两个子节点
+                // Get the inorder successor (smallest in the right subtree) 
+                root.val = minRootValue(root.right);
+                // Delete the inorder successor
+                root.right = deleteFromBST(root.right, root.val);
+            }
+        } else if (root.val < key) {
+            root.right = deleteFromBST(root.right, key);
+        } else {
+            root.left = deleteFromBST(root.left, key);
+        }
+        return root;
+    }
+    
+    private int minRootValue(TreeNode root) {
+        TreeNode node = root;
+        while (node != null && node.left != null) {
+            node = node.left;
+        }
+        return node.val;
+    }
+    
+    public static void printTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        printTree(root.left);
+        System.out.println(root.val);
+        printTree(root.right);
+    }
+    
+    public static void main(String[] args) {
+        
+        BinarySearchTree tree = new BinarySearchTree(); 
+  
+        /* Let us create following BST 
+              50 
+           /     \ 
+          30      70 
+         /  \    /  \ 
+        20   40  60   80 */
+        
+        tree.insert(50); 
+        tree.insert(30); 
+        tree.insert(20); 
+        tree.insert(40); 
+        tree.insert(70); 
+        tree.insert(60); 
+        tree.insert(80); 
+  
+        System.out.println("Inorder traversal of the given tree"); 
+        printTree(tree.root);
+  
+        System.out.println("\nDelete 20"); 
+        tree.deleteKey(20); 
+        System.out.println("Inorder traversal of the modified tree"); 
+        printTree(tree.root);
+  
+        System.out.println("\nDelete 30"); 
+        tree.deleteKey(30); 
+        System.out.println("Inorder traversal of the modified tree"); 
+        printTree(tree.root);
+  
+        System.out.println("\nDelete 50"); 
+        tree.deleteKey(50); 
+        System.out.println("Inorder traversal of the modified tree"); 
+        printTree(tree.root);
+    }
+}
+
+```
