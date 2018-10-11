@@ -7,6 +7,33 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+// level order travsal，返回res最后一行的第一个数
+class Solution {
+    public int findBottomLeftValue(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> temp = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                temp.add(node.val);
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            res.add(temp);
+        }
+        return res.get(res.size() - 1).get(0);
+    }
+}
+
+// 优化空间复杂度，先得到最大深度，level order时，到了最后一层，把第一个val返回
 class Solution {
     public int findBottomLeftValue(TreeNode root) {
         int depth = maxDepth(root);
