@@ -24,3 +24,23 @@ class Solution {
         return root.val;
     }
 }
+
+class Solution {
+    public int closestValue(TreeNode root, double target) {
+        int res = root.val;
+        TreeNode node = root;
+        while (node != null) {
+            if (Math.abs(node.val - target) < Math.abs(res - target)) {
+                res = node.val;
+            }
+            if (node.val == target) {
+                return node.val;
+            } else if (node.val < target) {
+                node = node.right;
+            } else {
+                node = node.left;
+            }
+        }
+        return res;
+    }
+}
