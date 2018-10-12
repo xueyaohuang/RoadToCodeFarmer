@@ -1,12 +1,16 @@
 # About myself
 
-I'm currently a graduate cadidate at master program in computer science at UChicago. As you can see on my resume, 
+I'm currently a student at master program in computer science at UChicago. As you can see on my resume, 
 I have a Electrical Engineering background in both undergraduate and graduate school. But I changed my career to computer
 science because I have a huge interest in software engineering. So, over the past year at the UChicago,
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know Servicenow through its website, and I get very interested in the company's business of providing cloud services to enterprises. I'm hoping to join the team and get to know more about the engineering practice. 
+And I had a chance to get to know Granular from my friend, and I get very interested in the company's business and mission: To make farming more efficient and profitable, while preserving and enhancing the value of farmland. I'm hoping to join the team and get to know more about the engineering practice. 
+
+of delegate duties to employees  
+track inventory  
+help farmers to predict revenue and yield. I'm hoping to join the team and get to know more about the engineering practice. 
 
 I have a solid foundation in algorithms, data structures and software development. During my master's degree, I have had many courses that will be helpful, such as Databases, Cloud Computing, Big Data and Advanced Data Analytics. I am familiar with big data development, application and demonstrated my skills in building data analytics platform during my internship.
 
@@ -116,36 +120,57 @@ bridge the gap between access speed of main memory (10ns) and flash (100K ns),
 through the design of Resistive Switching Random Access Memory.
 
 # 云计算项目
+talk about my Genomics Analysis Web Service proj, capstone proj of cloud computing course
+Developed a software as a service on amazon AWS. It's about genomics annotation application.  
+genomics annotation: a long sequence of gene(DNA) data, the application is used to annotate each segment of the gene(DNA) data. This piece of gene control the color of eye. 
 
-Developed a software as a service on AWS. It's about genomics annotation application.  
 genomics annotator and web application.  
-users submit a genomics file on the web, genomics annotator will analysis the file and generate a result. Users can then download the result.  
+
+genomics annotator: I just call the apis, and it will run annotation.  
+
+web application: users submit a genomics file on the web, genomics annotator will analysis the file and generate a result. Users can then download the result. 
 Integrated external SaaS providers, like Globus Auth for user identification, Stripe for managing subscription and
 billing functions.  
 
+This proj is developed using python and flask framework.
 Inorder to decouple back-end services, I use Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker.  
-The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances.    
-Implemented fast searching for user jobs with DynamoDB, stored user files using S3.
+The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances on AWS.
+
+Implemented fast searching for user jobs with DynamoDB, stored user files using S3. If the annotation result is not downloaded for a long time, it will be archieved on aws glacier. When the user wants to download the result, we can take it back to s3 bucket.
 
 
 
 # About the company
 
-* Responsibilities  
-  1. Design and implement domain-specific query language engine.  
-  2. Design and implement architectural innovations to support a cutting-edge, high-performance, highly-available database and analytics stack.  
-  3. Formulate and deliver tools that have high impact on the company's daily operation.  
-  4. Promote team success and continually invent ways to improve team productivity.  
-  5. Write user-level document and code review peers' deliverables.  
-  6. Perform unit and end-to-end regression testing of the deliverables.
+With Granular, farmers can craft crop and field plans  
+delegate duties to employees  
+track inventory  
+help farmers to predict revenue and yield   
+
+Granular—a farm software business under the agriculture division of DowDuPont—penned a deal with Planet. Planet is an aptly named company, with some 200 satellites around Earth, watching it and its goings-on all the time. As part of this multimillion-dollar, three-year gig announced Tuesday, Granular will get access to daily images of the globe, and some of Planet's six-year archive of snapshots. Granular can feed the pictures into its agricultural analytics tools, which can, in turn, relay wisdom to farmers.
   
-* 为啥选我们公司
-  1. impressive product/solution. real-time graph analytics platform used in fraud detection, supply-chain integliance and many other fields. 
-  2. I believe tiger graph has a promising future
+# 为啥选我们公司
+  1. "Well, one of the biggest reasons I am interested in Granular is because of Granular’s value and mission. I absolutely agree with Food and Farming are essential for our life for living. And I really like the idea of combination of technology and farming business.   
+ I believe that helping farmers and their business with a support of cutting-edge software development and data analytics technology can open up a new future of food industry and more predictable production of food products.  
+ And, as far as for me, I like software development as well as data analytics. So, it would be great feeling and also motivating for me - if I can be part of your team, helping farmers with software development.
+  
+  2. I believe granular has a promising future
   3. my interest perfectly matches the job and technology stack. I like data analytics and building software infrastructures.
   wil not fight with product manager.
   
-* 问公司问题
+# 问公司问题
+
+"can I ask the whole process of helping farmers? I mean what's the process of getting farming data and how Granular provide an information for farming business?"
+
+"well, i'm very interested in the farming business and its related technology. But is there any program or tranings before university hires can get - before dive into the work?"
+
+Planet.  
+Planet has around 200 satellites around Earth, watching it and its goings-on all the time.  
+Granular will get access to daily images of the globe, and some of Planet's six-year archive of snapshots. Granular can feed the pictures into its agricultural analytics tools, which can, in turn, relay wisdom to farmers.
+
+
+
+
   1. 对小公司：Sure, as you know, Tigrt Graph has started its busienss a few years ago,
      so - i believe it has a lot of opportunities in the market place. But, i want
      to ask you what's the comapny's short term goal in its engineering practice
