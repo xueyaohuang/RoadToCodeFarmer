@@ -90,6 +90,10 @@
 
 43 qualtrics 10.13 zijitou
 
+44 splunk 10.13 zijitou
+
+45 tableau 10.13 zijitou
+
 
 # 找内推，未搞定
 
