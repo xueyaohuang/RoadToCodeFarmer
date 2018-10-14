@@ -1,5 +1,5 @@
 unionfind 的构造函数，根据题目会有不同。
-LC 200, 547, 684
+LC 200, 547, 684, 305
 
 Time complexity:
 union and find operation: O(log*n) amortized time.
