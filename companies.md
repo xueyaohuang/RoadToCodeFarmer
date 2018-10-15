@@ -96,6 +96,8 @@
 
 46 lime 10.14 zijitou
 
+47 upgrade 10.14 zjijitou
+
 
 # 找内推，未搞定
 
