@@ -26,6 +26,7 @@ class Solution {
             hereExisted(board, word, row, col - 1, index + 1)) {
             return true;
         }
+        // 没有return true，表示这个char没有用，set visited[i][j] = false
         visited[row][col] = false;
         return false;
     }
