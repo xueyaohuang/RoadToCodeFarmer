@@ -69,34 +69,32 @@ public TreeNode buildTree(int[] preorder, int[] inorder) {
 
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-
         if (preorder == null || preorder.length == 0 || preorder.length != inorder.length) {
             return null;
         }
-        HashMap<Integer,Integer> map=new HashMap<>();
-        for(int i=0;i<inorder.length;i++)
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0;i < inorder.length; i++) {
             map.put(inorder[i], i);
-
-        TreeNode root=new TreeNode(preorder[0]);
-        TreeNode p=root;
-        Stack<TreeNode> tree=new Stack<>();
-        tree.push(p);
-
-        for(int i=1;i<preorder.length;i++){
-            int temp=map.get(preorder[i]);
-            TreeNode node=new TreeNode(preorder[i]);
-
-            if(temp<map.get(tree.peek().val)){
-                p.left=node;
-                p=p.left;
+        }
+        TreeNode root = new TreeNode(preorder[0]);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        TreeNode p = root;
+        // 按照preorder的顺序加进去，同时根据idx在inorder的位置，判断带加入node是当前node的左子树还是右子树
+        for (int i = 1; i < preorder.length; i++) {
+            int idx = map.get(preorder[i]);
+            TreeNode node = new TreeNode(preorder[i]);
+            if (idx < map.get(stack.peek().val)) {
+                p.left = node;
+                p = p.left;
+            } else {
+                while (!stack.isEmpty() && idx > map.get(stack.peek().val)) {
+                    p = stack.pop();
+                }
+                p.right = node;
+                p = p.right;
             }
-            else {
-                while(!tree.isEmpty()&&temp>map.get(tree.peek().val))
-                    p=tree.pop();
-                p.right=node;
-                p=p.right;
-            }
-            tree.push(node);
+            stack.push(node);
         }
         return root;
     }
