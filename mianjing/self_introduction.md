@@ -6,7 +6,9 @@ science because I have a huge interest in software engineering. So, over the pas
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know Granular from my friend, and I get very interested in the company's business and mission: To make farming more efficient and profitable, while preserving and enhancing the value of farmland. I'm hoping to join the team and get to know more about the engineering practice. 
+And I had a chance to get to know apfolio from my friend Nella, and I get very interested in the company's business and product, for PROPERTY MANAGEMENT, I'm hoping to join the team and get to know more about the engineering practice. 
+
+and mission: To make farming more efficient and profitable, while preserving and enhancing the value of farmland. I'm hoping to join the team and get to know more about the engineering practice. 
 
 of delegate duties to employees  
 track inventory  
