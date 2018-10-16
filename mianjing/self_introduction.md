@@ -204,11 +204,14 @@ Granular will get access to daily images of the globe, and some of Planet's six-
   
   1. could you plese introduce the engineering team. I noticed that there are many famous Scientists, professors in machine learning and AI research at petuum. But what about the software engineering team.
   
-  2. I want to ask about your experience at petuum. I'm sure you have a lot of experience 
+  
+  
+  
+  2. I want to ask about your experience at appfollio. I'm sure you have a lot of experience 
      in other companies as well. But, I wanna know what is the most exciting part in working at service now compared to
      other companies.
   
-  2. i have research a little bit about 
+  2. introduce the software engineering team, for example, what's the scale of the team, what technology stack u use, something like that.
 
   
   
