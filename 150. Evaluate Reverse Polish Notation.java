@@ -6,24 +6,31 @@ class Solution {
         if (tokens == null || tokens.length == 0) {
             return 0;
         }
-        Stack<Integer> stack = new Stack<>();
-        for (String str : tokens) {
-            if (str.equals("+")) {
-                stack.push(stack.pop() + stack.pop());
-            }
-            else if (str.equals("-")) {
-                stack.push(-stack.pop() + stack.pop());
-            }
-            else if (str.equals("*")) {
-                stack.push(stack.pop() * stack.pop());
-            }
-            else if (str.equals("/")) {
-                stack.push((int)(1.0 / stack.pop() * stack.pop()));
-            }
-            else {
-                stack.push(Integer.parseInt(str));
+        Deque<Integer> stack = new ArrayDeque<>();
+        
+        for (String s : tokens) {
+            if (s.equals("+")) {
+                int num1 = stack.pop();
+                int num2 = stack.pop();
+                stack.push(num1 + num2);
+            } else if (s.equals("-")) {
+                int num1 = stack.pop();
+                int num2 = stack.pop();
+                stack.push(num2 - num1);
+            } else if (s.equals("*")) {
+                int num1 = stack.pop();
+                int num2 = stack.pop();
+                stack.push(num1 * num2);
+            } else if (s.equals("/")) {
+                int num1 = stack.pop();
+                int num2 = stack.pop();
+                stack.push(num2 / num1);
+            } else {
+                int num = Integer.parseInt(s);
+                stack.push(num);
             }
         }
-        return stack.pop();
+        
+        return stack.peek();
     }
 }
