@@ -1,3 +1,6 @@
+
+// average: 有k种y，每种n/k个点, k*(n/k)lg(n/k)=nlg(n/k)
+// worst case: 一种k，n个点，sort需要很长时间，nlgn
 class Solution {
     public boolean isReflected(int[][] points) {
         Map<Integer, Set<Integer>> map = new HashMap<>();
