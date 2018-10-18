@@ -6,7 +6,7 @@ science because I have a huge interest in software engineering. So, over the pas
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know apfolio from my friend Nella, and I get very interested in the company's business and product, for PROPERTY MANAGEMENT, I'm hoping to join the team and get to know more about the engineering practice. 
+And I had a chance to get to know thumbtack from its website, and I get very interested in the company's business and product, to help people find local professionals for alomost anything, I'm hoping to join the team and get to know more about the engineering practice. 
 
 and mission: To make farming more efficient and profitable, while preserving and enhancing the value of farmland. I'm hoping to join the team and get to know more about the engineering practice. 
 
@@ -209,11 +209,14 @@ Granular will get access to daily images of the globe, and some of Planet's six-
   
   
   
-  2. I want to ask about your experience at appfollio. I'm sure you have a lot of experience 
+  2. I want to ask about your experience at thumbtack. I'm sure you have a lot of experience 
      in other companies as well. But, I wanna know what is the most exciting part in working at service now compared to
      other companies.
   
   2. introduce the software engineering team, for example, what's the scale of the team, what technology stack u use, something like that.
+  
+  I want to ask you about thumbtack's career development for the software engineers. for example, are there any
+  training sessions or workshops that incoming software engineers can learn more about emerging technologies?
 
   
   
