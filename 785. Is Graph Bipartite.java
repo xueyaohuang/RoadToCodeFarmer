@@ -30,3 +30,43 @@ class Solution {
         return false;
     }
 }
+
+class Solution {
+    public boolean isBipartite(int[][] graph) {
+        if (graph == null) {
+            return false;
+        }
+        int n = graph.length;
+        int[] color = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (color[i] == 0) {
+                if (hasOddCycle(graph, i, color)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    // color:   0: not visited
+    //          1: 
+    //         -1: 
+    private boolean hasOddCycle(int[][] graph, int i, int[] color) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(i);
+        color[i] = 1;
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
+            int curColor = color[cur];
+            for (int adj : graph[cur]) {
+                if (color[adj] == curColor) {
+                    return true;
+                }
+                if (color[adj] == 0) {
+                    queue.offer(adj);
+                    color[adj] = -curColor;
+                }
+            }
+        }
+        return false;
+    }
+}
