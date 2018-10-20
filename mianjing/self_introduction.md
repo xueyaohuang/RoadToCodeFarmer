@@ -6,13 +6,11 @@ science because I have a huge interest in software engineering. So, over the pas
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know thumbtack from its website, and I get very interested in the company's business and product, to help people find local professionals for alomost anything, I'm hoping to join the team and get to know more about the engineering practice. 
-
-and mission: To make farming more efficient and profitable, while preserving and enhancing the value of farmland. I'm hoping to join the team and get to know more about the engineering practice. 
+And I had a chance to get to know granluar from its website, and I get very interested in the company's business and mission: To make farming more efficient and profitable, while preserving and enhancing the value of farmland. I'm hoping to join the team and get to know more about the engineering practice. 
 
 of delegate duties to employees  
 track inventory  
-help farmers to predict revenue and yield. I'm hoping to join the team and get to know more about the engineering practice. 
+help farmers to predict revenue and yield. 
 
 I have a solid foundation in algorithms, data structures and software development. During my master's degree, I have had many courses that will be helpful, such as Databases, Cloud Computing, Big Data and Advanced Data Analytics. I am familiar with big data development, application and demonstrated my skills in building data analytics platform during my internship.
 
@@ -59,7 +57,7 @@ The team is responsible for building recommender systems and data mining works.
 recommender systems for game store (Terminator 2: Judgment Day, adapted from the movie, (starred by Arnold Alois Schwarzenegger))
 mall, clothes, Champion, skin, decoration, game props
 
-(recommendation machine learning algorithms, lots of work on feature engineering, which can take up to 80% of the all the work  
+before i do this, the problem is: recommendation machine learning algorithms, lots of work on feature engineering, which can take up to 80% of the all the work  
 simplify this feature engineering process, use collaborative filtering, only need user/item interactive data  
 e.g. rating, click history, buy history, try on history)
 
@@ -72,8 +70,8 @@ e.g. rating, click history, buy history, try on history)
    use hive to get useful data, do some data processing using python scripts. and feed data into recommendation model
    off-line test: 1 month user data, predict the purchase behivour next day.
 
-circuit breaker and monitor:
-the recommender program is called by scheduler, just in case it's killed, we should give some default recommendations.  
+circuit breaker and monitor: (collabrote with game server platform team)
+the recommender program is called by scheduler, just in case it's somehow killed, we should give some default recommendations.  
 Collaborated with service performance team
 
 爬虫 crawler：
@@ -136,13 +134,14 @@ billing functions.
 
 This proj is developed using python and flask framework.
 Inorder to decouple back-end services, I use Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker.  
+web app 
 The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances on AWS.
 
 Implemented fast searching for user jobs with DynamoDB, stored user files using S3. If the annotation result is not downloaded for a long time, it will be archieved on aws glacier. When the user wants to download the result, we can take it back to s3 bucket.
 
 
 
-# About the company
+# About the company, Granular
 
 With Granular, farmers can craft crop and field plans  
 delegate duties to employees  
@@ -151,7 +150,7 @@ help farmers to predict revenue and yield
 
 Granular—a farm software business under the agriculture division of DowDuPont—penned a deal with Planet. Planet is an aptly named company, with some 200 satellites around Earth, watching it and its goings-on all the time. As part of this multimillion-dollar, three-year gig announced Tuesday, Granular will get access to daily images of the globe, and some of Planet's six-year archive of snapshots. Granular can feed the pictures into its agricultural analytics tools, which can, in turn, relay wisdom to farmers.
   
-# 为啥选我们公司
+# 为啥选我们公司,Granular
   1. "Well, one of the biggest reasons I am interested in Granular is because of Granular’s value and mission. I absolutely agree with Food and Farming are essential for our life for living. And I really like the idea of combination of technology and farming business.   
  I believe that helping farmers and their business with a support of cutting-edge software development and data analytics technology can open up a new future of food industry and more predictable production of food products.  
  And, as far as for me, I like software development as well as data analytics. So, it would be great feeling and also motivating for me - if I can be part of your team, helping farmers with software development.
@@ -209,13 +208,13 @@ Granular will get access to daily images of the globe, and some of Planet's six-
   
   
   
-  2. I want to ask about your experience at thumbtack. I'm sure you have a lot of experience 
+  2. I want to ask about your experience at granular. I'm sure you have a lot of experience 
      in other companies as well. But, I wanna know what is the most exciting part in working at service now compared to
      other companies.
   
   2. introduce the software engineering team, for example, what's the scale of the team, what technology stack u use, something like that.
   
-  I want to ask you about thumbtack's career development for the software engineers. for example, are there any
+  I want to ask you about granular's career development for the software engineers. for example, are there any
   training sessions or workshops that incoming software engineers can learn more about emerging technologies?
 
   
