@@ -102,6 +102,8 @@
 
 49 appfilo 寻叶推
 
+50 palantir 10.20 zijitou
+
 
 # 找内推，未搞定
 
