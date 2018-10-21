@@ -7,7 +7,8 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-
+// https://www.geeksforgeeks.org/diameter-n-ary-tree/
+// https://www.geeksforgeeks.org/longest-path-undirected-tree/
 class Solution {
     public int diameterOfBinaryTree(TreeNode root) {
         int[] len = new int[1];
