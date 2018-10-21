@@ -9,6 +9,25 @@
  */
 
 class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+        int[] len = new int[1];
+        if (root != null) {
+            maxAtThisNode(root, len);
+        }
+        return len[0];
+    }
+    private int maxAtThisNode(TreeNode node, int[] len) {
+        if (node == null) {
+            return 0;
+        }
+        int left = node.left == null ? 0 : 1 + maxAtThisNode(node.left, len);
+        int right = node.right == null ? 0 : 1 + maxAtThisNode(node.right, len);
+        len[0] = Math.max(len[0], left + right);
+        return Math.max(left, right);
+    }
+}
+
+class Solution {
     int diameter = 0;
     public int diameterOfBinaryTree(TreeNode root) {
         if (root == null) {
