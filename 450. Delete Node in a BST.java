@@ -7,6 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+// O(h) time
 class Solution {
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
