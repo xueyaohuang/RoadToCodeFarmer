@@ -6,8 +6,6 @@ Segment Tree，BIT，Trie，Union Find，LinkedHashMap
 DFS，BFS，topological sort, dfs/bfs connected, dfs/bfs circle, Sliding Window，sweep line  
 sorting
 
-链接：https://www.zhihu.com/question/31092580/answer/453117660
-
 
 
 1. Top 100 Liked Questions
@@ -29,8 +27,5 @@ sorting
 
 
 8 Google all
-
-
-9 BB all
 
 cc150
