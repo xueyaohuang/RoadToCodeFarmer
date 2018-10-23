@@ -218,5 +218,7 @@ Granular will get access to daily images of the globe, and some of Planet's six-
   training sessions or workshops that incoming software engineers can learn more about emerging technologies?
 
   
+  automation tool? 用了啥，叫啥名字 aws上的automation tool
+  docker, 在哪用的？
   
   
