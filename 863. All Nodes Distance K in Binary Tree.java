@@ -7,57 +7,88 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 class Solution {
-    
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
-        List<Integer> result = new LinkedList();
-        dfs(root, target, K, result);
-        return result;
-    }
-
-    // Return distance from node to target if exists, else -1
-    private int dfs(TreeNode node, TreeNode target, int K, List<Integer> result) {
-        if (node == null)
-            return -1;
-        
-        if (node == target) {
-            subtree_add(node, 0, K, result);
-            return 1;
+        if (root == null) {
+            return new ArrayList<>();
         }
-
-        int left = dfs(node.left, target, K, result);
+        List<Integer> res = new ArrayList<>();
+        if (K == 0) {
+            res.add(target.val);
+        } else {
+            int dist = distanceToTarget(root, target, K, res);
+            if (dist == K) {
+                res.add(root.val);
+            }
+        }
+        
+        return res;
+    }
+    
+    // 凡是向下到不了target的node，都会return -1. 比如题目例子中的1，0，8
+    // 到了target后，就不会往下继续走distanceToTarget这个函数了，而是改为searchInSubtree
+    private int distanceToTarget(TreeNode node, TreeNode target, int K, List<Integer> res) {
+        if (node == null) {
+            return -1;
+        }
+        if (node == target) {
+            searchInSubtree(node, K, res);
+            return 0;
+        }
+        
+        int left = distanceToTarget(node.left, target, K, res);
+        int right = distanceToTarget(node.right, target, K, res);
+        
         if (left != -1) {
             if (left == K) {
-                result.add(node.val);
-            } else {
-                subtree_add(node.right, left + 1, K, result);
+                res.add(node.left.val);
             }
+            searchInSubtree(node.right, K - left - 2, res);
             return left + 1;
         }
-
-        int right = dfs(node.right, target, K, result);
+        
         if (right != -1) {
             if (right == K) {
-                result.add(node.val);
-            } else {
-                subtree_add(node.left, right + 1, K, result);
+                res.add(node.right.val);
             }
+            searchInSubtree(node.left, K - right - 2, res);
             return right + 1;
         }
-
+        
         return -1;
     }
-
-    // Add all nodes 'K - dist' from the node to answer.
-    public void subtree_add(TreeNode node, int dist, int K, List<Integer> result) {
-        if (node == null) 
+    
+    // 在当前root的子树中，找与root相距distance的node。所以只会往下（子树）找
+    private void searchInSubtree(TreeNode root, int distance, List<Integer> res) {
+        if (root == null) {
             return;
-        if (dist == K)
-            result.add(node.val);
-        else {
-            subtree_add(node.left, dist + 1, K, result);
-            subtree_add(node.right, dist + 1, K, result);
         }
+        if (distance < 0) {
+            return;
+        }
+        if (distance == 0) {
+            res.add(root.val);
+        }
+        searchInSubtree(root.left, distance - 1, res);
+        searchInSubtree(root.right, distance - 1, res);
     }
 }
 
