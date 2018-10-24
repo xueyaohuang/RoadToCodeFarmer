@@ -218,7 +218,21 @@ Granular will get access to daily images of the globe, and some of Planet's six-
   training sessions or workshops that incoming software engineers can learn more about emerging technologies?
 
   
-  automation tool? 用了啥，叫啥名字 aws上的automation tool
-  docker, 在哪用的？
+  # automation tool? 用了啥，叫啥名字 aws上的automation tool
+  test the auto scaling ability of my web application. I need to simulate the situation that millions of  users are visiting my web site simultaneously.
+  An open source load testing tool called locust. write Python code with locust to Define user behaviour with, and simulate the situation that millions of  users are visiting my web site simultaneously.
+  
+  swarm your system with millions of simultaneous users.
+  
+  # docker, 在哪用的？
+  
+  docker provide very good reproducibility, a Docker container is guaranteed to be identical on any system that can run Docker. 
+  i have developed a personal blog web app. u know, there are many tools or dependencies, such as PostgreSQL for persistent storage, Redis for temporary， Elasticsearch for full-text search and auto-complete
+  i package all the software tools in a docker image and upload to my docker repo, 
+  when i want to run my blog app on another computer, i just down that docker image, all the configuration is done very easily.
+  
+  
+  
+  The exact specifications of a container are stored in a Dockerfile. By distributing this file among team members, an organization can guarantee that all images built from the same Dockerfile will function identically. In addition, having an environment that is constant and well-documented makes it easier to keep track of your application and identify problems.
   
   
