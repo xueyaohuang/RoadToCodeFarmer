@@ -55,7 +55,9 @@ NetEase Games department in user experience team
 The team is responsible for building recommender systems and data mining works.
 
 recommender systems for game store (Terminator 2: Judgment Day, adapted from the movie, (starred by Arnold Alois Schwarzenegger))
-mall, clothes, Champion, skin, decoration, game props
+mall, clothes, Champion, skin, decoration, game props  
+so my recommender systems is to give the most likely  items that a user may purchaesd, maximize the profit.
+
 
 before i do this, the problem is: recommendation machine learning algorithms, lots of work on feature engineering, which can take up to 80% of the all the work  
 simplify this feature engineering process, use collaborative filtering, only need user/item interactive data  
