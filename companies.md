@@ -104,6 +104,8 @@
 
 50 palantir 10.20 zijitou
 
+51 coursera 10.27 zijitou
+
 
 # 找内推，未搞定
 
@@ -115,7 +117,6 @@
 
 
 
-3. [Alation](https://alation.com/careers/posting/?posting-id=fd8dae88-5abd-4740-99e9-4ab871aea60f)  Software Engineer
 
 
 
