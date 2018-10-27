@@ -119,3 +119,67 @@ class Solution {
         }
     }
 }
+
+// if u can ot modify the grid, use a set to record which point is visited
+// if the matrix is too large, dfs may cause stack overflow, use bfs. the size of the queue in bfs is at most as large as the diagonal
+// dfs space O(n^2), bfs space O(n)
+class Solution {
+    public int numIslands(char[][] grid) {
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
+        int count = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1') {
+                    count++;
+                    bfs(grid, i, j);
+                }
+            }
+        }
+        return count;
+    }
+    
+    private void bfs(char[][] grid, int i, int j) {
+        grid[i][j] = '0';
+        int m = grid.length;
+        int n = grid[0].length;
+        int position = i * n + j;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(position);
+        
+        while (!queue.isEmpty()) {
+            int curPos = queue.poll();
+            int x = curPos / n;
+            int y = curPos % n;
+            
+            if (validPosition(grid, x + 1, y)) {
+                grid[x + 1][y] = '0';
+                queue.offer((x + 1) * n + y);
+            }
+            
+            if (validPosition(grid, x - 1, y)) {
+                grid[x - 1][y] = '0';
+                queue.offer((x - 1) * n + y);
+            }
+            
+            if (validPosition(grid, x, y + 1)) {
+                grid[x][y + 1] = '0';
+                queue.offer(x * n + y + 1);
+            }
+            
+            if (validPosition(grid, x, y - 1)) {
+                grid[x][y - 1] = '0';
+                queue.offer(x * n + y - 1);
+            }
+        }
+        
+    }
+    
+    private boolean validPosition(char[][] grid, int i, int j) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0') {
+            return false;
+        }
+        return true;
+    }
+}
