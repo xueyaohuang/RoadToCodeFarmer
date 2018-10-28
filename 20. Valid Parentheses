@@ -24,3 +24,32 @@ class Solution {
         return stack.isEmpty(); // 注意最后的check，不能直接return true。 比如s = "[".
     }
 }
+
+// use hashmap to simply the if else 
+class Solution {
+    public boolean isValid(String s) {
+        if (s == null || s.length() == 0) {
+            return true;
+        }
+        Deque<Character> stack = new ArrayDeque<>();
+        Map<Character, Character> map = new HashMap<Character, Character>(){{
+            put(')', '(');
+            put(']', '[');
+            put('}', '{');
+        }};
+        for (char c : s.toCharArray()) {
+            if (!map.containsKey(c)) {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    return false; 
+                } else {
+                    if (stack.pop() != map.get(c)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return stack.isEmpty(); // 注意最后的check，不能直接return true。 比如s = "[".
+    }
+}
