@@ -152,6 +152,15 @@ Client side load balancing maintains an algorithm like round robin or zone speci
 
 round robin time slices (also known as time quanta)[3] are assigned to each process in equal portions and in circular order, handling all processes without priority (also known as cyclic executive). Round-robin scheduling is simple, easy to implement, and starvation-free. 
 
+# personal blog 
+Developed a personal blog system with Django  
+Utilized Elasticsearch for full-text search and auto-complete  
+docker  
+docker provide very good reproducibility, a Docker container is guaranteed to be identical on any system that can run Docker. 
+  i have developed a personal blog web app. u know, there are many tools or dependencies, such as PostgreSQL for persistent storage, Redis for temporary， Elasticsearch for full-text search and auto-complete
+  i package all the software tools in a docker image and upload to my docker repo, 
+  when i want to run my blog app on another computer, i just down that docker image, all the configuration is done very easily.
+
 # About the company
 
   
