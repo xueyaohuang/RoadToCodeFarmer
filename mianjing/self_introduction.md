@@ -6,11 +6,9 @@ science because I have a huge interest in software engineering. So, over the pas
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know granluar from its website, and I get very interested in the company's business and mission: To make farming more efficient and profitable, while preserving and enhancing the value of farmland. I'm hoping to join the team and get to know more about the engineering practice. 
+And I had a chance to get to know appfolio from its website, and I get very interested in the company's business: PROPERTY MANAGEMENT. I'm hoping to join the team and get to know more about the engineering practice. 
 
-of delegate duties to employees  
-track inventory  
-help farmers to predict revenue and yield. 
+
 
 I have a solid foundation in algorithms, data structures and software development. During my master's degree, I have had many courses that will be helpful, such as Databases, Cloud Computing, Big Data and Advanced Data Analytics. I am familiar with big data development, application and demonstrated my skills in building data analytics platform during my internship.
 
@@ -22,8 +20,6 @@ I have a solid foundation in algorithms, data structures and web development, in
 I also have experiences in big data from my internship at NetEase as a software developer, where I contributed to the game recommender system.  
 
 Furthermore, I have a passion for learning new cutting-edge technologies of software engineering.  
-
-I am extremely interested in a career opportunity at tiger graph. I hope to contribute to the world's fastest real-time Graph Analytics platform.
 
 ==============================================================================================================================
 
@@ -73,8 +69,7 @@ e.g. rating, click history, buy history, try on history)
    off-line test: 1 month user data, predict the purchase behivour next day.
 
 circuit breaker and monitor: (collabrote with game server platform team)
-the recommender program is called by scheduler, just in case it's somehow killed, we should give some default recommendations.  
-Collaborated with service performance team
+the recommender program is called by scheduler, just in case it's somehow killed, we should give some default recommendations.  Collaborated with service performance team
 
 爬虫 crawler：
 user's reviews and comments on steam
@@ -141,38 +136,29 @@ The number of annotation requests may change over time, so I achieved auto scali
 
 Implemented fast searching for user jobs with DynamoDB, stored user files using S3. If the annotation result is not downloaded for a long time, it will be archieved on aws glacier. When the user wants to download the result, we can take it back to s3 bucket.
 
+[message queue](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/Concepts/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.md)
 
+# didi restful 项目
+restful: REpresentational State Transfer. It is design style for distributed hypermedia systems, takes advantage of HTTP when used for Web APIs. resource based bot action based.  
+resource is identified by URIS (Uniform Resource Identifier), separate from their representations.
+resource representations is transferred between client and server, JSON, XML format.  
 
-# About the company, Granular
+[http stuts code](https://www.restapitutorial.com/httpstatuscodes.html)
 
-With Granular, farmers can craft crop and field plans  
-delegate duties to employees  
-track inventory  
-help farmers to predict revenue and yield   
+toy project to practice how to design RESTful API and build the project using Spring Cloud  
+microservices (account, dispatch, location...)  
 
-Granular—a farm software business under the agriculture division of DowDuPont—penned a deal with Planet. Planet is an aptly named company, with some 200 satellites around Earth, watching it and its goings-on all the time. As part of this multimillion-dollar, three-year gig announced Tuesday, Granular will get access to daily images of the globe, and some of Planet's six-year archive of snapshots. Granular can feed the pictures into its agricultural analytics tools, which can, in turn, relay wisdom to farmers.
+Client side load balancing maintains an algorithm like round robin or zone specific, by which it can invoke instances of calling services. The advantage is s service registry always updates itself; if one instance goes down, it removes it from its registry, so when the client side load balancer talks to the Eureka server, it always updates itself, so there is no manual intervention- unlike server side load balancing- to remove an instance.
+
+round robin time slices (also known as time quanta)[3] are assigned to each process in equal portions and in circular order, handling all processes without priority (also known as cyclic executive). Round-robin scheduling is simple, easy to implement, and starvation-free. 
+
+# About the company
+
   
 # 为啥选我们公司,Granular
-  1. "Well, one of the biggest reasons I am interested in Granular is because of Granular’s value and mission. I absolutely agree with Food and Farming are essential for our life for living. And I really like the idea of combination of technology and farming business.   
- I believe that helping farmers and their business with a support of cutting-edge software development and data analytics technology can open up a new future of food industry and more predictable production of food products.  
- And, as far as for me, I like software development as well as data analytics. So, it would be great feeling and also motivating for me - if I can be part of your team, helping farmers with software development.
-  
-  2. I believe granular has a promising future
-  3. my interest perfectly matches the job and technology stack. I like data analytics and building software infrastructures.
-  wil not fight with product manager.
-  
+
+
 # 问公司问题
-
-"can I ask the whole process of helping farmers? I mean what's the process of getting farming data and how Granular provide an information for farming business?"
-
-"well, i'm very interested in the farming business and its related technology. But is there any program or tranings before university hires can get - before dive into the work?"
-
-Planet.  
-Planet has around 200 satellites around Earth, watching it and its goings-on all the time.  
-Granular will get access to daily images of the globe, and some of Planet's six-year archive of snapshots. Granular can feed the pictures into its agricultural analytics tools, which can, in turn, relay wisdom to farmers.
-
-
-
 
   1. 对小公司：Sure, as you know, Tigrt Graph has started its busienss a few years ago,
      so - i believe it has a lot of opportunities in the market place. But, i want
@@ -210,14 +196,13 @@ Granular will get access to daily images of the globe, and some of Planet's six-
   
   
   
-  2. I want to ask about your experience at granular. I'm sure you have a lot of experience 
+  2. I want to ask about your experience at appfolio. I'm sure you have a lot of experience 
      in other companies as well. But, I wanna know what is the most exciting part in working at service now compared to
      other companies.
   
   2. introduce the software engineering team, for example, what's the scale of the team, what technology stack u use, something like that.
   
-  I want to ask you about granular's career development for the software engineers. for example, are there any
-  training sessions or workshops that incoming software engineers can learn more about emerging technologies?
+  I want to ask you about appfolio's career development for the software engineers. pair programming. for example, are there any training sessions or workshops that incoming software engineers can learn more about emerging technologies?
 
   
   # automation tool? 用了啥，叫啥名字 aws上的automation tool
@@ -232,8 +217,6 @@ Granular will get access to daily images of the globe, and some of Planet's six-
   i have developed a personal blog web app. u know, there are many tools or dependencies, such as PostgreSQL for persistent storage, Redis for temporary， Elasticsearch for full-text search and auto-complete
   i package all the software tools in a docker image and upload to my docker repo, 
   when i want to run my blog app on another computer, i just down that docker image, all the configuration is done very easily.
-  
-  
   
   The exact specifications of a container are stored in a Dockerfile. By distributing this file among team members, an organization can guarantee that all images built from the same Dockerfile will function identically. In addition, having an environment that is constant and well-documented makes it easier to keep track of your application and identify problems.
   
