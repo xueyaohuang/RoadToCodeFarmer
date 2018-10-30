@@ -1,3 +1,10 @@
+/* Take "apple" as an example, we will insert add "apple{apple", "pple{apple", "ple{apple", "le{apple", 
+"e{apple", "{apple" into the Trie Tree.
+If the query is: prefix = "app", suffix = "le", we can find it by querying our trie for
+"le { app".
+We use '{' because in ASCii Table, '{' is next to 'z', so we just need to create new TrieNode[27] instead of 26.
+Also, compared with tradition Trie, we add the attribute weight in class TrieNode. */
+
 class WordFilter {
     
     private TrieNode root;
