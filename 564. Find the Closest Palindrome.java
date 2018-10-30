@@ -43,7 +43,6 @@ class Solution {
         return reverse == original || reverse / 10 == original;
     }
 }
-
 class Solution {
     public String nearestPalindromic(String n) {
         int len = n.length() / 2;
@@ -51,9 +50,12 @@ class Solution {
         long dividend = (long)Math.pow(10, len);
         List<Long> list = new ArrayList<>();
         
+        // 如果只有这一种情况，input 8，return 8，是他自己，不行，加一个下面的情况
         long num1 = makePalindrome(num / dividend * dividend);
-        long num2 = makePalindrome((num / dividend + 1) * dividend);
-        long num3 = makePalindrome((num / dividend - 1) * dividend);
+        // 
+        long num2 = makePalindrome((num / dividend - 1) * dividend);
+        // 22022,应该输出22122，如果没有下面这行会输出21912
+        long num3 = makePalindrome((num / dividend + 1) * dividend);
         
         if (num1 != num) {
             list.add(num1);
@@ -64,12 +66,22 @@ class Solution {
         if (num3 != num) {
             list.add(num3);
         }
-        list.add((long)Math.pow(10, n.length() - 1) - 1); // 999, when n is 1000
-        list.add((long)Math.pow(10, n.length()) + 1); // 1001, when n is 999
+        // 最后说这种情况
+        if ((long)Math.pow(10, n.length() - 1) - 1 != num) {
+            list.add((long)Math.pow(10, n.length() - 1) - 1); // 999, when n is 1000，没有这句会输出1001
+        }  
+        // list.add((long)Math.pow(10, n.length()) + 1); // 1001, when n is 999，num3可能能cover这种情况
         
-        Collections.sort(list, (a, b) -> Long.compare(Math.abs(a - num), Math.abs(b - num)) == 0 ? Long.compare(a, b) : Long.compare(Math.abs(a - num), Math.abs(b - num)));
+        long res = list.get(0);
+        for (long l : list) {
+            if (Math.abs(res - num) > Math.abs(l - num)) {
+                res = l;
+            } else if (Math.abs(res - num) == Math.abs(l - num)) {
+                res = Math.min(res, l);
+            }
+        }
         
-        return String.valueOf(list.get(0));
+        return String.valueOf(res);
     }
     
     private long makePalindrome(long n) {
