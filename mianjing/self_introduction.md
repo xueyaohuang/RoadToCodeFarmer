@@ -6,7 +6,7 @@ science because I have a huge interest in software engineering. So, over the pas
 I deepened my knowledge on algorithms, data structures and software development.I also empowered my skills in data analytics
 during my internship.
 
-And I had a chance to get to know appfolio from its website, and I get very interested in the company's business: PROPERTY MANAGEMENT. I'm hoping to join the team and get to know more about the engineering practice. 
+And I had a chance to get to know appfolio from its website, and I get very interested in the company's business: find local professonals for almost everything. I'm hoping to join the team and get to know more about the engineering practice. 
 
 
 
