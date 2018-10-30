@@ -24,6 +24,8 @@ class Solution {
             for (int j = 0; j < lenws; j++) {
                 String curWord = window.substring(j * lenwd, (j + 1) * lenwd);
                 int count = windowMap.getOrDefault(curWord, 0) + 1;
+                // window长度一定，每个word的长度也一定，如果每个word的count都跟map里相应word的个数<=，
+                // 那么对应word的个数必定是相等的
                 if (count > map.getOrDefault(curWord, 0)) {
                     break;
                 } else if (j == lenws - 1) {
@@ -32,8 +34,7 @@ class Solution {
                     windowMap.put(curWord, count);
                 }
             }
-        }
-        
+        }    
         return res;
     }
 }
@@ -65,6 +66,7 @@ class Solution {
             int left = i, right = i, count = 0;
             windowMap = new HashMap<>();
             // sliding window right pointer
+            // 通常在string做sliding window，最小的unit是一个char，这里的sliding window最小unit是一个word
             for (; right + lenwd <= lens; right += lenwd) {
                 String curWord = s.substring(right, right + lenwd);
                 // 没有当前word，所有清零重来
