@@ -13,63 +13,45 @@ class Node {
 };
 */
 class Codec {
+
     // Encodes a tree to a single string.
     public String serialize(Node root) {
+        if (root == null) {
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
-        sb.append('[');
-        serializeTree(root, sb);
-        sb.append(']');
+        preorderSerialize(root, sb);
         return sb.toString();
     }
-
-    public void serializeTree(Node root, StringBuilder sb) {
-        if (root == null) return;
-
-        sb.append(root.val);
-        sb.append('#');
-
-        if (root.children != null && root.children.size() > 0) {
-            sb.append('[');
-            for (Node node : root.children) {
-                serializeTree(node, sb);
-            }
-            sb.append(']');
+    
+    private void preorderSerialize(Node root, StringBuilder sb) {
+        if (root == null) {
+            return;
+        }
+        sb.append(root.val + "," + root.children.size() + ",");
+        for (Node node : root.children) {
+            preorderSerialize(node, sb);
         }
     }
 
     // Decodes your encoded data to tree.
     public Node deserialize(String data) {
-        char[] str = data.toCharArray();
-
-        // serialized string for null == "[]"
-        if (str.length <= 2)
+        if (data == null || data.length() == 0) {
             return null;
-
-        List<Node> rst = new ArrayList<>();
-
-        deserializeTree(str, 1, rst);
-
-        return rst.get(0);
-    }
-
-    //对每一层[] 做recursion
-    int deserializeTree(char[] str, int index, List<Node> children) {
-        while (index < str.length && str[index] != ']') {
-            int value = 0;
-            while (str[index] != '#') {
-                value = value * 10 + str[index++] - '0';
-            }
-
-            index++;
-            Node cur = new Node(value, new ArrayList<>());
-            children.add(cur);
-
-            if (str[index] == '[') {
-                index = deserializeTree(str, index + 1, cur.children);
-            }
         }
-
-        return index + 1;
+        String[] dataArr = data.split(",");
+        Queue<String> queue = new LinkedList<>(Arrays.asList(dataArr));
+        return preorderDeserialize(queue);
+    }
+    
+    private Node preorderDeserialize(Queue<String> queue) {
+        Node root = new Node(Integer.parseInt(queue.poll()), new ArrayList<>());
+        int childrenSize = Integer.parseInt(queue.poll());
+        
+        for (int i = 0; i < childrenSize; i++) {
+            root.children.add(preorderDeserialize(queue));
+        }
+        return root;
     }
 }
 
