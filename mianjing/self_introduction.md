@@ -119,6 +119,11 @@ through the design of Resistive Switching Random Access Memory.
 # 云计算项目
 talk about my Genomics Analysis Web Service proj, capstone proj of cloud computing course
 Developed a software as a service on amazon AWS. It's about genomics annotation application.  
+
+(utilized many aws tools: S3 and Glacier to store user files and annotated results, build user's profile database using DynamoDB  
+Inorder to decouple back-end services, I use Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker.  
+The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances on AWS.  
+)
 genomics annotation: a long sequence of gene(DNA) data, the application is used to annotate each segment of the gene(DNA) data. This piece of gene control the color of eye. 
 
 genomics annotator and web application.  
@@ -162,9 +167,6 @@ docker provide very good reproducibility, a Docker container is guaranteed to be
   when i want to run my blog app on another computer, i just down that docker image, all the configuration is done very easily.
 
 # About the company
-
-  
-# 为啥选我们公司,Granular
 
 
 # 问公司问题
@@ -228,5 +230,8 @@ docker provide very good reproducibility, a Docker container is guaranteed to be
   when i want to run my blog app on another computer, i just down that docker image, all the configuration is done very easily.
   
   The exact specifications of a container are stored in a Dockerfile. By distributing this file among team members, an organization can guarantee that all images built from the same Dockerfile will function identically. In addition, having an environment that is constant and well-documented makes it easier to keep track of your application and identify problems.
+  
+  
+  
   
   
