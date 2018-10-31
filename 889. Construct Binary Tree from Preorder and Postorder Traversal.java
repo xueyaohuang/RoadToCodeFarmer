@@ -7,6 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+// O(n)
 class Solution {
     public TreeNode constructFromPrePost(int[] pre, int[] post) {
         if (pre == null || post == null) {
@@ -34,6 +35,33 @@ class Solution {
             stack.push(node);
         }
         
+        return root;
+    }
+}
+
+// O(n2)
+class Solution {
+    public TreeNode constructFromPrePost(int[] pre, int[] post) {
+        return constructFromPrePostHelper(pre, post, 0, 0, post.length - 1);
+    }
+    
+    private TreeNode constructFromPrePostHelper(int[] pre, int[] post, int preStart, int postStart, int postEnd) {
+        if (postStart > postEnd) {
+            return null;
+        }
+        TreeNode root = new TreeNode(pre[preStart]);
+        if (preStart == pre.length - 1) {
+            return root;
+        }
+        int leftPost = postEnd;
+        
+        for (; leftPost >= postStart; leftPost--) {
+            if (post[leftPost] == pre[preStart + 1]) {
+                break;
+            }
+        }
+        root.left = constructFromPrePostHelper(pre, post, preStart + 1, postStart, leftPost);
+        root.right = constructFromPrePostHelper(pre, post, preStart + leftPost - postStart + 2, leftPost + 1, postEnd - 1);
         return root;
     }
 }
