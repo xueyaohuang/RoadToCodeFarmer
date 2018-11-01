@@ -31,6 +31,9 @@ class Solution {
 }
 
 // 2
+// deque,index进queue都是从tail进去，出去时分2中情况
+// 删除超出window范围的index从head出去
+// 比nums[i]的index从后面出去
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || nums.length == 0) {
@@ -43,14 +46,14 @@ class Solution {
         Deque<Integer> dq = new ArrayDeque<>();
         for (int i = 0; i < len; i++) {
             // 删除超出window范围的index
-            while (!dq.isEmpty() && dq.peek() < i - k + 1) {
-                dq.poll();
+            while (!dq.isEmpty() && dq.peekFirst() < i - k + 1) {
+                dq.pollFirst();
             }
             // 删除小于nums[i]的index
             while (!dq.isEmpty() && nums[dq.peekLast()] < nums[i]) {
                 dq.pollLast();
             }
-            dq.offer(i);
+            dq.offerLast(i);
             if (i >= k - 1) {
                 res[idx++] = nums[dq.peek()];
             }
