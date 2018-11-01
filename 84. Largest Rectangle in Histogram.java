@@ -1,28 +1,34 @@
+// stack stores the indexes not heights[i].
 class Solution {
     public int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) {
             return 0;
         }
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         int area = 0;
-        for (int i = 0; i <= heights.length; i++) {
-            int h = i == heights.length ? 0 : heights[i];
+        int len = heights.length;
+        for (int i = 0; i <= len; i++) {
+            int h = i == len ? 0 : heights[i];
             if (stack.isEmpty() || h >= heights[stack.peek()]) {
                 stack.push(i);
-            }
-            else {
+            } else {
                 while (!stack.isEmpty() && h < heights[stack.peek()]) {
                     int left = stack.pop();
-                    int w = stack.isEmpty() ? i : i - stack.peek() - 1;
-                    area = Math.max(area, heights[left] * w);
+                    int width = 0;
+                    if (stack.isEmpty()) {
+                        width = i;
+                    } else {
+                        width = i - stack.peek() - 1;
+                    }
+                    area = Math.max(area, heights[left] * width);
                 }
                 stack.push(i);
             }
         }
+        
         return area;
     }
 }
-// stack stores the indexes not heights[i].
 
 class Solution {
     public int largestRectangleArea(int[] heights) {
