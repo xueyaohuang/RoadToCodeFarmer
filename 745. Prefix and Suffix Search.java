@@ -3,7 +3,9 @@
 If the query is: prefix = "app", suffix = "le", we can find it by querying our trie for
 "le { app".
 We use '{' because in ASCii Table, '{' is next to 'z', so we just need to create new TrieNode[27] instead of 26.
-Also, compared with tradition Trie, we add the attribute weight in class TrieNode. */
+Also, compared with tradition Trie, we add the attribute weight in class TrieNode.
+为什么把suffix放到prefix前面，因为这样可以减少最开始插入词的个数，比如apple。只需要变化suffix，prefix一直是apple。
+如果prefix在前面，prefix还需要a,ap,app,appl,apple.*/
 
 class WordFilter {
     
