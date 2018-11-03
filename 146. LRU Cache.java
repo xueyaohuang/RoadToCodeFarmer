@@ -1,3 +1,102 @@
+class DoublyLinkedNode {
+    
+    int key;
+    int value;
+    DoublyLinkedNode prev;
+    DoublyLinkedNode next;
+    
+    public DoublyLinkedNode() {}
+    
+    public DoublyLinkedNode(int key, int value) {
+        this.key = key;
+        this.value = value;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class DoublyLinkedList {
+    
+    private DoublyLinkedNode head;
+    private DoublyLinkedNode tail;
+    
+    public DoublyLinkedList() {
+        this.head = new DoublyLinkedNode();
+        this.tail = new DoublyLinkedNode();
+        head.next = tail;
+        tail.prev = head;
+    }
+    
+    public void removeNode(DoublyLinkedNode node) {
+        DoublyLinkedNode prev = node.prev;
+        DoublyLinkedNode next = node.next;
+        prev.next = next;
+        next.prev = prev;
+    }
+    
+    public void addToHead(DoublyLinkedNode node) {
+        DoublyLinkedNode next = head.next;
+        head.next = node;
+        node.prev = head;
+        node.next = next;
+        next.prev = node;
+    }
+    
+    public void moveToHead(DoublyLinkedNode node) {
+        removeNode(node);
+        addToHead(node);
+    }
+    
+    public DoublyLinkedNode popFromTail() {
+        DoublyLinkedNode nodeBeforeTail = tail.prev;
+        removeNode(nodeBeforeTail);
+        return nodeBeforeTail;
+    }
+}
+
+class LRUCache {
+    
+    private int count;
+    private final int capacity;
+    private DoublyLinkedList dl;
+    private Map<Integer, DoublyLinkedNode> map;
+
+    public LRUCache(int capacity) {
+        this.count = 0;
+        this.capacity = capacity;
+        this.dl = new DoublyLinkedList();
+        this.map = new HashMap<>();
+    }
+    
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            DoublyLinkedNode node = map.get(key);
+            dl.moveToHead(node);
+            return node.value;
+        } else {
+            return -1;
+        }
+    }
+    
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            DoublyLinkedNode node = map.get(key);
+            node.value = value;
+            dl.moveToHead(node);
+        } else {
+            DoublyLinkedNode node = new DoublyLinkedNode(key, value);
+            map.put(key, node);
+            count++;
+            dl.addToHead(node);
+            if (count > capacity) {
+                DoublyLinkedNode nodeBeforeTail = dl.popFromTail();
+                map.remove(nodeBeforeTail.key);
+                count--;
+            }
+        }
+    }
+}
+
 class LRUCache {
     
     Map<Integer, Integer> map;
