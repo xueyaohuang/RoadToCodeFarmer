@@ -35,7 +35,7 @@ class Solution {
         if (root == null || root.left == null) {
             return root;
         }
-        TreeNode node = upsideDownBinaryTree(root.left);
+        TreeNode node = upsideDownBinaryTree(root.left); // 先一直怼到最底下的left，再慢慢往上操作左右
         root.left.left = root.right;
         root.left.right = root;
         root.left = null;
