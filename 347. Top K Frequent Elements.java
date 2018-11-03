@@ -41,6 +41,25 @@ class Solution {
     }
 }
 
+class Solution {
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return new ArrayList<>();
+        }
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, (a, b) -> b.getValue() - a.getValue());
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            res.add(list.get(i).getKey());
+        }
+        return res;
+    }
+}
+
 /*
 TreeMap can be a bit handy when we only need to store unique elements in a sorted order. Java.util.TreeMap uses a red-black tree
 in the background which makes sure that there are no duplicates; additionally it also maintains the elements in a sorted order.
