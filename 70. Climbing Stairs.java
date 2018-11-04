@@ -18,12 +18,12 @@ class Solution {
         if (n <= 2) {
             return n;
         }
-        int twoStepsBefore = 1;
+        int twoStepBefore = 1;
         int oneStepBefore = 2;
-        int res = 3;
-        for (int i = 2; i < n; i++) {
-            res = twoStepsBefore + oneStepBefore;
-            twoStepsBefore = oneStepBefore;
+        int res = 0;
+        for (int i = 3; i <= n; i++) {
+            res = oneStepBefore + twoStepBefore;
+            twoStepBefore = oneStepBefore;
             oneStepBefore = res;
         }
         return res;
