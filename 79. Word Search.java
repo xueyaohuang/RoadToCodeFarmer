@@ -1,10 +1,14 @@
 class Solution {
-    private boolean[][] visited;
     public boolean exist(char[][] board, String word) {
-        visited = new boolean[board.length][board[0].length];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (hereExisted(board, word, i, j, 0)) {
+        if (board == null || board.length == 0) {
+            return false;
+        }
+        int m = board.length;
+        int n = board[0].length;
+        boolean[][] visited = new boolean[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (existHere(board, word, i, j, 0, visited)) {
                     return true;
                 }
             }
@@ -12,22 +16,21 @@ class Solution {
         return false;
     }
     
-    private boolean hereExisted(char[][] board, String word, int row, int col, int index) {
-        if (index >= word.length()) {
-            return true;
-        }
-        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || visited[row][col] == true || board[row][col] != word.charAt(index)) {
+    private boolean existHere(char[][] board, String word, int i, int j, int idx, boolean[][] visited) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || visited[i][j] || board[i][j] != word.charAt(idx)) {
             return false;
         }
-        visited[row][col] = true;
-        if (hereExisted(board, word, row + 1, col, index + 1) ||
-            hereExisted(board, word, row - 1, col, index + 1) ||
-            hereExisted(board, word, row, col + 1, index + 1) ||
-            hereExisted(board, word, row, col - 1, index + 1)) {
+        if (idx == word.length() - 1) {
             return true;
         }
-        // 没有return true，表示这个char没有用，set visited[i][j] = false
-        visited[row][col] = false;
+        visited[i][j] = true;
+        if (existHere(board, word, i + 1, j, idx + 1, visited) ||
+            existHere(board, word, i - 1, j, idx + 1, visited) ||
+            existHere(board, word, i, j + 1, idx + 1, visited) ||
+            existHere(board, word, i, j - 1, idx + 1, visited)) {
+            return true;
+        }
+        visited[i][j] = false;
         return false;
     }
 }
