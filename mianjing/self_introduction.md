@@ -32,6 +32,14 @@ one conference papaer: international memory worshop
 
 # Projects
 
+* 骄傲的项目
+
+I am proud of the recommender system project I finished at NetEase Inc. during my internship. I built a recommender systems for the game store (Terminator 2: Judgment Day) to give the most likely items that a user may purchase.
+
+I developed a data processing pipeline using Hive and sparkSQL. Then I utilized Spark SVD++ algorithm for the recommender model. For the recommendation results, I put the prediction results to Redis for fast query.
+
+I am proud of this project because of two reasons. First, the old recommendation system uses traditional machine learning algorithms which requires lots of work on feature engineering. It can take up to 80% of the all the work. My approach simplified this feature engineering process by using collaborative filtering, which only need user/item interactive data. Second, the recommendation result is pretty good. It got 7% higher buy rate compared to the recommendation strategy by rules.
+
 * 最有挑战的项目
 
 During my internship, I tried different models for the game store recommender system.  
