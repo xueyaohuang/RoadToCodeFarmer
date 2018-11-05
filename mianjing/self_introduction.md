@@ -42,13 +42,10 @@ I am proud of this project because of two reasons. First, the old recommendation
 
 * 最有挑战的项目
 
-During my internship, I tried different models for the game store recommender system.  
-The training data set i used is very large, and the models has tons of parameters, so i often encounter out of memory problems
-I did some research on memory management and tried many approaches to solve this  
-1. reduce intermediate variable during data processing, this imporoves a little.
-2. python garbage collection, delete some already used variable manully, and call the garbage collection function. This does not work well.  
-3. Then I traced the memory usage and found that during the model prediction stage, the memory increased rapidlly. I need to reduce the testing data in one batch.
-   So I set the training and prediction apart. I first train the model and save the it. Then I split the testing data into multiple chunks and predict one by one. It solved the out of memory problem.
+During my internship, I tried different models for the game store (Terminator 2: Judgment Day) recommender system.
+The training data set I used is very large, and the models has tons of parameters so I often encountered out of memory problems. I did some research on memory management and tried many approaches to solve this.
+First, I reduced intermediate variable during data processing, this saves a little bit memory. Then I learned python garbage collection, delete some already used variable manually, and call the garbage collection function. This did not work well.
+Further more, I traced the memory usage and found that during the model prediction stage, the memory increased rapidly. I need to reduce the testing data in one batch. So I set the training and prediction apart. I first trained the model and saved the it. Then I split the testing data into multiple chunks and predicted one by one. It solved the out of memory problem.
    
 why not spark, b/c spark doesn't has that built-in algorithm (xgboost)
 
