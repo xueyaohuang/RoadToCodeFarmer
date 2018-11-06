@@ -52,13 +52,15 @@ class Solution {
     }
 }
 
-import java.util.concurrent.ThreadLocalRandom;
+// import java.util.concurrent.ThreadLocalRandom;
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         return quickSelect(nums, 0, nums.length - 1, nums.length - k);
     }
     private int quickSelect(int[] nums, int start, int end, int k) {
-        int randomNum = ThreadLocalRandom.current().nextInt(start, end + 1);
+        Random rand = new Random();
+        // int randomNum = ThreadLocalRandom.current().nextInt(start, end + 1);
+        int randomNum = rand.nextInt(end - start + 1) + start;
         int pivot = nums[randomNum];
         swap(nums, randomNum, end);
         int left = start;
