@@ -65,3 +65,29 @@ class Solution {
         return s.substring(start, end + 1);
     }
 }
+
+class Solution {
+    private int lo, maxLen;
+    
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() < 2) {
+            return s;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            extendString(s, i, i);
+            extendString(s, i, i + 1);
+        }
+        return s.substring(lo, lo + maxLen);
+    }
+    
+    private void extendString(String s, int start, int end) {
+        while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
+            start--;
+            end++;
+        }
+        if (maxLen < end - start - 1) {
+            lo = start + 1;
+            maxLen = end - start - 1;
+        }  
+    }
+}
