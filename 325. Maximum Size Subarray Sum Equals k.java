@@ -11,9 +11,7 @@ class Solution {
         for (int i = 0; i < len; i++) {
             sum += nums[i];
             // 因为是求最长的长度，所以要保留最先出现的sum的位置
-            if (!map.containsKey(sum)) {
-                map.put(sum, i);
-            } 
+            map.putIfAbsent(sum, i);
             if (map.containsKey(sum - k)) {
                 maxLen = Math.max(maxLen, i - map.get(sum - k));
             }
