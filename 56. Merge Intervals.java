@@ -28,3 +28,28 @@ class Solution {
         return res;
     }
 }
+
+// https://leetcode.com/problems/merge-intervals/discuss/21223/Beat-98-Java.-Sort-start-and-end-respectively.
+class Solution {
+    public List<Interval> merge(List<Interval> intervals) {
+        List<Interval> list = new ArrayList<>();
+        if (intervals == null || intervals.size() == 0) {
+            return list;
+        }
+        int[] start = new int[intervals.size()];
+        int[] end = new int[intervals.size()];
+        for (int i = 0; i < intervals.size(); i++) {
+            start[i] = intervals.get(i).start;
+            end[i] = intervals.get(i).end;
+        }
+        Arrays.sort(start);
+        Arrays.sort(end);
+        for(int i = 0, j = 0; i < intervals.size(); i++) {
+            if (i == intervals.size() - 1 || start[i + 1] > end[i]) {
+                list.add(new Interval(start[j], end[i]));
+                j = i + 1;
+            }
+        }
+        return list;
+    }
+}
