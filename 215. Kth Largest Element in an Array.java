@@ -29,7 +29,7 @@ class Solution {
         }
         return nums[pivotIdx];
     }
-
+    // 逆序partition
     private int partition(int[] nums, int start, int end) {
         int pivotIdx = start;
         int rand = ThreadLocalRandom.current().nextInt(start, end + 1);
