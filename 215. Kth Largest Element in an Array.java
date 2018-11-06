@@ -52,34 +52,35 @@ class Solution {
     }
 }
 
-// import java.util.concurrent.ThreadLocalRandom;
 class Solution {
     public int findKthLargest(int[] nums, int k) {
-        return quickSelect(nums, 0, nums.length - 1, nums.length - k);
+        int len = nums.length;
+        return randomQuickSelect(nums, 0, len - 1, len - k);
     }
-    private int quickSelect(int[] nums, int start, int end, int k) {
+    
+    private int randomQuickSelect(int[] nums, int start, int end, int k) {
         Random rand = new Random();
-        // int randomNum = ThreadLocalRandom.current().nextInt(start, end + 1);
-        int randomNum = rand.nextInt(end - start + 1) + start;
-        int pivot = nums[randomNum];
-        swap(nums, randomNum, end);
+        int pivotIdx = rand.nextInt(end - start + 1) + start;
+        int pivot = nums[pivotIdx];
+        swap(nums, pivotIdx, end);
         int left = start;
+        
         for (int i = start; i < end; i++) {
             if (nums[i] <= pivot) {
-                swap(nums, left++, i);
+                swap(nums, left, i);
+                left++;
             }
         }
         swap(nums, left, end);
         if (left == k) {
-            return nums[k];
-        }
-        else if (left > k) {
-            return quickSelect(nums, start, left - 1, k);
-        }
-        else {
-            return quickSelect(nums, left + 1, end, k);
+            return nums[left];
+        } else if (left > k) {
+            return randomQuickSelect(nums, start, left - 1, k);
+        } else {
+            return randomQuickSelect(nums, left + 1, end, k);
         }
     }
+    
     private void swap(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
