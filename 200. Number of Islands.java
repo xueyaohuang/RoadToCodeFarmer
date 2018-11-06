@@ -27,6 +27,40 @@ class Solution {
     }
 }
 
+// not modify the input
+class Solution {
+    public int numIslands(char[][] grid) {
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
+        int m = grid.length;
+        int n = grid[0].length;
+        int count = 0;
+        boolean[][] visited = new boolean[m][n];
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1' && !visited[i][j]) {
+                    count++;
+                    floodFill(grid, i, j, visited);
+                }
+            }
+        }
+        return count;
+    }
+    
+    private void floodFill(char[][] grid, int i, int j, boolean[][] visited) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0' || visited[i][j] == true) {
+            return;
+        }
+        visited[i][j] = true;
+        floodFill(grid, i + 1, j, visited);
+        floodFill(grid, i - 1, j, visited);
+        floodFill(grid, i, j + 1, visited);
+        floodFill(grid, i, j - 1, visited);
+    }
+}
+
 class Solution {
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
@@ -181,5 +215,63 @@ class Solution {
             return false;
         }
         return true;
+    }
+}
+
+// not modify input, bfs
+class Solution {
+    public int numIslands(char[][] grid) {
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
+        int m = grid.length;
+        int n = grid[0].length;
+        int count = 0;
+        boolean[][] visited = new boolean[m][n];
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1' && !visited[i][j]) {
+                    count++;
+                    bfsFill(grid, i, j, visited);
+                }
+            }
+        }
+        return count;
+    }
+    
+    private void bfsFill(char[][] grid, int i, int j, boolean[][] visited) {
+        // if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0' || visited[i][j] == true) {
+        //     return;
+        // }
+        int m = grid.length;
+        int n = grid[0].length;
+        visited[i][j] = true;
+        Queue<Integer> queue = new LinkedList<>();
+        int idx = i * n + j;
+        queue.offer(idx);
+        
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
+            int x = cur / n;
+            int y = cur % n;
+
+            if (x + 1 < m && grid[x + 1][y] == '1' && !visited[x + 1][y]) {
+                visited[x + 1][y] = true;
+                queue.offer((x + 1) * n + y);
+            }
+            if (x - 1 >= 0 && grid[x - 1][y] == '1' && !visited[x - 1][y]) {
+                visited[x - 1][y] = true;
+                queue.offer((x - 1) * n + y);
+            }
+            if (y + 1 < n && grid[x][y + 1] == '1' && !visited[x][y + 1]) {
+                visited[x][y + 1] = true;
+                queue.offer(x * n + y + 1);
+            }
+            if (y - 1 >= 0 && grid[x][y - 1] == '1' && !visited[x][y - 1]) {
+                visited[x][y - 1] = true;
+                queue.offer(x * n + y - 1);
+            }
+        }
     }
 }
