@@ -2,6 +2,9 @@
 // the solution is simply the larger of two cases with consecutive houses, i.e. house i not robbed,
 // break the circle, solve it, or house i + 1 not robbed. Hence, the following solution.
 // I chose i = n and i + 1 = 0 for simpler coding. But, you can choose whichever two consecutive ones.
+
+// 1. need to break the circle
+// 2. can break it at any point, and run the rob helper
 class Solution {
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) {
