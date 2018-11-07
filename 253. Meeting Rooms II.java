@@ -8,6 +8,32 @@
  * }
  */
 
+// best
+class Solution {
+    public int minMeetingRooms(Interval[] intervals) {
+        Arrays.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval a, Interval b) {
+                return a.start - b.start;
+            }
+        });
+        
+        int count = 0;
+        // pq里放的是还没开完的会议的结束时间，结果是pq的size的最大值
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        for (int i = 0; i < intervals.length; i++) {
+            //some meeting has already ended before the start of the next meeting, poll those meetings out
+            while (!pq.isEmpty() && intervals[i].start >= pq.peek()) {
+                pq.poll();
+            }
+            pq.offer(intervals[i].end);
+            count = Math.max(count, pq.size());
+        }
+        return count;
+    }
+}
+
 // 最差O(n^2)
 class Solution {
     public int minMeetingRooms(Interval[] intervals) {
