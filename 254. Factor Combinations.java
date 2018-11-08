@@ -1,50 +1,48 @@
+// 1. basic backtrack solution, exactly the same as combination sum.
 class Solution {
     public List<List<Integer>> getFactors(int n) {
-        List<List<Integer>> result = new ArrayList<>();
-        helper(result, new ArrayList<>(), n, -1);
-        return result;
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack(res, new ArrayList<Integer>(), n, 2);
+        return res;
     }
     
-    private void helper(List<List<Integer>> result, List<Integer> list, int n, int lastNum) {
-        if (lastNum != -1) {
-            list.add(n);
-            result.add(new ArrayList<>(list));
-            list.remove(list.size() - 1);
+    private void backtrack(List<List<Integer>> res, List<Integer> temp, int n, int start) {
+        if (n == 1 && temp.size() > 1) {
+            res.add(new ArrayList<Integer>(temp));
+            return;
         }
-        
-        int max = (int)Math.sqrt(n);
-        
-        for (int i = max; i >= lastNum && i > 1; i--) {
+        for (int i = start; i <= n; i++) {
             if (n % i == 0) {
-                list.add(i);
-                helper(result, list, n / i, i);
-                list.remove(list.size() - 1);
+                temp.add(i);
+                backtrack(res, temp, n / i, i);
+                temp.remove(temp.size() - 1);
             }
         }
     }
 }
 
-public class Solution {
-public List<List<Integer>> getFactors(int n) {
-    List<List<Integer>> res = new ArrayList<>();
-    backTrack(res, new ArrayList<Integer>(), 2, n);
-    return res;
-}
-
-public void backTrack(List<List<Integer>> res, List<Integer> cur, int start, int n) {
-    int upper = (int)Math.sqrt(n);
-    for(int i = start; i <= upper; i++) {
-        int factor = -1;
-        if(n % i == 0) {
-            factor = n/i;
+// reduce for loop by add upper bound for i, if i > upper, i = n directly.
+class Solution {
+    public List<List<Integer>> getFactors(int n) {
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack(res, new ArrayList<Integer>(), n, 2, (int)Math.sqrt(n));
+        return res;
+    }
+    
+    private void backtrack(List<List<Integer>> res, List<Integer> temp, int n, int start, int upper) {
+        if (n == 1 && temp.size() > 1) {
+            res.add(new ArrayList<Integer>(temp));
+            return;
         }
-        if(factor != -1 && factor >= i) {
-            cur.add(i);
-            cur.add(factor);
-            res.add(new ArrayList<Integer>(cur));
-            cur.remove(cur.size()-1);
-            backTrack(res, cur, i, factor);
-            cur.remove(cur.size()-1);
+        for (int i = start; i <= n; i++) {
+            if (i > upper) {
+                i = n;
+            }
+            if (n % i == 0) {
+                temp.add(i);
+                backtrack(res, temp, n / i, i, (int)Math.sqrt(n / i));
+                temp.remove(temp.size() - 1);
+            }
         }
     }
 }
