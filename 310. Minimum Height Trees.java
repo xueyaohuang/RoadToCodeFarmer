@@ -44,3 +44,4 @@ class Solution {
         return leaves;
     }
 }
+// Longest path in an undirected tree: https://www.geeksforgeeks.org/longest-path-undirected-tree/
