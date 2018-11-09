@@ -64,6 +64,8 @@ before i do this, the problem is: recommendation machine learning algorithms, lo
 simplify this feature engineering process, use collaborative filtering, only need user/item interactive data  
 e.g. rating, click history, buy history, try on history)
 
+conducted A/B testing for the recommender system and got 7% higher buy rate compared to the control group
+
 数据处理：  
 1. user data logs store in hadoop file systems  
 2. build the data processing pipeline using pyspark sql, cache the data as spark dataframe  
