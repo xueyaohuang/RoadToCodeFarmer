@@ -23,7 +23,8 @@ class Solution {
             // c是operator
             // 注意检查i == len - 1，最后的时候也要清算
             if (i == len - 1 || (c != ' ' && !Character.isDigit(c))) {
-                if (sign == '+') {
+                // 看的是之前记录的符号
+                if (sign == '+') { 
                     stack.push(num);
                 } else if (sign == '-') {
                     stack.push(-num);
