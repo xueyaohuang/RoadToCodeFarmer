@@ -11,45 +11,34 @@ class Solution {
     public boolean checkEqualTree(TreeNode root) {
         if (root == null) {
             return false;
-        }    
-        boolean[] ret = new boolean[1];
+        }
         int sum = getSum(root);
         if (sum % 2 != 0) {
             return false;
         }
-        
-        helper(root, ret, sum/2, root);
-        return ret[0];
+        boolean[] canEqualSplit = new boolean[1];
+        checkEqualTreeHelper(root.left, sum / 2, canEqualSplit);
+        checkEqualTreeHelper(root.right, sum / 2, canEqualSplit);
+        return canEqualSplit[0];
     }
-    private int getSum (TreeNode root) {
+    
+    private int checkEqualTreeHelper(TreeNode root, int target, boolean[] canEqualSplit) {
         if (root == null) {
             return 0;
         }
-        
-        int left = getSum(root.left);
-        int right = getSum(root.right);
-        
-        return left+right+root.val;
-        
-    } 
-        
-    private int helper(TreeNode root, boolean[] ret, int target, TreeNode myRoot) {
+        int left = checkEqualTreeHelper(root.left, target, canEqualSplit);
+        int right = checkEqualTreeHelper(root.right, target, canEqualSplit);
+        int sum = root.val + left + right;
+        if (sum == target) {
+            canEqualSplit[0] = true;
+        }
+        return sum;
+    }
+    
+    private int getSum(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        
-        if (ret[0] == true) {
-            return 0;
-        }
-        
-        int sumLeft = helper(root.left, ret, target, myRoot);
-        int sumRight = helper(root.right, ret, target, myRoot);
-        
-        if (root.val + sumRight + sumLeft == target && root != myRoot) {
-            ret[0] = true;
-        }
-
-        
-        return (root.val + sumLeft + sumRight);
-    } 
+        return root.val + getSum(root.left) + getSum(root.right);
+    }
 }
