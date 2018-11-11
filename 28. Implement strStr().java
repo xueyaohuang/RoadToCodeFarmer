@@ -36,7 +36,6 @@ class Solution {
         return j == needle.length() ? i - j : -1;
     }
     
-    
     private int[] buildPrefixArray(String s) {
         int len = s.length();
         int[] preSuffix = new int[len];
