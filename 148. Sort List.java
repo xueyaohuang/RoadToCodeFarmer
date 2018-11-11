@@ -17,6 +17,9 @@ class Solution {
         ListNode left = sortList(head);
         return merge(left, right);
     }
+    
+    // 实际上是找到正中间的前面一个node，因为上面的right是mid后面一个
+    // 我想让right是正中间，所以这里找的是mid前面一个
     private ListNode findMiddle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head.next;
@@ -26,6 +29,7 @@ class Solution {
         }
         return slow;
     }
+    
     private ListNode merge(ListNode head1, ListNode head2) {
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
