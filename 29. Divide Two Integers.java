@@ -10,9 +10,9 @@ class Solution {
         while (dvd >= dvs) {
             long temp = dvs;
             long multiplier = 1;
-            while (temp * 2 <= dvd) {
-                temp *= 2;
-                multiplier *= 2;  
+            while ((temp << 1) <= dvd) {
+                temp <<= 1;
+                multiplier <<= 1;  
             }
             dvd -= temp;
             res += multiplier;
