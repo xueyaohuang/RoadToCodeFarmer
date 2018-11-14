@@ -71,3 +71,28 @@ class Solution {
         return res;
     }
 }
+
+// naive nlg(n)
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int res = 1, cur = 1;
+        int len = nums.length;
+        for (int i = 1; i < len; i++) {
+            if (nums[i] == nums[i - 1]) {
+                continue;
+            }
+            if (nums[i] == nums[i - 1] + 1) {
+                cur++;
+            } else {
+                res = Math.max(res, cur);
+                cur = 1;
+            }
+        }
+        res = Math.max(res, cur);
+        return res;
+    }
+}
