@@ -71,6 +71,7 @@ class Solution {
             pq.offer(new int[]{matrix[0][j], 0, j});
         }
         
+        // poll k-1个最小的，最后peek一下就是第k小的
         for (int i = 0; i < k - 1; i++) {
             int[] cur = pq.poll();
             if (cur[1] != m - 1) {
