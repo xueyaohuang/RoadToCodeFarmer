@@ -21,6 +21,7 @@ class Solution {
     public int[] shuffle() {
         int[] shu = sol.clone();
         for (int i = 0; i < shu.length; i++) {// i可以从前往后，也可以从后往前
+            // Math.random() returns a pseudorandom double greater than or equal to 0.0 and less than 1.0.
             int j = (int) (Math.random() * (i + 1));
             swap(shu, i, j);
         }
