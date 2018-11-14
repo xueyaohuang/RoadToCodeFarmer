@@ -11,16 +11,17 @@ class Solution {
         if (head == null || head.next == null || head.next.next == null) {
             return head;
         }
-        ListNode odd = head;
-        ListNode even = head.next;
-        ListNode evenHead = head.next;
-        while (even != null && even.next != null) {
-            odd.next = odd.next.next;
+        ListNode even = head;
+        ListNode odd = head.next;
+        ListNode oddNode = odd;
+        while (odd != null && odd.next != null) {
             even.next = even.next.next;
-            odd = odd.next;            
+            odd.next = odd.next.next;
             even = even.next;
+            odd = odd.next;  
         }
-        odd.next = evenHead;
-        return head;       
+        even.next = oddNode;
+        return head;
+        
     }
 }
