@@ -11,7 +11,8 @@ class Solution {
         int len = s.length(), idx = 0;
         
         while (idx < len) {
-            if (s.charAt(idx) >= '0' && s.charAt(idx) <= '9') {
+            char c = s.charAt(idx);
+            if (c >= '0' && c <= '9') {
                 int num = 0;
                 while (idx < len && s.charAt(idx) >= '0' && s.charAt(idx) <= '9') {
                     num *= 10;
@@ -19,19 +20,19 @@ class Solution {
                     idx++;
                 }
                 res += sign * num;
-            } else if (s.charAt(idx) == '+') {
+            } else if (c == '+') {
                 sign = 1;
                 idx++;
-            } else if (s.charAt(idx) == '-') {
+            } else if (c == '-') {
                 sign = -1;
                 idx++;
-            } else if (s.charAt(idx) == '(') {
+            } else if (c == '(') {
                 stack.push(res);
                 stack.push(sign);
                 res = 0;
                 sign = 1;
                 idx++;
-            } else if (s.charAt(idx) == ')') {
+            } else if (c == ')') {
                 res = res * stack.pop() + stack.pop();
                 idx++;
             } else {
