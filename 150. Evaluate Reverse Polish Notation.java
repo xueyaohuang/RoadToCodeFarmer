@@ -7,30 +7,59 @@ class Solution {
             return 0;
         }
         Deque<Integer> stack = new ArrayDeque<>();
-        
         for (String s : tokens) {
             if (s.equals("+")) {
-                int num1 = stack.pop();
-                int num2 = stack.pop();
-                stack.push(num1 + num2);
+                stack.push(stack.pop() + stack.pop());
             } else if (s.equals("-")) {
-                int num1 = stack.pop();
-                int num2 = stack.pop();
-                stack.push(num2 - num1);
+                stack.push(-stack.pop() + stack.pop());
             } else if (s.equals("*")) {
-                int num1 = stack.pop();
-                int num2 = stack.pop();
-                stack.push(num1 * num2);
+                stack.push(stack.pop() * stack.pop());
             } else if (s.equals("/")) {
                 int num1 = stack.pop();
                 int num2 = stack.pop();
                 stack.push(num2 / num1);
             } else {
-                int num = Integer.parseInt(s);
-                stack.push(num);
+                stack.push(Integer.valueOf(s));
             }
         }
-        
         return stack.peek();
+    }
+}
+
+class Solution {
+    public int evalRPN(String[] tokens) {
+        if (tokens == null || tokens.length == 0) {
+            return 0;
+        }
+        // 用int array mimic stack，stack里面只放数字，数字有tokens.length / 2 + 1个
+        // 符号有tokens.length / 2 个
+        // jvm 的virtual machine level language 就是这样实现的
+        int[] stack = new int[tokens.length / 2 + 1];
+        int idx = 0;
+        for (String s : tokens) {
+            switch (s) {
+                case "+" :
+                    stack[idx - 2] = stack[idx - 2] + stack[idx - 1];
+                    idx--;
+                    break;
+                case "-" :
+                    stack[idx - 2] = stack[idx - 2] - stack[idx - 1];
+                    idx--;
+                    break;
+                case "*" :
+                    stack[idx - 2] = stack[idx - 2] * stack[idx - 1];
+                    idx--;
+                    break;
+                case "/" :
+                    stack[idx - 2] = stack[idx - 2] / stack[idx - 1];
+                    idx--;
+                    break;
+                default :
+                    stack[idx] = Integer.valueOf(s);
+                    idx++;
+                    break;
+            }
+        }
+        return stack[0];
     }
 }
