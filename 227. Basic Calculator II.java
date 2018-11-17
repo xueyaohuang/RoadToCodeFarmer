@@ -13,6 +13,8 @@ class Solution {
         Deque<Integer> stack = new ArrayDeque<>();
         
         for (int i = 0; i < len; i++) {
+            // 不能一上来就continue空格，因为最后一个char可能是空格，需要运算
+            
             char c = s.charAt(i);
             
             // 注意数字可能是多位
