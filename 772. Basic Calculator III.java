@@ -1,3 +1,64 @@
+// 只用一个stack，变成recursion
+// O(n^2)
+// 比如input是 ((((((((1 + 2)))))))), there are lots of redundant parentheses.
+// The recurrence would be T(n) = T(n-2) + O(n), so the time complexity is O(n^2).
+class Solution {
+    public int calculate(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int len = s.length();
+        int res = 0, num = 0;
+        char sign = '+';
+        Deque<Integer> stack = new ArrayDeque<>();
+        
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            
+            if (Character.isDigit(c)) {
+                num = num * 10 + c - '0';
+            }
+            
+            if (c == '(') {
+                int count = 0, start = i + 1;
+                while (i < len) {
+                    if (s.charAt(i) == '(') {
+                        count++;
+                    }
+                    if (s.charAt(i) == ')') {
+                        count--;
+                    }
+                    if (count == 0) {
+                        break;
+                    }
+                    i++;
+                }
+                num = calculate(s.substring(start, i));
+            }
+            
+            if (i == len - 1 || c == '+' || c == '-' || c == '*' || c == '/') {
+                if (sign == '+') {
+                    stack.push(num);
+                } else if (sign == '-') {
+                    stack.push(-num);
+                } else if (sign == '*') {
+                    stack.push(stack.pop() * num);
+                } else if (sign == '/') {
+                    stack.push(stack.pop() / num);
+                }
+                sign = c;
+                num = 0;
+            }
+        }
+        
+        for (int i : stack) {
+            res += i;
+        }
+        return res;
+    }
+}
+
+
 public int basicCalculatorIII(String s) {
     int l1 = 0, o1 = 1;
     int l2 = 1, o2 = 1;
