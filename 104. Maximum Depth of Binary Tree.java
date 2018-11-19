@@ -1,5 +1,3 @@
-### Level order traversal solution.
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -18,6 +16,7 @@ class Solution {
     }
 }
 
+// Level order traversal solution.
 class Solution {
     public int maxDepth(TreeNode root) {
         if (root == null) {
@@ -25,16 +24,16 @@ class Solution {
         }
         int depth = 0;
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
+        queue.offer(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            while (size-- > 0) {
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 if (node.left != null) {
-                    queue.add(node.left);
+                    queue.offer(node.left);
                 }
                 if (node.right != null) {
-                    queue.add(node.right);
+                    queue.offer(node.right);
                 }
             }
             depth++;
