@@ -1,3 +1,4 @@
+// 1.
 class DoublyLinkedNode {
     
     int key;
@@ -59,6 +60,7 @@ class LRUCache {
     private int count;
     private final int capacity;
     private DoublyLinkedList dl;
+    // key: key, value: DoublyLinkedNode whose key is the key of this map
     private Map<Integer, DoublyLinkedNode> map;
 
     public LRUCache(int capacity) {
@@ -97,6 +99,7 @@ class LRUCache {
     }
 }
 
+// 2.
 class LRUCache {
     
     Map<Integer, Integer> map;
@@ -122,6 +125,7 @@ class LRUCache {
         map.put(key, value);
     }
 }
+
 
 class LRUCache {
 
@@ -180,6 +184,9 @@ class LRUCache {
     }
 }
 
+
+
+// 3.
 class LRUCache {
     
     class DoubleLinkNode {
