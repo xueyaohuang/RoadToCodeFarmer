@@ -127,10 +127,6 @@ through the design of Resistive Switching Random Access Memory.
 talk about my Genomics Analysis Web Service proj, capstone proj of cloud computing course
 Developed a software as a service on amazon AWS. It's about genomics annotation application.  
 
-(utilized many aws tools: S3 and Glacier to store user files and annotated results, build user's profile database using DynamoDB  
-Inorder to decouple back-end services, I use Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker.  
-The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances on AWS.  
-)
 genomics annotation: a long sequence of gene(DNA) data, the application is used to annotate each segment of the gene(DNA) data. This piece of gene control the color of eye. 
 
 genomics annotator and web application.  
@@ -147,6 +143,11 @@ web app
 The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances on AWS.
 
 Implemented fast searching for user jobs with DynamoDB, stored user files using S3. If the annotation result is not downloaded for a long time, it will be archieved on aws glacier. When the user wants to download the result, we can take it back to s3 bucket.
+
+(utilized many aws tools: S3 and Glacier to store user files and annotated results, build user's profile database using DynamoDB  
+Inorder to decouple back-end services, I use Simple Notification Service (SNS) and Simple Queue Service (SQS) as a message broker.  
+The number of annotation requests may change over time, so I achieved auto scaling using Elastic Load Balance (ELB) and Cloud Watch, increase or decrease the number of instances on AWS.  
+)
 
 [message queue](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/Concepts/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.md)
 
