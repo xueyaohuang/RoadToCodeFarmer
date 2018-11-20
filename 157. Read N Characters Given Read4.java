@@ -8,14 +8,16 @@ public class Solution extends Reader4 {
      * @return    The number of characters read
      */
     public int read(char[] buf, int n) {
-        int idx = 0;
         int len = 0;
-        char[] temp = new char[4];
-        while (idx < n && (len = read4(temp)) > 0) {
-            for (int j = 0; j < len && idx < n;) {
-                buf[idx++] = temp[j++];
+        int curLen = 4;
+        while (len < n && curLen == 4) {
+            char[] curRead = new char[4];
+            curLen = read4(curRead);
+            for (int i = 0; i < curLen && len < n; i++) {
+                buf[len] = curRead[i];
+                len++;
             }
         }
-        return idx;
+        return len;
     }
 }
