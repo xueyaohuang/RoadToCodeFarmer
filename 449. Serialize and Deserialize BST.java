@@ -7,74 +7,105 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Codec {
 
+/*
+The main difference is as compact as possible.
+For BST, a simple pre-order or post-order traversal is enough to construct a BST tree. You might wonder why pre-order/post-order? why not in-order? See here for details https://stackoverflow.com/a/12880809/5684889
+*/
+
+public class Codec {
+    
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         if (root == null) {
-            return null;
+            return "";
         }
         StringBuilder sb = new StringBuilder();
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        sb.append(root.val).append('.');
-        
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            if (node.left != null) {
-                queue.offer(node.left);
-                sb.append(node.left.val).append('.');
-            } else {
-                sb.append('#').append('.');
-            }
-            
-            if (node.right != null) {
-                queue.offer(node.right);
-                sb.append(node.right.val).append('.');
-            } else {
-                sb.append('#').append('.');
-            }
-        }
-        
+        preorder(root, sb);
         sb.deleteCharAt(sb.length() - 1);
-        while (sb.charAt(sb.length() - 1) == '#') {
-            int size = sb.length();
-            sb.delete(size - 2, size);
-        }
         return sb.toString();
+    }
+    
+    private void preorder(TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            return;
+        }
+        sb.append(root.val).append(",");
+        preorder(root.left, sb);
+        preorder(root.right, sb);
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        if (data == null) {
+        if (data == null || data.length() == 0) {
+            return null;
+        }
+        String[] preorder = data.split(",");
+        return deserializeHelper(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE, new int[]{0});
+    }
+    
+    private TreeNode deserializeHelper(String[] preorder, int min, int max, int[] rootIdx) {
+        if (rootIdx[0] >= preorder.length) {
+            return null;
+        }
+        if (Integer.valueOf(preorder[rootIdx[0]]) <= min || Integer.valueOf(preorder[rootIdx[0]]) >= max) {
             return null;
         }
         
-        // You need to escape the dot if you want to split on a literal dot
-        String[] strs = data.split("\\.");
-        int len = strs.length;
-        Queue<TreeNode> queue = new LinkedList<>();
-        TreeNode root = new TreeNode(Integer.parseInt(strs[0]));
-        queue.offer(root);
-        int idx = 1;
+        TreeNode root = new TreeNode(Integer.valueOf(preorder[rootIdx[0]]));
+        rootIdx[0]++;
+        root.left = deserializeHelper(preorder, min, root.val, rootIdx);
+        root.right = deserializeHelper(preorder, root.val, max, rootIdx);
         
-        while (!queue.isEmpty() && idx < len) {
-            TreeNode node = queue.poll();
-            if (!strs[idx].equals("#")) {
-                node.left = new TreeNode(Integer.parseInt(strs[idx]));
-                queue.offer(node.left);
-            }
-            idx++;
-            if (idx >= len) {
-                break;
-            }
-            
-            if (!strs[idx].equals("#")) {
-                node.right = new TreeNode(Integer.parseInt(strs[idx]));
-                queue.offer(node.right);
-            }
-            idx++;
+        return root;
+    }
+}
+
+// 对preorder来说，恢复BST只需要上限max
+public class Codec {
+    
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        if (root == null) {
+            return "";
         }
+        StringBuilder sb = new StringBuilder();
+        preorder(root, sb);
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
+    
+    private void preorder(TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            return;
+        }
+        sb.append(root.val).append(",");
+        preorder(root.left, sb);
+        preorder(root.right, sb);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        if (data == null || data.length() == 0) {
+            return null;
+        }
+        String[] preorder = data.split(",");
+        return deserializeHelper(preorder, Integer.MAX_VALUE, new int[]{0});
+    }
+    
+    private TreeNode deserializeHelper(String[] preorder, int max, int[] rootIdx) {
+        if (rootIdx[0] >= preorder.length) {
+            return null;
+        }
+        if (Integer.valueOf(preorder[rootIdx[0]]) >= max) {
+            return null;
+        }
+        
+        TreeNode root = new TreeNode(Integer.valueOf(preorder[rootIdx[0]]));
+        rootIdx[0]++;
+        root.left = deserializeHelper(preorder, root.val, rootIdx);
+        root.right = deserializeHelper(preorder, max, rootIdx);
+        
         return root;
     }
 }
