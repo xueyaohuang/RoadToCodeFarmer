@@ -1,26 +1,17 @@
 // https://leetcode.com/problems/shortest-palindrome/solution/
 
-// brute force.
+// brute force. O(n^2)
 // 1. 找到从index 0 开始的s的一个最长的palindrome的substring
 // 2. 把s中剩下部分，reverse后，拼到s最开头
 class Solution {
     public String shortestPalindrome(String s) {
         int len = s.length();
-        String rvs = reverse(s);
+        String rvs = new StringBuilder(s).reverse().toString();
         for (int i = s.length(); i > 0; i--) {
             if (s.substring(0, i).equals(rvs.substring(len - i))) 
                 return new StringBuilder(s.substring(i)).reverse().append(s).toString();
         }
         return s;
-    }
-    
-    public String reverse(String s) {
-        StringBuilder sb = new StringBuilder();
-        int len = s.length();
-        for (int i = len - 1; i >= 0; i--) {
-            sb.append(s.charAt(i));
-        }
-        return sb.toString();
     }
 }
 
@@ -29,6 +20,7 @@ class Solution {
 // Each iteration of shortestPalindrome is linear in size of substring and the maximum number of recursive calls can be n/2 times as shown in the Intuition section.
 // Let the time complexity of the algorithm be T(n). Since, at the each step for the worst case, the string can be divide into 2 parts and we require only one part for further computation. 
 // Hence, the time complexity for the worst case can be represented as : T(n)=T(n-2)+O(n). So, T(n) = O(n) + O(n-2) + O(n-4) + ... + O(1), which is O(n^2)
+// worst case: aababababababa
 // https://leetcode.com/problems/shortest-palindrome/solution/
 // sol 2
 class Solution {
@@ -55,9 +47,9 @@ class Solution {
 
 // kmp
 // 思路还是  find the longest palindrome substring starts from 0
-// build a string: s + "#" + reverse(s), and run kmp on it
+// build a string: s + "|" + reverse(s), and run kmp on it
 // the last element of kmp PrefixArray will be our solution
-// We add "#" here to force the match in reverse(s) starts from its first index, 否则s和reverse s连起来可能构成palindrome，最后一个元素的值可能大于s的长度
+// We add "|" here to force the match in reverse(s) starts from its first index, 否则s和reverse s连起来可能构成palindrome，最后一个元素的值可能大于s的长度
 // ex. catacb # bcatac
 // kmp table:
 // c a t a c b # b c a t a c
@@ -71,7 +63,6 @@ class Solution {
         int len = table.length;
         StringBuilder addToFront = new StringBuilder(s.substring(table[len - 1]));
         return addToFront.reverse().append(s).toString();
-        
     }
     
     private int[] kmpTable(String s) {
