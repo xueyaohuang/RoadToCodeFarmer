@@ -1,10 +1,12 @@
+// brute force O(n^2) 暴利慢主要在于检查下一个的时候后，温度不比当前天的气温高
 // O(n)，每个index都被push进stack一次，pop一次
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
         if (temperatures == null || temperatures.length == 0) {
             return new int[0];
         }
-        Stack<Integer> stack = new Stack<>();
+        // stack中的元素是index, res[index]还没有找到比它气温高的那一天
+        Deque<Integer> stack = new ArrayDeque<>();
         int[] res = new int[temperatures.length];
         for (int i = 0; i < temperatures.length; i++) {
             while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
