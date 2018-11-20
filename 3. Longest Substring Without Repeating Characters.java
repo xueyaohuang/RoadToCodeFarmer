@@ -1,18 +1,19 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() < 2) {
-            return s.length();
+        if (s == null || s.length() == 0) {
+            return 0;
         }
-        int len = 0;
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        for (int i = 0, j = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))) {
-                j = Math.max(j, map.get(s.charAt(i)) + 1); // 需要Math.max, 比如abcbda，在两个a之间还有别的重复的character
+        int len = s.length(), start = 0, maxLen = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int end = 0; end < len; end++) {
+            char c = s.charAt(end);
+            if (map.containsKey(c)) {
+                start = Math.max(start, map.get(c) + 1); // 需要Math.max, 比如abcbda，在两个a之间还有别的重复的character
             }
-            len = Math.max(len, i - j + 1);
-            map.put(s.charAt(i), i);
+            maxLen = Math.max(maxLen, end - start + 1);
+            map.put(c, end);
         }
-        return len;
+        return maxLen;
     }
 }
 
