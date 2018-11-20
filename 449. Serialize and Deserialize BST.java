@@ -64,9 +64,7 @@ public class Codec {
 // 对preorder来说，恢复BST只需要上限max，下限min用不上
 // 对left子树来说，min永远是Integer.MIN_VALUE，显然用不上
 // 对right子树来说，由于是按照preorder的顺序恢复数，到右边时左边的已经建立好了，所以preorder[rootIdx[0]]) > root.val也是很显然的
-// 同理
-// 对right子树来说，由于是按照preorder的顺序恢复数，到右边时左边的已经建立好了，所以preorder[rootIdx[0]]) > root.val也是很显然的，只用
-// 对right子树来说，由于是按照preorder的顺序恢复数，到右边时左边的已经建立好了，所以preorder[rootIdx[0]]) > root.val也是很显然的
+// 同理只用postorder恢复树的话，只需要下限min，不需要上线max
 public class Codec {
     
     // Encodes a tree to a single string.
