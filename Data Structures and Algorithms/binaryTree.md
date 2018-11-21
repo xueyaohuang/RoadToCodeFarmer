@@ -187,8 +187,115 @@ class Solution {
         return res;
     }
 }
-
 ```
+
+__Morris Travseral__
+```
+class TreeNode { 
+    int val; 
+    TreeNode left;
+    TreeNode right; 
+  
+    public TreeNode(int val) { 
+        this.val = val; 
+        this.left = null;
+        this.right = null; 
+    }
+}
+  
+public class BinaryTree { 
+    /* Function to traverse binary tree without recursion and without stack */
+    // time O(n), space O(1)
+    public void inorderMorrisTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode prev = null; 
+ 
+        while (cur != null) { 
+            if (cur.left == null) { 
+                System.out.print(cur.val + " ");  // do something here, can be other things other than just print the node's value
+                cur = cur.right; 
+            } else { 
+                /* Find the inorder predecessor of current */
+                prev = cur.left; 
+                while (prev.right != null && prev.right != cur) {
+                    prev = prev.right;
+                }
+                /* Make current as right child of its inorder predecessor */
+                if (prev.right == null) { 
+                    prev.right = cur; 
+                    cur = cur.left; 
+                } else { /* Revert the changes made in if part to restore the original tree i.e., fix the right child of predecssor*/
+                    prev.right = null;  // recover the right pointer of this node to null
+                    System.out.print(cur.val + " ");  // do something here, can be other things other than just print the node's
+                    cur = cur.right; 
+                }
+            }
+        }
+    }
+    
+    public void preorderMorrisTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode cur = root;
+        TreeNode prev = null; 
+ 
+        while (cur != null) { 
+            if (cur.left == null) { 
+                System.out.print(cur.val + " "); // do something here, can be other things other than just print the node's
+                cur = cur.right; 
+            } else { 
+                /* Find the inorder predecessor of current */
+                prev = cur.left; 
+                while (prev.right != null && prev.right != cur) {
+                    prev = prev.right;
+                }
+                /* Make current as right child of its inorder predecessor */
+                if (prev.right == null) {
+                    // do something here, can be other things other than just print the node's
+                    System.out.print(cur.val + " "); // the only difference with inorder-traversal
+                    prev.right = cur; 
+                    cur = cur.left; 
+                } else { /* Revert the changes made in if part to restore the original tree i.e., fix the right child of predecssor*/
+                    prev.right = null;  // recover the right pointer of this node to null
+                    cur = cur.right; 
+                }
+            }
+        }
+    }
+  
+    public static void main(String args[]) { 
+        /* Constructed binary tree is 
+               1 
+             /   \ 
+            2      3 
+          /  \ 
+        4     5 
+        */
+        BinaryTree tree = new BinaryTree();
+        
+        TreeNode root = new TreeNode(1); 
+        TreeNode n2 = new TreeNode(2);
+        TreeNode n3 = new TreeNode(3); 
+        TreeNode n4 = new TreeNode(4); 
+        TreeNode n5 = new TreeNode(5); 
+        
+        
+        root.left = n2; 
+        root.right = n3; 
+        n2.left = n4; 
+        n2.right = n5; 
+  
+        tree.inorderMorrisTraversal(root);
+        System.out.println();
+        tree.preorderMorrisTraversal(root);
+    } 
+} 
+```
+
 5. __BST__ 使用中序遍历可得到有序数组，这是二叉查找树的又一个重要特征。
 BST的search，insert，delete。
 ```
