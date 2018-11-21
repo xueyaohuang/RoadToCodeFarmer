@@ -233,6 +233,47 @@ public class Solution {
 // 方法2：求出两个链表的长度，长的链表先走一段，使两个链表的头对齐。然后开始一起往前走，知道相等的时候停下返回。
 ```
 
+* merge two sorted list
+```
+private ListNode merge(ListNode head1, ListNode head2) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        while (head1 != null && head2 != null) {
+            if (head1.val < head2.val) {
+                tail.next = head1;
+                head1 = head1.next;
+            } else {
+                tail.next = head2;
+                head2 = head2.next;
+            }
+            tail = tail.next;
+        }
+        if (head1 != null) {
+            tail.next = head1;
+        } else {
+            tail.next = head2;
+        }
+        return dummy.next;
+    }
+    
+    // recursice way of merge two sorted list
+    private ListNode merge(ListNode l1, ListNode l2){
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        if (l1.val < l2.val) {
+            l1.next = merge(l1.next, l2);
+            return l1;
+        } else{
+            l2.next = merge(l2.next,l1);
+            return l2;
+        }
+    }
+```
+
 * 当链表的 head 有可能变化（被修改或者被删除）时，使用 dummy node ，最终返回 dummy.next 即新的链表。
 
 * fast，slow快慢指针。在单链表中让快指针每次向前移动2，慢指针则每次向前移动1，快慢两个指针都从链表头开始遍历。快慢指针在链表相关问题中主要有两个应用：
