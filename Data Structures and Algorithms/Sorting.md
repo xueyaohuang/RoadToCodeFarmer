@@ -157,6 +157,44 @@ public class QuickSort {
 
 ```
 
+### bubble sort
+```
+import java.util.*;
+public class MyClass {
+    
+    public static void bubbleSort(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return;
+        }
+        int len = nums.length;
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = 0; j < len - 1 - i; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    swap(nums, j, j + 1);
+                }
+            }
+            
+        }
+    }
+    
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    
+    public static void main(String args[]) {
+        int[] nums = {64, 34, 25, 12, 22, 11, 90};
+        System.out.println(Arrays.toString(nums));
+        
+        bubbleSort(nums);
+        
+
+        System.out.println(Arrays.toString(nums));
+    }
+}
+```
+
 ### insertion sort
 ```
 import java.util.*;
