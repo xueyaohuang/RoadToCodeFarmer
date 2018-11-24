@@ -1,22 +1,23 @@
-// trie vs hashset 
-// [1](https://stackoverflow.com/questions/245878/how-do-i-choose-between-a-hash-table-and-a-trie-prefix-tree)  
-// https://www.geeksforgeeks.org/advantages-trie-data-structure/  
-// https://www.geeksforgeeks.org/trie-insert-and-search/  
-// https://www.geeksforgeeks.org/ternary-search-tree/  
+// trie vs hashset  
+// [trie vs hashset](https://stackoverflow.com/questions/245878/how-do-i-choose-between-a-hash-table-and-a-trie-prefix-tree)  
+// [advantages of trie](https://www.geeksforgeeks.org/advantages-trie-data-structure/)   
+// [trie](https://www.geeksforgeeks.org/trie-insert-and-search/)    
+// [ternary search tree](https://www.geeksforgeeks.org/ternary-search-tree/)  
 
 ```
 public class Trie {
 
     private class TrieNode {
         Map<Character, TrieNode> children;
-        boolean endOfWord;
+        boolean isWord;
         public TrieNode() {
             children = new HashMap<>();
-            endOfWord = false;
+            isWord = false;
         }
     }
 
     private final TrieNode root;
+    
     public Trie() {
         root = new TrieNode();
     }
@@ -36,7 +37,7 @@ public class Trie {
             current = node;
         }
         //mark the current nodes endOfWord as true
-        current.endOfWord = true;
+        current.isWord = true;
     }
 
     /**
@@ -79,7 +80,7 @@ public class Trie {
             current = node;
         }
         //return true of current's endOfWord is true else return false.
-        return current.endOfWord;
+        return current.isWord;
     }
 
     /**
@@ -106,19 +107,20 @@ public class Trie {
      * Delete word from trie.
      */
     public void delete(String word) {
-        delete(root, word, 0);
+        deleteHelper(root, word, 0);
     }
 
     /**
      * Returns true if parent should delete the mapping
      */
-    private boolean delete(TrieNode current, String word, int index) {
+    private boolean deleteHelper(TrieNode current, String word, int index) {
         if (index == word.length()) {
             //when end of word is reached only delete if currrent.endOfWord is true.
-            if (!current.endOfWord) {
+            if (!current.isWord) {
                 return false;
             }
-            current.endOfWord = false;
+            // delete this word by setting current.isWord to false
+            current.isWord = false;
             //if current has no other mapping then return true
             return current.children.size() == 0;
         }
