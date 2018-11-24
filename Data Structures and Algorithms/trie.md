@@ -1,8 +1,8 @@
 // trie vs hashset 
-// https://stackoverflow.com/questions/245878/how-do-i-choose-between-a-hash-table-and-a-trie-prefix-tree
-// https://www.geeksforgeeks.org/advantages-trie-data-structure/
-// https://www.geeksforgeeks.org/trie-insert-and-search/
-// https://www.geeksforgeeks.org/ternary-search-tree/
+// [1](https://stackoverflow.com/questions/245878/how-do-i-choose-between-a-hash-table-and-a-trie-prefix-tree)  
+// https://www.geeksforgeeks.org/advantages-trie-data-structure/  
+// https://www.geeksforgeeks.org/trie-insert-and-search/  
+// https://www.geeksforgeeks.org/ternary-search-tree/  
 
 ```
 public class Trie {
