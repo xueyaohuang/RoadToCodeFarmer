@@ -43,6 +43,8 @@ class Solution {
         return reverse == original || reverse / 10 == original;
     }
 }
+
+// 观察pattern
 class Solution {
     public String nearestPalindromic(String n) {
         int len = n.length() / 2;
