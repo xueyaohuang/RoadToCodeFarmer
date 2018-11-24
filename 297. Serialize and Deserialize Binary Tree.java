@@ -107,6 +107,7 @@ public class Codec {
             return null;
         }
         Queue<String> queue = new LinkedList<>();
+        // Queue<String> queue = new LinkedList<>(Arrays.asList(nodes));
         queue.addAll(Arrays.asList(data.split(",")));
         return deserializeHelper(queue);
     }
