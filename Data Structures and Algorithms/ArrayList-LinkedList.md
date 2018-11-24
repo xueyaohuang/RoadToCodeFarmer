@@ -167,6 +167,20 @@ public int getLength(ListNode head) {
  }
 ```
 
+```
+ public ListNode findMiddle(ListNode head) {
+     ListNode slow = head;
+     ListNode fast = head;
+     while (fast != null && fast.next != null) {
+         slow = slow.next;
+         fast = fast.next.next;
+     }
+     return slow;
+ }
+```
+以上2中写法唯一的区别在于fast初始化时head还是head.next。这两种对于链表长度为奇数时是一样的。  
+对于链表长度是偶数，fast在head的情况下，结束时slow在后一半的第一个；fast在head.next的情况下，结束时slow在前一半第最后一个，可以想象fast在head的情况下，可能多跑一次才会停止while loop，所以slow也就往后一个了。
+
 * 链表判断是否有环
 ```
 public class Solution {
