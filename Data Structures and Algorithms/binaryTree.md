@@ -337,10 +337,6 @@ public class BinarySearchTree {
     // Iteratively way to search a key
     public TreeNode search(int key) {
         TreeNode cur = root;
-        if (cur == null || cur.val == key) {
-            return cur;
-        }
-        
         while (cur != null) {
             if (cur.val == key) {
                 return cur;
@@ -353,11 +349,12 @@ public class BinarySearchTree {
         return cur; 
     }
     
+    // A recursive function to insert a new key in BST
     public void insert(int key) { 
-       this.root = insertIntoBST(root, key); 
-    } 
+      this.root = insertIntoBST(root, key); 
+    }
       
-    /* A recursive function to insert a new key in BST */
+    // 不插重复值
     private TreeNode insertIntoBST(TreeNode root, int val) {
         if (root == null) {
             return new TreeNode(val);
@@ -369,6 +366,62 @@ public class BinarySearchTree {
             root.left = insertIntoBST(root.left, val);
         }
         return root;
+    }
+    
+    // iteratively way to insert不插重复值
+    public void insert(int key) {
+        if (root == null) {
+            root = new TreeNode(key);
+            return;
+        }
+        TreeNode cur = root;
+        while (cur != null) {
+            if (cur.val > key) {
+                if (cur.left == null) {
+                    cur.left = new TreeNode(key);
+                    return;
+                } else {
+                    cur = cur.left;
+                }
+            } else if (cur.val < key) {
+                if (cur.right == null) {
+                    cur.right = new TreeNode(key);
+                    return;
+                } else {
+                    cur = cur.right;
+                }
+            } else {
+                return;
+            }
+        }
+    }
+    
+    // iteratively way to insert不插重复值
+    public boolean insert(int key) {
+        if (root == null) {
+            root = new TreeNode(key);
+            return true;
+        }
+        TreeNode cur = root;
+        while (cur != null) {
+            if (cur.val > key) {
+                if (cur.left == null) {
+                    cur.left = new TreeNode(key);
+                    return true;
+                } else {
+                    cur = cur.left;
+                }
+            } else if (cur.val < key) {
+                if (cur.right == null) {
+                    cur.right = new TreeNode(key);
+                    return true;
+                } else {
+                    cur = cur.right;
+                }
+            } else {
+                return false;
+            }
+        }
     }
     
     public void deleteKey(int key) { 
@@ -435,14 +488,14 @@ public class BinarySearchTree {
         tree.insert(60); 
         tree.insert(80); 
   
-        // System.out.println("Inorder traversal of the given tree"); 
-        // printTree(tree.root);
+        System.out.println("Inorder traversal of the given tree"); 
+        printTree(tree.root);
         
-        TreeNode node1 = tree.search(tree.root, 80);
-        System.out.println(node1.val);
-        TreeNode node2 = tree.search(80);
-        System.out.println(node2.val);
-        System.out.println(tree.root.val);
+        // TreeNode node1 = tree.search(tree.root, 80);
+        // System.out.println(node1.val);
+        // TreeNode node2 = tree.search(80);
+        // System.out.println(node2.val);
+        // System.out.println(tree.root.val);
   
         // System.out.println("\nDelete 20"); 
         // tree.deleteKey(20); 
