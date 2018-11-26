@@ -9,6 +9,7 @@ class MedianFinder {
         this.largerHalf = new PriorityQueue<>();
     }
     
+    // 为了保证largerHalf的最小比smallerHalf的最大还大，num要先进smallerHalf，再poll出来放进largerHalf
     public void addNum(int num) {
         smallerHalf.add(num);
         largerHalf.add(smallerHalf.poll());
