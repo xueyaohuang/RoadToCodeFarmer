@@ -55,7 +55,7 @@ why not spark, b/c spark doesn't has that built-in algorithm (xgboost)
 NetEase Games department in user experience team 
 The team is responsible for building recommender systems and data mining works.
 
-recommender systems for game store (Terminator 2: Judgment Day, adapted from the movie, (starred by Arnold Alois Schwarzenegger))
+During my internship, I rebuilt a recommender systems for game store (Terminator 2: Judgment Day, adapted from the movie, (starred by Arnold Alois Schwarzenegger))
 mall, clothes, Champion, skin, decoration, game props  
 so my recommender systems is to give the most likely  items that a user may purchaesd, maximize the profit.
 
