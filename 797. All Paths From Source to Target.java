@@ -2,6 +2,7 @@ class Solution {
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
+        // 0是确定在结果里的，所以一开始就加进去，不需要backtracking的过程中加
         temp.add(0);
         backtrack(graph, res, temp, 0);
         return res;
