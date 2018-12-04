@@ -21,3 +21,27 @@ class Solution {
         }
     }
 }
+
+// BFS
+class Solution {
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        int n = graph.length - 1;
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<List<Integer>> queue = new LinkedList<>();
+        queue.offer(Arrays.asList(0));
+        
+        while (!queue.isEmpty()) {
+            List<Integer> cur = queue.poll();
+            int curNode = cur.get(cur.size() - 1);
+            if (curNode == n) {
+                res.add(cur);
+            }
+            for (int next : graph[curNode]) {
+                List<Integer> nextList = new ArrayList<>(cur);
+                nextList.add(next);
+                queue.offer(nextList);
+            }
+        }
+        return res;
+    }
+}
