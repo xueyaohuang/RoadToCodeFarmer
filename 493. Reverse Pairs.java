@@ -1,5 +1,5 @@
 class Solution {
-    // merge sort不是inplace，多益需要辅助array
+    // merge sort不是inplace，所以需要辅助array
     int[] temp;
     public int reversePairs(int[] nums) {
         int len = nums.length;
