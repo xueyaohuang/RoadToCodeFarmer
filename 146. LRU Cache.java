@@ -1,3 +1,90 @@
+// 0.
+class LRUCache {
+    
+    class DoublyListNode {
+        int key;
+        int val;
+        DoublyListNode prev;
+        DoublyListNode next;
+        
+        public DoublyListNode() {}
+        
+        public DoublyListNode(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+    
+    class DoublyLinkedList {
+        DoublyListNode head;
+        DoublyListNode tail;
+        
+        public DoublyLinkedList() {
+            head = new DoublyListNode();
+            tail = new DoublyListNode();
+            head.next = tail;
+            tail.prev = head;
+        }
+        
+        public void remove(DoublyListNode node) {
+            DoublyListNode prev = node.prev;
+            DoublyListNode next = node.next;
+            prev.next = next;
+            next.prev = prev;
+        }
+        
+        public void addToHead(DoublyListNode node) {
+            DoublyListNode next = head.next;
+            head.next = node;
+            node.prev = head;
+            node.next = next;
+            next.prev = node;
+        }
+        
+        public void moveToHead(DoublyListNode node) {
+            remove(node);
+            addToHead(node);
+        }
+    }
+    
+    private final int CAPACITY;
+    private Map<Integer, DoublyListNode> map;
+    private DoublyLinkedList dl;
+
+    public LRUCache(int capacity) {
+        this.CAPACITY = capacity;
+        this.map = new HashMap<>();
+        this.dl = new DoublyLinkedList();
+    }
+    
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            DoublyListNode node = map.get(key);
+            dl.moveToHead(node);
+            return node.val;
+        } else {
+            return -1;
+        }
+    }
+    
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            DoublyListNode node = map.get(key);
+            node.val = value;
+            dl.moveToHead(node);
+        } else {
+            DoublyListNode node = new DoublyListNode(key, value);
+            map.put(key, node);
+            dl.addToHead(node);
+            if (map.size() > CAPACITY) {
+                DoublyListNode nodeBeforeTail = dl.tail.prev;
+                dl.remove(nodeBeforeTail);
+                map.remove(nodeBeforeTail.key);
+            }
+        }
+    }
+}
+
 // 1.
 class DoublyLinkedNode {
     
