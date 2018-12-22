@@ -31,9 +31,9 @@ class Solution {
     }
     
     private Node constructHelper(int[][] grid, int rowStart, int rowEnd, int colStart, int colEnd) {
-        if (rowStart > rowEnd || colStart > colEnd) return null;
         Node node = new Node();
         int flag = grid[rowStart][colStart];
+        
         for (int i = rowStart; i <= rowEnd; i++) {
             for (int j = colStart; j <= colEnd; j++) {
                 if (flag != grid[i][j]) {
