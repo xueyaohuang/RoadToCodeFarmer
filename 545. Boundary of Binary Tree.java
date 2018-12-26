@@ -13,36 +13,25 @@ class Solution {
             return new ArrayList<>();
         }
         
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>(), left = new ArrayList<>(), right = new ArrayList<>(), leaves = new ArrayList<>();
         if (root.left == null && root.right == null) {
             res.add(root.val);
             return res;
         }
         
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right = new ArrayList<>();
-        List<Integer> leaves = new ArrayList<>();
-        
         left.add(root.val);
         if (root.left != null) {
             getLeftBoundary(root.left, left);
+            left.remove(left.size() - 1);
         }
         
-        right.add(root.val);
         if (root.right != null) {
             getRightBoundary(root.right, right);
+            right.remove(right.size() - 1);
         }
         
         getLeaves(root, leaves);
-        
-        if (root.left != null) {
-            left.remove(left.size() - 1);
-        }
-        if (root.right != null) {
-            right.remove(right.size() - 1);
-        }
         Collections.reverse(right);
-        right.remove(right.size() - 1);
         res.addAll(left);
         res.addAll(leaves);
         res.addAll(right);
@@ -79,6 +68,7 @@ class Solution {
         }
         if (root.left == null && root.right == null) {
             leaves.add(root.val);
+            return;
         }
         getLeaves(root.left, leaves);
         getLeaves(root.right, leaves);
