@@ -1,39 +1,42 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
         if (matrix == null || matrix.length == 0) {
-            return list;
+            return new ArrayList<>();
         }
-        int left = 0, right = 0, top = 0, bottom = 0, count = 0;
+        
+        List<Integer> res = new ArrayList<>();
         int m = matrix.length;
-        int n = matrix[0].length; 
-        while (count < m * n) {
-            for (int j = left; j < n - right; j++) {
-                list.add(matrix[top][j]);
+        int n = matrix[0].length;
+        int left = 0, right = n - 1, top = 0, down = m - 1;
+        int count = 0;
+        
+        while (res.size() < m * n) {
+            for (int j = left; j <= right; j++) {
+                res.add(matrix[top][j]);
+                count++;
             }
             top++;
-            count += n - right - left;
-            for (int i = top; i < m - bottom; i++) {
-                list.add(matrix[i][n - 1 - right]);
+            for (int i = top; i <= down; i++) {
+                res.add(matrix[i][right]);
+                count++;
             }
-            right++;
-            count += m - bottom - top;
-            if (top + bottom < m) {
-                for (int j = n - 1 - right; j >= left; j--) {
-                    list.add(matrix[m - 1 - bottom][j]);
+            right--;
+            if (res.size() < m * n) {
+                for (int j = right; j >= left; j--) {
+                    res.add(matrix[down][j]);
+                    count++;
                 }
-                bottom++;
-                count += n - right - left;
+                down--;
             }
-            if (left + right < n) {
-                for (int i = m -1 - bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
+            if (res.size() < m * n) {
+                for (int i = down; i >= top; i--) {
+                    res.add(matrix[i][left]);
+                    count++;
                 }
                 left++;
-                count += m - bottom - top;
             }
         }
-     return list;   
+        return res;   
     }
 }
 
