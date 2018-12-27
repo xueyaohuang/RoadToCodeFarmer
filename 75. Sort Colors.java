@@ -18,7 +18,7 @@ class Solution {
             } else if (nums[idx1] == 1) {
                 idx1++;
             } else {
-                swap(nums, idx1, idx2);
+                swap(nums, idx1, idx2); // 不知道nums[idx2]是什么，所以idx1不能++
                 idx2--;
             }
         }
