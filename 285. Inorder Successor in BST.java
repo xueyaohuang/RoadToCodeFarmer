@@ -61,7 +61,7 @@ class Solution {
 }
 
 /*
-Predecessor
+Inorder Predecessor
 
 public TreeNode predecessor(TreeNode root, TreeNode p) {
   if (root == null)
