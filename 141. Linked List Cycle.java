@@ -23,3 +23,13 @@ public class Solution {
         return false;
     }
 }
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        Set<ListNode> set = new HashSet<>();
+        while (head != null && set.add(head)) {
+            head = head.next;
+        }
+        return head != null;
+    }
+}
