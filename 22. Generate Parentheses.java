@@ -19,10 +19,30 @@ class Solution {
             backtracking(n, sb, res, open + 1, close);
             sb.deleteCharAt(sb.length() - 1);
         }
-        if (open > close && close < n) {
+        if (open > close) {
             sb.append(")");
             backtracking(n, sb, res, open, close + 1);
             sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+}
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<>();
+        backtracking(list, "", 0, 0, n);
+        return list;
+    }
+    private void backtracking(List list, String str, int open, int close, int max) {
+        if (close == max) {
+            list.add(str);
+            return;
+        }
+        if (open < max) {
+            backtracking(list, str + "(", open + 1, close, max);
+        }
+        if (close < open) {
+            backtracking(list, str + ")", open, close + 1, max);
         }
     }
 }
