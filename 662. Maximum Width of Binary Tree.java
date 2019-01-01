@@ -37,6 +37,31 @@ class Solution {
 }
 
 class Solution {
+    List<Integer> leftMost = new ArrayList<>();
+    int width = 0;
+    
+    public int widthOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        dfs(root, 0, 0);
+        return width;
+    }
+    
+    private void dfs(TreeNode root, int depth, int idx) {
+        if (root == null) {
+            return;
+        }
+        if (depth == leftMost.size()) {
+            leftMost.add(idx);
+        }
+        width = Math.max(width, idx - leftMost.get(depth) + 1);
+        dfs(root.left, depth + 1, idx * 2);
+        dfs(root.right, depth + 1, idx * 2 + 1);
+    }
+}
+
+class Solution {
     public int widthOfBinaryTree(TreeNode root) {
         if (root == null) {
             return 0;
@@ -56,6 +81,7 @@ class Solution {
         }
         int left = dfs(root.left, depth + 1, idx * 2, width, leftMost);
         int right = dfs(root.right, depth + 1, idx * 2 + 1, width, leftMost);
+        // idx - leftMost.get(depth) + 1 是当前level的宽度
         width = Math.max(Math.max(left, right), idx - leftMost.get(depth) + 1);
         return width;
     }
