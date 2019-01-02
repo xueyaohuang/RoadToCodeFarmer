@@ -8,30 +8,25 @@ class Solution {
         int m = matrix.length;
         int n = matrix[0].length;
         int left = 0, right = n - 1, top = 0, down = m - 1;
-        int count = 0;
         
         while (res.size() < m * n) {
             for (int j = left; j <= right; j++) {
                 res.add(matrix[top][j]);
-                count++;
             }
             top++;
             for (int i = top; i <= down; i++) {
                 res.add(matrix[i][right]);
-                count++;
             }
             right--;
             if (res.size() < m * n) {
                 for (int j = right; j >= left; j--) {
                     res.add(matrix[down][j]);
-                    count++;
                 }
                 down--;
             }
             if (res.size() < m * n) {
                 for (int i = down; i >= top; i--) {
                     res.add(matrix[i][left]);
-                    count++;
                 }
                 left++;
             }
