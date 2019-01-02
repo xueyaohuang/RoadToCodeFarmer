@@ -72,3 +72,84 @@ class Solution {
         return true;
     }
 }
+
+// invalid states:
+// 1. numx < numo || numx - numo > 1
+// 2. numx == numo && xwin
+// 3. numx > numo && owin
+// 4. xwin && owin
+class Solution {
+    public boolean validTicTacToe(String[] board) {
+        if (board == null || board.length == 0) {
+            return false;
+        }
+        int numx = 0, numo = 0;
+        boolean xwin = false, owin = false;
+        for (String row : board) {
+            int countx = 0, counto = 0;
+            for (int i = 0; i < 3; i++) {
+                if (row.charAt(i) == 'X') {
+                    countx++;a
+                } else if (row.charAt(i) == 'O') {
+                    counto++;
+                }
+            }
+            numx += countx;
+            numo += counto;
+            if (countx == 3) {
+                xwin = true;
+            }
+            if (counto == 3) {
+                owin = true;
+            }
+        }
+
+        if (!xwin) {
+            if (board[0].charAt(0) == 'X' && board[1].charAt(1) == 'X' && board[2].charAt(2) == 'X') {
+                xwin = true;
+            }
+            if (board[0].charAt(2) == 'X' && board[1].charAt(1) == 'X' && board[2].charAt(0) == 'X') {
+                xwin = true;
+            }
+        }
+        if (!owin) {
+            if (board[0].charAt(0) == 'O' && board[1].charAt(1) == 'O' && board[2].charAt(2) == 'O') {
+                owin = true;
+            }
+            if (board[0].charAt(2) == 'O' && board[1].charAt(1) == 'O' && board[2].charAt(0) == 'O') {
+                owin = true;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int countx = 0, counto = 0;
+            for (int j = 0; j < 3; j++) {
+                if (board[j].charAt(i) == 'X') {
+                    countx++;
+                } else if (board[j].charAt(i) == 'O') {
+                    counto++;
+                }
+            }
+            if (countx == 3) {
+                xwin = true;
+            }
+            if (counto == 3) {
+                owin = true;
+            }
+        }
+        if (numx < numo || numx - numo > 1) {
+            return false;
+        }
+        if (numx == numo && xwin) {
+            return false;
+        }
+        if (numx > numo && owin) {
+            return false;
+        }
+        if (xwin && owin) {
+            return false;
+        }
+
+        return true;
+    }
+}
