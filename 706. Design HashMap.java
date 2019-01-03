@@ -78,11 +78,8 @@ class MyHashMap {
         ListNode dummy = map[idx];
         ListNode prev = findPrev(dummy, key);
         // no such key
-        if (prev.next == null) {
-            return;
-        } else {
+        if (prev.next != null) {
             prev.next = prev.next.next;
-            return;
         }
     }
     
