@@ -295,3 +295,49 @@ public class HeapSort {
     } 
 }
 ```
+### counting sort
+```
+import java.util.*;
+
+public class CountingSort {
+    public static int[] countingSort(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return nums;
+        }
+        
+        int len = nums.length;
+        int[] res = new int[len];
+        int max = nums[0], min = nums[0];
+        
+        for (int num : nums) {
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+        }
+        
+        int[] count = new int[max - min + 1];
+        
+        for (int num : nums) {
+            count[num - min]++;
+        }
+        
+        for (int i = 1; i < count.length; i++) {
+            count[i] += count[i - 1];
+        }
+        
+        for (int i = 0; i < len; i++) {
+            int idx = --count[nums[i] - min]; // array 是0index
+            res[idx] = nums[i];
+        }
+        
+        return res;
+    }
+    
+    public static void main(String args[]) {
+        int[] unsorted = {9,8,-7,6,5,-4,3,-2,1,1,-1};
+        System.out.println("Before: " + Arrays.toString(unsorted));
+ 
+        int[] sorted = countingSort(unsorted);
+        System.out.println("After:  " + Arrays.toString(sorted));
+    }
+}
+```
