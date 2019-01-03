@@ -1,3 +1,24 @@
+// use extra space
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return new ArrayList<>();
+        }
+        List<Integer> res = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        int n = nums.length / 3;
+        for (int key : map.keySet()) {
+            if (map.get(key) > n) {
+                res.add(key);
+            }
+        }
+        return res;
+    }
+}
+
 /*
 思路：摩尔投票升级版，超过n/3的数最多只能有两个；
 先选出两个候选人A,B,遍历数组，如果投A（等于A），则A的票数++;如果投B，B的票数++；
