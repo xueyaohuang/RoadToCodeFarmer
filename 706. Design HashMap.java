@@ -27,12 +27,12 @@ class MyHashMap {
 class MyHashMap {
     
     // hashing, use linked list to avoid collision. 模拟真实HashMap
-    ListNode[] map;
-    int size = 500;
+    private ListNode[] map;
+    private final int SIZE = 500;
 
     /** Initialize your data structure here. */
     public MyHashMap() {
-        map = new ListNode[size];
+        map = new ListNode[SIZE];
     }
     
     /** value will always be non-negative. */
@@ -106,6 +106,14 @@ class MyHashMap {
         }
     }
 }
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */
 
 /**
  * Your MyHashMap object will be instantiated and called as such:
