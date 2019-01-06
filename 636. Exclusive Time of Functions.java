@@ -19,8 +19,7 @@ class Solution {
                 stack.push(id);
                 prevTime = time;
             } else {
-                res[stack.peek()] += time - prevTime + 1;
-                stack.pop();
+                res[stack.pop()] += time - prevTime + 1;
                 prevTime = time + 1; // 巧妙之处
             }
         }
