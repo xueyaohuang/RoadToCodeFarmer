@@ -12,7 +12,13 @@ class Solution {
         if (intervals == null || intervals.size() == 0) {
             return new ArrayList<>();
         }
-        Collections.sort(intervals, (a, b) -> a.start - b.start);
+        Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval a, Interval b) {
+                return a.start - b.start;
+            }
+        });
+//         Collections.sort(intervals, (a, b) -> a.start - b.start);
         int len = intervals.size();
         List<Interval> res = new ArrayList<>();
         res.add(intervals.get(0));
