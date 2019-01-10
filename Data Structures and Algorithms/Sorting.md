@@ -23,10 +23,10 @@ public class MergeSort {
         int[] b = new int[lenb];
         
         for (int i = 0; i < lena; i++) {
-            a[i] = nums[l + i];
+            a[i] = nums[l + i]; // 容易错写成a[i] = nums[i];
         }
         for (int i = 0; i < lenb; i++) {
-            b[i] = nums[mid + 1 + i];
+            b[i] = nums[mid + 1 + i]; // 容易错写成b[i] = nums[mid + i];
         }
 
         /* Merge the temp arrays */
@@ -34,7 +34,7 @@ public class MergeSort {
         // Initial indexes of first and second subarrays 
         int i = 0, j = 0;
         // Initial index of merged subarry array 
-        int k = l;
+        int k = l; // 容易错写成k = 0
         
         while (i < lena && j < lenb) { 
             if (a[i] <= b[j]) { 
