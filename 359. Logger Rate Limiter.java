@@ -24,6 +24,14 @@ class Logger {
                 return true;
             }
         }
+        // another logtic
+//         if (map.containsKey(message)) {
+//             int last = map.get(message);
+//             if (timestamp - last < 10) 
+//                 return false;
+//         }
+//         map.put(message, timestamp);
+//         return true;
     }
 }
 
