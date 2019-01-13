@@ -1,5 +1,28 @@
 class MovingAverage {
     
+    Queue<Integer> queue; // window中element的位置一直在换，所以最好用queue存下window中的所有数
+    int size;
+    int sum;
+
+    /** Initialize your data structure here. */
+    public MovingAverage(int size) {
+        queue = new LinkedList<>();
+        sum = 0;
+        this.size = size;
+    }
+    
+    public double next(int val) {
+        if (queue.size() == size) {
+            sum -= queue.poll();
+        }
+        sum += val;
+        queue.add(val);
+        return ((double)sum) / queue.size();
+    }
+}
+
+class MovingAverage {
+    
     List<Integer> list;
     int left;
     int size;
@@ -22,29 +45,6 @@ class MovingAverage {
         }
         
         return ((double)sum) / Math.min(list.size(), size);
-    }
-}
-
-class MovingAverage {
-    
-    Queue<Integer> queue;
-    int size;
-    int sum;
-
-    /** Initialize your data structure here. */
-    public MovingAverage(int size) {
-        queue = new LinkedList<>();
-        sum = 0;
-        this.size = size;
-    }
-    
-    public double next(int val) {
-        if (queue.size() == size) {
-            sum -= queue.poll();
-        }
-        sum += val;
-        queue.add(val);
-        return ((double)sum) / queue.size();
     }
 }
 
