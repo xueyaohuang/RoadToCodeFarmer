@@ -36,7 +36,7 @@ class Solution {
         
         for (int i = rowStart; i <= rowEnd; i++) {
             for (int j = colStart; j <= colEnd; j++) {
-                if (flag != grid[i][j]) {
+                if (grid[i][j] != flag) {
                     int rowHalf = (rowStart + rowEnd) / 2;
                     int colHalf = (colStart + colEnd) / 2;
                     node.topLeft = constructHelper(grid, rowStart, rowHalf, colStart, colHalf);
