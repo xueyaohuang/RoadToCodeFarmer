@@ -41,12 +41,8 @@ class Solution {
             if (!map.containsKey(c)) {
                 stack.push(c);
             } else {
-                if (stack.isEmpty()) {
-                    return false; 
-                } else {
-                    if (stack.pop() != map.get(c)) {
-                        return false;
-                    }
+                if (stack.isEmpty() || stack.pop() != map.get(c)) {
+                    return false;
                 }
             }
         }
