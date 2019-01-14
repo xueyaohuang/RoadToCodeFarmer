@@ -44,18 +44,18 @@ class MinStack {
 
 class MinStack {
     
+    private Deque<Integer> stack;
     private int min;
-    private Stack<Integer> stack;
 
     /** initialize your data structure here. */
     public MinStack() {
+        stack = new ArrayDeque<>();
         min = Integer.MAX_VALUE;
-        stack = new Stack<>();
     }
     
     public void push(int x) {
         if (x <= min) {
-            stack.push(min);
+            stack.push(min); // 注意是把之前的min push进去
             min = x;
         }
         stack.push(x);
