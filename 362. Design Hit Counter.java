@@ -28,6 +28,8 @@ class HitCounter {
     }
 }
 
+// scale method, 循环数组
+// 组要是要把相同时间的hit聚在一起
 class HitCounter {
     
     int[] hit;
@@ -62,6 +64,52 @@ class HitCounter {
             }
         }
         return count;
+    }
+}
+
+// scale method
+class HitCounter {
+    
+    Deque<Time> queue;
+    int hit;
+
+    /** Initialize your data structure here. */
+    public HitCounter() {
+        queue = new ArrayDeque<>();
+        hit = 0;
+    }
+    
+    /** Record a hit.
+        @param timestamp - The current timestamp (in seconds granularity). */
+    public void hit(int timestamp) {
+        while (!queue.isEmpty() && timestamp - queue.peek().time >= 300) {
+            hit -= queue.poll().count;
+        }
+        if (!queue.isEmpty() && queue.peekLast().time == timestamp) {
+            queue.peekLast().count++;
+            hit++;
+        } else {
+            queue.offer(new Time(timestamp));
+            hit++;
+        }
+    }
+    
+    /** Return the number of hits in the past 5 minutes.
+        @param timestamp - The current timestamp (in seconds granularity). */
+    public int getHits(int timestamp) {
+        while (!queue.isEmpty() && timestamp - queue.peek().time >= 300) {
+            hit -= queue.poll().count;
+        }
+        return hit;
+    }
+}
+
+class Time {
+    int time;
+    int count;
+    public Time(int time) {
+        this.time = time;
+        this.count = 1;
     }
 }
 
