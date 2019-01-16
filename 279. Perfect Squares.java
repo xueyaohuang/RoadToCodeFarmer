@@ -4,8 +4,16 @@ class Solution {
         Arrays.fill(dp, n);
         dp[0] = 0;
         for (int i = 1; i <= n; i++) {
+            int sqrt = (int)Math.sqrt(i);
+            // If the number is already a perfect square,
+            // then dp[number] can be 1 directly. This is
+            // just a optimization for this DP solution.
+            if (sqrt * sqrt == i) {
+                dp[i] = 1;
+                continue;                
+            }
             for (int j = 1; j * j <= i; j++) {
-                dp[i] = Math.min(dp[i], dp[i - j* j] + 1);
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
             }
         }
         return dp[n];
