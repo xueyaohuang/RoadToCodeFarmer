@@ -50,7 +50,7 @@ class Solution {
     }
     
     private void floodFill(char[][] grid, int i, int j, boolean[][] visited) {
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0' || visited[i][j] == true) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0' || visited[i][j]) {
             return;
         }
         visited[i][j] = true;
@@ -154,7 +154,7 @@ class Solution {
     }
 }
 
-// if u can ot modify the grid, use a set to record which point is visited
+// if u can not modify the grid, use a set to record which point is visited
 // if the matrix is too large, dfs may cause stack overflow, use bfs. the size of the queue in bfs is at most as large as the diagonal
 // dfs space O(n^2), bfs space O(n)
 class Solution {
