@@ -56,6 +56,16 @@ class Solution {
 }
 
 // best O(k) + O(lgn)
+/*
+Assume we are taking A[i] ~ A[i + k -1].
+We can binary research i
+We compare the distance between x - A[mid] and A[mid + k] - x
+
+If x - A[mid] > A[mid + k] - x,
+it means A[mid + 1] ~ A[mid + k] is better than A[mid] ~ A[mid + k - 1],
+and we have mid smaller than the right i.
+So assign left = mid + 1.
+*/
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int len = arr.length;
