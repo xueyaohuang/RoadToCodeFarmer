@@ -23,7 +23,7 @@ class Solution {
             if (!visited[i]) {
                 visited[i] = true;
                 sum += nums[i];
-                // 找好一个sum，继续找，直到找完k个
+                // 找好一个sum，继续找，直到找完k个，这里的start又重0开始了，因为重新找一个组合。
                 if (sum == target) {
                     if (partitionHelper(nums, 0, k - 1, target, visited, 0)) {
                         return true;
