@@ -12,23 +12,23 @@ class Solution {
             return 0;
         }
         Set<Integer> set = new HashSet<>();
-        int maxLen = 1;
-        for (int num : nums) {
-            set.add(num);
+        for (int i : nums) {
+            set.add(i);
         }
+        int res = 1;
+        int len = nums.length;
         // 每个数都只会被检查一次，所以是O(n)的复杂度
-        for (int num : nums) {
+        for (int i = 0; i < len; i++) {
             // !set.contains(num - 1) 表明 num是当前Consecutive Sequence的起始位置
-            if (!set.contains(num - 1)) {
-                int start = num;
-                while (set.contains(start + 1)) {
-                    start++;
+            if (!set.contains(nums[i] - 1)) {
+                int end = nums[i];
+                while (set.contains(end + 1)) {
+                    end++;
                 }
-                int cur = start - num + 1;
-                maxLen = Math.max(cur, maxLen);
+                res = Math.max(res, end - nums[i] + 1);
             }
         }
-        return maxLen;
+        return res;
     }
 }
 
