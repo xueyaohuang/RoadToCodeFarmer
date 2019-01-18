@@ -47,3 +47,35 @@ class Solution {
         return lists[start];
     }
 }
+
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        int len = lists.length;
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode n1, ListNode n2) {
+                return n1.val - n2.val;
+            }
+        });
+        for (ListNode head : lists) {
+            if (head != null) {
+                pq.offer(head);
+            }
+        }
+        ListNode dummy = new ListNode(0);
+        ListNode node = dummy;
+        
+        while (!pq.isEmpty()) {
+            ListNode cur = pq.poll();
+            node.next = cur;
+            node = node.next;
+            if (cur.next != null) {
+                pq.offer(cur.next);
+            }
+        }
+        return dummy.next;
+    }
+}
