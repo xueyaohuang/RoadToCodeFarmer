@@ -8,35 +8,38 @@
  * }
  */
 
-public class BSTIterator {
-
-    private Stack<TreeNode> stack;
+class BSTIterator {
+    
+    Deque<TreeNode> stack;
+    TreeNode cur;
 
     public BSTIterator(TreeNode root) {
-        stack = new Stack<TreeNode>();
-        addLeftNodes(root);
+        stack = new ArrayDeque<>();
+        cur = root;
+        pushLeft();
     }
-
-    /** @return whether we have a next smallest number */
-    public boolean hasNext() {
-        return !stack.isEmpty();
+    
+    private void pushLeft() {
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.left;
+        }
     }
-
+    
     /** @return the next smallest number */
     public int next() {
         if (!stack.isEmpty()) {
             TreeNode node = stack.pop();
-            addLeftNodes(node.right);
+            cur = node.right;
+            pushLeft();
             return node.val;
-        }    
+        }
         return -1;
     }
-
-    private void addLeftNodes(TreeNode root) {
-        while (root != null) {
-            stack.push(root);
-            root = root.left;
-        }
+    
+    /** @return whether we have a next smallest number */
+    public boolean hasNext() {
+        return !stack.isEmpty();
     }
 }
 /*
