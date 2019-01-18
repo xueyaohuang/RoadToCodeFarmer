@@ -1,5 +1,14 @@
 // https://leetcode.com/problems/rotate-array/solution/
 // Solution 1, best solution.
+// Cyclic Replacements
+// 1234567
+// 1231567
+// 1231564
+// 1271564
+// 1271534
+// 1671534   
+// 1671234
+// 5671234
 class Solution {
     public void rotate(int[] nums, int k) {
         if (nums == null || nums.length == 0 || k % nums.length == 0) {
@@ -92,6 +101,23 @@ class Solution {
     }
 }
 
-
+// O(kn)
+public class Solution {
+    public void rotate(int[] nums, int k) {
+        k = k % nums.length;
+        int len = nums.length;
+        for (int i = 0; i < k; i++) {
+            for (int j = 0; j < len; j++) {
+                swap(nums, j, len - 1);
+            }
+        }
+    }
+    
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
 
 
