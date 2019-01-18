@@ -1,5 +1,4 @@
-* Solution 1, best solution.
-```
+// Solution 1, best solution.
 class Solution {
     public void rotate(int[] nums, int k) {
         if (nums == null || nums.length == 0 || k % nums.length == 0) {
@@ -22,9 +21,8 @@ class Solution {
         }
     }
 }
-```
-* Solution 2
-```
+
+// Solution 2
 class Solution {
     public void rotate(int[] nums, int k) {
         if (nums == null || nums.length == 0 || k % nums.length == 0) {
@@ -50,10 +48,9 @@ class Solution {
 put the last k elements in correct position (ahead) and do the remaining n - k. 
 Once finish swap, the n and k decrease.
 */
-```
 
-* Solution 3
-```
+
+// Solution 3
 class Solution {
     public void rotate(int[] nums, int k) {
         if (nums == null || nums.length == 0) {
@@ -75,9 +72,9 @@ class Solution {
         }
     }
 }
-```
-* Solution 4, O(k) extra memory.
-```
+
+
+// Solution 4, O(k) extra memory.
 class Solution {
     public void rotate(int[] nums, int k) {
         k %= nums.length;
@@ -93,7 +90,7 @@ class Solution {
         }
     }
 }
-```
+
 
 
 
