@@ -57,7 +57,6 @@ class HitCounter {
         @param timestamp - The current timestamp (in seconds granularity). */
     public int getHits(int timestamp) {
         int count = 0;
-        int idx = timestamp % 300;
         for (int i = 0; i < 300; i++) {
             if (timestamp - time[i] < 300) {
                 count += hit[i];
