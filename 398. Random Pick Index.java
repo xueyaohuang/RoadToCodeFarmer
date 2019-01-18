@@ -36,17 +36,16 @@ class Solution {
     }
     
     public int pick(int target) {
-        int result = 0;
+        int res = -1;
         int count = 1;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != target) {
-                continue;
-            }
-            if (rand.nextInt(count++) == 0) {
-                result = i;
+            if (nums[i] == target) {
+                if (rand.nextInt(count++) == 0) {
+                    res = i;
+                }
             }
         }
-        return result;
+        return res;
     }
 }
 
