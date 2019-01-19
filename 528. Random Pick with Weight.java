@@ -110,6 +110,18 @@ class Solution {
     public int pickIndex() {
         int len = sum.length;
         // + 1 很重要，idx的范围因该在1到sum[len - 1]之间，因为if (sum[mid] == idx) return mid，结尾是包含的。
+        /* 也可以是这样的，idx就不用+1
+        int target = rand.nextInt(sum[len - 1]);
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (sum[mid] > target) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+        */
         int idx = rand.nextInt(sum[len - 1]) + 1;
         int left = 0, right = len - 1;
         // search position 
