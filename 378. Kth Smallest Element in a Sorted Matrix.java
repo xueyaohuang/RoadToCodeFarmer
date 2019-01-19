@@ -60,7 +60,7 @@ class Solution {
     }
 }
 
-// O(klgk)
+// O(klgn)
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
         int m = matrix.length;
