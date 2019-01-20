@@ -1,3 +1,4 @@
+// parent不是0的点，都是1
 class Solution {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         if (positions == null || positions.length == 0) {
