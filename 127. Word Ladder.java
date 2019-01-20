@@ -34,7 +34,6 @@ class Solution {
                     for (char c = 'a'; c <= 'z'; c++) {
                         chs[i] = c;
                         String target = String.valueOf(chs);
-                        chs[i] = original;
                         if (endSet.contains(target)) {
                             return step + 1;
                         }
@@ -43,6 +42,7 @@ class Solution {
                             used.add(target);
                         }
                     }
+                    chs[i] = original;
                 }
             }
             beginSet = temp;
