@@ -26,6 +26,7 @@ public class RandomizedCollection {
             return false;
         }
         // Get arbitary index of the ArrayList that contains val
+        // 用LinkedHashSet是因为它的iterator()函数是O(1)的时间复杂度，一般的set是O(h/n), h是set的capacity。
         LinkedHashSet<Integer> valSet = map.get(val);
         int indexToReplace = valSet.iterator().next();
         
