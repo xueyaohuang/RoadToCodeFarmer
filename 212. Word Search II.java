@@ -14,6 +14,9 @@ class Solution {
     }
     
     private void floodFill(char[][] board, int i, int j, List<String> res, TrieNode node) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) {
+            return;
+        }
         char c = board[i][j];
         if (c == '*' || node.next[c - 'a'] == null) {
             return;
@@ -24,18 +27,10 @@ class Solution {
             node.str = null;
         }
         board[i][j] = '*';
-        if (i > 0) {
-            floodFill(board, i - 1, j, res, node);
-        }
-        if (i < board.length - 1) {
-            floodFill(board, i + 1, j, res, node);
-        }
-        if (j > 0) {
-            floodFill(board, i, j - 1, res, node);
-        }
-        if (j < board[0].length - 1) {
-            floodFill(board, i, j + 1, res, node);
-        }
+        floodFill(board, i - 1, j, res, node);
+        floodFill(board, i + 1, j, res, node);
+        floodFill(board, i, j - 1, res, node);
+        floodFill(board, i, j + 1, res, node);
         board[i][j] = c;
     }
     
