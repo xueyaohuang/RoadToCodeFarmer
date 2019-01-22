@@ -1,4 +1,4 @@
-// trie
+// trie: Apparently, we need to do pruning when current character is not in any word
 class Solution {
     public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
