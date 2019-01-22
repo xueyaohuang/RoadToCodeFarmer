@@ -25,6 +25,7 @@ class Solution {
         if (node.str != null) {
             res.add(node.str);
             node.str = null;
+            // 这里不能return，因为可能有几个word的开头是一样的
         }
         board[i][j] = '*';
         floodFill(board, i - 1, j, res, node);
