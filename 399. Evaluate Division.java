@@ -87,7 +87,6 @@ class Solution {
         String parent;
         double ratio;
         int rank;
-        Map<String, Node> map;
         public Node(String parent, double ratio) {
             this.parent = parent;
             this.ratio = ratio;
@@ -96,12 +95,10 @@ class Solution {
     }
     
     class UnionFind {
-        
-        // key: string, value: 这个string的相关信息，parent是一连串除最底层的变量
+        // key: string, value: 这个string的相关信息，parent是一连串除法最底层的变量
         // 比如： a/b/c/d = 3.0
         // key: a, value中: parent是d，ratio是3.0
         Map<String, Node> map = new HashMap<>();
-        
         // 更新他的爹（连除的最底层）和ratio
         public Node find(String p) {
             if (!map.containsKey(p)) {
