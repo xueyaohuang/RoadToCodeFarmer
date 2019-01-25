@@ -1,5 +1,6 @@
 class Logger {
 
+    // 这个方法的问题是map会越来越大，包含很多已经超时的message信息
     Map<String, Integer> map;
     /** Initialize your data structure here. */
     public Logger() {
@@ -36,7 +37,7 @@ class Logger {
 }
 
 
-// map/set with experiation
+// map/set with experiation，把map中超时的都删掉
 class Log {
     int time;
     String msg;
