@@ -10,7 +10,6 @@ class Solution {
             
             variable.putIfAbsent(equation[0], new ArrayList<String>());
             variable.get(equation[0]).add(equation[1]);
-            
             variable.putIfAbsent(equation[1], new ArrayList<String>());
             variable.get(equation[1]).add(equation[0]);
             
@@ -22,8 +21,7 @@ class Solution {
         
         double[] res = new double[queries.length];
         for (int i = 0; i < queries.length; i++) {
-            double val = calculate(queries[i][0], queries[i][1], variable, quotient, 1.0, new HashSet<>());
-            res[i] = val;
+            res[i] = calculate(queries[i][0], queries[i][1], variable, quotient, 1.0, new HashSet<>());
         }
         
         return res;
