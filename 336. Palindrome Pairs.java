@@ -1,48 +1,73 @@
 class Solution {
-    class TrieNode{
-        TrieNode[] next;
-        int val;
+    
+    class TrieNode {
+        TrieNode[] children;
+        int index;
         List<Integer> list;
-        TrieNode(){
-            next=new TrieNode[26];
-            val=-1;
-            list=new LinkedList();
+        public TrieNode() {
+            children = new TrieNode[26];
+            index = -1;
+            list = new ArrayList<>();
         }
     }
     
-    List<List<Integer>> res=new LinkedList();
     public List<List<Integer>> palindromePairs(String[] words) {
-        TrieNode root=new TrieNode();
-        for(int i=0;i<words.length;i++) addword(root,words[i],i);
-        for(int i=0;i<words.length;i++) search(root,words[i],i);
-        
+        if (words == null || words.length == 0) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        TrieNode root = new TrieNode();
+        for (int i = 0; i < words.length; i++) {
+            addWord(root, words[i], i);
+        }
+        for (int i = 0; i < words.length; i++) {
+            searchWord(root, words[i], i, res);
+        }
         return res;
     }
-    private void addword(TrieNode root, String word,int index){
-        for(int i=word.length()-1;i>=0;i--){            
-            if(isP(word,0,i)) root.list.add(index);
-            char c=word.charAt(i);
-             if(root.next[c-'a']==null) root.next[c-'a']=new TrieNode();   
-            root=root.next[c-'a'];
+    
+    private void addWord(TrieNode root, String word, int index) {
+        for (int i = word.length() - 1; i >= 0; i--) {
+            if (root.children[word.charAt(i) - 'a'] == null) {
+                root.children[word.charAt(i) - 'a'] = new TrieNode();
+            }
+            if (isPalindrome(word, 0, i)) {
+                root.list.add(index);
+            }
+            root = root.children[word.charAt(i) - 'a'];
         }
-        root.val=index;
+        root.index = index;
         root.list.add(index);
     }
-    private void search(TrieNode root,String word,int index){
-        for(int i=0;i<word.length();i++){
-            if(root.val>=0 && root.val!=index && isP(word,i,word.length()-1)) res.add(Arrays.asList(index,root.val));
-            root=root.next[word.charAt(i)-'a'];
-            if(root==null) return;
+    
+    private void searchWord(TrieNode root, String word, int index, List<List<Integer>> res) {
+        // word的部分长度与另一个完整单词是palindrome，word剩下部分自身是palindrome
+        for (int i = 0; i < word.length(); i++) {
+            if (isPalindrome(word, i, word.length() - 1) && root.index >= 0 && root.index != index) {
+                res.add(Arrays.asList(index, root.index));
+            }
+            root = root.children[word.charAt(i) - 'a'];
+            if (root == null) {
+                return;
+            }
         }
-        for(int j:root.list){
-            if(j!=index) res.add(Arrays.asList(index,j));
+        // word的全部长度与另一单词的部分长度是palindrome，另一单词剩下部分自身是palindrome
+        for (int i : root.list) {
+            if (i != index) {
+                res.add(Arrays.asList(index, i));
+            }
         }
-        
     }
-    private boolean isP(String word, int i,int j){
-        while(i<j){
-            if(word.charAt(i++)!=word.charAt(j--)) return false;
+    
+    private boolean isPalindrome(String word, int i, int j) {
+        while (i < j) {
+            if (word.charAt(i) != word.charAt(j)) {
+                return false;
+            } else {
+                i++;
+                j--;
+            }
         }
         return true;
-    }  
+    }
 }
