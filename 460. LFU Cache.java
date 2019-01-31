@@ -76,7 +76,6 @@ public class LFUCache {
         }
         DoublyLinkedNode node = nodeMap.get(key);
         if (node != null) {
-            node = nodeMap.get(key);
             node.val = value;
             update(node);
         } else {
@@ -89,7 +88,7 @@ public class LFUCache {
             }
             length++;
             min = 1;
-            DoublyLinkedList newList = countMap.getOrDefault(node.count, new DoublyLinkedList());
+            DoublyLinkedList newList = countMap.getOrDefault(1, new DoublyLinkedList());
             newList.addToHead(node);
             countMap.put(node.count, newList);
         }
