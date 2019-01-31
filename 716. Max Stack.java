@@ -10,10 +10,9 @@ class MaxStack {
     
     public void push(int x) {
         stack.push(x);
-
         if (maxStack.isEmpty() || x >= maxStack.peek()) {
             maxStack.push(x);
-        } else if (x < maxStack.peek()) {
+        } else {
             maxStack.push(maxStack.peek());
         }
     }
@@ -41,12 +40,13 @@ class MaxStack {
         
         stack.pop();
         maxStack.pop();
+        
         while (!temp.isEmpty()) {
             int cur = temp.pop();
             stack.push(cur);
             if (maxStack.isEmpty() || cur >= maxStack.peek()) {
                 maxStack.push(cur);
-            } else if (cur < maxStack.peek()) {
+            } else {
                 maxStack.push(maxStack.peek());
             }
         }
