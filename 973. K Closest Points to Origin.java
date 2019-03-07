@@ -38,6 +38,14 @@ class Solution {
         return res;
     }
 }
+/*
+Thank you for your comments.
+The running time of heapify function is indeed O(N).
+But your building heap method is adding points one by one, it is not the standard heapify function. So your method to build a heap is not O(N) but O(NlogN). Because you add the element one by one, the running time is O(log1+log2+log3+...logN)=O(logN!); O(N) < O(logN!) <O(NlogN).
+The standard heapify function is not in your way. Assuming we use an array to implement the heap, we will copy all elements to the array, then we do adjustment bottom-up for every subtrees. So it cost O(N).
+In your method, we add element one by one to the tail of the array and do adjustment bottom-up for the subtrees on a certain path not for all subtress. So ecah time you add one element to your heap, it takes us O(logN)) to do adjustment. And the total time compelxity would be O(log1+log2+log3+...logN)=O(logN!).
+The heapify function has been implemented by Java, you can use it by calling the constructor of PriorityQueue and passing your elements as the input parameter.
+*/
 
 // O(nlgk)
 class Solution {
