@@ -7,7 +7,7 @@ class Solution {
         int[] res = new int[len];
         Arrays.fill(res, -1);
         Deque<Integer> stack = new ArrayDeque<>();
-        for (int j = 0; j < 2; j++) {
+        for (int j = 0; j < 2; j++) { // loop nums twice
             for (int i = 0; i < len; i++) {
                 while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
                     int idx = stack.pop();
