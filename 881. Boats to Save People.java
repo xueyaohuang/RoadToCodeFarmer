@@ -8,7 +8,7 @@ class Solution {
         int i = 0;
         int j = len - 1;
         int count = 0;
-        while (i < j) {
+        while (i <= j) {
             if (people[i] + people[j] <= limit) {
                 i++;
                 j--;
@@ -17,7 +17,7 @@ class Solution {
             }
             count++;
         }
-        return i == j ? count + 1 : count;
+        return count;
     }
 }
 
