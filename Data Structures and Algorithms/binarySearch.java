@@ -32,6 +32,7 @@ int bsearch_2(int l, int r)
 
 这两种版本都没在while里面return，即使可以return，也故意把可以return的情况并入其中一个分支，最后chenk start。比如lc
 702. Search in a Sorted Array of Unknown Size， 在while内部return和没有在while内部return的两种写法。
+当在while里面有return时，退出条件可能是while (l < r)
 
 一般写二分的思考顺序是这样的：首先通过题目背景和check(mid)函数的逻辑，判断答案落在左半区间还是右半区间。
 左右半区间的划分方式一共有两种：
