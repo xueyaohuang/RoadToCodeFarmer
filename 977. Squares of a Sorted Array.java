@@ -33,7 +33,7 @@ class Solution {
                 mid = i;
                 diff = Math.abs(A[i]);
             }
-            if (i > 0 && A[i - 1] > 0 && A[i] > 0) {
+            if (i > 0 && A[i - 1] >= 0 && A[i] >= 0) {
                 break;
             }
         }
