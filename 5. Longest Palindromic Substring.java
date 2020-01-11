@@ -67,27 +67,31 @@ class Solution {
 }
 
 class Solution {
-    private int lo, maxLen;
-    
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 2) {
-            return s;
+        if (s == null || s.length() == 0) {
+            return "";
         }
-        for (int i = 0; i < s.length(); i++) {
-            extendString(s, i, i);
-            extendString(s, i, i + 1);
+        int len = s.length();
+        int start = 0;
+        int end = 0;
+        
+        for (int i = 0; i < len; i++) {
+            int len1 = extendString(i, i, s);
+            int len2 = extendString(i, i + 1, s);
+            int cur = Math.max(len1, len2);
+            if (end - start + 1 < cur) {
+                start = i - (cur - 1) / 2;
+                end = i + cur / 2;
+            }
         }
-        return s.substring(lo, lo + maxLen);
+        return s.substring(start, end + 1);
     }
     
-    private void extendString(String s, int start, int end) {
+    private int extendString(int start, int end, String s) {
         while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
             start--;
             end++;
         }
-        if (maxLen < end - start - 1) {
-            lo = start + 1;
-            maxLen = end - start - 1;
-        }  
+        return end - start - 1;
     }
 }
