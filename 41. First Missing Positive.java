@@ -1,3 +1,21 @@
+// O(nlgn)
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 1;
+        }
+        Arrays.sort(nums);
+        int res = 1;
+        for (int i : nums) {
+            if (res == i) {
+                res++;
+            }
+        }
+        return res;
+    }
+}
+
+//O(n)
 class Solution {
     public int firstMissingPositive(int[] nums) {
         if (nums.length == 0 || nums == null) {
