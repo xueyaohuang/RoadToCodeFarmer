@@ -15,6 +15,9 @@ class Solution {
         for (int i = 0; i < nums.length - 1; i++) {
             max = Math.max(max, i + nums[i]);
             if (i == end) {
+                // 虽然是在i== end时增加jump，但是也表示在[curBegin, curEnd]能达到的最大值都jump了。
+                // e.g. [1,4,3,7,1,1,1,1,1]
+                // 在i=5时，jump增加到3，表明i=3时也可以跳，并且这时候max大于nums.length - 1了，以后jump不会再增大了
                 jump++;
                 end = max;
                 if (max >= nums.length - 1) {
