@@ -1,6 +1,31 @@
 // 主要是以为 .. 是返回上一级，所以需要用到stack的pop，所以要用stack。
 class Solution {
     public String simplifyPath(String path) {
+        if (path == null || path.length() == 0) {
+            return "/";
+        }
+        String[] strs = path.split("/");
+        Deque<String> stack = new ArrayDeque<>();
+        for (String s : strs) {
+            if (s.length() == 0 || s.equals(".")) {
+                continue;
+            }
+            if (!s.equals("..")) {
+                stack.push(s);
+            } else if (!stack.isEmpty()) {
+                stack.pop();
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append("/").append(stack.pollLast());
+        }
+        return sb.length() == 0 ? "/" : sb.toString();
+    }
+}
+
+class Solution {
+    public String simplifyPath(String path) {
         if (path == null || path.length() < 2) {
             return path;
         }
