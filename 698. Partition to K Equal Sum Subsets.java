@@ -16,6 +16,8 @@ class Solution {
     }
     
     private boolean partitionHelper(int[] nums, int start, int k, int target, boolean[] visited, int sum) {
+        // 由于已经检查了sum可以被k整除，所以只剩k=1时，剩下的数之和一定等于sum/k
+        // 也可以检查 if(k == 0)
         if (k == 1) {
             return true;
         }
