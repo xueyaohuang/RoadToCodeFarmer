@@ -19,7 +19,8 @@ class Solution {
         int level = 0;
         while (!queue.isEmpty()) {
             int size = queue.size();
-            List<Integer> temp = new ArrayList<>();
+            // 这里用linkedlist而不是arraylist，因为linkedlist 在头部add时的time complexity是O(1)
+            List<Integer> temp = new LinkedList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 if (node.left != null) {
