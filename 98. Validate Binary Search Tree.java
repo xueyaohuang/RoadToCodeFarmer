@@ -24,27 +24,25 @@ class Solution {
 
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        TreeNode pre = null;
-        while (p != null || !stack.isEmpty()) {
-            if (p != null) {
-                stack.push(p);
-                p = p.left;
-            }
-            else {
-                TreeNode node = stack.pop();
-                if (pre != null && pre.val >= node.val) {
+        if (root == null) {
+            return true;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode node = root;
+        TreeNode prev = null;
+        while (!stack.isEmpty() || node != null) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                node = stack.pop();
+                if (prev != null && prev.val >= node.val) {
                     return false;
                 }
-                pre = node;
-                p = node.right;
+                prev = node;
+                node = node.right;
             }
         }
         return true;
     }
 }
-
-
-
-
