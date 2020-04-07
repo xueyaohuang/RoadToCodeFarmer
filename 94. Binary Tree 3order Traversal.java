@@ -121,7 +121,7 @@ class Solution {
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         LinkedList<Integer> list = new LinkedList<>();
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode p = root;
         while (p != null || !stack.isEmpty()) {
             if (p != null) {
