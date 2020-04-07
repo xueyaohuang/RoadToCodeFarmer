@@ -49,7 +49,7 @@ class Solution {
             return new ArrayList<Integer>();
         }
         List<Integer> res = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode node = root;
         while (!stack.isEmpty() || node != null) {
             if (node != null) {
@@ -93,7 +93,7 @@ class Solution {
             return new ArrayList<Integer>();
         }
         List<Integer> res = new ArrayList<Integer>();
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode node = root;
         while (!stack.isEmpty() || node != null) {
             if (node != null) {
@@ -141,7 +141,7 @@ class Solution {
         // 或者 Deque<Integer> res = new LinkedList<Integer>();
         // 由于一直往最头部加元素，所以用LinkedList比ArrayList快。
         List<Integer> res = new LinkedList<Integer>();
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode node = root;
         while (!stack.isEmpty() || node != null) {
             if (node != null) {
