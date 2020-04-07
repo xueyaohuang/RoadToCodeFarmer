@@ -12,41 +12,43 @@
 
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        inorderTraversalHelper(root, list);
-        return list;
-    }
-    private void inorderTraversalHelper(TreeNode root, List<Integer> list) {
-        if (root != null) {
-            if (root.left != null) {
-                inorderTraversalHelper(root.left, list);
-            }
-            list.add(root.val);
-            if (root.right != null) {
-                inorderTraversalHelper(root.right, list);
-            } 
+        if (root == null) {
+            return new ArrayList<>();
         }
+        List<Integer> res = new ArrayList<>();
+        dfs(root, res);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        dfs(root.left, res);
+        res.add(root.val);
+        dfs(root.right, res);
     }
 }
 
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-        // Deque<TreeNode> stack = new ArrayDeque<>(); Both stack and deque are applicable.
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        while (!stack.isEmpty() || p != null) {
-            if (p != null) {
-                stack.push(p);
-                p = p.left;
-            } 
-            else {
-                TreeNode node = stack.pop();
-                result.add(node.val);  // Add after all left children
-                p = node.right;   
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<Integer> res = new ArrayList<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode node = root;
+        while (!stack.isEmpty() || node != null) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                node = stack.pop();
+                res.add(node.val);
+                node = node.right;
             }
         }
-        return result;
+        return res;
     }
 }
 
@@ -55,28 +57,28 @@ class Solution {
 
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        preorderTraversalHelper(root, list);
-        return list;
-    }
-    private void preorderTraversalHelper(TreeNode root, List<Integer> list) {
-        if (root != null) {
-            list.add(root.val);
-            if (root.left != null) {
-                preorderTraversalHelper(root.left, list);
-            }
-            if (root.right != null) {
-                preorderTraversalHelper(root.right, list);
-            }
+        if (root == null) {
+            return new ArrayList<>();
         }
+        List<Integer> res = new ArrayList<>();
+        dfs(root, res);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        res.add(root.val);
+        dfs(root.left, res);
+        dfs(root.right, res);
     }
 }
 
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        // Deque<TreeNode> stack = new ArrayDeque<>(); Both stack and deque are applicable.
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode p = root;
         while (!stack.isEmpty() || p != null) {
             if (p != null) {
@@ -98,20 +100,21 @@ class Solution {
 
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        postorderTraversalHelper(root, list);
-        return list;
-    }
-    private void postorderTraversalHelper(TreeNode root, List<Integer> list) {
-        if (root != null) {
-            if (root.left != null) {
-                postorderTraversalHelper(root.left, list);
-            }
-            if (root.right != null) {
-                postorderTraversalHelper(root.right, list);
-            }
-            list.add(root.val);
+        if (root == null) {
+            return new ArrayList<>();
         }
+        List<Integer> res = new ArrayList<>();
+        dfs(root, res);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        dfs(root.left, res);
+        dfs(root.right, res);
+        res.add(root.val);
     }
 }
 
