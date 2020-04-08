@@ -30,3 +30,26 @@ class Solution {
         return 1 + Math.max(left, right);
     }
 }
+
+class Solution {
+    boolean isBalanced = true;
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        getDepth(root);
+        return isBalanced;
+    }
+    
+    private int getDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftDepth = getDepth(root.left);
+        int rightDepth = getDepth(root.right);
+        if (Math.abs(leftDepth - rightDepth) > 1) {
+            isBalanced = false;
+        }
+        return 1 + Math.max(leftDepth, rightDepth);
+    }
+}
