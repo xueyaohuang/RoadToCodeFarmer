@@ -24,6 +24,69 @@ public class Vector2D implements Iterator<Integer> {
     }
 }
 
+public class Vector2D implements Iterator<Integer> {
+
+    Iterator<Integer> it;
+    public Vector2D(List<List<Integer>> vec2d) {
+        // Initialize your data structure here
+        List<Integer> arr = new ArrayList<>();
+        for (List<Integer> list : vec2d) {
+            for (Integer i : list) {
+                arr.add(i);
+            }
+        }
+        it = arr.iterator();
+    }
+
+    @Override
+    public Integer next() {
+        // Write your code here
+        return it.next();
+    }
+
+    @Override
+    public boolean hasNext() {
+        // Write your code here
+        return it.hasNext();
+    }
+
+    @Override
+    public void remove() {}
+}
+
+public class Vector2D implements Iterator<Integer> {
+
+    int cur;
+    int size;
+    List<Integer> arr;
+    public Vector2D(List<List<Integer>> vec2d) {
+        // Initialize your data structure here
+        arr = new ArrayList<>();
+        cur = 0;
+        for (List<Integer> list : vec2d) {
+            for (Integer i : list) {
+                arr.add(i);
+            }
+        }
+        size = arr.size();
+    }
+
+    @Override
+    public Integer next() {
+        // Write your code here
+        return arr.get(cur++);
+    }
+
+    @Override
+    public boolean hasNext() {
+        // Write your code here
+        return cur < size;
+    }
+
+    @Override
+    public void remove() {}
+}
+
 /**
  * Your Vector2D object will be instantiated and called as such:
  * Vector2D i = new Vector2D(vec2d);
