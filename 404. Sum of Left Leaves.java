@@ -23,6 +23,26 @@ class Solution {
 }
 
 class Solution {
+    int sum = 0;
+    
+    public int sumOfLeftLeaves(TreeNode root) {
+        dfs(root, -1);
+        return sum;
+    }
+    
+    private void dfs(TreeNode root, int flag) {
+        if (root == null) {
+            return;
+        }
+        if (root.left == null && root.right == null && flag == 0) {
+            sum += root.val;
+        }
+        dfs(root.left, 0);
+        dfs(root.right, 1);
+    }
+}
+
+class Solution {
     public int sumOfLeftLeaves(TreeNode root) {
         if (root == null) {
             return 0;
