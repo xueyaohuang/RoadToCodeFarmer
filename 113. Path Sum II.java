@@ -37,3 +37,32 @@ class Solution {
         }
     }
 }
+
+class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        dfs(root, sum, res, new ArrayList<>(), 0);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, int sum, List<List<Integer>> res, List<Integer> path, int cur) {
+        if (root == null) {
+            return;
+        }
+        path.add(root.val);
+        cur += root.val;
+        if (root.left == null && root.right == null) {
+            if (cur == sum) {
+                res.add(new ArrayList<>(path));
+            }
+            path.remove(path.size() - 1);
+            return;
+        }
+        dfs(root.left, sum, res, path, cur);
+        dfs(root.right, sum, res, path, cur);
+        path.remove(path.size() - 1);
+    }
+}
