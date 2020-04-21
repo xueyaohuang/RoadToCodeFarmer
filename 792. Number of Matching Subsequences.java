@@ -1,3 +1,5 @@
+// O(sk)
+// s is length of S, k is length of words
 class Solution {
     public int numMatchingSubseq(String S, String[] words) {
         Set<String> isSubSeq = new HashSet<>();
@@ -21,6 +23,7 @@ class Solution {
         return res;
     }
     
+    // O(t)
     private boolean isSubsquence(String s, String t) {
         if (s.length() > t.length()) {
             return false;
@@ -33,5 +36,38 @@ class Solution {
             }
         }
         return true;
+    }
+}
+
+// binary search
+// see https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/392.%20Is%20Subsequence.java
+// O(kwlgs) s is length of S, k is length of words, w is the average length of word.
+// vs the above method O(sk)
+
+
+// O(s + kw)。在最外层for loop中，很多时候size是等于0的，所以不是O(skw)。
+class Solution {
+    public int numMatchingSubseq(String S, String[] words) {
+        Map<Character, Queue<String>> map = new HashMap<>();
+        int count = 0;
+        for (char c = 'a'; c <= 'z'; c++) {
+            map.put(c, new LinkedList<>());
+        }
+        for (String word : words) {
+            map.get(word.charAt(0)).offer(word);
+        }
+        for (char cs : S.toCharArray()) {
+            Queue<String> queue = map.get(cs);
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                String word = queue.poll();
+                if (word.length() == 1) {
+                    count++;
+                } else {
+                    map.get(word.charAt(1)).offer(word.substring(1));
+                }   
+            }
+        }
+        return count;
     }
 }
