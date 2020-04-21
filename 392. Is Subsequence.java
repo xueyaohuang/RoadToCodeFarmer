@@ -1,3 +1,4 @@
+// O(t) t的长度应该比s长
 class Solution {
     public boolean isSubsequence(String s, String t) {
         if (s == null || t == null) {
@@ -24,7 +25,10 @@ class Solution {
 }
 
 // follow up question
-	class Solution {
+// 如果是上面的算法跑k次，就是O(kt), 由于k和t都很大，所以很慢
+// 跑k次是少不了的，要想办法减小对t的复杂度
+// O(slgt)
+class Solution {
     public boolean isSubsequence(String s, String t) {
         Map<Character, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < t.length(); i++) {
@@ -48,6 +52,7 @@ class Solution {
         return true;
     }
 
+    // 找第一个比cur大的index
     private int searchIndex(int cur, List<Integer> list) {
         int start = 0, end = list.size() - 1;
         while (start < end) {
