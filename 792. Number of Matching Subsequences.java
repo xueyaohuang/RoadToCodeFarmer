@@ -1,4 +1,6 @@
-// O(sk)
+// 三种方法，实际中要根据s, k, w的大小关系决定用哪种方法
+
+// 1. O(sk)
 // s is length of S, k is length of words
 class Solution {
     public int numMatchingSubseq(String S, String[] words) {
@@ -39,13 +41,13 @@ class Solution {
     }
 }
 
-// binary search
+// 2. binary search
 // see https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/392.%20Is%20Subsequence.java
 // O(kwlgs) s is length of S, k is length of words, w is the average length of word.
 // vs the above method O(sk)
 
 
-// O(s + kw)。在最外层for loop中，很多时候size是等于0的，所以不是O(skw)。
+// 3. O(s + kw)。在最外层for loop中，很多时候size是等于0的，所以不是O(skw)。
 class Solution {
     public int numMatchingSubseq(String S, String[] words) {
         Map<Character, Queue<String>> map = new HashMap<>();
