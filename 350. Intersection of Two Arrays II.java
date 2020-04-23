@@ -1,3 +1,29 @@
+// https://leetcode.com/problems/intersection-of-two-arrays-ii/discuss/439955/Java-Solution-%2B-4-FOLLOW-UPS
+
+// original
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < nums1.length; i++) {
+            map.put(nums1[i], map.getOrDefault(nums1[i], 0) + 1);
+        }
+        for (int i = 0; i < nums2.length; i++) {
+            if (map.containsKey(nums2[i]) && map.get(nums2[i]) > 0) {
+                list.add(nums2[i]);
+                map.put(nums2[i], map.get(nums2[i]) - 1);
+            }
+        }
+        int[] res = new int[list.size()];
+        int j = 0;
+        for (int i : list) {
+            res[j++] = i;
+        }
+        return res;
+    } 
+}
+
+// followup 1
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
@@ -22,28 +48,62 @@ class Solution {
     }
 }
 
+// followup 2
+// If the arrays are not sorted, then the HashMap solution is faster.
+// If the arrays are sorted, then we can loop through nums1 (the smaller array), and for each value, binary search it in
+// nums2 (the larger array). Implementation becomes tricky since duplicate values are allowed.
+// Time Complexity: O(m log n) if arrays are already sorted for us, where m is size of smaller array and n is size of
+// larger array. Space Complexity: O(m) to generate the intersection.
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>();
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < nums1.length; i++) {
-            map.put(nums1[i], map.getOrDefault(nums1[i], 0) + 1);
+        if (nums1 == null || nums2 == null) {
+            return new int[0];
+        } else if (nums1.length > nums2.length) {
+            // ensures 1st array is shorter than 2nd.
+            return intersect(nums2, nums1);
         }
-        for (int i = 0; i < nums2.length; i++) {
-            if (map.containsKey(nums2[i]) && map.get(nums2[i]) > 0) {
-                list.add(nums2[i]);
-                map.put(nums2[i], map.get(nums2[i]) - 1);
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        List<Integer> intersection = new ArrayList();
+        int leftIndex = 0;
+        for (int i = 0; i < nums1.length; i++) {
+            int index = binarySearch(nums2, nums1[i], leftIndex);
+            if (index != -1) {
+                intersection.add(nums1[i]);
+                leftIndex = index + 1;
             }
         }
-        int[] res = new int[list.size()];
-        int j = 0;
-        for (int i : list) {
-            res[j++] = i;
+
+        int[] result = new int[intersection.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = intersection.get(i);
         }
-        return res;
-    } 
+        return result;
+    }
+
+    // nums is sorted in non-descending order.
+    // Binary search from 'low' to end of array.
+    // If duplicates exist, return the index for the match furthest left.
+    private int binarySearch(int[] nums, int target, int low) {
+        int start = low;
+        int end = nums.length - 1;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        if (start >= nums.length) {
+            return -1;
+        }
+        return nums[start] == target ? start : -1;
+    }
 }
 
+// followup 3
 /*
 What if elements of nums2 are stored on disk, and the memory is
 limited such that you cannot load all elements into the memory at
