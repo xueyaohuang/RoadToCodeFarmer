@@ -19,7 +19,8 @@ class Solution {
                     prod /= nums[left];
                     left++;
                 }
-                count += i - left + 1; // 加上以nums[i]结尾的subarray
+                // i - left + 1 是以nums[i]结尾的subarray的个数
+                count += i - left + 1;
             } else {
                 prod = 1;
                 left = i + 1;
