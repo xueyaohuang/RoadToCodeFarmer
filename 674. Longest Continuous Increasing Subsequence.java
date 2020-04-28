@@ -3,13 +3,16 @@ class Solution {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int len = nums.length;
-        int res = 1;
+        int res = 0;
         int cur = 1;
-        for (int i = 1; i < len; i++) {
-            cur = nums[i] > nums[i - 1] ? cur + 1 : 1;
-            res = Math.max(cur, res);
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] < nums[i + 1]) {
+                cur++;
+            } else {
+                res = Math.max(res, cur);
+                cur = 1;
+            }
         }
-        return res;
+        return Math.max(res, cur);
     }
 }
