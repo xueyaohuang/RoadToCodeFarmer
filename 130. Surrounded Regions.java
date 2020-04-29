@@ -58,3 +58,57 @@ class Solution {
         }
     }
 }
+
+class Solution {
+    boolean surrounded;
+    public void solve(char[][] board) {
+        if (board == null || board.length == 0) {
+            return;
+        }
+        int m = board.length;
+        int n = board[0].length;
+        boolean[][] visited = new boolean[m][n];
+        List<int[]> coord = new ArrayList<>();
+        for (int i = 1; i < m - 1; i++) {
+            for (int j = 1; j < n - 1; j++) {
+                if (board[i][j] == 'O' && !visited[i][j]) {
+                    surrounded = true;
+                    isSurrounded(board, i, j, visited);
+                    if (surrounded) {
+                        coord.add(new int[]{i, j});
+                    }
+                }
+            }
+        }
+        for (int[] c : coord) {
+            eliminateO(board, c[0], c[1]);
+        }
+    }
+    
+    
+    private void isSurrounded(char[][] board, int i, int j, boolean[][] visited) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || visited[i][j] || board[i][j] == 'X') {
+            return;
+        }
+        visited[i][j] = true;
+        if (i == 0 || i == board.length - 1 || j == 0 || j == board[0].length - 1) {
+            surrounded = false;
+            return;
+        }
+        isSurrounded(board, i + 1, j, visited);
+        isSurrounded(board, i - 1, j, visited);
+        isSurrounded(board, i, j + 1, visited);
+        isSurrounded(board, i, j - 1, visited);
+    }
+    
+    private void eliminateO(char[][] board, int i, int j) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] == 'X') {
+            return;
+        }
+        board[i][j] = 'X';
+        eliminateO(board, i + 1, j);
+        eliminateO(board, i - 1, j);
+        eliminateO(board, i, j + 1);
+        eliminateO(board, i, j - 1);
+    }
+}
