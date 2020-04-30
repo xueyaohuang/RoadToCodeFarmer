@@ -8,6 +8,32 @@
  * }
  */
 class Solution {
+    public int[][] merge(int[][] intervals) {
+        if (intervals == null || intervals.length == 0) {
+            return new int[0][0];
+        }
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        Deque<int[]> stack = new ArrayDeque<>();
+        stack.push(intervals[0]);
+        for (int i = 1; i < intervals.length; i++) {
+            int[] itv = stack.peek();
+            if (itv[1] < intervals[i][0]) {
+                stack.push(intervals[i]);
+            } else {
+                stack.pop();
+                stack.push(new int[]{itv[0], Math.max(itv[1], intervals[i][1])});
+            }
+        }
+        int size = stack.size();
+        int[][] res = new int[size][2];
+        for (int i = size - 1; i >= 0; i--) {
+            res[i] = stack.pop();
+        }
+        return res;
+    }
+}
+
+class Solution {
     public List<Interval> merge(List<Interval> intervals) {
         if (intervals == null || intervals.size() == 0) {
             return new ArrayList<>();
