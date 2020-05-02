@@ -1,4 +1,5 @@
-// 11.6
+// subarray可以用 xxxEndHere + xxxSoFar
+// subsequence 必须用dp，通常是两个for loop
 class Solution {
     public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) {
