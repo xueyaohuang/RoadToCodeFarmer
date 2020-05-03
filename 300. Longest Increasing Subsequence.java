@@ -32,6 +32,23 @@ inserted into the array: the index of the first element in the range greater tha
 toIndex if all elements in the range are less than the specified key. Note that this guarantees
 that the return value will be >= 0 if and only if the key is found.
 */
+/*
+At each loop, tails is an array storing the smallest tail of all increasing subsequences with length i+1 in tails[i].
+For example, say we have nums = [4,5,6,3], then all the available increasing subsequences are:
+
+len = 1   :      [4], [5], [6], [3]   => tails[0] = 3
+len = 2   :      [4, 5], [5, 6]       => tails[1] = 5
+len = 3   :      [4, 5, 6]            => tails[2] = 6
+
+We can easily prove that tails is a increasing array. Therefore it is possible to do a binary search in tails array to find the one needs update.
+
+Each time we only do one of the two:
+
+(1) if x is larger than all tails, append it, increase the size by 1
+(2) if tails[i-1] < x <= tails[i], update tails[i]
+
+Doing so will maintain the tails invariant. The the final answer is just the size.
+*/
 
 class Solution {
     public int lengthOfLIS(int[] nums) {
@@ -39,18 +56,42 @@ class Solution {
             return 0;
         }
         int len = 0;
-        int[] dp = new int[nums.length];
+        int[] tails = new int[nums.length];
         for (int num : nums) {
-            int i = Arrays.binarySearch(dp, 0, len, num);
-            if (i < 0) {
-                i = -(i + 1);
+            // 面试可以试试用Arrays.binarySearch
+            // int idx = Arrays.binarySearch(tails, 0, len, num);
+            int idx = binarySearch(tails, 0, len, num);
+            if (idx < 0) {
+                idx = -(idx + 1);
             }
-            dp[i] = num;
-            if (len == i) {
+            tails[idx] = num;
+            if (len == idx) {
                 len++;
             }
         }
         return len;
+    }
+    
+    private int binarySearch(int[] nums, int from, int to, int target) {
+        int start = from;
+        int end = to - 1;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        // 不用检查 if (nums[start] == target)，因为跳出while后，target一定没在nums中找到
+        if (nums[start] < target) {
+            // 注意这里不是 -(start + 1) - 1
+            // 因为-(start + 1) - 1不满足from=to=0的情况
+            return -to -1;
+        }
+        return -start - 1;
     }
 }
 // 如果是Longest Increasing Array， 就只需要一个for loop。相当于只考虑j = i - 1, 没有for (int j = 0; j< i; j++)。
