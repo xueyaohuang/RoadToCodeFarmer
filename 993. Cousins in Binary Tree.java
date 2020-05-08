@@ -7,6 +7,39 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+class Node {
+    int val;
+    int parentVal;
+    int depth;
+    public Node(int val, int parentVal, int depth) {
+        this.val = val;
+        this.parentVal = parentVal;
+        this.depth = depth;
+    }
+}
+class Solution {
+    public boolean isCousins(TreeNode root, int x, int y) {
+        Map<Integer, Node> map = new HashMap<>();
+        dfs(root, root, 0, map);
+        Node xNode = map.get(x);
+        Node yNode = map.get(y);
+        if (xNode == null || yNode == null) {
+            return false;
+        }
+        return xNode.depth == yNode.depth && xNode.parentVal != yNode.parentVal;
+    }
+    
+    private void dfs(TreeNode root, TreeNode parent, int depth, Map<Integer, Node> map) {
+        if (root == null) {
+            return;
+        }
+        Node cur = new Node(root.val, parent.val, depth);
+        map.put(root.val, cur);
+        dfs(root.left, root, depth + 1, map);
+        dfs(root.right, root, depth + 1, map);
+    }
+}
+
 class Solution {
     public boolean isCousins(TreeNode root, int x, int y) {
         if (root == null) {
