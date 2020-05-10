@@ -5,6 +5,7 @@ class Solution {
             sum += num;
         }
         int start = (int)(sum / m);
+        // int end = (int)Math.min((long)Integer.MAX_VALUE, sum);
         int end = Integer.MAX_VALUE;
         while (start < end) {
             int mid = start + (end - start) / 2;
