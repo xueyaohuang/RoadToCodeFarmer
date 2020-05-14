@@ -1,4 +1,5 @@
 // O(n), 一头进，一头出
+// sliding window
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
         
@@ -21,11 +22,12 @@ class Solution {
 }
 
 // O(nlgn)
+// try and verify
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
         int start = 1;
         int end = nums.length;
-        int min = 0;
+        int min = nums.length;
         while (start < end) {
             int mid = start + (end - start) / 2;
             if (windowExists(s, nums, mid)) {
@@ -37,9 +39,6 @@ class Solution {
         }
         if (windowExists(s, nums, min)) {
             return min;
-        } 
-        if (windowExists(s, nums, start)) {
-            return start;
         }
         return 0;
     }
