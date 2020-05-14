@@ -12,6 +12,7 @@ class Solution {
             if (count < k) {
                 low = mid + 1;
             } else {
+                // count == k的时候不能return mid，也不能移动low，只能移动high
                 high = mid;
             }
         }
