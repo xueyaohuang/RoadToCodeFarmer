@@ -1,3 +1,37 @@
+public class Solution {
+    /**
+     * @param num: a string
+     * @return: true if a number is strobogrammatic or false
+     */
+    public boolean isStrobogrammatic(String num) {
+        // write your code here
+        int i = 0;
+        int j = num.length() - 1;
+        while (i <= j) {
+            int ni = num.charAt(i) - '0';
+            int nj = num.charAt(j) - '0';
+            if (ni == 0 || ni == 1 || ni == 8) {
+                if (ni != nj) {
+                    return false;
+                }
+            } else if (ni == 9) {
+                if (nj != 6) {
+                    return false;
+                }
+            } else if (ni == 6) {
+                if (nj != 9) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
+
 class Solution {
     public boolean isStrobogrammatic(String num) {
         if (num == null || num.length() == 0) {
