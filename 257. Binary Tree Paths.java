@@ -7,6 +7,36 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+class Solution {
+    public List<String> binaryTreePaths(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<String> res = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        dfs(root, res, sb);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, List<String> res, StringBuilder sb) {
+        if (root == null) {
+            return;
+        }
+        if (root.left == null && root.right == null) {
+            int len = sb.length();
+            sb.append(root.val);
+            res.add(sb.toString());
+            sb.setLength(len);
+            return;
+        }
+        int len = sb.length();
+        sb.append(root.val).append("->");
+        dfs(root.left, res, sb);
+        dfs(root.right, res, sb);
+        sb.setLength(len);
+    }
+}
  
  // StringBuilder is mutable
 class Solution {
