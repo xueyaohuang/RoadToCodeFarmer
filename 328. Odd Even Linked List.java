@@ -22,6 +22,5 @@ class Solution {
         }
         even.next = oddNode;
         return head;
-        
     }
 }
