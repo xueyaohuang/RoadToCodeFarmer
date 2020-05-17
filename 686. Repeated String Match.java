@@ -14,7 +14,7 @@ class Solution {
         int count = 1;
         int idxB = 0;
         int idxA = idx;
-        while (idxB< lenB) {
+        while (idxB < lenB) {
             if (A.charAt(idxA) != B.charAt(idxB)) {
                 return -1;
             }
