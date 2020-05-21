@@ -9,26 +9,40 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode cur = root;
         int count = 0;
-        int res = 0;
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        while (p != null || !stack.isEmpty()) {
-            if (p != null) {
-                stack.push(p);
-                p = p.left;
-            }
-            else {
+        while (!stack.isEmpty() || cur != null) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            } else {
                 TreeNode node = stack.pop();
                 count++;
                 if (count == k) {
-                    res = node.val;
-                    break;
+                    return node.val;
                 }
-                p = node.right;
+                cur = node.right;
             }
         }
-        return res;
+        return 0;
+    }
+}
+
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        List<Integer> list = new ArrayList<>();
+        dfs(root, list);
+        return list.get(k - 1);
+    }
+    
+    private void dfs(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        dfs(root.left, list);
+        list.add(root.val);
+        dfs(root.right, list);
     }
 }
 
