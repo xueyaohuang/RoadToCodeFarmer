@@ -30,6 +30,33 @@ class Solution {
 }
 
 class Solution {
+    int count = 0;
+    int res = 0;
+    public int kthSmallest(TreeNode root, int k) {
+        List<Integer> list = new ArrayList<>();
+        dfs(root, k);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, int k) {
+        if (root == null) {
+            return;
+        }
+        dfs(root.left, k);
+        count++;
+        if (count == k) {
+            res = root.val;
+            return;
+        }
+        dfs(root.right, k);
+    }
+}
+
+// follow up: get tree node values to an array list by inorder travseral.
+// when insert, delete an element, use binary search to find the index in the
+// array list, then use list.add() and list.remove().
+// not operatee the tree
+class Solution {
     public int kthSmallest(TreeNode root, int k) {
         List<Integer> list = new ArrayList<>();
         dfs(root, list);
