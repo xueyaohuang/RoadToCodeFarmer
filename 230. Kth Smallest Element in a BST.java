@@ -52,10 +52,12 @@ class Solution {
     }
 }
 
-// follow up: get tree node values to an array list by inorder travseral.
-// when insert, delete an element, use binary search to find the index in the
-// array list, then use list.add() and list.remove().
-// not operatee the tree
+/*
+Follow up: Get tree node values into an array list by inorder travseral.
+When insert or delete an element, first use binary search to find the index in the array list, then use list.add(index, value) and list.remove(index).
+Do not operate on the tree.
+To get the kth element, just do list.get(k).
+*/
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
         List<Integer> list = new ArrayList<>();
