@@ -5,7 +5,6 @@
 // then test y = x+1, x+2, x+3, ... and stop at the first number y not in the set. 
 // The length of the streak is then simply y-x and we update our global best with that. 
 // Since we check each streak only once, this is overall O(n)
-
 class Solution {
     public int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -15,23 +14,21 @@ class Solution {
         for (int i : nums) {
             set.add(i);
         }
-        int res = 1;
-        int len = nums.length;
+        int res = 0;
         // 每个数都只会被检查一次，所以是O(n)的复杂度
-        for (int i = 0; i < len; i++) {
+        for (int i : nums) {
             // !set.contains(num - 1) 表明 num是当前Consecutive Sequence的起始位置
-            if (!set.contains(nums[i] - 1)) {
-                int end = nums[i];
-                while (set.contains(end + 1)) {
-                    end++;
+            if (!set.contains(i - 1)) {
+                int start = i;
+                while (set.contains(start)) {
+                    start++;
                 }
-                res = Math.max(res, end - nums[i] + 1);
+                res = Math.max(res, start - i);
             }
         }
         return res;
     }
 }
-
 
 // We will use HashMap. The key thing is to keep track of the sequence length and store 
 // that in the boundary points of the sequence. For example, as a result, 
