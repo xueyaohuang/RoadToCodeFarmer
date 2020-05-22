@@ -50,3 +50,35 @@ class Solution {
         sumHelper(root.right, sum, cur);
     }
 }
+
+class Solution {
+    public int sumNumbers(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int res = 0;
+        StringBuilder sb = new StringBuilder();
+        List<String> list = new ArrayList<>();
+        dfs(root, sb, list);
+        for (String s : list) {
+            res += Integer.parseInt(s);
+        }
+        return res;
+    }
+    
+    private void dfs(TreeNode root, StringBuilder sb, List<String> list) {
+        if (root == null) {
+            return;
+        }
+        if (root.left == null && root.right == null) {
+            sb.append(root.val);
+            list.add(sb.toString());
+            sb.setLength(sb.length() - 1);
+            return;
+        }
+        sb.append(root.val);
+        dfs(root.left, sb, list);
+        dfs(root.right, sb, list);
+        sb.setLength(sb.length() - 1);
+    }
+}
