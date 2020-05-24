@@ -51,3 +51,29 @@ class Solution {
         return res[len];
     }
 }
+
+// TLE
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> set = new HashSet<>(wordDict);
+        return wordBreakHelper(s, set);
+    }
+    
+    private boolean wordBreakHelper(String s, Set<String> set) {
+        if (s.length() == 0) {
+            return true;
+        }
+        int i = 0;
+        int len = s.length();
+        while (i < len) {
+            String cur = s.substring(0, i + 1);
+            if (set.contains(cur)) {
+                if (wordBreakHelper(s.substring(i + 1), set)) {
+                    return true;
+                }
+            }
+            i++;
+        }
+        return false;
+    }
+}
