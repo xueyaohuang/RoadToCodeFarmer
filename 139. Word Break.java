@@ -1,4 +1,4 @@
-// 1
+// bottom up
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         if (s == null || s.length() == 0) {
@@ -52,28 +52,34 @@ class Solution {
     }
 }
 
-// TLE
+// top down with cache
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> set = new HashSet<>(wordDict);
-        return wordBreakHelper(s, set);
+        Map<String, Boolean> cache = new HashMap<>();
+        return wordBreakHelper(s, set, cache);
     }
     
-    private boolean wordBreakHelper(String s, Set<String> set) {
+    private boolean wordBreakHelper(String s, Set<String> set, Map<String, Boolean> cache) {
         if (s.length() == 0) {
             return true;
+        }
+        if (cache.containsKey(s)) {
+            return cache.get(s);
         }
         int i = 0;
         int len = s.length();
         while (i < len) {
             String cur = s.substring(0, i + 1);
             if (set.contains(cur)) {
-                if (wordBreakHelper(s.substring(i + 1), set)) {
+                if (wordBreakHelper(s.substring(i + 1), set, cache)) {
+                    cache.put(s.substring(i + 1), true);
                     return true;
                 }
             }
             i++;
         }
+        cache.put(s, false);
         return false;
     }
 }
