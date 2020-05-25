@@ -44,3 +44,28 @@ class Solution {
         return res;
     }
 }
+
+public class Solution {
+    /**
+     * @param root: the given BST
+     * @param target: the given target
+     * @return: the value in the BST that is closest to the target
+     */
+    public int closestValue(TreeNode root, double target) {
+        // write your code here
+        int[] res = new int[]{0};
+        dfs(root, target, res);
+        return res[0];
+    }
+    
+    private void dfs(TreeNode cur, double target, int[] res) {
+        if (cur == null) {
+            return;
+        }
+        if (Math.abs(cur.val - target) < Math.abs(res[0] - target)) {
+            res[0] = cur.val;
+        }
+        dfs(cur.left, target, res);
+        dfs(cur.right, target, res);
+    }
+}
