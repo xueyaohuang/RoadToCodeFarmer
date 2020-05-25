@@ -1,6 +1,9 @@
-// 考虑三点： 1. overflow， Handle overflow by converting to long.
+// 考虑的Corner cases： 
+// 1. overflow， Handle overflow by converting to long.
 // 2. 开头和结尾
 // 3. 每次衔接，相差一个数就只加一个数，相差超过一个数需要加一个范围 a->b
+// 4. nums中可能有重复的数要跳过
+// 5. nums是空或者null
 class Solution {
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {
         // write your code here
