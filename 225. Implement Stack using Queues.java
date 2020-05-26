@@ -12,7 +12,7 @@ class MyStack {
         // after you add one element to the queue, move the tail to be the head.
         queue.add(x);
         for (int i = 1; i < queue.size(); i++) {
-            queue.add(queue.poll());
+            queue.offer(queue.poll());
         }
     }
     
