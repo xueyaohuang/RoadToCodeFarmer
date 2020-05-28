@@ -39,3 +39,5 @@ union find
 dfs
 
 ## Bipartite graph
+detect odd cycle (number of vertices in the cycle is odd)
+lc 785, 886
