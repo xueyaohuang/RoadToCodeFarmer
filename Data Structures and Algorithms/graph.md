@@ -18,5 +18,11 @@ class DirectedGraphNode {
 ```
 
 Adj list也可以用现成的数据结构，比如HashMap<Node, ArrayList<Node>>, ArryList<Node>[], node有时可以用Integer表示。
+    
+4. Graph detect cycle
 
-参见LC
+a. directed graph detect cycle
+detect back edge
+lc 207 Course Schedule
+
+
