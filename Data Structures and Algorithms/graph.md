@@ -33,7 +33,9 @@ need a parameter parent
 lc 261 Graph Valid Tree
 dfs or union find  
 
-3. 数connected component
+## 数connected component
 [lc323](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/323.%20Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.java)
 union find  
 dfs
+
+## Bipartite graph
