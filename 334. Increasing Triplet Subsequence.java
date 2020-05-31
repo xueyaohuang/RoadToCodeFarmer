@@ -1,5 +1,7 @@
 /*
-before coding I also thought about this solution and I did’t think that will work, as it appears to be very naïve and greedy: find first smallest, then find second smallest, then find the third and bingo. I argued myself it cannot pass the case like [1,2,0,3] since c1 is changed.
+before coding I also thought about this solution and I did’t think that will work, as it appears to be very naïve and greedy:
+find first smallest, then find second smallest, then find the third and bingo. I argued myself it cannot pass the case like
+[1,2,0,3] since c1 is changed.
 
 But when I take a closer look, it does [1,2,0,3] very well. And I realize that c1 and c2 are indeed having the meaning of:
 
@@ -9,7 +11,9 @@ C2 = so far best candidate of end element of a two-cell subsequence to form a tr
 
 So c1 and c2 are the perfect summary of history.
 */
-// 以[1,2,0,3]为例，如果能return true，说明之前已经找到（过）在i前面2个比nums[i]小的数，如果能更新second = nums[i]，说明在之前找到（过）在i前面1个比nums[i]小的数。这个题返回有没有 Increasing Triplet Subsequence，所以不求现在最小的在first在second前面，只求曾今找到过first在second前面就可以了。
+// 以[1,2,0,3]为例，如果能return true，说明之前已经找到（过）在i前面2个比nums[i]小的数，如果能更新second = nums[i]
+// 说明在之前找到（过）在i前面1个比nums[i]小的数。这个题返回有没有 Increasing Triplet Subsequence，所以不求现在最小
+// 的在first在second前面，只求曾今找到过first在second前面就可以了。
 class Solution {
     public boolean increasingTriplet(int[] nums) {
         if (nums == null || nums.length < 3) {
