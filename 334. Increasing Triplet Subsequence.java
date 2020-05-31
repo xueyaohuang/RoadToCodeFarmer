@@ -23,6 +23,7 @@ class Solution {
         int first = Integer.MAX_VALUE;
         int second = Integer.MAX_VALUE;
         for (int i = 0; i < len; i++) {
+            // 注意是<=
             if (nums[i] <= first) {
                 first = nums[i];  // 先更新最小的，这样保证最小的一定（曾今）在第二小的之前
             } else if (nums[i] <= second) {
