@@ -168,12 +168,18 @@ public class MyClass {
         }
         int len = nums.length;
         for (int i = 0; i < len - 1; i++) {
+            // 当某次冒泡操作已经没有数据交换时，说明已经达到完全有序，不用再继续执行后续的冒泡操作
+            boolean hasSwap = false;
             for (int j = 0; j < len - 1 - i; j++) {
                 if (nums[j] > nums[j + 1]) {
                     swap(nums, j, j + 1);
+                    // 表示有数据交换
+                    hasSwap = true;
                 }
             }
-            
+            if (!hasSwap) {
+                break;
+            }
         }
     }
     
