@@ -1,3 +1,63 @@
+// naive answer, O(m + n)
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int len = nums1.length + nums2.length;
+        int[] num = new int[len / 2 + 1];
+        int idx = 0;
+        int i = 0, j = 0;
+        while (i < nums1.length && j < nums2.length && idx <= len / 2) {
+            if (nums1[i] >= nums2[j]) {
+                num[idx++] = nums2[j++];
+            } else {
+                num[idx++] = nums1[i++];
+            }
+        }
+        while (i < nums1.length && idx <= len / 2) {
+            num[idx++] = nums1[i++];
+        }
+        while (j < nums2.length && idx <= len / 2) {
+            num[idx++] = nums2[j++];
+        }
+        if (len % 2 == 0) {
+            return (num[len / 2] + num[len / 2 - 1]) / 2.0;
+        }
+        return (double)num[len / 2];
+    }
+}
+
+// optimize memory
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int len = nums1.length + nums2.length;
+        int med1 = 0, med2 = 0;
+        int idx = 0;
+        int i = 0, j = 0;
+        while (i < nums1.length && j < nums2.length && idx <= len / 2) {
+            med1 = med2;
+            if (nums1[i] >= nums2[j]) {
+                med2 = nums2[j++];
+            } else {
+                med2 = nums1[i++];
+            }
+            idx++;
+        }
+        while (i < nums1.length && idx <= len / 2) {
+            med1 = med2;
+            med2 = nums1[i++];
+            idx++;
+        }
+        while (j < nums2.length && idx <= len / 2) {
+            med1 = med2;
+            med2 = nums2[j++];
+            idx++;
+        }
+        if (len % 2 == 0) {
+            return (med1 + med2) / 2.0;
+        }
+        return (double)med2;
+    }
+}
+
 // https://leetcode.com/problems/median-of-two-sorted-arrays/solution/
 
 /*
