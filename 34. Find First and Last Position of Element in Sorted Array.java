@@ -3,40 +3,47 @@ class Solution {
         if (nums == null || nums.length == 0) {
             return new int[]{-1, -1};
         }
+        int start = searchStart(nums, target);
+        if (start == -1) {
+            return new int[]{-1, -1};
+        }
+        int end = searchEnd(nums, target);
+        return new int[]{start, end};
+    }
+    
+    // search start 的时候，当nums[mid] == target时，要移动end，因为需要把搜索范围尽量往左边收缩
+    private int searchStart(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
-        int[] bound = new int[2];
         while (start < end) {
             int mid = (start + end) / 2;
             if (nums[mid] >= target) {
                 end = mid;
-            }
-            else {
+            } else {
                 start = mid + 1;
             }
         }
         if (nums[start] == target) {
-            bound[0] = start;
-        } else {
-            return new int[]{-1, -1};
+            return start;
         }
-        
-        start = 0;
-        end = nums.length - 1;
+        return -1;
+    }
+    
+    // search end 的时候，当nums[mid] == target时，要移动start，因为需要把搜索范围尽量往右边收缩
+    private int searchEnd(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
         while (start < end) {
             int mid = (start + end + 1) / 2;
-            if (nums[mid] <= target) {
-                start = mid;
-            }
-            else {
+            if (nums[mid] > target) {
                 end = mid - 1;
+            } else {
+                start = mid;
             }
         }
         if (nums[start] == target) {
-            bound[1] = start;
-        } else {
-            return new int[]{-1, -1};
+            return start;
         }
-        return bound;
+        return -1;
     }
 }
