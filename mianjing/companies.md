@@ -1,0 +1,4 @@
+stripe
+tiktok
+instacart
+Rivian
