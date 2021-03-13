@@ -1,5 +1,5 @@
-[17. Letter Combinations of a Phone Number](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/17.%20Letter%20Combinations%20of%20a%20Phone%20Number.java) 
-[22. Generate Parentheses](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/22.%20Generate%20Parentheses.java) 
+[17. Letter Combinations of a Phone Number](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/17.%20Letter%20Combinations%20of%20a%20Phone%20Number.java)  
+[22. Generate Parentheses](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/22.%20Generate%20Parentheses.java)  
 [301. Remove Invalid Parentheses.java](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/301.%20Remove%20Invalid%20Parentheses.java)  
 [combination sum conclusion.java](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/combination%20sum%20conclusion.java)  
 [78. Subsets.java](https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/78.%20Subsets.java)  
