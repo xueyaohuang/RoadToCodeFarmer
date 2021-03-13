@@ -53,10 +53,16 @@ class Solution {
             for (int j = 0; j < 9; j++) {
                 if (board[i][j] != '.') {
                     int num = board[i][j] - '0';
-                    if (!set.add("r " + i + " " + num) || !set.add("c " + j + " " + num) || !set.add("b " + i / 3 + j / 3 + num)) {
+                    if (!set.add("r" + i + " " + num)) {
                         return false;
                     }
-                } 
+                    if (!set.add("c" + j + " " + num)) {
+                        return false;
+                    }
+                    if (!set.add("s" + i / 3 + " " + j / 3 + " " + num)) {
+                        return false;
+                    }
+                }
             }
         }
         return true;
