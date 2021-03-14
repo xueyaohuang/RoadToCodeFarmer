@@ -1,33 +1,28 @@
+/*
+The idea is that when rotating the array, there must be one half of the array that is still in sorted order.
+1. 找到sorted half。如果nums[mid] >= nums[start]，从nums[start]到nums[mid]是sorted half；如果nums[mid] < nums[start]，从nums[mid]到nums[end]是sorted half
+2. 找到target在sorted half的条件。对于nums[mid] >= nums[start]，这一条件是target >= nums[start] && target <= nums[mid]。对于nums[mid] < nums[start]，这一条件是target > nums[mid] && target <= nums[end]
+*/
 class Solution {
     public int search(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return -1;
-        }
         int start = 0;
         int end = nums.length - 1;
         while (start < end) {
             int mid = start + (end - start) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] >= nums[start]) {
-                if (nums[start] <= target && target <= nums[mid]) {
+            if (nums[mid] >= nums[start]) {
+                if (target >= nums[start] && target <= nums[mid]) {
                     end = mid;
-                }
-                else {
+                } else {
                     start = mid + 1;
                 }
             } else {
-                if (nums[mid] < target && target <= nums[end]) {
+                if (target > nums[mid] && target <= nums[end]) {
                     start = mid + 1;
-                }
-                else {
+                } else {
                     end = mid;
                 }
             }
         }
-        if (nums[start] == target) {
-            return start;
-        }
-        return -1;
+        return nums[start] == target ? start : -1;
     }
 }
