@@ -21,3 +21,28 @@ class Solution {
         return s;
     }
 }
+
+class Solution {
+    public String countAndSay(int n) {
+        if (n == 1) {
+            return "1";
+        }
+        String cur = "1";
+        StringBuilder sb = new StringBuilder();
+        while (n > 1) {
+            for (int i = 0; i < cur.length(); i++) {
+                char c = cur.charAt(i);
+                int count = 1;
+                while (i < cur.length() - 1 && cur.charAt(i + 1) == c) {
+                    i++;
+                    count++;
+                }
+                sb.append(count).append(c);
+            }
+            cur = sb.toString();
+            sb = new StringBuilder();
+            n--;
+        }
+        return cur;
+    }
+}
