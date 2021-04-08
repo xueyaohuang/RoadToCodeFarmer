@@ -21,3 +21,34 @@ class Solution {
         return dp[s.length()];
     }
 }
+
+class Solution {
+    public int numDecodings(String s) {
+        int twoBefore = 1;
+        int oneBefore = 1;
+        int res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int one = 0;
+            int two = 0;
+            if (c == '0') {
+                if (i == 0 || s.charAt(i - 1) == '0' || s.charAt(i - 1) > '2') {
+                    return 0;
+                }
+                two = 1;
+            } else {
+                one = 1;
+                if (i > 0 && s.charAt(i - 1) != '0') {
+                    int num = Integer.valueOf(s.substring(i - 1, i + 1));
+                    if (num <= 26) {
+                        two = 1;
+                    }
+                }
+            }
+            res = (one > 0 ? oneBefore : 0) + (two > 0 ? twoBefore  : 0);
+            twoBefore = oneBefore;
+            oneBefore = res;
+        }
+        return res;
+    }
+}
