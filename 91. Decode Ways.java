@@ -1,6 +1,35 @@
 // 类似上楼梯
 class Solution {
     public int numDecodings(String s) {
+        if (s.charAt(0) == '0') {
+            return 0;
+        }
+        int twoBefore = 1;
+        int oneBefore = 1;
+        int res = 1;
+        for (int i = 1; i < s.length(); i++) {
+            int one = Integer.valueOf(s.substring(i, i + 1));
+            int two = Integer.valueOf(s.substring(i - 1, i + 1));
+            int temp = 0;
+            if (one != 0) {
+                temp += oneBefore;
+            }
+            if (two >= 10 && two <= 26) {
+                temp += twoBefore;
+            }
+            if (temp == 0) {
+                return 0;
+            }
+            twoBefore = oneBefore;
+            oneBefore = temp;
+            res = temp;
+        }
+        return res;
+    }
+}
+
+class Solution {
+    public int numDecodings(String s) {
         if (s == null || s.length() == 0 || s.charAt(0) == '0') {
             return 0;
         }
