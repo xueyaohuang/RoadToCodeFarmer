@@ -80,8 +80,6 @@ class Solution {
 }
 
 // 给定一个BST的preorder traverse array，返回这个BST的root。
-// 与上面不同在于，在preorder序列中找下一个大的element，可以用binary search
-// Time: O(n) for a balanced tree, O(nlgn) for a skew tree
 
 public class Solution {
     
@@ -97,13 +95,11 @@ public class Solution {
             return null;
         }
         
-        TreeNode root = new TreeNode(preorder[rootIdx]);
-        int rightRootidx = firstGreaterIdx(preorder, rootIdx);
-        
-        // int rightRootidx = rootIdx + 1;
-        // while (rightRootidx < preorder.length && preorder[rightRootidx] < preorder[rootIdx]) {
-        //     rightRootidx++;
-        // }
+        TreeNode root = new TreeNode(preorder[rootIdx]);        
+        int rightRootidx = rootIdx + 1;
+        while (rightRootidx < preorder.length && preorder[rightRootidx] < preorder[rootIdx]) {
+            rightRootidx++;
+        }
         
         root.left = buildBSTHelper(preorder, rootIdx + 1, rightRootidx - 1);
         root.right = buildBSTHelper(preorder, rightRootidx, end);
@@ -119,20 +115,6 @@ public class Solution {
         printTreeInorder(root.left);
         System.out.println(root.val);
         printTreeInorder(root.right);
-    }
-    
-    private static int firstGreaterIdx(int[] nums, int curIdx) {
-        int start = curIdx + 1;
-        int end = nums.length;
-        while (start < end) {
-            int mid = (start + end) /2;
-            if (nums[mid] < nums[curIdx]) {
-                start = mid + 1;
-            } else if (nums[mid] > nums[curIdx]) {
-                end = mid;
-            }
-        }
-        return start;
     }
     
     public static void main(String args[]) {
