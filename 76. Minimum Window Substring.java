@@ -15,6 +15,7 @@ class Solution {
         int minLen = Integer.MAX_VALUE;
         for (int end = 0; end < lenS; end++) {
             char cend = s.charAt(end);
+            // freq[cend] > 0 表示目前得到的cend的个数没有t中cend的个数多，所以count要增加
             if (freq[cend]-- > 0) { // freq[cend]无论如何都会--
                 count++;
             }
