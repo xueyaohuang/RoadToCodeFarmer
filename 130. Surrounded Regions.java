@@ -1,5 +1,49 @@
 class Solution {
     public void solve(char[][] board) {
+        int m = board.length;
+        int n = board[0].length;
+        boolean[][] visited = new boolean[m][n];
+        boolean[][] notSurrounded = new boolean[m][n];
+        for (int j = 0; j < n; j++) {
+            if (board[0][j] == 'O' && !visited[0][j]) {
+                dfs(board, 0, j, visited, notSurrounded);
+            }
+            if (board[m - 1][j] == 'O' && !visited[m - 1][j]) {
+                dfs(board, m - 1, j, visited, notSurrounded);
+            }
+        }
+        for (int i = 1; i < m - 1; i++) {
+            if (board[i][0] == 'O' && !visited[i][0]) {
+                dfs(board, i, 0, visited, notSurrounded);
+            }
+            if (board[i][n - 1] == 'O' && !visited[i][n - 1]) {
+                dfs(board, i, n - 1, visited, notSurrounded);
+            }
+        }
+        for (int i = 1; i < m - 1; i++) {
+            for (int j = 1; j < n - 1; j++) {
+                if (board[i][j] == 'O' && !notSurrounded[i][j]) {
+                    board[i][j] = 'X';
+                }
+            }
+        }
+    }
+    
+    private void dfs(char[][] board, int i, int j, boolean[][] visited, boolean[][] notSurrounded) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] == 'X' || visited[i][j]) {
+            return;
+        }
+        visited[i][j] = true;
+        notSurrounded[i][j] = true;
+        dfs(board, i + 1, j, visited, notSurrounded);
+        dfs(board, i - 1, j, visited, notSurrounded);
+        dfs(board, i, j + 1, visited, notSurrounded);
+        dfs(board, i, j - 1, visited, notSurrounded);
+    }
+}
+
+class Solution {
+    public void solve(char[][] board) {
         if (board == null || board.length <= 2) {
             return;
         }
