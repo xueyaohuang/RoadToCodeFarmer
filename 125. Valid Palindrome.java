@@ -16,6 +16,7 @@ class Solution {
                 j--;
                 continue;
             }
+            // Character.toLowerCase(c) is itself if c is not a letter
             if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) {
                 return false;
             }
