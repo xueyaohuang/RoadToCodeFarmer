@@ -17,15 +17,16 @@ class Solution {
 ## method2
 class Solution {
     public int maxProfit(int[] prices) {
-        if (prices.length < 2) {
-            return 0;
-        }
-        int cash = 0;
-        int hold = -prices[0];
+        int prevSell = 0;
+        int prevBuy = -prices[0];
         for (int i = 1; i < prices.length; i++) {
-            cash = Math.max(cash, hold + prices[i]);
-            hold = Math.max(hold, cash - prices[i]);
+            // prevSell:上一步卖了，这一步什么也不干。prevBuy + prices[i]:上一步买了，这一步卖。
+            int curSell = Math.max(prevSell, prevBuy + prices[i]);
+            // prevBuy: 上一步买了，这一步什么也不干。prevSell - prices[i]: 上一步卖了，这一步买。
+            int curBuy = Math.max(prevBuy, prevSell - prices[i]);
+            prevSell = curSell;
+            prevBuy = curBuy;
         }
-        return cash;
+        return prevSell;
     }
 }
