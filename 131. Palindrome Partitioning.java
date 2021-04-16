@@ -37,18 +37,18 @@ class Solution {
         List<List<String>> res = new ArrayList<>();
         int len = s.length();
         boolean[][] isPalindrome = new boolean[len][len];
-        for (int i = len - 1; i >= 0; i--) {
-            for (int j = i; j < len; j++) {
-                if (s.charAt(i) == s.charAt(j) && (j - i < 2 || isPalindrome[i + 1][j - 1])) {
+        for (int j = 0; j < len; j++) {
+            for (int i = 0; i <= j; i++) {
+                if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || isPalindrome[i + 1][j - 1])) {
                     isPalindrome[i][j] = true;
                 }
             }
         }
-        backtrack(s, res, new ArrayList<>(), 0, isPalindrome);
+        backtracking(s, res, isPalindrome, new ArrayList<>(), 0);
         return res;
     }
     
-    private void backtrack(String s, List<List<String>> res, List<String> temp, int start, boolean[][] isPalindrome) {
+    private void backtracking(String s, List<List<String>> res, boolean[][] isPalindrome, List<String> temp, int start) {
         if (start == s.length()) {
             res.add(new ArrayList<>(temp));
             return;
@@ -56,7 +56,7 @@ class Solution {
         for (int i = start; i < s.length(); i++) {
             if (isPalindrome[start][i]) {
                 temp.add(s.substring(start, i + 1));
-                backtrack(s, res, temp, i + 1, isPalindrome);
+                backtracking(s, res, isPalindrome, temp, i + 1);
                 temp.remove(temp.size() - 1);
             }
         }
