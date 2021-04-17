@@ -83,3 +83,26 @@ class Solution {
         return false;
     }
 }
+
+// TLE
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> dict = new HashSet<>(wordDict);
+        return canBreak(s, dict, 0);
+    }
+    
+    private boolean canBreak(String s, Set<String> dict, int start) {
+        if (start == s.length()) {
+            return true;
+        }
+        for (int i = start; i < s.length(); i++) {
+            String cur = s.substring(start, i + 1);
+            if (dict.contains(cur)) {
+                if (canBreak(s, dict, i + 1)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
