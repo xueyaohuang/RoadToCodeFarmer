@@ -36,12 +36,11 @@ class Solution {
                     overlap++;
                     continue;
                 }
+                // gcd肯定不是0
                 int gcd = generateGCD(x, y);
-                // 一对(x,y)代表了一种斜率
-                if (gcd != 0) {
-                    x /= gcd;
-                    y /= gcd;
-                }
+                // 一对(x,y)代表了一种斜率，直接用小数表示斜率当map的key会出现相差极小分不清楚的情况，比如1和1.000000000000001
+                x /= gcd;
+                y /= gcd;
                 if (map.containsKey(x)) {
                     if (map.get(x).containsKey(y)) {
                         map.get(x).put(y, map.get(x).get(y) + 1);
