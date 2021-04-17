@@ -1,22 +1,19 @@
 // bottom up
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
-        if (s == null || s.length() == 0) {
-            return false;
-        }
+        Set<String> dict = new HashSet<>(wordDict);
         int len = s.length();
-        boolean[] res = new boolean[len + 1];
-        Set<String> set = new HashSet<>(wordDict);
-        res[0] = true;
-        for (int i = 1; i <= len; i++) {
-            for (int j = 0; j < i; j++) {
-                if (res[j] && set.contains(s.substring(j, i))) {
-                    res[i] = true;
-                    break;
+        boolean[] canBreak = new boolean[len + 1];
+        canBreak[0] = true;
+        // j是substring的结尾idx+1，i是substring的开头idx+1
+        for (int j = 1; j <= len; j++) {
+            for (int i = 1; i <= j; i++) {
+                if (canBreak[i - 1] && wordDict.contains(s.substring(i - 1, j))) {
+                    canBreak[j] = true;
                 }
             }
         }
-        return res[len];
+        return canBreak[len];
     }
 }
 
