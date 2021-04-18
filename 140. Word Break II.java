@@ -1,3 +1,37 @@
+class Solution {
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        Set<String> set = new HashSet<>(wordDict);
+        List<String> res = new ArrayList<>();
+        backtracking(s, res, new ArrayList<>(), set, 0);
+        return res;
+    }
+    
+    private void backtracking(String s, List<String> res, List<String> temp, Set<String> set, int start) {
+        if (start == s.length()) {
+            res.add(makeString(temp));
+            return;
+        }
+        for (int i = start; i < s.length(); i++) {
+            if (set.contains(s.substring(start, i + 1))) {
+                temp.add(s.substring(start, i + 1));
+                backtracking(s, res, temp, set, i + 1);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+    
+    private String makeString(List<String> temp) {
+        if (temp.size() == 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder(temp.get(0));
+        for (int i = 1; i < temp.size(); i++) {
+            sb.append(' ').append(temp.get(i));
+        }
+        return sb.toString();
+    }
+}
+
 // 基本思想还是backtrack，但是加入了很多加速的模块。
 // 1. canBeBroken，在做backtrack之前，检查s能否被拆分
 // 2. maxWordLength，i每次前进的步数最大是maxWordLength，再大不会有那么长的单词了
