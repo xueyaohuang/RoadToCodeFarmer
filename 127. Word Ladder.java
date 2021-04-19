@@ -1,3 +1,41 @@
+// no endSet
+class Solution {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        Set<String> wordDict = new HashSet<>(wordList);
+        if (!wordDict.contains(endWord)) {
+            return 0;
+        }
+        Set<String> set = new HashSet<>();
+        set.add(beginWord);
+        Set<String> used = new HashSet<>();
+        int count = 1;
+        while (!set.isEmpty()) {
+            Set<String> temp = new HashSet<>();
+            for (String s : set) {
+                if (s.equals(endWord)) {
+                    return count;
+                }
+                char[] cur = s.toCharArray();
+                for (int i = 0; i < cur.length; i++) {
+                    char ch = cur[i];
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        cur[i] = c;
+                        String target = String.valueOf(cur);
+                        if (!used.contains(target) && wordDict.contains(target)) {
+                            temp.add(target);
+                            used.add(target);
+                        }
+                    }
+                    cur[i] = ch;
+                }
+            }
+            count++;
+            set = temp;
+        }
+        return 0;
+    }
+}
+
 /*
 1. Why shortest transformation?
 Using BFS, each time increase len by 1, if there is any transformation, it will return.
