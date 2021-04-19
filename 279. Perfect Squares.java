@@ -1,18 +1,10 @@
 class Solution {
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
-        Arrays.fill(dp, n);
+        Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
         for (int i = 1; i <= n; i++) {
-            int sqrt = (int)Math.sqrt(i);
-            // If the number is already a perfect square,
-            // then dp[number] can be 1 directly. This is
-            // just a optimization for this DP solution.
-            if (sqrt * sqrt == i) {
-                dp[i] = 1;
-                continue;                
-            }
-            for (int j = 1; j * j <= i; j++) {
+            for (int j = (int)Math.sqrt(i); j >= 0; j--) {
                 dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
             }
         }
