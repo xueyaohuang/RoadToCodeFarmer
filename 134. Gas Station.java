@@ -31,6 +31,7 @@ class Solution {
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int tank = 0;
+        // total表示累计缺少的油
         int total = 0;
         int start = 0;
         for (int i = 0; i < gas.length; i++) {
