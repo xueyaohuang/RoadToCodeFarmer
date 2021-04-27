@@ -21,3 +21,19 @@ class Solution {
         return true;
     }
 }
+
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        if (n == 1) {
+            return true;
+        }
+        long cur = 1;
+        while (cur < n) {
+            cur *= 3;
+            if (cur == n) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
