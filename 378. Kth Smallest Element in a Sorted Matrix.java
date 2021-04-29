@@ -1,40 +1,33 @@
 // O(nlg(max-min))
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
-        
-        int len = matrix.length;
-        int high = matrix[len - 1][len - 1];
-        int low = matrix[0][0];
-        
-        while (low < high) {
-            int mid = low + (high - low) / 2;
-            int count = numNoMoreThan(matrix, mid);
-            if (count < k) {
-                low = mid + 1;
+        int n = matrix.length;
+        int start = matrix[0][0];
+        int end = matrix[n - 1][n - 1];
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (countNoMoreThan(matrix, mid) < k) {
+                start = mid + 1;
             } else {
-                // count == k的时候不能return mid，也不能移动low，只能移动high
-                high = mid;
+                end = mid;
             }
         }
-        return low;       
+        return start;
     }
     
-    private int numNoMoreThan(int[][] matrix, int val) {
-        
-        int len = matrix.length;
-        int i = len - 1;
-        int j = 0;
-        int res = 0;
-        
-        while (i >= 0 && j < len) {
+    private int countNoMoreThan(int[][] matrix, int val) {
+        int n = matrix.length;
+        int i = n - 1, j = 0;
+        int count = 0;
+        while (i >= 0 && j < n) {
             if (matrix[i][j] > val) {
                 i--;
             } else {
-                res += i + 1;
+                count += i + 1;
                 j++;
             }
-        }        
-        return res;
+        }
+        return count;
     }
 }
 
