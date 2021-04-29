@@ -39,21 +39,18 @@ class Solution {
 }
 
 // O(mnlgk)
+// 最大堆
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
-        int m = matrix.length;
-        int n = matrix[0].length;
-        PriorityQueue<Integer> pq = new PriorityQueue<>(k, Collections.reverseOrder());
-        
-        for (int i = 0; i < m; i++) {
+        int n = matrix.length;
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (pq.size() < k) {
                     pq.offer(matrix[i][j]);
-                } else {
-                    if (matrix[i][j] < pq.peek()) {
-                        pq.poll();
-                        pq.offer(matrix[i][j]);
-                    }
+                } else if (matrix[i][j] < pq.peek()) {
+                    pq.poll();
+                    pq.offer(matrix[i][j]);
                 }
             }
         }
