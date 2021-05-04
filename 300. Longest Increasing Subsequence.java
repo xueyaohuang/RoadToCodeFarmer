@@ -89,6 +89,8 @@ class Solution {
         if (nums[start] < target) {
             // 注意这里不是 -(start + 1) - 1
             // 因为-(start + 1) - 1不满足from=to=0的情况
+            // 为什么如果nums[start] < target，insert position就是to？因为更新的时候如果nums[mid] < target，start = mid + 1（start动了），那么最终停下来的时候，
+            // nums[start]应该比target大，或者start是最后一个。
             return -to -1;
         }
         return -start - 1;
