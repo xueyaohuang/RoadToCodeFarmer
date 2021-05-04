@@ -32,6 +32,8 @@ inserted into the array: the index of the first element in the range greater tha
 toIndex if all elements in the range are less than the specified key. Note that this guarantees
 that the return value will be >= 0 if and only if the key is found.
 */
+
+// https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
 /*
 At each loop, tails is an array storing the smallest tail of all increasing subsequences with length i+1 in tails[i].
 For example, say we have nums = [4,5,6,3], then all the available increasing subsequences are:
