@@ -57,16 +57,17 @@ class Solution {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int len = 0;
+        int len = 1;
         int[] tails = new int[nums.length];
-        for (int num : nums) {
+        tails[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
             // 面试可以试试用Arrays.binarySearch
             // int idx = Arrays.binarySearch(tails, 0, len, num);
-            int idx = binarySearch(tails, 0, len, num);
+            int idx = binarySearch(tails, 0, len, nums[i]);
             if (idx < 0) {
                 idx = -(idx + 1);
             }
-            tails[idx] = num;
+            tails[idx] = nums[i];
             if (len == idx) {
                 len++;
             }
@@ -89,8 +90,6 @@ class Solution {
         }
         // 不用检查 if (nums[start] == target)，因为跳出while后，target一定没在nums中找到
         if (nums[start] < target) {
-            // 注意这里不是 -(start + 1) - 1
-            // 因为-(start + 1) - 1不满足from=to=0的情况
             // 为什么如果nums[start] < target，insert position就是to？因为更新的时候如果nums[mid] < target，start = mid + 1（start动了），那么最终停下来的时候，
             // nums[start]应该比target大，或者start是最后一个。
             return -to - 1;
