@@ -17,6 +17,18 @@ class Solution {
 // 2.
 class Solution {
     public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int i : nums) {
+            if (!set.add(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
         if (nums == null || nums.length < 2) {
             return false;
         }
@@ -24,8 +36,7 @@ class Solution {
         for (int num : nums) {
             if (set.contains(num)) {
                 return true;
-            }
-            else {
+            } else {
                 set.add(num);
             }
         }
