@@ -1,21 +1,25 @@
-/**
- * Definition for singly-linked list with a random pointer.
- * class RandomListNode {
- *     int label;
- *     RandomListNode next, random;
- *     RandomListNode(int x) { this.label = x; }
- * };
- */
-public class Solution {
-    public RandomListNode copyRandomList(RandomListNode head) {
-        if (head == null) {
-            return null;
-        }
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+class Solution {
+    public Node copyRandomList(Node head) {
         // key是原始的list node，value是deep copy的list node
-        Map<RandomListNode, RandomListNode> map = new HashMap<>();
-        RandomListNode node = head;
+        Map<Node, Node> map = new HashMap<>();
+        Node node = head;
         while (node != null) {
-            map.put(node, new RandomListNode(node.label));
+            map.put(node, new Node(node.val));
             node = node.next;
         }
         node = head;
@@ -25,6 +29,6 @@ public class Solution {
             map.get(node).random = map.get(node.random);
             node = node.next;
         }
-        return map.get(head); // 注意最后返回map.get(head)而不是map.get(node)
+        return map.get(head);
     }
 }
