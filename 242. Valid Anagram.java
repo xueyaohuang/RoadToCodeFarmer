@@ -16,6 +16,7 @@ class Solution {
     }
 }
 
+// unicode follow up https://leetcode.com/problems/valid-anagram/discuss/66533/Java-solution-HashMap-Unicode-Follow-up
 class Solution {
     public boolean isAnagram(String s, String t) {
         if ((s == null && t != null) || (s != null && t == null) || s.length() != t.length()) {
