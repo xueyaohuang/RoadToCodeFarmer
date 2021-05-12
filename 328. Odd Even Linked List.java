@@ -27,3 +27,26 @@ class Solution {
         return head;
     }
 }
+
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode dummy = head.next;
+        while (even != null && even.next != null) {
+            if (odd.next.next != null) {
+                odd.next = odd.next.next;
+                if (odd.next != null) {
+                    odd = odd.next;
+                }
+            }
+            even.next = even.next.next;
+            even = even.next;
+        }
+        odd.next = dummy;
+        return head;
+    }
+}
