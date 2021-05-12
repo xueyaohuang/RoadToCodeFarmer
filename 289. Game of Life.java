@@ -4,6 +4,8 @@
 1  live     die
 2  die      live
 3  live     live
+
+https://leetcode.com/problems/game-of-life/discuss/73286/How-to-answer-these-frequent-interview-follow-up-question-for-game-of-life
 */
 class Solution {
     public void gameOfLife(int[][] board) {
