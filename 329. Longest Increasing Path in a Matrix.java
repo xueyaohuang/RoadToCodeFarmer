@@ -35,3 +35,41 @@ class Solution {
         return max;
     }
 }
+
+// DFS no memory, could be brute force
+class Solution {
+    
+    private int cur;
+    private int curMax;
+    
+    public int longestIncreasingPath(int[][] matrix) {
+        int max = 0;
+        boolean[][] visited;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                cur = 0;
+                curMax = 0;
+                visited = new boolean[matrix.length][matrix[0].length];
+                dfs(matrix, i, j, visited, Integer.MIN_VALUE);
+                max = Math.max(max, curMax);
+            }
+        }
+        return max;
+    }
+    
+    private void dfs(int[][] matrix, int i, int j, boolean[][] visited, int prev) {
+        if (i < 0 || i >= matrix.length || j < 0 || j >= matrix[0].length || visited[i][j] || matrix[i][j] <= prev) {
+            return;
+        }
+        visited[i][j] = true;
+        cur++;
+        curMax = Math.max(curMax, cur);
+        dfs(matrix, i + 1, j, visited, matrix[i][j]);
+        dfs(matrix, i - 1, j, visited, matrix[i][j]);
+        dfs(matrix, i, j + 1, visited, matrix[i][j]);
+        dfs(matrix, i, j - 1, visited, matrix[i][j]);
+        visited[i][j] = false;
+        cur--;
+        return;
+    }
+}
