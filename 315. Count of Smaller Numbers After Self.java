@@ -7,10 +7,10 @@ class Solution {
     public List<Integer> countSmaller(int[] nums) {
         List<Integer> res = new ArrayList<>();
         if (nums == null || nums.length == 0) {
-        	return res;
+            return res;
         }
         for (int i = 0; i < nums.length - 1; i++) {
-        	res.add(countAfter(nums, i));
+            res.add(countAfter(nums, i));
         }
         res.add(0);
         return res;
