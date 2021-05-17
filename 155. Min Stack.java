@@ -10,13 +10,9 @@ class MinStack {
     }
     
     public void push(int x) {
-        stack.push(x);
         // peek 之前要检查是否是empty
-        if (min.isEmpty() || x < min.peek()) {
-            min.push(x);
-        } else {
-            min.push(min.peek());
-        }
+        min.push(min.isEmpty() ? x : Math.min(min.peek(), x));
+        stack.push(val);
     }
     
     public void pop() {
