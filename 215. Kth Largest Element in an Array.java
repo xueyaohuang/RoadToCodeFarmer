@@ -91,16 +91,13 @@ class Solution {
 //3 PriorityQueue, O(nlgk)
 class Solution {
     public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
-        for (int i = 0; i < k; i++) {
-            pq.offer(nums[i]);
-        }
-        int min = 0;
-        for (int i = k; i < nums.length; i++) {
-            min = pq.peek();
-            if (nums[i] > min) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int i : nums) {
+            if (pq.size() < k) {
+                pq.offer(i);
+            } else if (i > pq.peek()) {
                 pq.poll();
-                pq.offer(nums[i]);
+                pq.offer(i);
             }
         }
         return pq.peek();
