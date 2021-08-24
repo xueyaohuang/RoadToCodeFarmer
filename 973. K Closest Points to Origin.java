@@ -73,6 +73,34 @@ class Solution {
     }
 }
 
+class Solution {
+    public int[][] kClosest(int[][] points, int k) {
+        int[][] res = new int[k][2];
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int[] p : points) {
+            int d = getSquareSum(p);
+            if (pq.size() < k) {
+                pq.offer(d);
+            } else if (d < pq.peek()) {
+                pq.poll();
+                pq.offer(d);
+            }
+        }
+        int distance = pq.peek();
+        int i = 0;
+        for (int[] p : points) {
+            if (getSquareSum(p) <= distance) {
+                res[i++] = p;
+            }
+        }
+        return res;
+    }
+    
+    private int getSquareSum(int[] point) {
+        return point[0] * point[0] + point[1] * point[1];
+    }
+}
+
 // O(n)
 class Solution {
     public int[][] kClosest(int[][] points, int K) {
