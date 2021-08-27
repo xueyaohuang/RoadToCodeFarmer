@@ -48,24 +48,6 @@ class Solution {
     }
 }
 
-class Solution {
-    int len = 0;
-    public int diameterOfBinaryTree(TreeNode root) {
-        if (root != null) {
-            maxAtThisNode(root);
-        }
-        return len;
-    }
-    private int maxAtThisNode(TreeNode node) {
-        if (node == null) {
-            return 0;
-        }
-        int left = node.left == null ? 0 : 1 + maxAtThisNode(node.left);
-        int right = node.right == null ? 0 : 1 + maxAtThisNode(node.right);
-        len = Math.max(len, left + right);
-        return Math.max(left, right);
-    }
-}
 // 与第687题对比，687还有附加的val相等的条件，所以要分left，right，rootLeft， rootRight四种情况。
 
 class Solution {
