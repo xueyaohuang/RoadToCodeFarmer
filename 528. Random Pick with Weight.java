@@ -91,27 +91,30 @@ class Solution {
         return map.get(key);
     }
 }
-
 class Solution {
     
-    Random rand;
     int[] sum;
-    
+    Random rand;
+
     public Solution(int[] w) {
-        int len = w.length;
+        sum = new int[w.length];
         rand = new Random();
-        sum = new int[len];
         sum[0] = w[0];
-        for (int i = 1; i < len; i++) {
+        for (int i = 1; i < w.length; i++) {
             sum[i] = sum[i - 1] + w[i];
         }
     }
     
     public int pickIndex() {
-        int len = sum.length;
-        // + 1 很重要，idx的范围因该在1到sum[len - 1]之间，因为if (sum[mid] == idx) return mid，结尾是包含的。
-        /* 也可以是这样的，idx就不用+1
-        int target = rand.nextInt(sum[len - 1]);
+        int start = 0;
+        int end = sum.length - 1;
+        int target = rand.nextInt(sum[sum.length - 1]);
+        /*
+        ["Solution","pickIndex"]
+        [[[3,14,1,8]],[]]
+        
+        [3, 17, 18, 26]
+        */
         while (start < end) {
             int mid = (start + end) / 2;
             if (sum[mid] > target) {
@@ -121,20 +124,5 @@ class Solution {
             }
         }
         return start;
-        */
-        int idx = rand.nextInt(sum[len - 1]) + 1;
-        int left = 0, right = len - 1;
-        // search position 
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            if (sum[mid] == idx) {
-                return mid;
-            } else if (sum[mid] < idx) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            } 
-        }
-        return left;
     }
 }
