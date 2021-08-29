@@ -49,19 +49,39 @@ class Solution {
             return;
         }
         char c = s.charAt(index);
-        int len = sb.length();
         if (c == '(') {
-            backtrack(s, res, rmOpen - 1, rmClose, open, index + 1, sb); // not use '('
-            backtrack(s, res, rmOpen, rmClose, open + 1, index + 1, sb.append(c)); // use '('
-            // sb.setLength(sb.length() - 1); // 返回上层recursion，remove当前加入的元素
+            // 注意not use '('的backtrack要在use '('的backtrack之前
+            // not use '('
+            backtrack(s, res, rmOpen - 1, rmClose, open, index + 1, sb);
+            // use '('
+            backtrack(s, res, rmOpen, rmClose, open + 1, index + 1, sb.append(c));
         } else if (c == ')') {
-            backtrack(s, res, rmOpen, rmClose - 1, open, index + 1, sb); // not use ')'
-            backtrack(s, res, rmOpen, rmClose, open - 1, index + 1, sb.append(c)); // use ')'
-            // sb.setLength(sb.length() - 1);
+            // not use ')'
+            backtrack(s, res, rmOpen, rmClose - 1, open, index + 1, sb);
+            // use ')'
+            backtrack(s, res, rmOpen, rmClose, open - 1, index + 1, sb.append(c));
         } else {
             backtrack(s, res, rmOpen, rmClose, open, index + 1, sb.append(c));
-            // sb.setLength(sb.length() - 1);
         }
-        sb.setLength(len); // 返回上层recursion，remove当前加入的元素
+        sb.setLength(sb.length() - 1); // 返回上层recursion，remove当前加入的元素
+        /*
+        如果先写用了括号的backtrack，用完就需要返回上层（sb.setLength(sb.length() - 1)）再backtrack不用括号的
+        if (c == '(') {
+            // use '('
+            backtrack(s, res, rmOpen, rmClose, open + 1, index + 1, sb.append(c));
+            sb.setLength(sb.length() - 1);
+            // not use '('
+            backtrack(s, res, rmOpen - 1, rmClose, open, index + 1, sb);
+        } else if (c == ')') {
+            // use ')'
+            backtrack(s, res, rmOpen, rmClose, open - 1, index + 1, sb.append(c));
+            sb.setLength(sb.length() - 1);
+            // not use ')'
+            backtrack(s, res, rmOpen, rmClose - 1, open, index + 1, sb);
+        } else {
+            backtrack(s, res, rmOpen, rmClose, open, index + 1, sb.append(c));
+            sb.setLength(sb.length() - 1); // 返回上层recursion，remove当前加入的元素
+        }
+        */
     }
 }
