@@ -58,6 +58,7 @@ class Solution {
         return randomQuickSelect(nums, 0, len - 1, len - k);
     }
     
+    // return 0 indexed, kth smallest element
     private int randomQuickSelect(int[] nums, int start, int end, int k) {
         Random rand = new Random();
         int pivotIdx = rand.nextInt(end - start + 1) + start;
@@ -71,6 +72,8 @@ class Solution {
                 left++;
             }
         }
+        
+        // swap the pivot to its correct position
         swap(nums, left, end);
         if (left == k) {
             return nums[left];
