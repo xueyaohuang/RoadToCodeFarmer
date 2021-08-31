@@ -1,3 +1,4 @@
+// use a set if want one pass
 class Solution {
     public boolean canPermutePalindrome(String s) {
         int count = 0;
