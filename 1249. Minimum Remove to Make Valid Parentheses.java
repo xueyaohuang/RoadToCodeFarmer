@@ -1,3 +1,8 @@
+/*
+counting the number of invalid ( and removing the invalid ) in the first pass.
+If there are open number of invalid ( left, we just need to remove them from the end in the second pass.
+
+*/
 class Solution {
     public String minRemoveToMakeValid(String s) {
         int open = 0;
