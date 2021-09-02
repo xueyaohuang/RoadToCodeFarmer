@@ -1,19 +1,17 @@
-// 主要是以为 .. 是返回上一级，所以需要用到stack的pop，所以要用stack。
+// 主要因为 .. 是返回上一级，所以需要用到stack的pop，所以要用stack。
 class Solution {
     public String simplifyPath(String path) {
-        if (path == null || path.length() == 0) {
-            return "/";
-        }
-        String[] strs = path.split("/");
+        String[] dirs = path.split("/+");
         Deque<String> stack = new ArrayDeque<>();
-        for (String s : strs) {
-            if (s.length() == 0 || s.equals(".")) {
+        for (String dir : dirs) {
+            if (dir.equals(".") || dir.equals("")) {
                 continue;
-            }
-            if (!s.equals("..")) {
-                stack.push(s);
-            } else if (!stack.isEmpty()) {
-                stack.pop();
+            } else if (dir.equals("..")) {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+            } else {
+                stack.push(dir);
             }
         }
         StringBuilder sb = new StringBuilder();
