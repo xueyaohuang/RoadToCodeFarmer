@@ -30,7 +30,8 @@ class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int len = arr.length;
         int idx = Arrays.binarySearch(arr, x);
-        List<Integer> res = new ArrayList<>();
+        // 有往list头部add的操作，所以LinkedList比较好 
+        List<Integer> res = new LinkedList<>();
         int i = 0, j = 0;
         
         if (idx < 0) {
