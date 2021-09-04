@@ -26,6 +26,29 @@ class Solution {
 }
 
 class Solution {
+    int res;
+    public int closestValue(TreeNode root, double target) {
+        res = root.val;
+        dfs(root, target);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, double target) {
+        if (root == null) {
+            return;
+        }
+        if (Math.abs(root.val - target) < Math.abs(res - target)) {
+            res = root.val;
+        }
+        if (root.val <= target) {
+            dfs(root.right, target);
+        } else {
+            dfs(root.left, target);
+        }
+    }
+}
+
+class Solution {
     public int closestValue(TreeNode root, double target) {
         int res = root.val;
         TreeNode node = root;
