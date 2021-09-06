@@ -1,5 +1,33 @@
 class Solution {
     public boolean validWordAbbreviation(String word, String abbr) {
+        int i = 0, j = 0;
+        while (i < abbr.length()) {
+            char c = abbr.charAt(i);
+            if (Character.isAlphabetic(c)) {
+                if (j >= word.length() || word.charAt(j) != c) {
+                    return false;
+                }
+                i++;
+                j++;
+            } else {
+                // to avoid something like "01"
+                if (c == '0') {
+                    return false;
+                }
+                int num = 0;
+                while (i < abbr.length() && Character.isDigit(abbr.charAt(i))) {
+                    num = num * 10 + abbr.charAt(i) - '0';
+                    i++;
+                }
+                j += num;
+            }
+        }
+        return j == word.length();
+    }
+}
+
+class Solution {
+    public boolean validWordAbbreviation(String word, String abbr) {
         int idx1 = 0, idx2 = 0;
         while (idx1 < word.length() && idx2 < abbr.length()) {
             if (!Character.isDigit(abbr.charAt(idx2))) {
