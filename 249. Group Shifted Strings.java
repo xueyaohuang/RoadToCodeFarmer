@@ -7,13 +7,8 @@ class Solution {
         Map<String, List<String>> map = new HashMap<>();
         for (String str : strings) {
             String flag = transform(str);
-            if (map.containsKey(flag)) {
-                map.get(flag).add(str);
-            }
-            else {
-                map.put(flag, new ArrayList<String>());
-                map.get(flag).add(str);
-            }
+            map.putIfAbsent(flag, new ArrayList<>());
+            map.get(flag).add(str);
         }
         // map.values().forEach(temp -> res.add(temp)); However, it is very slow.
         for (String str : map.keySet()) {
