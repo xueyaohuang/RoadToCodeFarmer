@@ -1,27 +1,27 @@
 // Dutch national flag problem
 // threeway partition
 // 把1放中间，0往左边扔，2往右边扔
+/*
+An efficient solution is based on Dutch National Flag based QuickSort. We traverse given array elements from left. 
+We keep track of two pointers, first (called start in below code) to store next position of smaller element (smaller than range) from beginning; 
+and second (called end in below code) to store next position of greater element from end. 
+*/
 class Solution {
     public void sortColors(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return;
-        }
-        
-        int len = nums.length;
-        int idx0 = 0, idx1 = 0, idx2 = len - 1;
-        
-        while (idx1 <= idx2) {
-            if (nums[idx1] == 0) {
-                swap(nums, idx0, idx1);
-                idx0++;
-                idx1++;
-            } else if (nums[idx1] == 1) {
-                idx1++;
+        int start = 0, end = nums.length - 1;
+        for (int i = 0; i <= end;) {
+            if (nums[i] == 0) {
+                swap(nums, i, start);
+                start++;
+                i++;
+            } else if (nums[i] == 2)  {
+                swap(nums, i, end);  // 不知道nums[idx2]是什么，所以idx1不能++
+                end--;
             } else {
-                swap(nums, idx1, idx2); // 不知道nums[idx2]是什么，所以idx1不能++
-                idx2--;
+                i++;
             }
         }
+        
     }
     
     private void swap(int[] nums, int i, int j) {
