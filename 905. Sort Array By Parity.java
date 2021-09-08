@@ -1,17 +1,27 @@
 class Solution {
-    public int[] sortArrayByParity(int[] A) {
-        if (A == null || A.length == 0) {
-            return A;
-        }
-        int len = A.length;
-        int j = 0;
-        for (int i = 0; i < len; i++) {
-            if (A[i] % 2 == 0) {
-                swap(A, i, j);
-                j++;
+    public int[] sortArrayByParity(int[] nums) {
+        int[] res = new int[nums.length];
+        int i = 0, j = nums.length - 1;
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                res[i++] = num;
+            } else {
+                res[j--] = num;
             }
         }
-        return A;
+        return res;
+    }
+}
+
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int j = 0;
+        for (int i =  0;  i < nums.length; i++) {
+            if (nums[i] % 2 == 0) {
+                swap(nums, i, j++);
+            }
+        }
+        return nums;
     }
     
     private void swap(int[] nums, int i, int j) {
