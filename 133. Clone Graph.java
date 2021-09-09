@@ -1,30 +1,63 @@
-/**
- * Definition for undirected graph.
- * class UndirectedGraphNode {
- *     int label;
- *     List<UndirectedGraphNode> neighbors;
- *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
- * };
- */
-public class Solution {
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+*/
+class Solution {
+    public Node cloneGraph(Node node) {
         if (node == null) {
             return node;
         }
-        Map<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
+        Map<Node, Node> map = new HashMap<>();
+        dfs(node, map);
+        return map.get(node);
+    }
+    
+    private void dfs(Node node, Map<Node, Node> map) {
+        if (map.containsKey(node)) {
+            return;
+        }
+        Node cloned = new Node(node.val);
+        map.put(node, cloned);
+        for (Node n : node.neighbors) {
+            dfs(n, map);
+            cloned.neighbors.add(map.get(n));
+        }
+    }
+}
+
+class Solution {
+    public Node cloneGraph(Node node) {
+        if (node == null) {
+            return node;
+        }
+        Map<Node, Node> map = new HashMap<>();
         return dfs(node, map);
     }
     
-    private UndirectedGraphNode dfs(UndirectedGraphNode node, Map<UndirectedGraphNode, UndirectedGraphNode> map) {
+    private Node dfs(Node node, Map<Node, Node> map) {
         if (map.containsKey(node)) {
             return map.get(node);
         }
-        UndirectedGraphNode clone = new UndirectedGraphNode(node.label);
-        map.put(node, clone);
-
-        for (UndirectedGraphNode adj : node.neighbors) {
-            clone.neighbors.add(dfs(adj, map));
+        Node cloned = new Node(node.val);
+        map.put(node, cloned);
+        for (Node n : node.neighbors) {
+            cloned.neighbors.add(dfs(n, map));
         }
-        return clone;
+        return cloned;
     }
 }
