@@ -9,9 +9,6 @@
  */
 class Solution {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
-        // if (t1 == null && t2 == null) {
-        //     return null;
-        // } // not necessary to check both null
         if (t1 == null || t2 == null) {
             return t1 == null ? t2 : t1;
         }
