@@ -10,6 +10,7 @@ class Solution {
             for (int i = 1; i <= j; i++) {
                 if (canBreak[i - 1] && wordDict.contains(s.substring(i - 1, j))) {
                     canBreak[j] = true;
+                    break; // can quit early
                 }
             }
         }
