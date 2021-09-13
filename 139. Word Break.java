@@ -7,7 +7,7 @@ class Solution {
         canBreak[0] = true;
         // j是substring的结尾idx+1，i是substring的开头idx+1
         for (int j = 1; j <= len; j++) {
-            for (int i = 1; i <= j; i++) {
+            for (int i = 1; i <= j; i++) {  // can also be for (int i = j; i >= 1; i--) {}, seems faster
                 if (canBreak[i - 1] && wordDict.contains(s.substring(i - 1, j))) {
                     canBreak[j] = true;
                     break; // can quit early
