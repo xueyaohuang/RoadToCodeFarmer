@@ -1,28 +1,23 @@
 // DFS,O(n^2)
 class Solution {
-    public int findCircleNum(int[][] M) {
-        if (M == null || M.length == 0) {
-            return 0;
-        }
-        int n = M.length;
-        int count = 0;
+    public int findCircleNum(int[][] isConnected) {
+        int n = isConnected.length;
         boolean[] visited = new boolean[n];
-        // 只需要一个for loop
+        int count = 0;
         for (int i = 0; i < n; i++) {
             if (!visited[i]) {
                 count++;
-                visited[i] = true;
-                findFriend(M, i, visited);
+                dfs(isConnected, visited, i);
             }
         }
         return count;
     }
     
-    private void findFriend(int[][] M, int i, boolean[] visited) {
-        for (int j = 0; j < M.length; j++) {
-            if (M[i][j] == 1 && !visited[j]) {
-                visited[j] = true;
-                findFriend(M, j, visited);
+    private void dfs(int[][] isConnected, boolean[] visited, int i) {
+        visited[i] = true;
+        for (int j = 0; j < isConnected[i].length; j++) {
+            if (!visited[j] && isConnected[i][j] == 1) {
+                dfs(isConnected, visited, j);
             }
         }
     }
