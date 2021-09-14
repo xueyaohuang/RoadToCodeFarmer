@@ -1,10 +1,9 @@
 class Solution {
-    public int shortestBridge(int[][] A) {
-        int m = A.length, n = A[0].length;
+    public int shortestBridge(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
         boolean[][] visited = new boolean[m][n];
+        Queue<int[]> boundries = new LinkedList<>();
         int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-        // q stores the boundries
-        Queue<int[]> q = new LinkedList<>();
         boolean found = false;
         // 1. dfs to find an island, mark it in `visited`
         for (int i = 0; i < m; i++) {
@@ -12,52 +11,54 @@ class Solution {
                 break;
             }
             for (int j = 0; j < n; j++) {
-                if (A[i][j] == 1) {
-                    dfs(A, visited, q, i, j, dirs);
+                if (grid[i][j] == 1 && !visited[i][j]) {
+                    dfs(grid, visited, boundries, dirs, i, j);
                     found = true;
                     break;
                 }
             }
         }
+        int steps = 1;
         // 2. bfs to expand this island
-        int step = 0;
-        while (!q.isEmpty()) {
-            int size = q.size();
-            for (int k = 0; k < size; k++) {
-                int[] cur = q.poll();
+        while (!boundries.isEmpty()) {
+            int size = boundries.size();
+            for (int i = 0; i < size; i++) {
+                int[] pos = boundries.poll();
                 for (int[] dir : dirs) {
-                    int i = cur[0] + dir[0];
-                    int j = cur[1] + dir[1];
-                    if (i >= 0 && j >= 0 && i < m && j < n && !visited[i][j]) {
-                        if (A[i][j] == 1) {
-                            return step;
-                        }
-                        q.offer(new int[]{i, j});
-                        visited[i][j] = true;
+                    int x = pos[0] + dir[0];
+                    int y = pos[1] + dir[1];
+                    if (x < 0 || x >= m || y < 0 || y >= n || visited[x][y]) {
+                        continue;
+                    }
+                    if (grid[x][y] == 1) {
+                        return steps;
+                    } else {
+                        visited[x][y] = true;
+                        boundries.offer(new int[]{x, y});
                     }
                 }
             }
-            step++;
+            steps++;
         }
-        return -1;
+        return steps;
     }
     
-    private void dfs(int[][] A, boolean[][] visited, Queue<int[]> q, int i, int j, int[][] dirs) {
-        if (i < 0 || j < 0 || i >= A.length || j >= A[0].length || visited[i][j] || A[i][j] == 0) {
+    private void dfs(int[][] grid, boolean[][] visited, Queue<int[]> boundries, int[][] dirs, int i, int j) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == 0 || visited[i][j]) {
             return;
         }
         visited[i][j] = true;
-        // 只有这个点在边界上，才把他加入queue，因为肯定是从边界开始搭桥
         for (int[] dir : dirs) {
             int x = i + dir[0];
             int y = j + dir[1];
-            if (x >= 0 && y >= 0 && x < A.length && y < A[0].length && A[x][y] == 0) {
-                q.offer(new int[]{i, j});
-                break;
+            // 找开始搭桥的点，因为肯定是从边界开始搭桥
+            if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length && grid[x][y] == 0 && !visited[x][y]) {
+                boundries.offer(new int[]{x, y});
+                visited[x][y] = true;
             }
         }
         for (int[] dir : dirs) {
-            dfs(A, visited, q, i + dir[0], j + dir[1], dirs);
+            dfs(grid, visited, boundries, dirs, i + dir[0], j + dir[1]);
         }
     }
 }
