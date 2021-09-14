@@ -3,6 +3,7 @@ class Solution {
         int m = A.length, n = A[0].length;
         boolean[][] visited = new boolean[m][n];
         int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        // q stores the boundries
         Queue<int[]> q = new LinkedList<>();
         boolean found = false;
         // 1. dfs to find an island, mark it in `visited`
