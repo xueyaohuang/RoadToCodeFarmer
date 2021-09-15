@@ -38,3 +38,34 @@ class Solution {
         }
     }
 }
+
+class Solution {
+    public void wallsAndGates(int[][] rooms) {
+        Queue<int[]> gates = new LinkedList<>();
+        for (int i = 0; i < rooms.length; i++) {
+            for (int j = 0; j < rooms[0].length; j++) {
+                if (rooms[i][j] == 0) {
+                    gates.offer(new int[]{i, j});
+                }
+            }
+        }
+        int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        int distance = 0;
+        while (!gates.isEmpty()) {
+            int size = gates.size();
+            distance++;
+            for (int k = 0; k < size; k++) {
+                int[] cur = gates.poll();
+                for (int[] dir : dirs) {
+                    int x = cur[0] + dir[0];
+                    int y = cur[1] + dir[1];
+                    if (x >= 0 && x < rooms.length && y >= 0 && y < rooms[0].length && rooms[x][y] == Integer.MAX_VALUE) {
+                        rooms[x][y] = distance;
+                        gates.offer(new int[]{x, y});
+                    }
+                }
+            }
+        }
+        
+    }
+}
