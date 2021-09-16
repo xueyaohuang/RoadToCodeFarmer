@@ -17,16 +17,17 @@ class Solution {
 
 /*O(n)
 Put each number in its right place.
-
+把nums[i]换到nums[nums[i] - 1]，如果nums[nums[i] - 1]已经是nums[i]了就不用换。比如[0,1,1,1,1]，只是在i=1的时候换了一次
 For example:
 
-When we find 5, then swap it with A[4].
+When we find 5, then swap it with A[4], so nums[i] should be at nums[nums[i] - 1]
 
 At last, the first place where its number is not right, return the place + 1.
 For anyone who doubts on the complexity of this algorithm: just consider position with A[i] = i+1 as a CORRECT SLOT.
 
     CORRECT SLOT will never be changed: for CORRECT SLOT, A[A[i] - 1] always equals to A[i], vice versa (1)
-    For each swap, the number of CORRECT SLOT increases by at least 1: Position A[A[i] - 1] = A[i] becomes a CORRECT SLOT after swap, and according to (1), this must be a new CORRECT SLOT
+    For each swap, the number of CORRECT SLOT increases by at least 1: Position A[A[i] - 1] = A[i] becomes a CORRECT SLOT after swap, and according to (1), 
+    this must be a new CORRECT SLOT
     The maximum of CORRECT SLOT <= N
 
 Therefore, the complexity is O(N)
