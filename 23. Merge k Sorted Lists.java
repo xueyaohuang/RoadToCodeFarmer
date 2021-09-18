@@ -15,7 +15,7 @@ class Solution {
         return mergeKListsHelper(lists, 0, len - 1);
     }
     
-    private ListNode mergeTwoList(ListNode l1, ListNode l2) {
+    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode node = dummy;
         while (l1 != null && l2 != null) {
@@ -37,12 +37,27 @@ class Solution {
         return dummy.next;
     }
     
+    // recursive mergeTwoLists
+    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null || l2 == null) {
+            return l1 == null ? l2 : l1;
+        }
+        if (l1.val < l2.val) {
+            ListNode l = new ListNode(l1.val);
+            l.next = mergeTwoLists(l1.next, l2);
+            return l;
+        }
+        ListNode l = new ListNode(l2.val);
+        l.next = mergeTwoLists(l1, l2.next);
+        return l;
+    }
+    
     private ListNode mergeKListsHelper(ListNode[] lists, int start, int end) {
         if (start < end) {
             int mid = start + (end - start) / 2;
             ListNode l1 = mergeKListsHelper(lists, start, mid);
             ListNode l2 = mergeKListsHelper(lists, mid + 1, end);
-            return mergeTwoList(l1, l2);
+            return mergeTwoLists(l1, l2);
         }
         return lists[start];
     }
