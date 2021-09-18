@@ -6,6 +6,8 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+// time complexity O(nlogk), merge takes O(n) time and partition takes O(logk) time
+// where k is the number of lists and n is total number of nodes.
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) {
