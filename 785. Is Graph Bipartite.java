@@ -1,5 +1,34 @@
 class Solution {
     public boolean isBipartite(int[][] graph) {
+        int n = graph.length;
+        int[] visited = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (visited[i] == 0) {
+                if (canNotBipartite(graph, i, visited, 1)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    private boolean canNotBipartite(int[][] graph, int i, int[] visited, int color) {
+        // color代表当前node应该涂的颜色，如果当前的颜色不等于应该涂的颜色，就表示cann not bipartite
+        if (visited[i] != 0) {
+            return visited[i] != color;
+        }
+        visited[i] = color;
+        for (int j : graph[i]) {
+            if (canNotBipartite(graph, j, visited, -color)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+class Solution {
+    public boolean isBipartite(int[][] graph) {
         if (graph == null) {
             return false;
         }
