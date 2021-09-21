@@ -29,9 +29,6 @@ class Solution {
         return true;
     }
     private ListNode reverse(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
         ListNode prev = null;
         while (head != null) {
             ListNode next = head.next;
