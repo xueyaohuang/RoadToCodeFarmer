@@ -13,6 +13,27 @@ class Solution {
             return;
         }
         TreeNode left = root.left;
+        TreeNode right = root.right;
+        flatten(left);
+        flatten(right);
+        if (left != null) {
+            TreeNode node = left;
+            while (node != null && node.right != null) {
+                node = node.right;
+            }
+            node.right = right;
+            root.right = left;
+        }
+        root.left = null;
+    }
+}
+
+class Solution {
+    public void flatten(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        TreeNode left = root.left;
         TreeNode right = root.right;  
         flatten(left);
         flatten(right);
