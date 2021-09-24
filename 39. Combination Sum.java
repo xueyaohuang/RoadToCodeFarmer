@@ -21,3 +21,27 @@ class Solution {
 //没有重复结果是由Combination，在recursion里i从start开始，而不是从0开始保证的。
 //与Combination Sum 2的区别还在于这个题输入是没有重复元素的，所以不用sort，然后检查if (i > start && candidates[i] == candidates[i - 1])。
 
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        backtracking(candidates, target, res, new ArrayList<>(), 0, 0);
+        return res;
+    }
+    
+    private void backtracking(int[] candidates, int target, List<List<Integer>> res, List<Integer> temp, int start, int sum) {
+        if (sum == target) {
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = start; i < candidates.length; i++) {
+            if (sum + candidates[i] > target) {
+                continue;
+            }
+            temp.add(candidates[i]);
+            sum += candidates[i];
+            backtracking(candidates, target, res, temp, i, sum);
+            temp.remove(temp.size() - 1);
+            sum -= candidates[i];
+        }
+    }
+}
