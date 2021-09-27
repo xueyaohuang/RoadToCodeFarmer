@@ -1,10 +1,9 @@
 class Solution {
     public boolean isStrobogrammatic(String num) {
-        String numStr = String.valueOf(num);
-        int i = 0, j = numStr.length() - 1;
+        int i = 0, j = num.length() - 1;
         while (i <= j) {
-            char ci = numStr.charAt(i);
-            char cj = numStr.charAt(j);
+            char ci = num.charAt(i);
+            char cj = num.charAt(j);
             if ((ci == '0' && cj == '0') || (ci == '1' && cj == '1') || (ci == '6' && cj == '9') ||
                (ci == '8' && cj == '8') || (ci == '9' && cj == '6')) {
                 i++;
