@@ -1,6 +1,8 @@
 // In ASCII, '/' is before 'a': e.g., '/a', '/a/b', '/aa'
 // After sorting the folder array, we only need to consider if the current folder is a subfolder of the previous one or not.
-// O(nlgn+mn), n is length of folder, m is average length of folder[i]
+// O(n * m * logn), n is length of folder, m is average length of folder[i]
+// the sort is based on merge sort for Object and time complexity of merge sort is O(n * logn). That means n * logn times comparing happened.
+// For this question, it just makes the comparing time be O(m). 
 class Solution {
     public List<String> removeSubfolders(String[] folder) {
         Arrays.sort(folder);
