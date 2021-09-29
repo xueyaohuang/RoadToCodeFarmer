@@ -25,3 +25,19 @@ class Solution {
 }
 
 // soltion 2: 检查A或者reverse A是Monotonic Increasing
+
+// one pass
+class Solution {
+    public boolean isMonotonic(int[] nums) {
+        boolean isMonotoneIncreasing = true;
+        boolean isMonotoneDecreasing = true;
+        for (int i = 1; i < nums.length; i++) {
+            isMonotoneIncreasing &= nums[i] <= nums[i - 1];
+            isMonotoneDecreasing &= nums[i] >= nums[i - 1];
+            if (!(isMonotoneIncreasing || isMonotoneDecreasing)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
