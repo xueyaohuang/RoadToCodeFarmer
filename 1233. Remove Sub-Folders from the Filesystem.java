@@ -19,6 +19,53 @@ class Solution {
     }
 }
 
+// Trie Time & space: O(n * m), where n = folder.length, m = average size of the strings in folder.
+class Solution {
+    class TrieNode {
+        String word;
+        Map<String, TrieNode> map;
+        public TrieNode() {
+            map = new HashMap<>();
+        }
+    }
+    TrieNode root = new TrieNode();
+    List<String> res = new ArrayList<>();
+    public List<String> removeSubfolders(String[] folder) {
+        buildTrie(folder);
+        addFolders(root);
+        return res;
+    }
+    
+    private void addFolders(TrieNode root) {
+        for (Map.Entry<String, TrieNode> entry : root.map.entrySet()) {
+            if (entry.getValue().word != null) {
+                // System.out.println(entry.getKey());
+                res.add(entry.getValue().word);
+            } else {
+                addFolders(entry.getValue());
+            }
+        }
+    }
+    
+    private void buildTrie(String[] folder) {
+        outer:
+        for (String f : folder) {
+            TrieNode cur = root;
+            String[] dirs = f.substring(1).split("/");
+            for (String dir : dirs) {
+                if (!cur.map.containsKey(dir)) {
+                    cur.map.put(dir, new TrieNode());
+                }
+                cur = cur.map.get(dir);
+                if (cur.word != null) {
+                    continue outer;
+                }
+            }
+            cur.word = f;
+        }
+    }
+}
+
 class Solution {
     public List<String> removeSubfolders(String[] folder) {
         Arrays.sort(folder);
