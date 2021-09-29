@@ -63,5 +63,7 @@ class Solution {
         return dp[sum];
     }
 }
-
 // inner for loop must be reversed, the key point is otherwise dp[j - i] will be used more than once.
+// 之所以能化简成1D arrray，因为canPartition[i][j] = canPartition[i - 1][j] || canPartition[i - 1][j - nums[i - 1]];
+// 当前iteration的更新只和上一个iteration的值有关（i-1），但是要保证当前iteration更新时的dp[j - i]是上一轮的值
+// 假设还是从小到大，dp[6] = dp[6] || dp[6 - 3],此时dp[6]更新了，然后到dp[8]的时候dp[8] = dp[8] || dp[8 - 2], 这时的dp[8 - 2]（dp[6]）已经被更新过了，不是上一轮的dp[6]了
