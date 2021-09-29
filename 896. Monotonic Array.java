@@ -23,3 +23,5 @@ class Solution {
         return true;
     }
 }
+
+// soltion 2: 检查A或者reverse A是Monotonic Increasing
