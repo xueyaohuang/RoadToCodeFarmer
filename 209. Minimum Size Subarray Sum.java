@@ -23,18 +23,16 @@ class Solution {
     public int minSubArrayLen(int s, int[] nums) {
         int start = 1;
         int end = nums.length;
-        int min = nums.length;
         while (start < end) {
             int mid = start + (end - start) / 2;
             if (windowExists(s, nums, mid)) {
                 end = mid;
-                min = mid;
             } else {
                 start = mid + 1;
             }
         }
-        if (windowExists(s, nums, min)) {
-            return min;
+        if (windowExists(s, nums, start)) {
+            return start;
         }
         return 0;
     }
