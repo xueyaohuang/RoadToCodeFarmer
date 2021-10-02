@@ -1,23 +1,19 @@
 // O(n), 一头进，一头出
 // sliding window
 class Solution {
-    public int minSubArrayLen(int s, int[] nums) {
-        
-        int min = Integer.MAX_VALUE;
-        int len = nums.length;
-        int j = 0;
+    public int minSubArrayLen(int target, int[] nums) {
+        int res = Integer.MAX_VALUE;
         int sum = 0;
-        
-        for (int i = 0; i < len; i++) {
+        int start = 0;
+        for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
-            while (sum >= s) {
-                min = Math.min(min, i - j + 1);
-                sum -= nums[j];
-                j++;
+            while (sum >= target) {
+                res = Math.min(res, i - start + 1);
+                sum -= nums[start];
+                start++;
             }
         }
-        
-        return min == Integer.MAX_VALUE ? 0 : min;
+        return res == Integer.MAX_VALUE ? 0 : res;
     }
 }
 
