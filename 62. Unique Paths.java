@@ -29,3 +29,17 @@ class Solution {
         return ways[n - 1];
     }
 }
+
+// C(m+n, n)
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int steps = m + n - 2;
+        int k = Math.min(m, n)  - 1;
+        double res = 1;
+        for (int i = 1; i <= k; i++) {
+            res *= steps - k + i;
+            res /= i;
+        }
+        return (int)Math.ceil(res);
+    }
+}
