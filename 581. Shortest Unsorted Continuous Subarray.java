@@ -1,5 +1,33 @@
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
+        int start = 0, end = nums.length - 1;
+        // 先找出开头和结尾递增的两段
+        while (start < nums.length - 1 && nums[start] <= nums[start + 1]) {
+            start++;
+        }
+        while (end > 0 && nums[end] >= nums[end - 1]) {
+            end--;
+        }
+        // 找出中间一段的最大和最小值, 包括开头递增段的最后一个和结尾递增段的第一个，因为并不知道这两个值的大小关系。
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i = start; i<= end; i++) {
+            min = Math.min(min, nums[i]);
+            max = Math.max(max, nums[i]);
+        }
+        // 保证nums[start]要小于等于min, nums[end]大于等于max
+        while (start >= 0 && nums[start] > min) {
+            start--;
+        }
+        while (end < nums.length && nums[end] < max) {
+            end++;
+        }
+        return Math.max(0, end - start - 1);
+    }
+}
+
+class Solution {
+    public int findUnsortedSubarray(int[] nums) {
         if (nums == null || nums.length <= 1) {
             return 0;
         }
