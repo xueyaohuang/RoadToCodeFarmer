@@ -54,3 +54,18 @@ class Solution {
         return 0;
     }
 }
+
+class Solution {
+    public int findPeakElement(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            if (isPeak(nums, i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    private boolean isPeak(int[] nums, int i) {
+        return (i == 0 || nums[i] > nums[i - 1]) && (i == nums.length - 1 || nums[i] > nums[i + 1]);
+    }
+}
