@@ -1,5 +1,5 @@
 // binary search
-// invariant: 每次iteration后，nums内部一定有至少一个数比[start]和nums[end]大
+// invariant: 每次iteration后，nums内部一定有至少一个数比nums[start]和nums[end]大
 // 跟mid+1比
 class Solution {
     public int findPeakElement(int[] nums) {
