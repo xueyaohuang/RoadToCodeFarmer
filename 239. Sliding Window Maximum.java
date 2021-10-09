@@ -83,3 +83,20 @@ class Solution {
         return res;
     }
 }
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        int[] res = new int[nums.length - k + 1];
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            pq.offer(nums[i]);
+            if (pq.size() > k) {
+                pq.remove(nums[i - k]);
+            }
+            if (pq.size() == k) {
+                res[count++] = pq.peek();
+            }
+        }
+        return res;
+    }
+}
