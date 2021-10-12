@@ -9,14 +9,17 @@ We move start to the right until the whole string satisfy the constraint again. 
 class Solution {
     public int characterReplacement(String s, int k) {
         int len = s.length();
+        // count记录window内每个char出现的次数
         int[] count = new int[26];
         int maxLen = 0;
+        // maxCount记录window内出现次数最多的char出现的次数
         int maxCount = 0;
         int start = 0;
         for (int end = 0; end < len; end++) {
             maxCount = Math.max(maxCount, ++count[s.charAt(end) - 'A']);
             // while loop only runs 1 step every time, so we don't need to update maxCount.
             // Also, we can replace while loop with a if statement.
+            // 用来取代的char应该和window内出现次数最多的char相同， end - start + 1 - maxCount就表示要想使window内所有char一样，需要改变的char的个数
             while (end - start + 1 - maxCount > k) {
                 count[s.charAt(start++) - 'A']--;
             }
