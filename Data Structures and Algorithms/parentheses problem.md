@@ -1,4 +1,5 @@
 Here is a ladder of parentheses problem, in order of problem number.
+https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/discuss/888949/JavaC%2B%2BPython-Parentheses-Problem-Foundation
 
         Minimum Insertions to Balance a Parentheses String
         Minimum Remove to Make Valid Parentheses
