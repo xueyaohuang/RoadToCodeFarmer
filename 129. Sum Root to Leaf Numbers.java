@@ -4,9 +4,41 @@
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
  * }
  */
+class Solution {
+    int sum = 0;
+    public int sumNumbers(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        dfs(root, new StringBuilder());
+        return sum;
+    }
+    
+    private void dfs(TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            return;
+        }
+        sb.append(root.val);
+        if (root.left == null && root.right == null) {
+            sum += Integer.parseInt(sb.toString());
+            sb.setLength(sb.length() - 1);
+            return;
+        }
+        dfs(root.left, sb);
+        dfs(root.right, sb);
+        sb.setLength(sb.length() - 1);
+    }
+}
+
 class Solution {
     public int sumNumbers(TreeNode root) {
         return sum(root, 0);
