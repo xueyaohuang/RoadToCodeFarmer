@@ -1,4 +1,35 @@
-// 1.
+
+// 2 O(n)每个idx都enqueue和dequeue一次
+// deque,index进queue都是从tail进去，出去时分2种情况
+// 删除超出window范围的index从head出去，因为先进先出
+// 比nums[i]小的index从tail出去，monotonic queue的出法，都是从tail出
+// 因为有两个方向的dequeue操作，所以需要deque
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int[] res = new int[nums.length - k + 1];
+        int idx = 0;
+        // dq存的是index，不是nums[i]。
+        Deque<Integer> dq = new ArrayDeque<>();
+        for (int i = 0; i < nums.length; i++) {
+            // 删除超出window范围的index，从head删除
+            if (!dq.isEmpty() && dq.peekFirst() < i - k + 1) {
+                dq.pollFirst();
+            }
+            // 删除小于nums[i]的index，从tail删除
+            while (!dq.isEmpty() && nums[i] > nums[dq.peekLast()]) {
+                dq.pollLast();
+            }
+            // 从tail进去
+            dq.offerLast(i);
+            if (i >= k - 1) {
+                res[idx++] = nums[dq.peekFirst()];
+            }
+        }
+        return res;
+    }
+}
+
+// 2.
 // 时间复杂度是O(n), 因为i每前进一步，idx也前进至少一步
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
@@ -25,38 +56,6 @@ class Solution {
                 }
             }
             res[i] = nums[idx];
-        }
-        return res;
-    }
-}
-
-// 2
-// deque,index进queue都是从tail进去，出去时分2中情况
-// 删除超出window范围的index从head出去
-// 比nums[i]的index从后面出去
-class Solution {
-    public int[] maxSlidingWindow(int[] nums, int k) {
-        if (nums == null || nums.length == 0) {
-            return new int[0];
-        }
-        int len = nums.length;
-        int[] res = new int[len - k + 1];
-        int idx = 0;
-        // dq存的是index，不是nums[i]。
-        Deque<Integer> dq = new ArrayDeque<>();
-        for (int i = 0; i < len; i++) {
-            // 删除超出window范围的index
-            while (!dq.isEmpty() && dq.peekFirst() < i - k + 1) {
-                dq.pollFirst();
-            }
-            // 删除小于nums[i]的index
-            while (!dq.isEmpty() && nums[dq.peekLast()] < nums[i]) {
-                dq.pollLast();
-            }
-            dq.offerLast(i);
-            if (i >= k - 1) {
-                res[idx++] = nums[dq.peek()];
-            }
         }
         return res;
     }
