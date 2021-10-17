@@ -4,27 +4,28 @@
 // cycle in graph. If we don’t find such an adjacent for any vertex, we say that there is
 // no cycle. The assumption of this approach is that there are no parallel edges between any two vertices.
 class Solution {
+    // to be a valid tree:
+    // 1. number of edges should be n - 1. 
+    // 2. no cycle
     public boolean validTree(int n, int[][] edges) {
-        if (n <= 0) {
+        if (edges.length != n - 1) {
             return false;
         }
-        if (edges == null || edges.length != n - 1) {
-            return false;
-        }
-        
-        int[] visited = new int[n];
-        List<Integer>[] adjList = new ArrayList[n];
+        List<Integer>[] adj = new ArrayList[n];
         for (int i = 0; i < n; i++) {
-            adjList[i] = new ArrayList<>();
+            adj[i] = new ArrayList<>();
         }
-        for (int[] edge : edges) {
-            adjList[edge[0]].add(edge[1]);
-            adjList[edge[1]].add(edge[0]);
-        } 
-        
+        for (int[] e : edges) {
+            adj[e[0]].add(e[1]);
+            adj[e[1]].add(e[0]);
+        }
+        // 0: not started
+        // 1: visiting
+        // 2: finished
+        int[] visited = new int[n];
         for (int i = 0; i < n; i++) {
             if (visited[i] == 0) {
-                if (hasCycle(i, adjList, visited, -1)) {
+                if (hasCycle(adj, visited, i, -1)) {
                     return false;
                 }
             }
@@ -32,21 +33,20 @@ class Solution {
         return true;
     }
     
-    private boolean hasCycle(int i, List<Integer>[] adjList, int[] visited, int parent) {
+    private boolean hasCycle(List<Integer>[] adj, int[] visited, int i, int parent) {
         if (visited[i] == 2) {
             return false;
         }
         visited[i] = 1;
-        for (int j : adjList[i]) {
-            if (visited[j] != 1) {
-                if (hasCycle(j, adjList, visited, i)) {
+        for (int j : adj[i]) {
+            if (visited[j] == 0) {
+                if (hasCycle(adj, visited, j, i)) {
                     return true;
                 }
-            } else if (j != parent) { // visited[j] == 1时还必须满足j != parent
+            } else if (j != parent) { // visited[j] == 1, 如果j没有finish并且不是i的parent，说明有cycle
                 return true;
             }
         }
-        visited[i] = 2;
         return false;
     }
 }
