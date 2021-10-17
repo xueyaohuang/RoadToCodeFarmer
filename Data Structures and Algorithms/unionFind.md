@@ -22,9 +22,10 @@ public class UnionFind {
         }
     }
 
+    // find root of p
     public int find(int p) {
         // while (p != parent[p]) {
-        //     parent[p] = parent[parent[p]];    // path compression by halving
+        //     parent[p] = parent[parent[p]];    // path compression by halving, 这一行不能省，比只有p = parent[p];快很多，详见princeton pdf的Weighted quick-union with path compression
         //     p = parent[p];
         // }
         // return p;
