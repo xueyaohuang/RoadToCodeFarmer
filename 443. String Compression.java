@@ -1,3 +1,8 @@
+// 1. 记录当前的char
+// 2. 数当前的char有几个
+// 3. set当前的char
+// 4. set当前char的个数
+// 1和2用idx，3和4用idxInPlace
 class Solution {
     public int compress(char[] chars) {
         if (chars == null || chars.length == 0) {
