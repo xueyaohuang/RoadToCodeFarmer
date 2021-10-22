@@ -19,15 +19,15 @@ class Solution {
                 return false;
             }
             if (type == 4) {
-                if (!beginWithOneZero(data, i + 1, i + 3)) {
+                if (!beginWithOneAndZero(data[i + 1]) || !beginWithOneAndZero(data[i + 2]) || !beginWithOneAndZero(data[i + 3])) {
                     return false;
                 }
             } else if (type == 3) {
-                if (!beginWithOneZero(data, i + 1, i + 2)) {
+                if (!beginWithOneAndZero(data[i + 1]) || !beginWithOneAndZero(data[i + 2])) {
                     return false;
                 }
             } else if (type == 2) {
-                if (!beginWithOneZero(data, i + 1, i + 1)) {
+                if (!beginWithOneAndZero(data[i + 1])) {
                     return false;
                 }
             }
@@ -36,12 +36,13 @@ class Solution {
         return true;
     }
     
+    // 4 byte的数对前5位有要求，必须是11110xxx，所以mask需要5个1开头，11111000
     private int checkByte(int i) {
-        if ((i & mask5) == 240) { // 11110000
+        if ((i & mask5) == 240) {
             return 4;
-        } else if ((i & mask4) == 224) { // 11100000
+        } else if ((i & mask4) == 224) {
             return 3;
-        } else if ((i & mask3) == 192) { // 1100000
+        } else if ((i & mask3) == 192) {
             return 2;
         } else if ((i & mask1) == 0) {
             return 1;
@@ -49,12 +50,8 @@ class Solution {
         return -1;
     }
     
-    private boolean beginWithOneZero(int[] data, int start, int end) {
-        for (int i = start; i <= end; i++) {
-            if ((i & mask2) != 128) {
-                return false;
-            }
-        }
-        return true;
+    // test if the num begins with 10xxxxxx
+    private boolean beginWithOneAndZero(int i) {
+        return (i & mask2) == 128;
     }
 }
