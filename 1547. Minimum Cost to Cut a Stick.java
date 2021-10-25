@@ -1,3 +1,4 @@
+// 三重dp，类似于扎气球
 class Solution {
     public int minCost(int n, int[] cuts) {
         int[] points = new int[cuts.length + 2];
