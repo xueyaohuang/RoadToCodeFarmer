@@ -1,4 +1,5 @@
 // 三重dp，类似于扎气球
+// Time complexity is O(n^3), n is the length of cuts
 class Solution {
     public int minCost(int n, int[] cuts) {
         int[] points = new int[cuts.length + 2];
