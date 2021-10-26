@@ -153,7 +153,7 @@ class Solution {
 
 /*
 node.left is left bound if node is left bound;
-node.right could also be left bound if node is left bound && node has no right child;
+node.right could also be left bound if node is left bound && node has no left child;
 Same applys for right bound;
 if node is left bound, add it before 2 child - pre order;
 if node is right bound, add it after 2 child - post order;
@@ -174,7 +174,9 @@ public class Solution {
         if (node == null) return;
         if (lb) res.add(node.val);
         if (!lb && !rb && node.left == null && node.right == null) res.add(node.val);
+        // node.left is right boundry if node is right boundry and node has no right child
         getBounds(node.left, res, lb, rb && node.right == null);
+        // node.right is left boundry if node is left boundry and node has no left child
         getBounds(node.right, res, lb && node.left == null, rb);
         if (rb) res.add(node.val);
     }
