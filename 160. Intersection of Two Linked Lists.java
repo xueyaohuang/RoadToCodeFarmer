@@ -13,7 +13,7 @@ public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode pa = headA;
         ListNode pb = headB;
-        // 要允许pa，pb到null，这样可以处理不想交的情况
+        // 要允许pa，pb到null，这样可以处理不相交的情况
         while (pa != pb) {
             pa = pa == null ? headB : pa.next;
             pb = pb == null ? headA : pb.next;
