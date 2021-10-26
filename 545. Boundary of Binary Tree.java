@@ -151,20 +151,31 @@ class Solution {
     }
 }
 
-// one pass
-class Solution {
+/*
+node.left is left bound if node is left bound;
+node.right could also be left bound if node is left bound && node has no right child;
+Same applys for right bound;
+if node is left bound, add it before 2 child - pre order;
+if node is right bound, add it after 2 child - post order;
+A leaf node that is neither left or right bound belongs to the bottom line;
+*/
+public class Solution {
     public List<Integer> boundaryOfBinaryTree(TreeNode root) {
-        List<Integer> left = new LinkedList<>(), right = new LinkedList<>();
-        preorder(root, left, right, 0);
-        left.addAll(right);
-        return left;
+        List<Integer> res = new ArrayList<Integer>();
+        if (root != null) {
+            res.add(root.val);
+            getBounds(root.left, res, true, false);
+            getBounds(root.right, res, false, true);
+        }
+        return res;
     }
 
-    public void preorder(TreeNode cur, List<Integer> left, List<Integer> right, int flag) {
-        if (cur == null) return;
-        if (flag == 2) right.add(0, cur.val);
-        else if (flag <= 1 || cur.left == null && cur.right == null) left.add(cur.val);
-        preorder(cur.left, left, right, flag <= 1 ? 1 : (flag == 2 && cur.right == null) ? 2 : 3);
-        preorder(cur.right, left, right, flag % 2 == 0 ? 2 : (flag == 1 && cur.left == null) ? 1 : 3);
+    private void getBounds(TreeNode node, List<Integer> res, boolean lb, boolean rb) {
+        if (node == null) return;
+        if (lb) res.add(node.val);
+        if (!lb && !rb && node.left == null && node.right == null) res.add(node.val);
+        getBounds(node.left, res, lb, rb && node.right == null);
+        getBounds(node.right, res, lb && node.left == null, rb);
+        if (rb) res.add(node.val);
     }
 }
