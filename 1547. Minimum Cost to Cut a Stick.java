@@ -14,6 +14,7 @@ class Solution {
         // j is end
         // k is the point in between
         // if i == j, there is no cost, so j can start from i + 1
+        // bottom up, 所以i倒序
         for (int i = points.length - 2; i >= 0; i--) {
             for (int j = i + 1; j < points.length; j++) {
                 for (int k = i + 1; k < j; k++) {
