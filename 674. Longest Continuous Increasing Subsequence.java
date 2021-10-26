@@ -1,18 +1,18 @@
 class Solution {
     public int findLengthOfLCIS(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
+        if (nums.length < 2) {
+            return nums.length;
         }
-        int res = 0;
-        int cur = 1;
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] < nums[i + 1]) {
-                cur++;
+        int res = 1;
+        int curMax = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1]) {
+                curMax++;
             } else {
-                res = Math.max(res, cur);
-                cur = 1;
+                res = Math.max(res, curMax);
+                curMax = 1;
             }
         }
-        return Math.max(res, cur);
+        return Math.max(res, curMax);
     }
 }
