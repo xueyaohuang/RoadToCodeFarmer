@@ -1,5 +1,30 @@
 class Solution {
     public String addStrings(String num1, String num2) {
+        StringBuilder sb = new StringBuilder();
+        int sum = 0;
+        int idx1 = num1.length() - 1;
+        int idx2 = num2.length() - 1;
+        while (idx1 >= 0 || idx2 >= 0) {
+            if (idx1 >= 0) {
+                sum += num1.charAt(idx1) - '0';
+                idx1--;
+            }
+            if (idx2 >= 0) {
+                sum += num2.charAt(idx2) - '0';
+                idx2--;
+            }
+            sb.append(sum % 10);
+            sum /= 10;
+        }
+        if (sum > 0) {
+            sb.append(sum);
+        }
+        return sb.reverse().toString();
+    }
+}
+
+class Solution {
+    public String addStrings(String num1, String num2) {
         int len1 = num1.length();
         int len2 = num2.length();
         if (len1 < len2) {
