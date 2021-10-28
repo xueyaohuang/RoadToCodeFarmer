@@ -19,27 +19,22 @@ class BSTIterator {
         pushLeft();
     }
     
+    public int next() {
+        TreeNode node = stack.pop();
+        cur = node.right;
+        pushLeft();
+        return node.val;
+    }
+    
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+    
     private void pushLeft() {
         while (cur != null) {
             stack.push(cur);
             cur = cur.left;
         }
-    }
-    
-    /** @return the next smallest number */
-    public int next() {
-        if (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            cur = node.right;
-            pushLeft();
-            return node.val;
-        }
-        return -1;
-    }
-    
-    /** @return whether we have a next smallest number */
-    public boolean hasNext() {
-        return !stack.isEmpty();
     }
 }
 /*
