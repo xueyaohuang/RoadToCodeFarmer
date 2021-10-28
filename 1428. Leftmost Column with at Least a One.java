@@ -62,7 +62,6 @@ mat[i] is sorted in non-decreasing order.
 
 class Solution {
     public int leftMostColumnWithOne(BinaryMatrix binaryMatrix) {
-        int res = -1;
         List<Integer> dim = binaryMatrix.dimensions();
         int numRows = dim.get(0);
         int start = 0;
@@ -70,7 +69,6 @@ class Solution {
         while (start < end) {
             int mid = (start + end) / 2;
             if (hasOne(binaryMatrix, mid, numRows)) {
-                res = mid;
                 end = mid;
             } else {
                 start = mid + 1;
@@ -79,7 +77,7 @@ class Solution {
         if (hasOne(binaryMatrix, start, numRows)) {
             return start;
         }
-        return res;
+        return -1;
     }
     
     private boolean hasOne(BinaryMatrix binaryMatrix, int col, int numRows) {
@@ -89,5 +87,5 @@ class Solution {
             }
         }
         return false;
-    } 
+    }
 }
