@@ -38,6 +38,7 @@ class BSTIterator {
     }
 }
 /*
+iterate n 次后，每个node进stack一次，出stack一次，amortized time O(1).
 This is in fact average O(1) time. Think about the number of times a node has been visited
 after iterating the whole tree. Each node has been visited twice. In some cases the
 while loop doesn't execute, so that node at that call is only visited once. Where
