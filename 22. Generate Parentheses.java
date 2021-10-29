@@ -1,5 +1,30 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
+        backtracking(res, new StringBuilder(), n, n);
+        return res;
+    }
+    
+    private void backtracking(List<String> res, StringBuilder sb, int open, int close) {
+        if (open == 0 && close == 0) {
+            res.add(sb.toString());
+            return;
+        }
+        if (open > 0) {
+            sb.append('(');
+            backtracking(res, sb, open - 1, close);
+            sb.setLength(sb.length() -  1);
+        }
+        if (close > 0 && open < close) {
+            sb.append(')');
+            backtracking(res, sb, open, close - 1);
+            sb.setLength(sb.length() -  1);
+        }
+    }
+}
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
         if (n <= 0) {
             return new ArrayList<>();
         }
