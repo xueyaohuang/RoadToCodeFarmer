@@ -6,13 +6,6 @@ If click on an empty cell ('E'), depends on how many surrounding mine:
 2.1 Has surrounding mine(s), mark it with number of surrounding mine(s), stop further search.
 2.2 No surrounding mine, mark it as 'B', continue search its 8 neighbors.
 */
-
-/*
-If click on a mine ('M'), mark it as 'X', stop further search.
-If click on an empty cell ('E'), depends on how many surrounding mine:
-2.1 Has surrounding mine(s), mark it with number of surrounding mine(s), stop further search.
-2.2 No surrounding mine, mark it as 'B', continue search its 8 neighbors.
-*/
 class Solution {
     public char[][] updateBoard(char[][] board, int[] click) {
         if (board == null || board.length == 0) {
@@ -29,8 +22,8 @@ class Solution {
 
         // click on 'E'
         int count = 0;
-        for (int i = Math.max(0, row -1); i <= Math.min(m - 1, row + 1); i++) {
-            for (int j = Math.max(0, col -1); j <= Math.min(n - 1, col + 1); j++) {
+        for (int i = Math.max(0, row - 1); i <= Math.min(m - 1, row + 1); i++) {
+            for (int j = Math.max(0, col - 1); j <= Math.min(n - 1, col + 1); j++) {
                 if (board[i][j] == 'M') {
                     count++;
                 }
@@ -41,8 +34,8 @@ class Solution {
             return board;
         } else {
             board[row][col] = 'B';
-            for (int i = Math.max(0, row -1); i <= Math.min(m - 1, row + 1); i++) {
-                for (int j = Math.max(0, col -1); j <= Math.min(n - 1, col + 1); j++) {
+            for (int i = Math.max(0, row - 1); i <= Math.min(m - 1, row + 1); i++) {
+                for (int j = Math.max(0, col - 1); j <= Math.min(n - 1, col + 1); j++) {
                     if (i == row && j == col) {
                         continue;
                     } 
