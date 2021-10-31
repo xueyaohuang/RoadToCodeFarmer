@@ -3,6 +3,36 @@ class Solution {
         if (words.length < 2) {
             return true;
         }
+        outer:
+        for (int i = 0; i < words.length - 1; i++) {
+            String w1 = words[i];
+            String w2 = words[i + 1];
+            int minLen = Math.min(w1.length(), w2.length());
+            for (int j = 0; j < minLen; j++) {
+                int idx1 = order.indexOf(w1.charAt(j));
+                int idx2 = order.indexOf(w2.charAt(j));
+                if (idx1 < idx2) {
+                    continue outer;
+                } else if (idx1 == idx2) {
+                    continue;
+                } else {
+                    return false;
+                }
+            }
+            // e.g. w1=app, w2=apple
+            if (w1.length() > w2.length()) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+class Solution {
+    public boolean isAlienSorted(String[] words, String order) {
+        if (words.length < 2) {
+            return true;
+        }
         for (int i = 0; i < words.length - 1; i++) {
             String w1 = words[i];
             String w2 = words[i + 1];
