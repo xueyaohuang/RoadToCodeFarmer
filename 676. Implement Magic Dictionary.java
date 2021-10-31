@@ -37,11 +37,10 @@ class MagicDictionary {
             wordArr[i] = '*';
             String cur = String.valueOf(wordArr);
             if (wordDict.containsKey(cur)) {
-                if (origin.contains(searchWord)) {
-                    if (wordDict.get(cur) > 1) {
-                        return true;
-                    }
-                } else {
+                if (wordDict.get(cur) > 1) {
+                    return true;
+                }
+                if (!origin.contains(searchWord)) {
                     return true;
                 }
             }
