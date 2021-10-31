@@ -25,6 +25,11 @@ class Solution {
         boolean[][] canMatch = new boolean[lens + 1][lenp + 1];
         canMatch[0][0] = true;
         
+        /*
+        in order to take care of cases where p starts with '*'
+        "aa"
+        "*"
+        */
         for (int i = 0; i < lenp; i++) {
             if (p.charAt(i) == '*') {
                 canMatch[0][i + 1] = true;
