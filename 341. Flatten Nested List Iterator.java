@@ -17,6 +17,37 @@
  */
 public class NestedIterator implements Iterator<Integer> {
     
+    Iterator<Integer> it;
+
+    public NestedIterator(List<NestedInteger> nestedList) {
+        List<Integer> list = new ArrayList<>();
+        unnest(nestedList, list);
+        it = list.iterator();
+    }
+    
+    private void unnest(List<NestedInteger> nestedList, List<Integer> list) {
+        for (NestedInteger ni : nestedList) {
+            if (ni.isInteger()) {
+                list.add(ni.getInteger());
+            } else {
+                unnest(ni.getList(), list);
+            }
+        }
+    }
+
+    @Override
+    public Integer next() {
+        return it.next();
+    }
+
+    @Override
+    public boolean hasNext() {
+        return it.hasNext();
+    }
+}
+
+public class NestedIterator implements Iterator<Integer> {
+    
     List<Integer> list;
     int cur;
     
