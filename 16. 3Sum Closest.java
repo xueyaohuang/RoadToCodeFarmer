@@ -17,7 +17,7 @@ class Solution {
                 }
                 if (temp > target) {
                     k--;
-                }  else {
+                } else {
                     j++;
                 }
             }
