@@ -28,6 +28,8 @@ class Solution {
     }
 }
 
+// Time complexity is O(n) because the solution post-order traverses across each tree node once.
+// Space complexity is O(h), where h is the height of the tree, or O(lgn).
 class Solution {
     int diameter = 0;
     public int diameterOfBinaryTree(TreeNode root) {
