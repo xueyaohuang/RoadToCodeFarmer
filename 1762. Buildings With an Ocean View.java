@@ -52,3 +52,25 @@ class Solution {
         return res;
     }
 }
+
+// monotonic stack, although it's an overkill
+class Solution {
+    public int[] findBuildings(int[] heights) {
+        List<Integer> list = new ArrayList<>();
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = heights.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && heights[i] > stack.peek()) {
+                stack.pop();
+            }
+            stack.push(heights[i]);
+            if (stack.size() == 1) {
+                list.add(i);
+            }
+        }
+        int[] res = new int[list.size()];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = list.get(res.length - 1 - i);
+        }
+        return res;
+    }
+}
