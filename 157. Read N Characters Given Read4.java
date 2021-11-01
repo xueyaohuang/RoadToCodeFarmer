@@ -15,9 +15,8 @@ public class Solution extends Reader4 {
             if (cur == 0) {
                 break;
             }
-            int i = 0;
-            while (i < cur && idx < n) {
-                buf[idx++] = temp[i++];
+            for (int i = 0; i < cur && idx < n; i++) {
+                buf[idx++] = temp[i];
             }
         }
         return idx;
