@@ -2,6 +2,37 @@ class Solution {
     public boolean validWordAbbreviation(String word, String abbr) {
         int i = 0, j = 0;
         while (i < abbr.length()) {
+            if (j >= word.length()) {
+                return false;
+            }
+            char c = abbr.charAt(i);
+            if (Character.isAlphabetic(c)) {
+                if (word.charAt(j) != c) {
+                    return false;
+                }
+                i++;
+                j++;
+            } else {
+                // to avoid something like "01"
+                if (c == '0') {
+                    return false;
+                }
+                int num = 0;
+                while (i < abbr.length() && Character.isDigit(abbr.charAt(i))) {
+                    num = num * 10 + abbr.charAt(i) - '0';
+                    i++;
+                }
+                j += num;
+            }
+        }
+        return j == word.length();
+    }
+}
+
+class Solution {
+    public boolean validWordAbbreviation(String word, String abbr) {
+        int i = 0, j = 0;
+        while (i < abbr.length()) {
             char c = abbr.charAt(i);
             if (Character.isAlphabetic(c)) {
                 if (j >= word.length() || word.charAt(j) != c) {
