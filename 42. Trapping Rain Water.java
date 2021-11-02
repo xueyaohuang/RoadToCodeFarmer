@@ -11,10 +11,11 @@ class Solution {
         int max = 0;
         int leftHeight = 0;
         int rightHeight = 0;
-        while (l < r) {
+        // l < r 或者 l <= r都可以，因为移动l，r为了找更高的wall，所以最终l==r的时候，停在最高的wall的位置，这时的trap的water是0.
+        while (l <= r) {
             leftHeight = Math.max(leftHeight, height[l]);
             rightHeight = Math.max(rightHeight, height[r]);
-            if (leftHeight < rightHeight) {
+            if (leftHeight < rightHeight) { // always looking for a higher wall
                 max += leftHeight - height[l];
                 l++;
             }
