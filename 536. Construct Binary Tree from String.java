@@ -44,7 +44,7 @@ class Solution {
             return null;
         }
         int i = 0;
-        while (i < s.length() && s.charAt(i) != '(' && s.charAt(i) != ')') {
+        while (i < s.length() && s.charAt(i) != '(') {
             i++;
         }
         TreeNode root = new TreeNode(Integer.parseInt(s.substring(0, i)));
@@ -61,10 +61,12 @@ class Solution {
                 break;
             }
         }
-        if (i - 1 > leftStart) {
-            root.left = str2tree(s.substring(leftStart + 1, i));
+        // substring()的startIndex小于endIndex
+        if (i - 1 > leftStart + 1) {
+            root.left = str2tree(s.substring(leftStart + 1, i - 1));
         }
-        if (i < s.length() - 1) {
+        // substring()的startIndex小于endIndex
+        if (i + 1 < s.length() - 1) {
             root.right = str2tree(s.substring(i + 1, s.length() - 1));
         }
         return root;
