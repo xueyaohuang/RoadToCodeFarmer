@@ -43,17 +43,16 @@ p and q exist in the tree.
 class Solution {
     public Node lowestCommonAncestor(Node p, Node q) {
         Set<Node> parents = new HashSet<>();
-        while (p != null) {
-            parents.add(p);
-            p = p.parent;
+        Node a = p;
+        while (a != null) {
+            parents.add(a);
+            a = a.parent;
         }
-        while (q != null) {
-            if (parents.contains(q)) {
-                return q;
-            }
-            q = q.parent;
+        Node b = q;
+        while (!parents.contains(b)) {
+            b = b.parent;
         }
-        return p;
+        return b;
     }
 }
 
