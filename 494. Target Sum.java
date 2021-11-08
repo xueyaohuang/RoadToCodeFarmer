@@ -1,7 +1,7 @@
 /*
-                  sum(P) - sum(N) = target
-sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
-                       2 * sum(P) = target + sum(nums)
+sum(P) - sum(N) = target
+sum(P) + sum(N) = sum(nums)
+we have: 2 * sum(P) = target + sum(nums)
 
 So the original problem has been converted to a subset sum problem as follows:
 Find a subset P of nums such that sum(P) = (target + sum(nums)) / 2
