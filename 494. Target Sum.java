@@ -27,7 +27,9 @@ class Solution {
         dp[0][0] = 1;
         for (int i = 1; i <= nums.length; i++) {
             for (int j = 0; j <= target; j++) {
+                // 不用nums[i-1]
                 dp[i][j] = dp[i - 1][j];
+                // 用nums[i-1]
                 if (j >= nums[i - 1]) {
                     dp[i][j] += dp[i - 1][j - nums[i - 1]];
                 }
