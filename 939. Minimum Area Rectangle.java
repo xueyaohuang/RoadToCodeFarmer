@@ -1,4 +1,4 @@
-// O(n2)
+// O(n2)，2个for loop确定对角线顶点，看是否存在另外两个对角线顶点
 class Solution {
     public int minAreaRect(int[][] points) {
         if (points == null || points.length == 0) {
