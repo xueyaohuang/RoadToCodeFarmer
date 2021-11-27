@@ -10,6 +10,7 @@ class Solution {
             return 10;
         }
         int mod = (int)Math.pow(10, 9) + 7;
+        // count[5]随便是多少都没关系，因为不可能从5跳到其他数字
         long[] count = new long[]{1, 1, 1, 1, 1, 0, 1, 1, 1, 1};
         for (int i = 2; i <= n; i++) {
             long[] temp = new long[10];
