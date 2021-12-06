@@ -16,6 +16,7 @@ class TicTacToe {
         int n = rows.length;
         int add = player == 1 ? 1 : -1;
         rows[row] += add;
+        // return early
         if (Math.abs(rows[row]) == n) {
             return player;
         }
