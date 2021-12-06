@@ -8,7 +8,7 @@ Example 1 -
 [2,3,7,11], k = 5
 Initially, start = 0
 
-    start = 0, end = 2. Between 0 and 2, there is 1 missing positive integer. Hence Decrement 1 from k = 4-1, k = 4
+    start = 0, end = 2. Between 0 and 2, there is 1 missing positive integer. Hence Decrement 1 from k = 5-1, k = 4
     start = 2, end = 3. Between 2 and 3 there is no missing positive integer.
     start = 3, end = 7. Between 3 and 7, there are 3 missing positive integer, substract 3 from k = 4-3, k = 1
     start = 7, end = 11. Between 7 and 11, there are 3 missing positive integer. But now since k is already less than 3, our answer lies between 7 and 11.
@@ -46,7 +46,7 @@ class Solution {
         // we want to find the number x, which is between [0, arr.length], at last we just return x + k
         int start = 0, end = arr.length;
         while (start < end) {
-            int mid = (start  + end) / 2;
+            int mid = (start + end) / 2;
             if (arr[mid] - (mid + 1) >= k) {
                 end = mid;
             } else {
