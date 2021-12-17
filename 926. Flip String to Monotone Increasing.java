@@ -1,37 +1,32 @@
 /*
-we assume the string after flip is s = '0'*i + '1'*j, the index of first '1' is i
+DP.
 
-we just need to find the i in the initial string. We make all 1 before index i flip to 0, and make all 0 after index i flip to 1. Then, we get the right answer.
+Sub-question of DP is:
+Suppose that you have a string s, counter_flip flips are required for the string, and there were counter_one '1's in the original string s.
 
-for instance, s = 010110.
-if we choose the first 1(index=1) as i, we need to make all 1 before i flip to 0(all 0), make all 0 after i flip to 1(all 2),so the answer is 2.
-if we choose the second 1(index=3) as i, the answer is 1 + 1 = 2
-if we choose the third 1(index=4) as i, the answer is 2 + 1 = 3
-and so on.
+Let's see the next step of DP.
 
-I use cnt0 to record the number of 0 after i, cnt1 to record th number of 1 before i
+Now a new character is appended to the original string. The question is that, how should counter_flip be updated?
+When '1' comes, no more flip should be applied, since '1' is appended to the tail of the original string.
+When '0' comes, there are two options for us: flip the newly appended '0' to '1', after counter_flip flips for the original string; 
+or flip counter_one '1' in the original string to '0'. 
+Hence, the result of the next step of DP, in the '0' case, is min(counter_flip + 1, counter_one);.
+
+Based on these analysis, the solution comes.
 */
 class Solution {
-    public int minFlipsMonoIncr(String S) {
-        if (S == null || S.length() < 2) {
-            return 0;
-        }
-        int count0 = 0;
-        int count1 = 0;
-        for (char c : S.toCharArray()) {
-            if (c == '0') {
-                count0++;
-            }
-        }
-        int minFlip = Math.min(count0, S.length() - count0);
-        for (char c : S.toCharArray()) {
-            if (c == '0') {
-                count0--;
+    public int minFlipsMonoIncr(String s) {
+        int res = 0;
+        int countOne = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '1') {
+                // When '1' comes, no more flip should be applied
+                countOne++;
             } else {
-                minFlip = Math.min(minFlip, count0 + count1);
-                count1++;
+                // When '0' comes, either flip 0 to 1, which is res + 1, or flip all 1s tto 0, which is countOne
+                res = Math.min(res + 1, countOne);
             }
         }
-        return minFlip;
+        return res;
     }
 }
