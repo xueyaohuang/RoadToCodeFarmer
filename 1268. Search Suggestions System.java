@@ -1,46 +1,43 @@
 /*
-insert and search time ccooomplexity O(word_length)
+insert and search time complexity O(word_length)
 space complexity:
 O(ALPHABET_SIZE * avg_word_length * N) where N is number of words in Trie
 */
 class Solution {
+    TrieNode root;
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-        TrieNode root = new TrieNode();
-        buildTrie(products, root);
+        root = new TrieNode();
+        for (String product : products) {
+            insert(product);
+        }
         List<List<String>> res = new ArrayList<>();
         TrieNode node = root;
         for (char c : searchWord.toCharArray()) {
-            node = node != null ? node.children[c - 'a'] : null;
+            node = node == null ? null : node.children[c - 'a'];
             if (node == null) {
                 res.add(new ArrayList<>());
                 continue;
             }
             if (!node.isSorted) {
-                Collections.sort(node.startsWith);
+                Collections.sort(node.startWith);
                 node.isSorted = true;
             }
             List<String> temp = new ArrayList<>();
-            for (int i = 0; i < Math.min(3, node.startsWith.size()); i++) {
-                temp.add(node.startsWith.get(i));
+            for (int i = 0; i < Math.min(3, node.startWith.size()); i++) {
+                temp.add(node.startWith.get(i));
             }
-            res.add(new ArrayList<>(temp));
+            res.add(temp);
         }
         return res;
     }
     
-    private void buildTrie(String[] words, TrieNode root) {
-        for (String word : words) {
-            insert(word, root);
-        }
-    }
-    
-    private void insert(String word, TrieNode root) {
+    private void insert(String word) {
         TrieNode node = root;
         for (char c : word.toCharArray()) {
             if (node.children[c - 'a'] == null) {
                 node.children[c - 'a'] = new TrieNode();
             }
-            node.children[c - 'a'].startsWith.add(word);
+            node.children[c - 'a'].startWith.add(word);
             node = node.children[c - 'a'];
         }
     }
@@ -48,11 +45,11 @@ class Solution {
 
 class TrieNode {
     TrieNode[] children;
-    List<String> startsWith;
+    List<String> startWith;
     boolean isSorted;
     public TrieNode() {
         children = new TrieNode[26];
-        startsWith = new ArrayList<>();
+        startWith = new ArrayList<>();
+        isSorted = false;
     }
 }
-
