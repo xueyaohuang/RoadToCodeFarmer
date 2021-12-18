@@ -23,6 +23,7 @@ class Solution {
         // Arrays.sort(intervals, (a, b) -> a.start - b.start);
         int count = 0;
         // pq里放的是还没开完的会议的结束时间，结果是pq的size的最大值
+        // 把先开完的会议poll出来，所以是min heap
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (int i = 0; i < intervals.length; i++) {
             //some meeting has already ended before the start of the next meeting, poll those meetings out
