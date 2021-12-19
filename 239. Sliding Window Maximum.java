@@ -1,4 +1,3 @@
-
 // 2 O(n)每个idx都enqueue和dequeue一次
 // deque,index进queue都是从tail进去，出去时分2种情况
 // 删除超出window范围的index从head出去，因为先进先出
