@@ -31,7 +31,7 @@ Then,
 i - prev[i] equals to the number of subarray ending with A[i], and A[i] is single minimum.
 next[i] - i equals to the number of subarray starting with A[i], and A[i] is the first minimum.
 
-Finally f(i) = (i - prev[i]) * (next[i] - i)
+Finally f(i) = (i - prev[i]) * (next[i] - i) (排列组合一下)
 
 For [3,1,2,4] as example:
 i - prev[i] = [1,2,1,1]
