@@ -1,4 +1,51 @@
 class Solution {
+    public int orangesRotting(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        Queue<Integer> queue = new LinkedList<>();
+        int freshOrange = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1) {
+                    freshOrange++;
+                } else if (grid[i][j] == 2) {
+                    queue.offer(i * n + j);
+                }
+            }
+        }
+        int rottenOrange = 0;
+        int minute = 0;
+        int[][] directions = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            // System.out.println(size);
+            for (int k = 0; k < size; k++) {
+                int position = queue.poll();
+                int i = position / n;
+                int j = position % n;
+                for (int[] dir : directions) {
+                    int x = i + dir[0];
+                    int y = j + dir[1];
+                    if (x < 0 || x >= m || y < 0 || y >= n || grid[x][y] != 1) {
+                        continue;
+                    }
+                    grid[x][y] = 2;
+                    rottenOrange++;
+                    queue.offer(x * n + y);
+                }
+            }
+            // 注意增加minute的条件，最后一轮处理完后没有新的坏橘子了（queue是empty的），就不能增加minute
+            if (!queue.isEmpty()) {
+                minute++;
+            }
+        }
+        if (rottenOrange == freshOrange) {
+            return minute;
+        }
+        return -1;
+    }
+}
+
+class Solution {
     int[][] dirs = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
     public int orangesRotting(int[][] grid) {
         if (grid == null || grid.length == 0) {
