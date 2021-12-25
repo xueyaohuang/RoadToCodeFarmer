@@ -51,7 +51,7 @@ class Solution {
     }
 }
 
-// sol 2: greddy 每次都取剩下最多frequency的两个char，取完放回PriorityQueue
+// sol 2: greedy 每次都取剩下最多frequency的两个char，取完放回PriorityQueue
 /* time complexity
     O(n) to build map with <Character, Count>
     add to priority queue: k * lg (k) --> constant
