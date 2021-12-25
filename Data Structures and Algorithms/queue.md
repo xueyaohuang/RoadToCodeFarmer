@@ -20,6 +20,8 @@
       * insert(item, priority): Inserts an item with given priority -- add, offer
       * getHighestPriority(): Returns the highest priority item -- peek
       * deleteHighestPriority(): Removes the highest priority item -- poll
+5. The time colplexity of building a priority queue from a collection is O(n), but inserting n elements one at a time results in O(n log n) complexity.
+  https://stackoverflow.com/questions/34693414/what-is-the-time-complexity-of-constructing-a-priorityqueue-from-a-collection
 
 
 
