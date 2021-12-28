@@ -1,6 +1,5 @@
 // best
 class Solution {
-    
     private final String[] ONES = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
     private final String[] TENS = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
     private final String[] THOUSANDS = {"", "Thousand", "Million", "Billion"};
@@ -21,6 +20,7 @@ class Solution {
         return res.trim();
     }
     
+    // 确保parseHundred（）的结果最后有" "
     private String parseHundred(int num) {
         if (num == 0) {
             return "";
@@ -29,7 +29,7 @@ class Solution {
         } else if (num < 100) {
             return TENS[num / 10] + " " + parseHundred(num % 10);
         } else {
-            return ONES[num / 100] + " " + "Hundred" + " " + parseHundred(num % 100);
+            return ONES[num / 100] + " Hundred " + parseHundred(num % 100);
         }
     }
 }
