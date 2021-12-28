@@ -30,7 +30,7 @@ class Solution {
         return res;
     }
 }
-
+// remove the last element of the array list is O(1) since that can be performed with zero copying
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
         List<Integer> list = new ArrayList<>();
