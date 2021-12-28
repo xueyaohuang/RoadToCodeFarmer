@@ -35,6 +35,33 @@ class Solution {
     public int[] asteroidCollision(int[] asteroids) {
         List<Integer> list = new ArrayList<>();
         for (int a : asteroids) {
+            if (a > 0) {
+                list.add(a);
+            } else {
+                while (list.size() > 0 && list.get(list.size() - 1) > 0 && Math.abs(a) > list.get(list.size() - 1)) {
+                    list.remove(list.size() - 1);
+                }
+                if (list.size() == 0 || list.get(list.size() - 1) < 0) {
+                    list.add(a);
+                } else if (list.get(list.size() - 1) + a == 0) {
+                    list.remove(list.size() - 1);
+                }
+            }
+        }
+        int[] res = new int[list.size()];
+        int idx = 0;
+        while (idx < res.length) {
+            res[idx] = list.get(idx);
+            idx++;
+        }
+        return res;
+    }
+}
+
+class Solution {
+    public int[] asteroidCollision(int[] asteroids) {
+        List<Integer> list = new ArrayList<>();
+        for (int a : asteroids) {
             list.add(a);
             while (list.size() > 1 && list.get(list.size() - 1) < 0 && list.get(list.size() - 2) > 0) {
                 int last = list.get(list.size() - 1);
