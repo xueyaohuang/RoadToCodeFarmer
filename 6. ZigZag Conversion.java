@@ -1,23 +1,23 @@
 class Solution {
     public String convert(String s, int numRows) {
-        StringBuilder[] sb = new StringBuilder[numRows];
+        StringBuilder[] sbs = new StringBuilder[numRows];
         for (int i = 0; i < numRows; i++) {
-            sb[i] = new StringBuilder();
+            sbs[i] = new StringBuilder();
         }
+        int idx = 0;
         int len = s.length();
-        int i = 0;
-        while (i < len) {
-            for (int j = 0; j < numRows && i < len; j++) {
-                sb[j].append(s.charAt(i++));
+        while (idx < len) {
+            for (int i = 0; i < numRows && idx < len; i++) {
+                sbs[i].append(s.charAt(idx++));
             }
-            for (int j = numRows - 2; j > 0 && i < len; j--) {
-                sb[j].append(s.charAt(i++));
+            for (int i = numRows - 2; i > 0 && idx < len; i--) {
+                sbs[i].append(s.charAt(idx++));
             }
         }
-        for (int j = 1; j < numRows; j++) {
-            sb[0].append(sb[j]);
+        for (int i = 1; i < numRows; i++) {
+            sbs[0].append(sbs[i]);
         }
-        return sb[0].toString();
+        return sbs[0].toString();
     }
 }
 
