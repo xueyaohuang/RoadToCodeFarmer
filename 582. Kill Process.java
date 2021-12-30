@@ -7,17 +7,17 @@ class Solution {
             adj.putIfAbsent(ppid.get(i), new ArrayList<>());
             adj.get(ppid.get(i)).add(pid.get(i));
         }
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(kill);
-        res.add(kill);
-        while (!queue.isEmpty()) {
-        	int parent = queue.poll();
-        	if (adj.containsKey(parent)) {
-        		queue.addAll(adj.get(parent));
-        		res.addAll(adj.get(parent));
-        	}
-        }
+        dfs(adj, res, kill);
         return res;
+    }
+    
+    private void dfs(Map<Integer, List<Integer>> adj, List<Integer> res, int cur) {
+        res.add(cur);
+        if (adj.containsKey(cur)) {
+            for (int next : adj.get(cur)) {
+                dfs(adj, res, next);
+            }
+        }
     }
 }
 
@@ -30,16 +30,16 @@ class Solution {
             adj.putIfAbsent(ppid.get(i), new ArrayList<>());
             adj.get(ppid.get(i)).add(pid.get(i));
         }
-        dfs(adj, res, kill);
-        return res;
-    }
-    
-    private void dfs(Map<Integer, List<Integer>> adj, List<Integer> res, int cur) {
-        res.add(cur);
-        if (adj.containsKey(cur)) {
-            for (int next : adj.get(cur)) {
-                dfs(adj, res, next);
-            }
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(kill);
+        res.add(kill);
+        while (!queue.isEmpty()) {
+        	int parent = queue.poll();
+        	if (adj.containsKey(parent)) {
+        		queue.addAll(adj.get(parent));
+        		res.addAll(adj.get(parent));
+        	}
         }
+        return res;
     }
 }
