@@ -48,31 +48,32 @@ class Solution {
 
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Deque<ListNode> stack1 = new ArrayDeque<>();
-        Deque<ListNode> stack2 = new ArrayDeque<>();
-        ListNode list = new ListNode(0);
-        int sum = 0;
+        Deque<Integer> stack1 = new ArrayDeque<>();
+        Deque<Integer> stack2 = new ArrayDeque<>();
         while (l1 != null) {
-            stack1.push(l1);
+            stack1.push(l1.val);
             l1 = l1.next;
         }
         while (l2 != null) {
-            stack2.push(l2);
+            stack2.push(l2.val);
             l2 = l2.next;
         }
+        
+        ListNode dummy = new ListNode(0);
+        int sum = 0;
         while (!stack1.isEmpty() || !stack2.isEmpty()) {
             if (!stack1.isEmpty()) {
-                sum += stack1.pop().val;
+                sum += stack1.pop();
             }
             if (!stack2.isEmpty()) {
-                sum += stack2.pop().val;
+                sum += stack2.pop();
             }
-            list.val = sum % 10;
+            dummy.val = sum % 10;
             sum /= 10;
-            ListNode head = new ListNode(sum);
-            head.next = list;
-            list = head;
+            ListNode node = new ListNode(sum);
+            node.next = dummy;
+            dummy = node;
         }
-        return list.val == 0 ? list.next : list;
+        return dummy.val == 0 ? dummy.next : dummy;
     }
 }
