@@ -37,6 +37,26 @@ class Solution {
     }
 }
 
+// sweep line
+class Solution {
+    public int minMeetingRooms(int[][] intervals) {
+        // A tree map that maps the the beginning/ending timestamp of an interval to score.
+        // A beginning timestamp will increase the score by 1, while an endning timestamp will decrease the score by 1.
+        Map<Integer, Integer> map = new TreeMap<>();
+        for (int[] itv : intervals) {
+            map.put(itv[0], map.getOrDefault(itv[0], 0) + 1); // Beginning timestamp of an interval
+            map.put(itv[1], map.getOrDefault(itv[1], 0) - 1); // Ending timestamp of an interval
+        }
+        int accumulativeRooms = 0;
+        int rooms = 0;
+        for (int i : map.keySet()) {
+            accumulativeRooms += map.get(i);
+            rooms = Math.max(rooms, accumulativeRooms);
+        }
+        return rooms;
+    }
+}
+
 // 最差O(n^2)
 class Solution {
     public int minMeetingRooms(Interval[] intervals) {
