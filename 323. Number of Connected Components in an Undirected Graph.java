@@ -1,34 +1,31 @@
 class Solution {
     public int countComponents(int n, int[][] edges) {
-        if (n <= 0) {
-            return 0;
-        }
-        int res = 0;
-        int[] visited = new int[n];
-        List<Integer>[] adjList = new ArrayList[n];
+        List<Integer>[] adj = new ArrayList[n];
         for (int i = 0; i < n; i++) {
-            adjList[i] = new ArrayList<>();
+            adj[i] = new ArrayList<>();
         }
         for (int[] edge : edges) {
-            adjList[edge[0]].add(edge[1]);
-            adjList[edge[1]].add(edge[0]);
+            adj[edge[0]].add(edge[1]);
+            adj[edge[1]].add(edge[0]);
         }
+        int[] visited = new int[n];
+        int count = 0;
         for (int i = 0; i < n; i++) {
             if (visited[i] == 0) {
-                res++;
-                dfs(i, adjList, visited);
+                count++;
+                dfs(adj, i, visited);
             }
         }
-        return res;
+        return count;
     }
     
-    private void dfs(int i, List<Integer>[] adjList, int[] visited) {
+    private void dfs(List<Integer>[] adj, int i, int[] visited) {
         if (visited[i] != 0) {
             return;
         }
         visited[i] = 1;
-        for (int j : adjList[i]) {
-            dfs(j, adjList, visited);
+        for (int j : adj[i]) {
+            dfs(adj, j, visited);
         }
         visited[i] = 2;
     }
