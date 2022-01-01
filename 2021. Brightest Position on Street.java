@@ -1,4 +1,5 @@
 // sweep line
+// 只需要考虑端点
 class Solution {
     public int brightestPosition(int[][] lights) {
         Map<Integer, Integer> map = new TreeMap<>();
