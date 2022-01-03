@@ -1,3 +1,4 @@
+// Fenwick Tree or Binary Indexed Tree: https://www.youtube.com/watch?v=CWDQJGaN1gY
 class NumArray {
     
     FenwickTree sums;
