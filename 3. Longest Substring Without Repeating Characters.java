@@ -8,7 +8,7 @@ class Solution {
         for (int end = 0; end < len; end++) {
             char c = s.charAt(end);
             if (map.containsKey(c)) {
-                start = Math.max(start, map.get(c) + 1); // 需要Math.max, 比如abcbda，在两个a之间还有别的重复的character
+                start = Math.max(start, map.get(c) + 1); // 需要Math.max, 比如abba，在两个a之间还有别的重复的b
             }
             maxLen = Math.max(maxLen, end - start + 1);
             map.put(c, end);
