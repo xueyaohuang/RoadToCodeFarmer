@@ -1,4 +1,6 @@
-/*The number of columns is n, the number of 45° diagonals is 2 * n - 1, 
+/*
+任意两个皇后不能位于同一行，同一列，同一斜线
+The number of columns is n, the number of 45° diagonals is 2 * n - 1, 
 the number of 135° diagonals is also 2 * n - 1. When reach [row, col],
 the column No. is col, the 45° diagonal No. is row + col and the 135° 
 diagonal No. is n - 1 + col - row. We can use three arrays to indicate
