@@ -331,3 +331,7 @@ Leetcode 10 Regular Expression Matching
 Leetcode 32 Longest Valid Parentheses
 Leetcode 1235 Maximum Profit in Job Scheduling (DP + binary search)
 Leetcode 1043 Partition Array for Maximum Sum
+
+
+Reservoir Sampling
+binary indexed tree
