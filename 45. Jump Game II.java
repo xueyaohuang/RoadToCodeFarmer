@@ -6,7 +6,7 @@
 // This is an implicit bfs solution. i == curEnd means you visited all the items 
 // on the current level. Incrementing jumps++ is like incrementing the level you
 // are on. And curEnd = curFarthest is like getting the queue size (level size) 
-/  for the next level you are traversing.
+// for the next level you are traversing.
 class Solution {
     public int jump(int[] nums) {
         int jump = 0;
@@ -26,5 +26,24 @@ class Solution {
             }
         }
         return jump;
+    }
+}
+
+// dp
+class Solution {
+    public int jump(int[] nums) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j <= nums[i] && i + j < n; j++) {
+                dp[i + j] = Math.min(dp[i] + 1, dp[i + j]);
+            }
+            if (dp[n - 1] != Integer.MAX_VALUE) {
+                return dp[n - 1];
+            }
+        }
+        return dp[n - 1];
     }
 }
