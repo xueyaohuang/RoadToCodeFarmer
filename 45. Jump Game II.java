@@ -3,26 +3,25 @@
 // [curBegin, curEnd] can reach. Once the current point reaches curEnd, then 
 // trigger another jump, and set the new curEnd with curFarthest, then keep the
 // above steps, as the following:
+
 // This is an implicit bfs solution. i == curEnd means you visited all the items 
 // on the current level. Incrementing jumps++ is like incrementing the level you
 // are on. And curEnd = curFarthest is like getting the queue size (level size) 
 // for the next level you are traversing.
 class Solution {
     public int jump(int[] nums) {
+        int n = nums.length;
+        int maxCanReach = 0;
         int jump = 0;
-        int end = 0;
-        int max = 0;
-        for (int i = 0; i < nums.length - 1; i++) {
-            max = Math.max(max, i + nums[i]);
-            if (i == end) {
-                // 虽然是在i== end时增加jump，但是也表示在[curBegin, curEnd]能达到的最大值都jump了。
-                // e.g. [1,4,3,7,1,1,1,1,1]
-                // 在i=5时，jump增加到3，表明i=3时也可以跳，并且这时候max大于nums.length - 1了，以后jump不会再增大了
+        int curEnd = 0;
+        for (int i = 0; i < n - 1; i++) {
+            maxCanReach = Math.max(maxCanReach, i + nums[i]);
+            if (i == curEnd) {
+                curEnd = maxCanReach;
                 jump++;
-                end = max;
-                if (max >= nums.length - 1) {
-                    return jump;
-                }
+            }
+            if (curEnd >= n - 1) {
+                return jump;
             }
         }
         return jump;
