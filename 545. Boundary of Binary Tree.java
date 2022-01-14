@@ -111,8 +111,6 @@ class Solution {
                 node = node.left;
             } else if (node.right != null) {
                 node = node.right;
-            } else {
-                return;
             }
         }
     }
@@ -144,8 +142,6 @@ class Solution {
                 node = node.right;
             } else if (node.left != null) {
                 node = node.left;
-            } else {
-                return;
             }
         }
     }
