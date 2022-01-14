@@ -1,3 +1,43 @@
+// Dijkstra
+class Solution {
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+        int[] distance = new int[n];
+        Arrays.fill(distance, Integer.MAX_VALUE);
+        distance[src] = 0;
+        List<int[]>[] adj = new ArrayList[n];
+        for (int i = 0; i < n; i++) {
+            adj[i] = new ArrayList<>();
+        }
+        
+        for (int[] flight : flights) {
+            adj[flight[0]].add(new int[]{flight[1], flight[2]});
+        }
+        int stops = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(src);
+        while (!queue.isEmpty()) {
+            if (stops > k) {
+                break;
+            }
+            int size = queue.size();
+            int[] temp = Arrays.copyOf(distance, distance.length);
+            for (int i = 0; i < size; i++) {
+                int cur = queue.poll();
+                for (int[] e : adj[cur]) {
+                    int minCost = distance[cur] + e[1];
+                    if (minCost < temp[e[0]]) {
+                        temp[e[0]] = minCost;
+                        queue.offer(e[0]);
+                    }
+                }
+            }
+            distance = temp;
+            stops++;
+        }
+        return distance[dst] == Integer.MAX_VALUE ? -1 : distance[dst];
+    }
+}
+
 // pq
 class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
