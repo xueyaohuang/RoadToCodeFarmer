@@ -1,4 +1,4 @@
-// Dijkstra
+// BFS
 class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         int[] distance = new int[n];
@@ -38,7 +38,7 @@ class Solution {
     }
 }
 
-// pq
+// pq, TLE now
 class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         Map<Integer, Map<Integer, Integer>> prices = new HashMap<>();
@@ -65,7 +65,7 @@ class Solution {
     }
 }
 
-// bellman-ford
+// Dijkstra
 class Solution {
     private class City implements Comparable<City>{
         int id;
@@ -128,7 +128,7 @@ class Solution {
 }
 
 
-// Dijkstra
+// bellman-ford
 class Solution {
     
     // Bellman-Ford.
