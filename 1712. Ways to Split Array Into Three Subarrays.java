@@ -16,11 +16,11 @@ class Solution {
         // j is the min end of mid subarray
         // k is the max end of mid subarray
         for (int i = 0, j = 0, k = 0; i < n - 2; i++) {
-            // j must be greater than i
+            // j must be greater than i, right subarray should have at least 1 element, so j < n - 1
             while (j <= i || (j < n - 1 && prefixSum[j] - prefixSum[i] < prefixSum[i])) {
                 j++;
             }
-            // k could be equal to j
+            // k could be equal to j, right subarray should have at least 1 element, so k < n - 1
             while (k < j || (k < n - 1 && prefixSum[k] - prefixSum[i] <= prefixSum[n - 1] - prefixSum[k])) {
                 k++;
             }
