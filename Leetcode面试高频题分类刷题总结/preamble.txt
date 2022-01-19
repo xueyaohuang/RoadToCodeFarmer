@@ -292,7 +292,8 @@ Leetcode 318 Count of Smaller Numbers After Self (这个题线段树、二分索
 
 
 14. 动态规划（Dynamic Programming）
-基础知识：这里指的是用for循环方式的动态规划，非Memoization Search方式。DP可以在多项式时间复杂度内解决DFS需要指数级别的问题。常见的题目包括找最大最小，找可行性，找总方案数等，一般结果是一个Integer或者Boolean。动态规划有很多分支，暂时还没想好怎么去写这部分，后面想好了再具体写吧。
+基础知识：这里指的是用for循环方式的动态规划，非Memoization Search方式。DP可以在多项式时间复杂度内解决DFS需要指数级别的问题。常见的题目包括找最大最小，找可行性，找总方案数等，一般结果是一个Integer或者Boolean。
+https://leetcode.com/discuss/study-guide/458695/dynamic-programming-patterns/1224451
 常见题目：
 Leetcode 674 Longest Continuous Increasing Subsequence (接龙型dp)
 Leetcode 62 Unique Paths II
