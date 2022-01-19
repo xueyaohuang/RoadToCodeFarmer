@@ -63,6 +63,21 @@ class Solution {
 /*
 nums1[0], nums1[1], .... nums1[i - 1],   nums1[i], nums1[i + 1], ... nums1[len1 - 1]
 nums2[0], nums2[1], .... nums2[j - 1],   nums2[j], nums2[j + 1], ... nums2[len2 - 1]
+
+0. Put left_A and left_B into one set(left_part), and put right_A and right_B into another set(right_part).
+
+      left_part          |        right_part
+A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]
+B[0], B[1], ..., B[j-1]  |  B[j], B[j+1], ..., B[n-1]
+
+If we can ensure:
+
+1) len(left_part) == len(right_part)
+2) max(left_part) <= min(right_part)
+
+then we divide all elements in {A, B} into two parts with equal length, and one part is always greater than the other.
+Then median = (max(left_part) + min(right_part))/2.
+
 1. find i, j, such that nums1[i - 1] <= nums2[j] and nums2[j - 1] <= nums1[i]
 
 2. median = (max(left_part) + min(right_part)) / 2
