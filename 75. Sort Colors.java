@@ -5,6 +5,15 @@
 An efficient solution is based on Dutch National Flag based QuickSort. We traverse given array elements from left. 
 We keep track of two pointers, first (called start in below code) to store next position of smaller element (smaller than range) from beginning; 
 and second (called end in below code) to store next position of greater element from end. 
+
+我们假设一种简单的情况，如果只含有两个数 0 和 1，该怎么做呢？
+
+假设原数组是 1 1 0 1 0，我们可以用一个指针，zero_position，含义是该指针指向的位置，前边的位置全部存 0 。
+然后再用一个指针 i 遍历这个数组，找到 0 就 swap(nums, i, zero_position)， zero_position 后移。
+
+回到我们当前这道题，我们有 3 个数字，那我们可以用两个指针，一个是 zero_position，和之前一样，它前边的位置全部存 0。
+再来一个指针，two_position，注意这里是，它后边的位置全部存 2。然后遍历整个数组就行了。
+2,0,2,1,1,0
 */
 class Solution {
     public void sortColors(int[] nums) {
@@ -15,8 +24,12 @@ class Solution {
                 start++;
                 i++;
             } else if (nums[i] == 2)  {
-                swap(nums, i, end);  // 不知道nums[idx2]是什么，所以idx1不能++
+                swap(nums, i, end); 
                 end--;
+                //这里一定要注意，因为我们把后边的数字换到了第 i 个位置，
+                //这个数字我们还没有判断它是多少，所以不能i++
+                //而对于上边 zero_position 的更新不需要考虑，因为它是从前边换过来的数字(index i 已经见过了，但是后面的数index i还没有见过)
+                //在之前已经都判断过了
             } else {
                 i++;
             }
