@@ -32,6 +32,18 @@ class Solution {
 }
 
 // 2在最后，所以要多移动num of 0 和 num of 1 个距离。
+/*
+我们用三个指针 idx0，idx1，idx2，分别代表已排好序的数组当前 0 的末尾，1 的末尾，2 的末尾
+0  0  1  2  2  2  0  2  1
+   ^  ^        ^  ^
+  n0 n1       n2  i
+
+然后当前遍历到 i 的位置，等于 0，我们想把这个0移动到idx0的下一位，
+这样做以后之前的1被覆盖了，所以要把idx1往前移动并且设置成1，
+这样又覆盖了之前的2，同理需要把idx2往前移动以为并设置为2
+
+这里假设了当前的数组已经排好了
+*/
 class Solution {
     public void sortColors(int[] nums) {
         if (nums == null || nums.length == 0) {
