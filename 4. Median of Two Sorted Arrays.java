@@ -1,3 +1,41 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        // O(log(m + n))
+        int len = nums1.length + nums2.length;
+        // kth is 1 based (start from 1, 1st, 2nd, 3rd...)
+        // if len is odd, left == right
+        // if len is even, left is the largest of left half, right is the smallest of the right half
+        int left = (len + 1) / 2;   //left half of the combined median
+        int right = (len + 2) / 2;  //right half of the combined median
+        return (getKth(nums1, 0, nums2, 0, left) + getKth(nums1, 0, nums2, 0, right)) / 2.0;
+    }
+    
+    // This function finds the Kth element in nums1 + nums2, 1 based
+    // Every time we want to throw away either half of nums1 or half of nums2, and cut k in half
+    private int getKth(int[] nums1, int start1, int[] nums2, int start2, int k) {
+        // If nums1 is exhausted, return kth number in nums2
+        if (start1 >= nums1.length) {
+            return nums2[start2 + k - 1];
+        }
+        // If nums2 is exhausted, return kth number in nums1
+        if (start2 >= nums2.length) {
+            return nums1[start1 + k - 1];
+        }
+        // If k == 1, return the first number
+        // Since nums1 and nums2 is sorted, the smaller one among the start point of nums1 and nums2 is the first one
+        if (k == 1) {
+            return Math.min(nums1[start1], nums2[start2]);
+        }
+        int mid1 = start1 + k / 2 - 1 >= nums1.length ? Integer.MAX_VALUE : nums1[start1 + k / 2 - 1];
+        int mid2 = start2 + k / 2 - 1 >= nums2.length ? Integer.MAX_VALUE : nums2[start2 + k / 2 - 1];
+        // Throw away half of the array from nums1 or nums2. And cut k in half
+        if (mid1 < mid2) {
+            return getKth(nums1, start1 + k / 2, nums2, start2, k - k / 2);
+        }
+        return getKth(nums1, start1, nums2, start2 + k / 2, k - k / 2); 
+    }
+}
+
 // naive answer, O(m + n)
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
