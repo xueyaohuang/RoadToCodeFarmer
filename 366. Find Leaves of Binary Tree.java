@@ -16,6 +16,7 @@ class Solution {
         return res;
     }
     
+    // 得到每个node距离地面有多高
     private int height(TreeNode root, List<List<Integer>> res) {
         if (root == null) {
             return -1;
