@@ -2,6 +2,7 @@ class Logger {
 
     // 这个方法的问题是map会越来越大，包含很多已经超时的message信息
     Map<String, Integer> map;
+    final int INTERVAL = 10;
     /** Initialize your data structure here. */
     public Logger() {
         map = new HashMap<String, Integer>();
@@ -11,28 +12,13 @@ class Logger {
         If this method returns false, the message will not be printed.
         The timestamp is in seconds granularity. */
     public boolean shouldPrintMessage(int timestamp, String message) {
-        if (!map.containsKey(message)) {
-            map.put(message, timestamp);
-            return true;
-        }
-        else {
-            int lastPrint = map.get(message);
-            if (timestamp - lastPrint < 10) {
+        if (map.containsKey(message)) {
+            int last = map.get(message);
+            if (timestamp - last < INTERVAL) 
                 return false;
-            }
-            else {
-                map.put(message, timestamp);
-                return true;
-            }
         }
-        // another logtic
-//         if (map.containsKey(message)) {
-//             int last = map.get(message);
-//             if (timestamp - last < 10) 
-//                 return false;
-//         }
-//         map.put(message, timestamp);
-//         return true;
+        map.put(message, timestamp);
+        return true;
     }
 }
 
@@ -47,6 +33,10 @@ class Log {
     }
 }
 
+// amortized time complexity should be O(1) -- since words are only going in and out of the queue once.
+// could have a situation where you spend a lot of time in a single function call --
+// which gives us the worst case scenario of O(n), n := # unique words in last 10 seconds. 
+// it gets big if there are a lot of unique words in the last 10 seconds -- no solution can get around this. 
 class Logger {
 
     Queue<Log> queue;
@@ -80,3 +70,5 @@ class Logger {
  * Logger obj = new Logger();
  * boolean param_1 = obj.shouldPrintMessage(timestamp,message);
  */
+
+// https://leetcode.com/problems/logger-rate-limiter/discuss/391558/Review-of-four-different-solutions%3A-HashMap-Two-Sets-Queue-with-Set-Radix-buckets-(Java-centric)
