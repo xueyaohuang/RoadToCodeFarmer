@@ -7,6 +7,37 @@
  * }
  */
 class Solution {
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if (head == null || m == n) {
+            return head;
+        }
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        head = dummy;
+        for (int i = 1; i < m; i++) {
+            head = head.next;
+        }
+        ListNode premNode = head;
+        ListNode mNode = head.next;
+        ListNode nNode = head.next;
+        ListNode postnNode = nNode.next;
+        for (int i = m; i < n; i++) {
+            if (postnNode == null) {
+                return null;
+            } else {
+                ListNode temp = postnNode.next;
+                postnNode.next = nNode;
+                nNode = postnNode;
+                postnNode = temp;
+            }
+        }
+        premNode.next = nNode;
+        mNode.next = postnNode;
+        return dummy.next;
+    }
+}
+
+class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         if (head == null || left == right) {
             return head;
@@ -41,41 +72,5 @@ class Solution {
             head = next;
         }
         return prev;
-    }
-}
-
-class Solution {
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        if (head == null || m >= n) {
-            return head;
-        }
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        head = dummy;
-        for (int i = 1; i < m; i++) {
-            if (head.next == null) {
-                return null;
-            } else {
-                head = head.next;
-            }
-        }
-        ListNode premNode = head;
-        ListNode mNode = head.next;
-        ListNode nNode = head.next;
-        ListNode postnNode = nNode.next;
-        for (int i = m; i < n; i++) {
-            if (postnNode == null) {
-                return null;
-            } else {
-                ListNode temp = postnNode.next;
-                postnNode.next = nNode;
-                nNode = postnNode;
-                postnNode = temp;
-            }
-        }
-        premNode.next = nNode;
-        mNode.next = postnNode;
-        return dummy.next;
-        
     }
 }
