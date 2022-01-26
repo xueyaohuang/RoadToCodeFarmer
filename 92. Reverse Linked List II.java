@@ -21,15 +21,12 @@ class Solution {
         ListNode mNode = head.next;
         ListNode nNode = head.next;
         ListNode postnNode = nNode.next;
+        // 一边移动一边reverse
         for (int i = m; i < n; i++) {
-            if (postnNode == null) {
-                return null;
-            } else {
-                ListNode temp = postnNode.next;
-                postnNode.next = nNode;
-                nNode = postnNode;
-                postnNode = temp;
-            }
+            ListNode next = postnNode.next;
+            postnNode.next = nNode;
+            nNode = postnNode;
+            postnNode = next;
         }
         premNode.next = nNode;
         mNode.next = postnNode;
