@@ -36,3 +36,39 @@ class Solution {
         return res;
     }
 }
+
+// 类似于nested iterator
+class Solution {
+    public String decodeString(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isLetter(c)) {
+                sb.append(c);
+            } else if (Character.isDigit(c)) {
+                int count = 0;
+                while (i < s.length() && Character.isDigit(s.charAt(i))) {
+                    count = count * 10 + s.charAt(i) - '0';
+                    i++;
+                }
+                int start = ++i;
+                int open = 1;
+                // 找到匹配的括号
+                while (open != 0) {
+                    if (s.charAt(i) == '[') {
+                        open++;
+                    } else if (s.charAt(i) == ']') {
+                        open--;
+                    }
+                    i++;
+                }
+                i--; // decrement i here since we inccrement i in the for loop
+                String str = decodeString(s.substring(start, i));
+                for (int j = 0; j < count; j++) {
+                    sb.append(str);
+                }
+            }
+        }
+        return sb.toString();
+    }
+}
