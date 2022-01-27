@@ -1,3 +1,5 @@
+// time complexity: O( MN(3*len of string) )
+// We are not searching in 4 directions because one of the directions is already traversed so we are left only with 3 other directions to search. :)
 class Solution {
     public boolean exist(char[][] board, String word) {
         if (board == null || board.length == 0) {
