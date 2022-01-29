@@ -1,3 +1,8 @@
+// one queue, keep elements in queue in reverse order
+// push 1: 1
+// push 2: 2 1
+// push 3: 3 2 1
+// push() is O(n), pop() and top() are O(1)
 class MyStack {
     
     Queue<Integer> queue;
@@ -42,32 +47,58 @@ class MyStack {
  */
 
 
+// two queues
+// keep one queue empty and the other one has element in order
+// push() is O(1), pop() and top() are O(n)
 class MyStack {
-    //using two queue. The push is inefficient.
-    private Queue<Integer> q1 = new LinkedList<Integer>();
-    private Queue<Integer> q2 = new LinkedList<Integer>();
+    
+    Queue<Integer> queue1;
+    Queue<Integer> queue2;
+
+    public MyStack() {
+        queue1 = new LinkedList<>();
+        queue2 = new LinkedList<>();
+    }
+    
     public void push(int x) {
-        if(q1.isEmpty()) {
-            q1.add(x);
-            for(int i = 0; i < q2.size(); i ++)
-                q1.add(q2.poll());
-        }else {
-            q2.add(x);
-            for(int i = 0; i < q1.size(); i++)
-                q2.add(q1.poll());
+        if (queue2.isEmpty()) {
+            queue1.offer(x);
+        } else {
+            queue2.offer(x);
         }
     }
-
-    public void pop() {
-        if(!q1.isEmpty()) 
-            q1.poll();
-        else
-            q2.poll();
+    
+    public int pop() {
+        if (!queue1.isEmpty()) {
+            while (queue1.size() > 1) {
+                queue2.offer(queue1.poll());
+            }
+            return queue1.poll();
+        }
+        while (queue2.size() > 1) {
+            queue1.offer(queue2.poll());
+        }
+        return queue2.poll();
     }
+    
     public int top() {
-        return q1.isEmpty() ? q2.peek() : q1.peek();
+        if (!queue1.isEmpty()) {
+            while (queue1.size() > 1) {
+                queue2.offer(queue1.poll());
+            }
+            int res = queue1.peek();
+            queue2.offer(queue1.poll());
+            return res;
+        }
+        while (queue2.size() > 1) {
+            queue1.offer(queue2.poll());
+        }
+        int res = queue2.peek();
+        queue1.offer(queue2.poll());
+        return res;
     }
+    
     public boolean empty() {
-        return q1.isEmpty() && q2.isEmpty();
+        return queue1.isEmpty() && queue2.isEmpty();
     }
 }
