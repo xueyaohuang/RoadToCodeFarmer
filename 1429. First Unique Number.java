@@ -1,6 +1,7 @@
 class FirstUnique {
     
     Map<Integer, Integer> map;
+    // queue里是目前所有的Unique Number，queue的FIFO特性可以用来获得First Unique Number
     Queue<Integer> queue;
 
     public FirstUnique(int[] nums) {
