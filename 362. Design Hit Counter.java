@@ -12,6 +12,9 @@ class HitCounter {
     /** Record a hit.
         @param timestamp - The current timestamp (in seconds granularity). */
     public void hit(int timestamp) {
+        // hit时也可以不清理queue中过时的hit
+        // 好处是hit是复杂度是O(1）
+        // 坏处是queue的size会更大
         while (!queue.isEmpty() && timestamp - queue.peek() >= 300) {
             queue.poll();
         }
