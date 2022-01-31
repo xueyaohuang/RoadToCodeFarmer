@@ -1,24 +1,20 @@
 class MaxStack {
-
+    
     Deque<Integer> stack;
-    Deque<Integer> maxStack;
-    /** initialize your data structure here. */
+    Deque<Integer> max;
+
     public MaxStack() {
         stack = new ArrayDeque<>();
-        maxStack = new ArrayDeque<>();
+        max = new ArrayDeque<>();
     }
     
     public void push(int x) {
+        max.push(max.isEmpty() ? x : Math.max(max.peek(), x));
         stack.push(x);
-        if (maxStack.isEmpty() || x >= maxStack.peek()) {
-            maxStack.push(x);
-        } else {
-            maxStack.push(maxStack.peek());
-        }
     }
     
     public int pop() {
-        maxStack.pop();
+        max.pop();
         return stack.pop();
     }
     
@@ -27,30 +23,23 @@ class MaxStack {
     }
     
     public int peekMax() {
-        return maxStack.peek();
+        return max.peek();
     }
     
     public int popMax() {
-        int res = maxStack.peek();
+        int curMax = max.peek();
         Deque<Integer> temp = new ArrayDeque<>();
-        while (stack.peek() != res) {
+        while (stack.peek() != curMax) {
             temp.push(stack.pop());
-            maxStack.pop();
+            max.pop();
         }
-        
         stack.pop();
-        maxStack.pop();
-        
+        max.pop();
         while (!temp.isEmpty()) {
-            int cur = temp.pop();
-            stack.push(cur);
-            if (maxStack.isEmpty() || cur >= maxStack.peek()) {
-                maxStack.push(cur);
-            } else {
-                maxStack.push(maxStack.peek());
-            }
+            stack.push(temp.pop());
+            max.push(max.isEmpty() ? stack.peek() : Math.max(max.peek(), stack.peek()));
         }
-        return res;
+        return curMax;
     }
 }
 
