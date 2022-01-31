@@ -35,34 +35,30 @@ class HitCounter {
 // 组要是要把相同时间的hit聚在一起
 class HitCounter {
     
-    int[] hit;
     int[] time;
+    int[] hits;
+    final int DURATION = 300;
 
-    /** Initialize your data structure here. */
     public HitCounter() {
-        hit = new int[300];
         time = new int[300];
+        hits = new int[300];
     }
     
-    /** Record a hit.
-        @param timestamp - The current timestamp (in seconds granularity). */
     public void hit(int timestamp) {
-        int idx = timestamp % 300;
-        if (time[idx] == timestamp) {
-            hit[idx]++;
+        int idx = timestamp % DURATION;
+        if (timestamp == time[idx]) {
+            hits[idx]++;
         } else {
             time[idx] = timestamp;
-            hit[idx] = 1;
+            hits[idx] = 1;
         }
     }
     
-    /** Return the number of hits in the past 5 minutes.
-        @param timestamp - The current timestamp (in seconds granularity). */
     public int getHits(int timestamp) {
         int count = 0;
-        for (int i = 0; i < 300; i++) {
-            if (timestamp - time[i] < 300) {
-                count += hit[i];
+        for (int i = 0; i < DURATION; i++) {
+            if (timestamp - time[i] < DURATION) {
+                count += hits[i];
             }
         }
         return count;
@@ -71,47 +67,42 @@ class HitCounter {
 
 // scale method
 class HitCounter {
-    
-    Deque<Time> queue;
-    int hit;
+    // 涉及到在两端操作，要用deque
+    Deque<Hit> dq;
+    int hits;
+    final int DURATION = 300;
 
-    /** Initialize your data structure here. */
     public HitCounter() {
-        queue = new ArrayDeque<>();
-        hit = 0;
+        dq = new ArrayDeque<>();
+        hits = 0;
     }
     
-    /** Record a hit.
-        @param timestamp - The current timestamp (in seconds granularity). */
     public void hit(int timestamp) {
-        while (!queue.isEmpty() && timestamp - queue.peek().time >= 300) {
-            hit -= queue.poll().count;
+        while (!dq.isEmpty() && dq.peekFirst().time <= timestamp - DURATION) {
+            hits -= dq.pollFirst().hits;
         }
-        if (!queue.isEmpty() && queue.peekLast().time == timestamp) {
-            queue.peekLast().count++;
-            hit++;
+        if (!dq.isEmpty() && dq.peekLast().time == timestamp) {
+            dq.peekLast().hits++;
         } else {
-            queue.offer(new Time(timestamp));
-            hit++;
+            dq.offerLast(new Hit(timestamp));
         }
+        hits++;
     }
     
-    /** Return the number of hits in the past 5 minutes.
-        @param timestamp - The current timestamp (in seconds granularity). */
     public int getHits(int timestamp) {
-        while (!queue.isEmpty() && timestamp - queue.peek().time >= 300) {
-            hit -= queue.poll().count;
+        while (!dq.isEmpty() && dq.peekFirst().time <= timestamp - DURATION) {
+            hits -= dq.pollFirst().hits;
         }
-        return hit;
+        return hits;
     }
 }
 
-class Time {
+class Hit {
     int time;
-    int count;
-    public Time(int time) {
-        this.time = time;
-        this.count = 1;
+    int hits;
+    public Hit(int timestamp) {
+        this.time = timestamp;
+        hits = 1;
     }
 }
 
