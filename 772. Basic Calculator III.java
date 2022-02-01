@@ -19,6 +19,7 @@ class Solution {
                 num = num * 10 + c - '0';
             }
             
+            // 算出括号中的结果，treat it as num
             if (c == '(') {
                 int count = 0, start = i + 1;
                 while (i < len) {
