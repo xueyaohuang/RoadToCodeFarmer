@@ -1,5 +1,36 @@
 // 11.9
-// 这种带括号，前向运算的题，套路是用若干个stack，遇到'('把暂时结果push进stack，遇到')'把结果pop出来，与()里面的结果结合
+// 这种带括号，前向运算的题，套路是用若干个stack，遇到'('把暂时结果push进stack，遇到')'把之前的结果pop出来，与()里面的结果结合
+class Solution {
+    public int calculate(String s) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        int sign = 1, num = 0, res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isDigit(c)) {
+                num = s.charAt(i) - '0';
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
+                    num = num * 10 + s.charAt(i + 1) - '0';
+                    i++;
+                }
+                // 注意什么时候更新res
+                res += sign * num;
+            } else if (c == '(') {
+                stack.push(res);
+                stack.push(sign);
+                sign = 1;
+                // 注意是reset res 而不是num
+                res = 0;
+            } else if (c == ')') {
+                res = res * stack.pop() + stack.pop();
+            } else if (c == '+') {
+                sign = 1;
+            } else if (c == '-') {
+                sign = -1;
+            }
+        }
+        return res;
+    }
+}
 
 class Solution {
     public int calculate(String s) {
