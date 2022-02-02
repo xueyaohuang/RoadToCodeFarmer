@@ -1,3 +1,27 @@
+// O(n) one pass
+class Solution {
+    public String getHint(String secret, String guess) {
+        int[] freqS = new int[10];
+        int[] freqG = new int[10];
+        int bull = 0;
+        int cow = 0;
+        for (int i = 0; i < secret.length(); i++) {
+            char cs = secret.charAt(i);
+            char cg = guess.charAt(i);
+            if (cs == cg) {
+                bull++;
+            } else {
+                freqS[cs - '0']++;
+                freqG[cg - '0']++;
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            cow += Math.min(freqS[i], freqG[i]);
+        }
+        return bull + "A" + cow + "B";
+    }
+}
+
 // O(n) two pass
 class Solution {
     public String getHint(String secret, String guess) {
