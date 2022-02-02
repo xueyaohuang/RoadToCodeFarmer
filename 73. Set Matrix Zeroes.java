@@ -15,6 +15,7 @@ class Solution {
                 }
             }
         }
+        // 第0行用来做flag了，所以现在不能改，放到最后改
         for (int i = 1; i < matrix.length; i++) {
             if (matrix[i][0] == 0) {
                 for (int j = 1; j < matrix[0].length; j++) {
@@ -22,6 +23,7 @@ class Solution {
                 }
             }
         }
+        // 第0列用来做flag了，所以现在不能改，放到最后改
         for (int j = 1; j < matrix[0].length; j++) {
             if (matrix[0][j] == 0) {
                 for (int i = 1; i < matrix.length; i++) {
