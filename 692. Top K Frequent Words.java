@@ -15,7 +15,9 @@ class Solution {
         // You can't compare two Integer with a simple ==. 
         // You should use equals(). == can be used only when the Integer is between -127 ~ 128.
         // for the comparator, why is b.getKey().compareTo(a.getKey()) being returned instead of a.getKey().compareTo(b.getKey())?
-        // the solution is using min-heap, which keeps heap's size to K. With min-heap, the top K elements are actually at the bottom of the heap. Hence, at case where a.getValue() == b.getValue(), we want to add "abd" before "abc" into the min-heap, so that when executing line result.add(0, pq.poll().getKey());, abc will go before abd in the result. 
+        // the solution is using min-heap, which keeps heap's size to K. With min-heap, the top K elements are actually at the bottom of the heap.
+        // Hence, at case where a.getValue() == b.getValue(), we want to add "abd" before "abc" into the min-heap,
+        // so that when executing line result.add(0, pq.poll().getKey());, abc will go before abd in the result. 
         PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>((a, b) -> a.getValue().equals(b.getValue()) ? b.getKey().compareTo(a.getKey()) : a.getValue() - b.getValue());
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             pq.offer(entry);
