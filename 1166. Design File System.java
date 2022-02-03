@@ -12,10 +12,6 @@ class FileSystem {
             return false;
         }
         int lastSlashIdx = path.lastIndexOf('/');
-        // if (lastSlashIdx == 0) {
-        //     paths.put(path, value);
-        //     return true;
-        // }
         String parent = path.substring(0, lastSlashIdx);
         if (!paths.containsKey(parent)) {
             return false;
@@ -25,7 +21,6 @@ class FileSystem {
     }
     
     public int get(String path) {
-        
         return paths.getOrDefault(path, -1);
     }
 }
