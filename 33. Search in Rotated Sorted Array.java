@@ -16,6 +16,7 @@ class Solution {
                     start = mid + 1;
                 }
             } else {
+                // 为了使start = mid + 1这一更新方式不变，target不能等于nums[mid]
                 if (target > nums[mid] && target <= nums[end]) {
                     start = mid + 1;
                 } else {
