@@ -23,7 +23,7 @@ int bsearch_2(int l, int r)
 {
     while (l < r)
     {
-        int mid = l + r + 1>> 1;
+        int mid = l + r + 1>> 1; // 不加1会死循环，比如l=4, r=5, mid = 4, mid和l一直是4，l一直小于r，死循环了
         if (check(mid)) l = mid;
         else r = mid - 1;
     }
