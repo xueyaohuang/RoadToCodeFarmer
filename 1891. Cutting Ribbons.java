@@ -74,3 +74,38 @@ class Solution {
         return res;
     }
 }
+
+class Solution {
+    public int maxLength(int[] ribbons, int k) {
+        int start = 0;
+        int end = getMaxLen(ribbons);
+        while (start < end) {
+            int mid = (start + end + 1) / 2;
+            if (canCutKRibbons(ribbons, mid, k)) {
+                start = mid;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return start;
+    }
+    
+    private int getMaxLen(int[] ribbons) {
+        int res = 0;
+        for (int r : ribbons) {
+            res = Math.max(res, r);
+        }
+        return res;
+    }
+    
+    private boolean canCutKRibbons(int[] ribbons, int len, int k) {
+        int res = 0;
+        for (int r : ribbons) {
+            res += r / len;
+            if (res >= k) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
