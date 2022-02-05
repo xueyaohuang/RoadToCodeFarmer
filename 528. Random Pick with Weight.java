@@ -1,4 +1,44 @@
 class Solution {
+    
+    int[] sum;
+    Random rand;
+
+    public Solution(int[] w) {
+        sum = new int[w.length];
+        rand = new Random();
+        sum[0] = w[0];
+        for (int i = 1; i < w.length; i++) {
+            sum[i] = sum[i - 1] + w[i];
+        }
+    }
+    
+    public int pickIndex() {
+        int start = 0;
+        int end = sum.length - 1;
+        int target = rand.nextInt(sum[sum.length - 1]);
+        /*
+        ["Solution","pickIndex"]
+        [[[3,14,1,8]],[]]
+        
+        [3, 17, 18, 26]
+        target 在 [0, 3) 时return 0
+        target 在 [3, 17) 时return 1
+        。。。
+        */
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (sum[mid] > target) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+}
+
+
+class Solution {
 
     int curStart;
     Node[] nodes;
