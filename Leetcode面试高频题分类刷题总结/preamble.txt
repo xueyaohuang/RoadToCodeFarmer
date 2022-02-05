@@ -13,6 +13,7 @@
 非高频的hard题目，费时费力又很难在面试中遇到，性价比太低。
 贪心法题目，每道题都不一样，解法没有通用性。
 以下8个门类是面试中最常考的算法与数据结构知识点。
+加*的题目背下来
 
 1. 排序类（Sort）：
 基础知识：快速排序（Quick Sort）， 归并排序（Merge Sort）的原理与代码实现。需要能讲明白代码中每一行的目的。快速排序时间复杂度平均状态下O（NlogN），空间复杂度O（1），归并排序最坏情况下时间复杂度O（NlogN），空间复杂度O（N）
@@ -24,7 +25,7 @@ Leetcode 27. Remove elements
 Leetcode 179. Largest Number
 Leetcode 75. Sort Colors
 Leetcode 215. Kth Largest Element
-Leetcode 4. Median of Two Sorted Arrays
+*Leetcode 4. Median of Two Sorted Arrays
 注意：后两题是与快速排序非常相似的快速选择（Quick Select）算法，面试中很常考
 
 
@@ -102,7 +103,7 @@ Leetcode 540. Single Element in a Sorted Array
 Leetcode 644. Maximum Average Subarray II
 Leetcode 528. Random Pick with Weight
 Leetcode 1300. Sum of Mutated Array Closest to Target
-Leetcode 1060. Missing Element in Sorted Array
+*Leetcode 1060. Missing Element in Sorted Array
 Leetcode 1062. Longest Repeating Substring
 Leetcode 1891. Cutting Ribbons
 
