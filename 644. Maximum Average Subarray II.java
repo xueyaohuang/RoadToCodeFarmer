@@ -17,6 +17,9 @@ class Solution {
 }
 
 /*
+Time complexity: O(nlgm), where m = (max_val−min_val)/0.00001
+After the first iteration, the error would be range/2. At each iteration, the error would be reduced into half. 
+
 Why do we use Binary Search ?
 'The answer with the calculation error less than 10-5 will be accepted.' Binary Search is good when we want to guess the solution and shrink the range to get precise value.
 How do we use Binary Search ?
