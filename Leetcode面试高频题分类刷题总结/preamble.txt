@@ -104,7 +104,7 @@ Leetcode 644. Maximum Average Subarray II
 Leetcode 528. Random Pick with Weight
 Leetcode 1300. Sum of Mutated Array Closest to Target
 *Leetcode 1060. Missing Element in Sorted Array
-Leetcode 1062. Longest Repeating Substring
+*Leetcode 1062. Longest Repeating Substring
 Leetcode 1891. Cutting Ribbons
 
 
