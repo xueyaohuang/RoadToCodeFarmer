@@ -5,11 +5,9 @@ class Solution {
         while (idx1 < idx2) {
             if (numbers[idx1] + numbers[idx2] < target) {
                 idx1++;
-            }
-            else if (numbers[idx1] + numbers[idx2] > target) {
+            } else if (numbers[idx1] + numbers[idx2] > target) {
                 idx2--;
-            }
-            else {
+            } else {
                 break;
             }
         }
