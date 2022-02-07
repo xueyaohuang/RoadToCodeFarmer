@@ -26,14 +26,13 @@ class Solution {
                     while (left < right && nums[right] == nums[right - 1]) {
                         right--;
                     }
-                    
                 } else if (sum < target) {
                     left++;
                 } else {
                     right--;
                 }
                 left++;
-                    right--;
+                right--;
             }
         } else {
             for(int i = start; i < len - (k - 1); i++) {
