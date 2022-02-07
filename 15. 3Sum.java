@@ -1,3 +1,4 @@
+//  这里是return element的值，如果是要求return index，可以带着index sort
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         if (nums == null || nums.length == 0) {
