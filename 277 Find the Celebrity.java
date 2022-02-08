@@ -1,3 +1,23 @@
+public class Solution extends Relation {
+    public int findCelebrity(int n) {
+        int candidate = 0;
+        for (int i = 1; i < n; i++) {
+            if (knows(candidate, i)) {
+                candidate = i;
+            }
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            if (i == candidate) {
+                continue;
+            }
+            if (knows(candidate, i) || !knows(i, candidate)) {
+                return -1;
+            }
+        }
+        return candidate;
+    }
+}
+
 /* The knows API is defined in the parent class Relation.
       boolean knows(int a, int b); */
 
