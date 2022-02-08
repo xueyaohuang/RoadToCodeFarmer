@@ -1,3 +1,6 @@
+// 分两步
+// 1. 找到candidate
+// 2. 验证candidate
 public class Solution extends Relation {
     public int findCelebrity(int n) {
         int candidate = 0;
