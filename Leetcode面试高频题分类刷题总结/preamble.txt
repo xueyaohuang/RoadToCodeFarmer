@@ -62,6 +62,7 @@ Leetcode 1472. Design Browser History
 Leetcode 1209. Remove All Adjacent Duplicates in String II
 Leetcode 1249. Minimum Remove to Make Valid Parentheses
 Leetcode 735. Asteroid Collision
+Leetcode 856 Score of Parentheses
 Hashmap/ Hashset题目：
 Leetcode 1. Two Sum
 Leetcode 146. LRU Cache (Python中可以使用OrderedDict来代替)
@@ -271,8 +272,13 @@ Leetcode 84 Largest Rectangle in Histogram
 Leetcode 907 Sum of Subarray Minimums (与84类似)
 Leetcode 739 Daily Temperatures
 Leetcode 901 Online Stock Span
-Leetcode 503 Next Greater Element II
+Leetcode 503 Next Greater Element I,II
 Leetcode 239 Sliding Window Maximum （唯一的单调队列题）
+Leetcode 1452 Constrained Subsequence Sum
+Leetcode 1130 Minimum Cost Tree From Leaf Values
+
+   
+
 
 
 12. 扫描线算法（Sweep Line）
