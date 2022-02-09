@@ -135,6 +135,7 @@ Leetcode 76. Minimum Window Substring
 Leetcode 3. Longest Substring Without Repeating Characters
 Leetcode 1004 Max Consecutive Ones III
 查看这里的其他sliding window题目：https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/discuss/609771/JavaC%2B%2BPython-Deques-O(N)
+https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
 
 
 6. 宽度优先搜索（BFS）：面试中最常考的
