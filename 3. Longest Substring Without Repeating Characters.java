@@ -16,31 +16,20 @@ class Solution {
         return maxLen;
     }
 }
-
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) {
-            return 0;
-        }
-        int len = s.length();
-        int start = 0;
-        int maxLen = 0;
-        int count = 0; // 有几个重复
+        int left = 0;
+        int max = 0;
         int[] map = new int[256];
-        for (int end = 0; end < len; end++) {
-            char cend = s.charAt(end);
-            if (map[cend]++ > 0) {
-                count++;
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            map[c]++;
+            while (map[c] > 1) {
+                map[s.charAt(left)]--;
+                left++;
             }
-            while (count > 0) {
-                char cstart = s.charAt(start);
-                if (map[cstart]-- > 1) { // map[cstart]-- > 1，在--之前大于1，表示之前有重复的，现在被消除了一个重复
-                    count--;
-                }
-                start++;
-            }
-            maxLen = Math.max(maxLen, end - start + 1);
+            max = Math.max(max, right - left + 1);
         }
-        return maxLen;
+        return max;
     }
 }
