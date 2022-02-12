@@ -62,3 +62,53 @@ class Solution {
         getRange(root.right, index + 1);
     }
 }
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private int leftMost;
+    private int rightMost;
+    
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        Map<Integer, List<int[]>> map = new HashMap<>();
+        List<List<Integer>> res = new ArrayList<>();
+        dfs(root, map, 0, 0);
+        for (int i = leftMost; i <= rightMost; i++) {
+            Collections.sort(map.get(i), (a, b) -> a[1] - b[1]);
+            List<Integer> temp = new ArrayList<>();
+            for (int[] arr : map.get(i)) {
+                temp.add(arr[0]);
+            }
+            res.add(temp);
+        }
+        return res;
+    }
+    
+    private void dfs(TreeNode root, Map<Integer, List<int[]>> map, int curIdx, int level) {
+        if (root == null) {
+            return;
+        }
+        leftMost = Math.min(leftMost, curIdx);
+        rightMost = Math.max(rightMost, curIdx);
+        map.putIfAbsent(curIdx, new ArrayList<>());
+        map.get(curIdx).add(new int[]{root.val, level});
+        dfs(root.left, map, curIdx - 1, level + 1);
+        dfs(root.right, map, curIdx + 1, level + 1);
+    }
+}
