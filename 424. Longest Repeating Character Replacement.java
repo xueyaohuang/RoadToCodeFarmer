@@ -51,3 +51,24 @@ class Solution {
         return maxLen;
     }
 }
+
+// we don't even need maxLen to keep updating the max length, jsut return s.length() - start
+class Solution {
+    public int characterReplacement(String s, int k) {
+        int[] map = new int[26];
+        int start = 0;
+        int maxFreq = 0;
+        int res = 0;
+        for (int end = 0; end < s.length(); end++) {
+            char cend = s.charAt(end);
+            map[cend - 'A']++;
+            maxFreq = Math.max(maxFreq, map[cend - 'A']);
+            if (end - start + 1 - maxFreq > k) {
+                char cstart = s.charAt(start);
+                map[cstart - 'A']--;
+                start++;
+            }
+        }
+        return s.length() - start;
+    }
+}
