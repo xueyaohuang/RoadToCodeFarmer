@@ -8,6 +8,42 @@
  * }
  */
 
+// best
+class Solution {
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<TreeNode, Integer> column = new HashMap<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        column.put(root, 0);
+        queue.offer(root);
+        int minCol = Integer.MAX_VALUE;
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            int col = column.get(node);
+            minCol = Math.min(minCol, col);
+            map.putIfAbsent(col, new ArrayList<>());
+            map.get(col).add(node.val);
+            if (node.left != null) {
+                queue.offer(node.left);
+                column.put(node.left, col - 1);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+                column.put(node.right, col + 1);
+            }
+        }
+        while (map.containsKey(minCol)) {
+            res.add(map.get(minCol));
+            minCol++;
+        }
+        return res;
+    }
+}
+
 //找最左边和最右边 root的index是0 左边为负数，右边为正数。
 //dfs确定max 和min， 然后bfs加入list中。
 //time : O(n) space : O(n)
