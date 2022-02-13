@@ -3,7 +3,7 @@ class Solution {
         if (S == T) {
             return 0;
         }
-        // used:记录哪些bus已经乘坐过
+        // used:记录哪些bus已经乘坐过，检查哪些车坐过比检查哪些站到过快很多
         Set<Integer> used = new HashSet<>();
         // key: stop, value: 哪些bus可以到这个stop
         Map<Integer, List<Integer>> map = new HashMap<>();
