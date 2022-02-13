@@ -165,6 +165,7 @@ Leetcode 1293. Shortest Path in a Grid with Obstacles Elimination
 Leetcode 444 Sequence Reconstruction
 Leetcode 269 Alien Dictionary
 Leetcode 310 Minimum Height Trees
+BFS 的queue里最开始放什么有讲究，比如Leetcode 542. 01 Matrix，如果放1的cell，需要对每个1的cell run BFS，如果放0的cell就不需要。
 
 
 7. 深度优先搜索（DFS）：面试中最常考的
