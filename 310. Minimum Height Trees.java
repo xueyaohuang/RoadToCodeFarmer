@@ -3,6 +3,46 @@
 // 2. BFS from the bottom (leaves) to the top until the last level with <=2 nodes.
 // 3. remove leaves 
 // 像剥洋葱一样，从外层，一层一层去掉degree为1的node，直到剩下最后1个或者2个。
+// Longest path in an undirected tree: https://www.geeksforgeeks.org/longest-path-undirected-tree/
+class Solution {
+    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        List<Integer>[] adj = new ArrayList[n];
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            adj[i] = new ArrayList<>();
+            set.add(i);
+        }
+        for (int[] e : edges) {
+            adj[e[0]].add(e[1]);
+            adj[e[1]].add(e[0]);
+        }
+        int[] degree = new int[n];
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            degree[i] = adj[i].size();
+            if (degree[i] <= 1) {
+                queue.offer(i);
+            }
+        }
+        while (set.size() > 2) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                int v = queue.poll();
+                set.remove(v);
+                for (int j : adj[v]) {
+                    if (set.contains(j)) {
+                        degree[j]--;
+                        if (degree[j] == 1) {
+                            queue.offer(j);
+                        }
+                    }
+                }
+            }
+        }
+        return new ArrayList<>(set);
+    }
+}
+
 class Solution {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         if (n <= 0) {
@@ -44,4 +84,3 @@ class Solution {
         return leaves;
     }
 }
-// Longest path in an undirected tree: https://www.geeksforgeeks.org/longest-path-undirected-tree/
