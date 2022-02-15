@@ -18,6 +18,7 @@ class Solution {
         longestFromHere(root);
         return diameter;
     }
+    // 这个longestFromHere算的其实是从当前节点下去最多有多少个node，而不是有多少个edge，所以diameter = Math.max(diameter, left + right)
     private int longestFromHere(TreeNode node) {
         if (node == null) {
             return 0;
@@ -25,6 +26,32 @@ class Solution {
         int left = longestFromHere(node.left);
         int right = longestFromHere(node.right);
         diameter = Math.max(diameter, left + right);
+        return 1 + Math.max(left, right);
+    }
+}
+
+class Solution {
+    int len = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        maxFromHere(root);
+        return len;
+    }
+    
+    // 这个maxFromHere算的是从当前节点下去最多有多少个edge，而不是有多少个node
+    private int maxFromHere(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 0;
+        }
+        int left = maxFromHere(root.left);
+        int right = maxFromHere(root.right);
+        int cur = left + (root.left == null ? 0 : 1) + right + (root.right == null ? 0 : 1);
+        len = Math.max(len, cur);
         return 1 + Math.max(left, right);
     }
 }
@@ -39,6 +66,10 @@ class Solution {
         }
         return len[0];
     }
+    
+    // 这个maxAtThisNode算的是从当前节点下去最多有多少个edge，而不是有多少个node
+    // 但是这里的left和right并不是直接等于maxAtThisNode(node.left, len)和maxAtThisNode(node.right, len)，
+    // left和right和上一中解法中的left和right含义不同
     private int maxAtThisNode(TreeNode node, int[] len) {
         if (node == null) {
             return 0;
