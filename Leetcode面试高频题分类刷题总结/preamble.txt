@@ -179,10 +179,11 @@ Leetcode 543 Diameter of Binary Tree
 Leetcode 226 Invert Binary Tree
 Leetcode 101 Symmetric Tree
 Leetcode 951 Flip Equivalent Binary Trees
-Leetcode 124 Binary Tree Maximum Path Sum
-Leetcode 236 Lowest Common Ancestor of a Binary Tree (相似题：235、1650)
-Leetcode 105 Construct Binary Tree from Preorder and Inorder Traversal
+*Leetcode 124 Binary Tree Maximum Path Sum
+*Leetcode 236 Lowest Common Ancestor of a Binary Tree (相似题：235、1650)
+*Leetcode 105 Construct Binary Tree from Preorder and Inorder Traversal （106）
 Leetcode 104 Maximum Depth of Binary Tree
+------ resume from here
 Leetcode 987 Vertical Order Traversal of a Binary Tree
 Leetcode 1485 Clone Binary Tree With Random Pointer
 Leetcode 572 Subtree of Another Tree
