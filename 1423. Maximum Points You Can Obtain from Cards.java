@@ -16,16 +16,15 @@ public int maxScore(int[] cp, int k) {
 
     return max;
 }
-
 class Solution {
     public int maxScore(int[] cardPoints, int k) {
         int n = cardPoints.length;
-        int[] forwardSum = new int[n + 1];
-        int[] backwardSum = new int[n + 1];
-        for (int i = 1; i <= n; i++) {
+        int[] forwardSum = new int[k + 1];
+        int[] backwardSum = new int[k + 1];
+        for (int i = 1; i <= k; i++) {
             forwardSum[i] = forwardSum[i - 1] + cardPoints[i - 1];
         }
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= k; i++) {
             backwardSum[i] = backwardSum[i - 1] + cardPoints[n - i];
         }
         int res = 0;
