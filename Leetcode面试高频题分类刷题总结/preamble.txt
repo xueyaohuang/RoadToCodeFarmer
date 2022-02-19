@@ -186,7 +186,7 @@ Leetcode 104 Maximum Depth of Binary Tree
 ------ resume from here
 Leetcode 987 Vertical Order Traversal of a Binary Tree
 Leetcode 1485 Clone Binary Tree With Random Pointer
-Leetcode 572 Subtree of Another Tree
+*Leetcode 572 Subtree of Another Tree
 Leetcode 863 All Nodes Distance K in Binary Tree
 Leetcode 1110 Delete Nodes And Return Forest
 二叉搜索树（BST）：BST特征：中序遍历为单调递增的二叉树，换句话说，根节点的值比左子树任意节点值都大，比右子树任意节点值都小，增删查改均为O（h）复杂度，h为树的高度；注意不是所有的BST题目都需要递归，有的题目只需要while循环即可
