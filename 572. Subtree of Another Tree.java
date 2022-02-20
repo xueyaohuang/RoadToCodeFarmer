@@ -12,26 +12,27 @@ Time complexity: O(m*n), worst case: for each node in the 1st tree, we need to c
 Space complexity: O(height of 1str tree)(Or you can say: O(m) for worst case, O(logm) for average case)
  */
 class Solution {
-    public boolean isSubtree(TreeNode s, TreeNode t) {
-        if (s == null || t == null) {
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        if (root == null || subRoot == null) {
             return false;
         }
-        if (isSame(s, t)) {
+        if (sameTree(root, subRoot)) {
             return true;
         }
-        return isSubtree(s.left, t) || isSubtree(s.right, t);
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
     }
     
-    private boolean isSame(TreeNode s, TreeNode t) {
-        if (s == null && t == null) {
+    public boolean sameTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
             return true;
         }
-        if (s == null || t == null) {
+        if (p == null || q == null) {
             return false;
         }
-        if (s.val != t.val) {
+        if (p.val != q.val) {
             return false;
         }
-        return isSame(s.left, t.left) && isSame(s.right, t.right);
+        return sameTree(p.left, q.left) && sameTree(p.right, q.right);
     }
 }
+
