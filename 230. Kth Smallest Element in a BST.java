@@ -31,9 +31,8 @@ class Solution {
 
 class Solution {
     int count = 0;
-    int res = 0;
+    int res = -1;
     public int kthSmallest(TreeNode root, int k) {
-        List<Integer> list = new ArrayList<>();
         dfs(root, k);
         return res;
     }
