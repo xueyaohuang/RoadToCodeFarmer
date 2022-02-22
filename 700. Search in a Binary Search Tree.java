@@ -9,15 +9,24 @@
  */
 class Solution {
     public TreeNode searchBST(TreeNode root, int val) {
+        TreeNode node = root;
+        while (node != null) {
+            if (node.val == val) {
+                return node;
+            }
+            node = node.val > val ? node.left : node.right;
+        }
+        return null;
+    }
+}
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
         if (root == null) {
             return null;
         }
         if (root.val == val) {
             return root;
-        }else if (root.val < val) {
-            return searchBST(root.right, val);
-        } else {
-            return searchBST(root.left, val);
         }
+        return root.val > val ? searchBST(root.left, val) : searchBST(root.right, val);
     }
 }
