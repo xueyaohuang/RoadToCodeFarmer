@@ -7,43 +7,6 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-// 没有利用是BST
-class Solution {
-    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        if (root == null) {
-            return null;
-        }
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode q = root;
-        while (!stack.isEmpty() || q != null) {
-            if (q != null) {
-                stack.push(q);
-                q = q.left;
-            }
-            else {
-                TreeNode node = stack.pop();
-                if (node == p) {
-                    if (node.right != null) {
-                        TreeNode right = node.right;
-                        while (right.left != null) {
-                            right = right.left;
-                        }
-                        return right;
-                    }
-                    else if (!stack.isEmpty()){
-                        return stack.pop();
-                    }
-                    else {
-                        return null;
-                    }
-                }
-                q = node.right;
-            }
-        }
-        return null;
-    }     
-}
-
 // 二分，o(lgn)
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
@@ -53,10 +16,8 @@ class Solution {
         if (root.val <= p.val) {
             return inorderSuccessor(root.right, p);
         }
-        else {
-            TreeNode left = inorderSuccessor(root.left, p);
-            return left == null ? root : left;
-        }
+        TreeNode left = inorderSuccessor(root.left, p);
+        return left == null ? root : left;
     }
 }
 
@@ -75,6 +36,55 @@ public TreeNode predecessor(TreeNode root, TreeNode p) {
   }
 }
 */
+
+// 没有利用是BST
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        if (root == null) {
+            return null;
+        }
+        TreeNode prev = null;
+        TreeNode node = root;
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        while (!stack.isEmpty() || node != null) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                node = stack.pop();
+                if (prev == p) {
+                    return node;
+                }
+                prev = node;
+                node = node.right;
+            }
+        }
+        return null;
+    }
+}
+
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        if (root == null) {
+            return null;
+        }
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            } else {
+                cur = stack.pop();
+                if (cur.val > p.val) { // 第一个值比p大的node，就是p的successor
+                    return cur;
+                }
+                cur = cur.right;
+            }
+        }
+        return null;
+    }
+}
 
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
@@ -97,26 +107,3 @@ class Solution {
     }
 }
 
-class Solution {
-    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        if (root == null) {
-            return null;
-        }
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            if (cur != null) {
-                stack.push(cur);
-                cur = cur.left;
-            }
-            else {
-                cur = stack.pop();
-                if (cur.val > p.val) { // 第一个值比p大的node，就是p的successor
-                    return cur;
-                }
-                cur = cur.right;
-            }
-        }
-        return null;
-    }
-}
