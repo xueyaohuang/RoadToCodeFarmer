@@ -8,18 +8,18 @@
  * }
  */
 class Solution {
-    public TreeNode trimBST(TreeNode root, int L, int R) {
+    public TreeNode trimBST(TreeNode root, int low, int high) {
         if (root == null) {
-            return root;
+            return null;
         }
-        if (root.val < L) {
-            return trimBST(root.right, L, R);
+        if (root.val < low) {
+            return trimBST(root.right, low, high);
         }
-        if (root.val > R) {
-            return trimBST(root.left, L, R);
+        if (root.val > high) {
+            return trimBST(root.left, low, high);
         }
-        root.left = trimBST(root.left, L, R);
-        root.right = trimBST(root.right, L, R);
+        root.left = trimBST(root.left, low, high);
+        root.right = trimBST(root.right, low, high);
         return root;
     }
 }
