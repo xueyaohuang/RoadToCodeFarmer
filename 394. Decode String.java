@@ -23,7 +23,7 @@ class Solution {
                     }
                     i++;
                 }
-                i--; // decrement i here since we inccrement i in the for loop
+                i--; // decrement i here since we increment i in the for loop
                 String str = decodeString(s.substring(start, i));
                 for (int j = 0; j < count; j++) {
                     sb.append(str);
