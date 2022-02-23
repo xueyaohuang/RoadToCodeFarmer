@@ -1,3 +1,51 @@
+// 把tree转化成graph，然后bfs
+// 由于需要向上找，所以需要先得到每个node的parent
+class Solution {
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+        Map<TreeNode, TreeNode> parents = new HashMap<>();
+        getParents(root, null, parents);
+        int distance = 0;
+        Queue<TreeNode> queue = new LinkedList<>();
+        Set<TreeNode> visited = new HashSet<>();
+        queue.offer(target);
+        visited.add(target);
+        while (!queue.isEmpty() && distance < k) {
+            distance++;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node.left != null && !visited.contains(node.left)) {
+                    queue.offer(node.left);
+                    visited.add(node.left);
+                }
+                if (node.right != null && !visited.contains(node.right)) {
+                    queue.offer(node.right);
+                    visited.add(node.right);
+                }
+                TreeNode p = parents.get(node);
+                if (p != null && !visited.contains(p)) {
+                    queue.offer(p);
+                    visited.add(p);
+                }
+            }
+        }
+        List<Integer> res = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            res.add(queue.poll().val);
+        }
+        return res;
+    }
+    
+    private void getParents(TreeNode root, TreeNode p, Map<TreeNode, TreeNode> parents) {
+        if (root == null) {
+            return;
+        }
+        parents.put(root, p);
+        getParents(root.left, root, parents);
+        getParents(root.right, root, parents);
+    }
+}
+
 class Solution {
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
         if (root == null) {
