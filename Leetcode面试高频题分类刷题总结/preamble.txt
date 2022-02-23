@@ -199,7 +199,7 @@ Leetcode 108 Convert Sorted Array to Binary Search Tree
 *Leetcode 333 Largest BST Subtree (与98类似)
 *Leetcode 285/510 Inorder Successor in BST (I, II)
 基于图的DFS: 和BFS一样一般需要一个set来记录访问过的节点，避免重复访问造成死循环; Word XXX 系列面试中非常常见，例如word break，word ladder，word pattern，word search。
-Leetcode 341 Flatten Nested List Iterator (339 364)
+*Leetcode 341 Flatten Nested List Iterator (339 *364),看看364
 Leetcode 394 Decode String
 Leetcode 51 N-Queens (I II基本相同)
 Leetcode 291 Word Pattern II (I为简单的Hashmap题)
