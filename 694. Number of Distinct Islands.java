@@ -1,3 +1,4 @@
+// 想办法描述每个island的样子，所以需要encode每个island
 class Solution {
     public int numDistinctIslands(int[][] grid) {
         if (grid == null || grid.length == 0) {
@@ -30,6 +31,6 @@ class Solution {
         encodeIsland(grid, i + 1, j, sb, visited, 'd');
         encodeIsland(grid, i, j - 1, sb, visited, 'l');
         encodeIsland(grid, i, j + 1, sb, visited, 'r');
-        sb.append('e');
+        sb.append('e'); // 不能少
     }
 }
