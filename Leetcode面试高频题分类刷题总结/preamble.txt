@@ -206,7 +206,6 @@ Leetcode 291 Word Pattern II (I为简单的Hashmap题)
 Leetcode 126 Word Ladder II （I为BFS题目）
 Leetcode 93 Restore IP Addresses
 Leetcode 22 Generate Parentheses
-Leetcode 586 Score of Parentheses
 Leetcode 301 Remove Invalid Parentheses
 Leetcode 37 Sodoku Solver
 Leetcode 212 Word Search II （I, II）
