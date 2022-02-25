@@ -214,7 +214,7 @@ Leetcode 1087 Brace Expansion
 Leetcode 399 Evaluate Division
 Leetcode 1274 Number of Ships in a Rectangle
 Leetcode 1376 Time Needed to Inform All Employees
-Leetcode 694 Number of Distinct Islands
+*Leetcode 694 Number of Distinct Islands
 Leetcode 131 Palindrome Partitioning
 基于排列组合的DFS: 其实与图类DFS方法一致，但是排列组合的特征更明显
 Leetcode 17 Letter Combinations of a Phone Number
