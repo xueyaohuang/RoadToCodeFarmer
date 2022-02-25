@@ -1,4 +1,6 @@
 // backtracking
+// Time complexity: the problem is more like slicing the string into m pieces. How many slicing ways? C(n^m).
+// For each slice, it takes O(n) to validate. So the total complexity is O(n * C(n^m))
 class Solution {
     public boolean wordPatternMatch(String pattern, String s) {
         Map<Character, String> map = new HashMap<>();
