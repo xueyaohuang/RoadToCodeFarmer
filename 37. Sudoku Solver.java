@@ -1,6 +1,55 @@
 // suppose n is the number of empty grid, time complexity is O(9^n)
 class Solution {
     public void solveSudoku(char[][] board) {
+        boolean[][] row = new boolean[9][10];
+        boolean[][] col = new boolean[9][10];
+        boolean[][][] cell = new boolean[3][3][10];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != '.') {
+                    int num = board[i][j] - '0';
+                    row[i][num] = true;
+                    col[j][num] = true;
+                    cell[i / 3][j / 3][num] = true;
+                }
+            }
+        }
+        canSolve(board, row, col, cell, 0);
+    }
+    
+    private boolean canSolve(char[][] board, boolean[][] row, boolean[][] col, boolean[][][] cell, int count) {
+        if (count > 80) {
+            return true;
+        }
+        int i = count / 9;
+        int j = count % 9;
+        if (board[i][j] !=  '.') {
+            return canSolve(board, row, col, cell, count + 1);
+        }
+        for (char c = '1'; c <= '9'; c++) {
+            int num = c - '0';
+            if (row[i][num] || col[j][num] || cell[i / 3][j / 3][num]) {
+                continue;
+            }
+            board[i][j] = c;
+            row[i][num] = true;
+            col[j][num] = true;
+            cell[i / 3][j / 3][num] = true;
+            if (canSolve(board, row, col, cell, count + 1)) {
+                return true;
+            }
+            board[i][j] = '.';
+            row[i][num] = false;
+            col[j][num] = false;
+            cell[i / 3][j / 3][num] = false;
+        }
+        return false;
+    }
+}
+
+// suppose n is the number of empty grid, time complexity is O(9^n)
+class Solution {
+    public void solveSudoku(char[][] board) {
         if (board == null) {
             return;
         }
