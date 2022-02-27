@@ -11,7 +11,7 @@
 // 2. Max removal rmL rmR and num of open parens are non negative.
 // 3. De-duplicate by adding to a HashSet.
 
-// 标准的backtrack有for loop，这里没有，因为这个题需要Remove the minimum number of invalid parentheses。也就是说结果需要时最长的，如果有for loop，从start接着开始，那么结果可能不是最长的。
+// 标准的backtrack有for loop，这里没有，因为这个题需要Remove the minimum number of invalid parentheses。也就是说结果需要是最长的，如果有for loop，从start接着开始，那么结果可能不是最长的。
 // backtrack中for loop的作用，是从给定序列中间取一个，作为开头。
 
 class Solution {
