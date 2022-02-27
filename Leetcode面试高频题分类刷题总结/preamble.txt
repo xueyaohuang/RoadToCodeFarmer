@@ -203,7 +203,7 @@ Leetcode 108 Convert Sorted Array to Binary Search Tree
 *Leetcode 394 Decode String
 *Leetcode 51 N-Queens (I II基本相同)
 Leetcode 291 Word Pattern II (I为简单的Hashmap题)
-Leetcode 126 Word Ladder II （I为BFS题目）
+*Leetcode 126 Word Ladder II （I为BFS题目）
 Leetcode 93 Restore IP Addresses
 Leetcode 22 Generate Parentheses
 Leetcode 301 Remove Invalid Parentheses
