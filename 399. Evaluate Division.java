@@ -1,3 +1,61 @@
+// dfs，转换成图
+// 每一个variable是一个vertex，两个variable的quotient是edge的weight。
+class Solution {
+    public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
+        Map<String, List<String>> variables = new HashMap<>();
+        Map<String, List<Double>> quotients = new HashMap<>();
+        for (int i = 0; i < equations.size(); i++) {
+            String var1 = equations.get(i).get(0);
+            String var2 = equations.get(i).get(1);
+            
+            variables.putIfAbsent(var1, new ArrayList<>());
+            variables.get(var1).add(var2);
+            variables.putIfAbsent(var2, new ArrayList<>());
+            variables.get(var2).add(var1);
+            
+            quotients.putIfAbsent(var1, new ArrayList<>());
+            quotients.get(var1).add(values[i]);
+            quotients.putIfAbsent(var2, new ArrayList<>());
+            quotients.get(var2).add(1.0 / values[i]);
+        }
+        int n = queries.size();
+        double[] res = new double[n];
+        for (int i = 0; i < n; i++) {
+            res[i] = calculate(variables, quotients, queries.get(i).get(0), queries.get(i).get(1), 1.0, new HashSet<>());
+        }
+        return res;
+    }
+    
+    private double calculate(
+        Map<String, List<String>> variables,
+        Map<String, List<Double>> quotients,
+        String start,
+        String end,
+        double cur,
+        Set<String> visited
+    ) {
+        if (visited.contains(start)) {
+            return -1.0;
+        }
+        if (!variables.containsKey(start)) {
+            return -1.0;
+        }
+        if (start.equals(end)) {
+            return cur;
+        }
+        visited.add(start);
+        for (int i = 0; i < variables.get(start).size(); i++) {
+            String next = variables.get(start).get(i);
+            double val = quotients.get(start).get(i);
+            double temp = calculate(variables, quotients, next, end, cur * val, visited);
+            if (temp != -1.0) {
+                return temp;
+            }
+        }
+        return -1.0;
+    }
+}
+
 class Solution {
     public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
         Map<String, List<String>> variable = new HashMap<>();
