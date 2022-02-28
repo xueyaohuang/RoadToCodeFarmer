@@ -1,6 +1,31 @@
 // 注意这个题与78. Subsets，77. Combinations的区别
 class Solution {
     public List<String> letterCombinations(String digits) {
+        if (digits.length() == 0) {
+            return new ArrayList<>();
+        }
+        String[] strs = new String[]{"",  "",  "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        List<String> res = new ArrayList<>();
+        backtracking(digits, 0, res, new StringBuilder(), strs);
+        return res;
+    }
+    
+    private void backtracking(String digits, int idx, List<String> res, StringBuilder sb, String[] strs) {
+        if (idx == digits.length()) {
+            res.add(sb.toString());
+            return;
+        }
+        String cur = strs[digits.charAt(idx) - '0'];
+        for (int i = 0; i < cur.length(); i++) {
+            sb.append(cur.charAt(i));
+            backtracking(digits, idx + 1, res, sb, strs);
+            sb.setLength(sb.length() - 1);
+        }
+    }
+}
+
+class Solution {
+    public List<String> letterCombinations(String digits) {
         if (digits == null || digits.length() == 0) {
             return new ArrayList<>();
         }
