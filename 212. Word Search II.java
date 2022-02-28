@@ -1,6 +1,61 @@
 // trie: Apparently, we need to do pruning when current character is not in any word
 class Solution {
     public List<String> findWords(char[][] board, String[] words) {
+        int m = board.length, n = board[0].length;
+        List<String> res = new ArrayList<>();
+        TrieNode root = buildTrie(words);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                dfs(board, root, res, i, j);
+            }
+        }
+        return res;
+    }
+    
+    private void dfs(char[][] board, TrieNode node, List<String> res, int i, int j) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] == '.' || node.children[board[i][j] - 'a'] == null) {
+            return;
+        }
+        char c = board[i][j];
+        board[i][j] = '.';
+        node = node.children[c - 'a'];
+        if (node.word != null) {
+            res.add(node.word);
+            node.word = null;
+        }
+        dfs(board, node, res, i + 1, j);
+        dfs(board, node, res, i - 1, j);
+        dfs(board, node, res, i, j + 1);
+        dfs(board, node, res, i, j - 1);
+        board[i][j] = c;
+    }
+    
+    private TrieNode buildTrie(String[] words) {
+        TrieNode root = new TrieNode();
+        for (String w : words) {
+            TrieNode node = root;
+            for (char c : w.toCharArray()) {
+                if (node.children[c - 'a'] == null) {
+                    node.children[c - 'a'] = new TrieNode();
+                }
+                node = node.children[c - 'a'];
+            }
+            node.word = w;
+        }
+        return root;
+    }
+}
+
+class TrieNode {
+    TrieNode[] children;
+    String word;
+    public TrieNode() {
+        children = new TrieNode[26];
+    }
+}
+
+class Solution {
+    public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
         int m = board.length;
         int n = board[0].length;
