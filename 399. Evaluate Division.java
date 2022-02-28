@@ -4,6 +4,7 @@ class Solution {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         Map<String, List<String>> variables = new HashMap<>();
         Map<String, List<Double>> quotients = new HashMap<>();
+        // build graph
         for (int i = 0; i < equations.size(); i++) {
             String var1 = equations.get(i).get(0);
             String var2 = equations.get(i).get(1);
@@ -34,6 +35,7 @@ class Solution {
         double cur,
         Set<String> visited
     ) {
+        // 如果两个变量在图中不是联通的，那么dfs后start会回到自己，要返回-1.0
         if (visited.contains(start)) {
             return -1.0;
         }
