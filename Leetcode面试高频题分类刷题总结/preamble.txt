@@ -107,6 +107,7 @@ Leetcode 1300. Sum of Mutated Array Closest to Target
 *Leetcode 1060. Missing Element in Sorted Array
 *Leetcode 1062. Longest Repeating Substring
 Leetcode 1891. Cutting Ribbons
+*Leetcode 1274 Number of Ships in a Rectangle
 
 
 5. 双指针（2 Pointer）：
@@ -206,12 +207,11 @@ Leetcode 291 Word Pattern II (I为简单的Hashmap题)
 *Leetcode 126 Word Ladder II （I为BFS题目）
 Leetcode 93 Restore IP Addresses
 Leetcode 22 Generate Parentheses
-Leetcode 301 Remove Invalid Parentheses
-Leetcode 37 Sodoku Solver
-Leetcode 212 Word Search II （I, II）
-Leetcode 1087 Brace Expansion
-Leetcode 399 Evaluate Division
-Leetcode 1274 Number of Ships in a Rectangle
+*Leetcode 301 Remove Invalid Parentheses
+*Leetcode 37 Sodoku Solver
+*Leetcode 212 Word Search II （I, II）
+*Leetcode 1087 Brace Expansion
+*Leetcode 399 Evaluate Division
 Leetcode 1376 Time Needed to Inform All Employees
 *Leetcode 694 Number of Distinct Islands
 Leetcode 131 Palindrome Partitioning
