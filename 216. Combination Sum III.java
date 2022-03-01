@@ -1,3 +1,31 @@
+// Time: O(C(9,k))-> O(9^k), space: k
+class Solution {
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> res = new ArrayList<>();
+        backtracking(k, n, 0, 1, res, new ArrayList<>());
+        return res;
+    }
+    
+    private void backtracking(int k, int n, int sum, int start, List<List<Integer>> res, List<Integer> temp) {
+        if (temp.size() == k) {
+            if (sum == n) {
+                res.add(new ArrayList<>(temp));
+            }
+            return;
+        }
+        for (int i = start; i < 10; i++) {
+            if (sum + i > n) {
+                continue;
+            }
+            sum += i;
+            temp.add(i);
+            backtracking(k, n, sum, i + 1, res, temp);
+            sum -= i;
+            temp.remove(temp.size() - 1);
+        }
+    }
+}
+
 class Solution {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();
