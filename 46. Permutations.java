@@ -2,25 +2,26 @@
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        Set<Integer> used = new HashSet<>();
+        // nums[i]是否用过，记录的其实是idx，而不是value
+        boolean[] used = new boolean[nums.length];
         backtracking(nums, res, new ArrayList<>(), used);
         return res;
     }
     
-    private void backtracking(int[] nums, List<List<Integer>> res, List<Integer> temp, Set<Integer> used) {
+    private void backtracking(int[] nums, List<List<Integer>> res, List<Integer> temp, boolean[] used) {
         if (temp.size() == nums.length) {
             res.add(new ArrayList<>(temp));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (used.contains(nums[i])) {
+            if (used[i]) {
                 continue;
             }
             temp.add(nums[i]);
-            used.add(nums[i]);
+            used[i] = true;
             backtracking(nums, res, temp, used);
             temp.remove(temp.size() - 1);
-            used.remove(nums[i]);
+            used[i] = false;
         }
     }
 }
