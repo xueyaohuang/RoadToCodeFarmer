@@ -2,32 +2,31 @@ class Solution {
     public List<String> wordBreak(String s, List<String> wordDict) {
         Set<String> set = new HashSet<>(wordDict);
         List<String> res = new ArrayList<>();
-        backtracking(s, res, new ArrayList<>(), set, 0);
+        backtracking(s, set, new ArrayList<>(), res, 0);
         return res;
     }
     
-    private void backtracking(String s, List<String> res, List<String> temp, Set<String> set, int start) {
+    private void backtracking (String s, Set<String> set, List<String> temp, List<String> res, int start) {
         if (start == s.length()) {
-            res.add(makeString(temp));
+            res.add(makeStringFromList(temp));
             return;
         }
         for (int i = start; i < s.length(); i++) {
-            if (set.contains(s.substring(start, i + 1))) {
-                temp.add(s.substring(start, i + 1));
-                backtracking(s, res, temp, set, i + 1);
+            String cur = s.substring(start, i + 1);
+            if (set.contains(cur)) {
+                temp.add(cur);
+                backtracking(s, set, temp, res, i + 1);
                 temp.remove(temp.size() - 1);
             }
         }
     }
     
-    private String makeString(List<String> temp) {
-        if (temp.size() == 0) {
-            return "";
+    private String makeStringFromList(List<String> temp) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : temp) {
+            sb.append(s).append(" ");
         }
-        StringBuilder sb = new StringBuilder(temp.get(0));
-        for (int i = 1; i < temp.size(); i++) {
-            sb.append(' ').append(temp.get(i));
-        }
+        sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
 }
