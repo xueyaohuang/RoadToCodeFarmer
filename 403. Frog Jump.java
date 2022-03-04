@@ -1,30 +1,26 @@
+// 记录在每个位置能前进几步
 class Solution {
     public boolean canCross(int[] stones) {
-        if (stones == null || stones.length == 0) {
-            return true;
-        }
-        
-        int len = stones.length;
+        // 在每个位置能前进多少步
+        int n = stones.length;
         Map<Integer, Set<Integer>> map = new HashMap<>();
-        
-        for (int i = 0; i < len; i++) {
-            map.put(stones[i], new HashSet<>());
+        for (int s : stones) {
+            map.put(s, new HashSet<>());
         }
         map.get(0).add(1);
-        
-        for (int i = 0; i < len - 1; i++) {
-            int stone = stones[i];
-            for (int step : map.get(stone)) {
-                int nextStone = stones[i] + step;
-                if (nextStone == stones[len - 1]) {
+        for (int i = 0; i < n - 1; i++) {
+            Set<Integer> steps = map.get(stones[i]);
+            for (int step : steps) {
+                int nextPosition = stones[i] + step;
+                if (nextPosition == stones[n - 1]) {
                     return true;
                 }
-                Set<Integer> nextStoneSet = map.get(nextStone);
-                if (nextStoneSet != null) {
-                    nextStoneSet.add(step);
-                    nextStoneSet.add(step + 1);
-                    if (step >= 1) {
-                        nextStoneSet.add(step - 1);
+                Set<Integer> nextPositionsteps = map.get(nextPosition);
+                if (nextPositionsteps != null) {
+                    nextPositionsteps.add(step);
+                    nextPositionsteps.add(step + 1);
+                    if (step > 1) {
+                        nextPositionsteps.add(step - 1);
                     }
                 }
             }
