@@ -1,4 +1,11 @@
 // parent不是0的点，都是1
+/*
+Time complexity : O(m×n+L) where L is the number of operations, m is the number of rows and n is the number of columns.
+it takes O(m×n) to initialize UnionFind, and O(L) to process positions.
+Note that Union operation takes essentially constant time when UnionFind is implemented with both path compression and union by rank.
+
+Space complexity : O(m×n) as required by UnionFind data structure.
+*/
 class Solution {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         if (positions == null || positions.length == 0) {
