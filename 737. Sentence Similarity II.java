@@ -1,5 +1,80 @@
 // 四中解法都值得学习
 
+public class Solution {
+    /**
+     * @param words1: 
+     * @param words2: 
+     * @param pairs: 
+     * @return: Whether sentences are similary or not?
+     */
+    public boolean areSentencesSimilarTwo(List<String> words1, List<String> words2, List<List<String>> pairs) {
+        if (words1.size() != words2.size()) {
+            return false;
+        }
+        Map<String, Word> map = new HashMap<>();
+        for (List<String> pair : pairs) {
+            String s1 = pair.get(0);
+            String s2 = pair.get(1);
+            map.putIfAbsent(s1, new Word(s1));
+            map.putIfAbsent(s2, new Word(s2));
+            map.get(s1).union(map.get(s2));
+        }
+        for (int i = 0; i < words1.size(); i++) {
+            String s1 = words1.get(i);
+            String s2 = words2.get(i);
+            if (s1.equals(s2)) {
+                continue;
+            }
+            if (map.get(s1) == null || map.get(s2) == null) {
+                return false;
+            }
+            if (map.get(s1).find() != map.get(s2).find()) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+class Word {
+    int rank;
+    Word parent;
+    String word;
+
+    public Word(String s) {
+        word = s;
+        parent = this;
+    }
+
+    private Word find(Word p) {
+        if (p != p.parent) {
+            p.parent = find(p.parent);
+        }
+        return p.parent;
+    }
+
+    public Word find() {
+        return find(this);
+    }
+
+    public void union(Word q) { // p is this
+        Word rootP = find(this);
+        Word rootQ = find(q);
+        if (rootP == rootQ) {
+            return;
+        }
+
+        if (rootP.rank > rootQ.rank) {
+            rootQ.parent = rootP;
+        } else if (rootP.rank < rootQ.rank) {
+            rootP.parent = rootQ;
+        } else {
+            rootQ.parent = rootP;
+            rootP.rank++;
+        }
+    }
+}
+
 // 最秀解法
 class Solution {
     public boolean areSentencesSimilarTwo(String[] words1, String[] words2, String[][] pairs) {
