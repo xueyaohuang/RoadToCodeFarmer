@@ -1,3 +1,55 @@
+// time complexity: O(26^n), where n is the length of search word.
+class WordDictionary {
+    
+    TrieNode root;
+
+    public WordDictionary() {
+        root = new TrieNode();
+    }
+    
+    public void addWord(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            if (node.children[c - 'a'] == null) {
+                node.children[c - 'a'] = new TrieNode();
+            }
+            node = node.children[c - 'a'];
+        }
+        node.isWord = true;
+    }
+    
+    public boolean search(String word) {
+        return searchHelper(word, 0, root);
+    }
+    
+    private boolean searchHelper(String word, int idx, TrieNode node) {
+        if (node == null) {
+            return false;
+        }
+        if (idx == word.length()) {
+            return node.isWord;
+        }
+        char c = word.charAt(idx);
+        if (c == '.') {
+            for (TrieNode child : node.children) {
+                if (searchHelper(word, idx + 1, child)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return searchHelper(word, idx + 1, node.children[c - 'a']);
+    }
+}
+
+class TrieNode {
+    TrieNode[] children;
+    boolean isWord;
+    public TrieNode() {
+        children = new TrieNode[26];
+    }
+}
+
 class WordDictionary {
     
     TrieNode root;
