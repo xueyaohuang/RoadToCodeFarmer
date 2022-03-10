@@ -1,5 +1,60 @@
 class WordDictionary {
     
+    TrieNode root;
+
+    public WordDictionary() {
+        root = new TrieNode();
+    }
+    
+    public void addWord(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            if (node.children[c - 'a'] == null) {
+                node.children[c - 'a'] = new TrieNode();
+            }
+            node = node.children[c - 'a'];
+        }
+        node.isWord = true;
+    }
+    
+    public boolean search(String word) {
+        return searchHelper(word, 0, root);
+    }
+    
+    private boolean searchHelper(String word, int start, TrieNode node) {
+        if (node == null) {
+            return false;
+        }
+        for (int i = start; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (c == '.') {
+                for (TrieNode child : node.children) {
+                    if (searchHelper(word, i + 1, child)) {
+                        return true;
+                    }
+                }
+                return false;
+            } else {
+                if (node.children[c - 'a'] == null) {
+                    return false;
+                }
+                node = node.children[c - 'a'];
+            }
+        }
+        return node.isWord;
+    }
+}
+
+class TrieNode {
+    TrieNode[] children;
+    boolean isWord;
+    public TrieNode() {
+        children = new TrieNode[26];
+    }
+}
+
+class WordDictionary {
+    
     class TrieNode {
         TrieNode[] children;
         boolean isWord;
