@@ -1,17 +1,12 @@
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new int[0];
-        }
-        int len = nums.length;
-        int[] res = new int[len];
-        Arrays.fill(res, -1);
+        int[] res = new int[nums.length];
         Deque<Integer> stack = new ArrayDeque<>();
+        Arrays.fill(res, -1);
         for (int j = 0; j < 2; j++) { // loop nums twice
-            for (int i = 0; i < len; i++) {
+            for (int i = 0; i < nums.length; i++) {
                 while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
-                    int idx = stack.pop();
-                    res[idx] = nums[i];
+                    res[stack.pop()] = nums[i];
                 }
                 stack.push(i);
             }
