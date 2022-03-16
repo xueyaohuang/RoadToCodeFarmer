@@ -1,3 +1,9 @@
+/*
+1. 每当遇到一个start或是end时，都要找到当前最高的点
+2. 当start和start的x相同时，要把height高的排前面，因为要找当前最高点
+3. 当end和end的x相同时，要把height低的排前面，因为这样不会加多余的点（举例试试）
+4. 当start和end的x相同时，需要先考虑start，否则会把y=0的点加进去
+*/
 class Solution {
     public List<int[]> getSkyline(int[][] buildings) {
         List<int[]> res = new ArrayList<>();
@@ -12,6 +18,9 @@ class Solution {
             @Override
             public int compare(int[] a, int[] b) {
                 if (a[0] == b[0]) {
+                    // 1. 如果a和b都是start，由于height是负数，相当height高的在前
+                    // 2. 如果a和b都是end，height低的在前
+                    // 3. 如果一个start一个end，start排在前面，正好
                     return a[1] - b[1];
                 } else {
                     return a[0] - b[0];
