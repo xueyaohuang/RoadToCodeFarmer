@@ -2,24 +2,21 @@
 // O(n)
 class Solution {
     public int mincostTickets(int[] days, int[] costs) {
-        int len = days.length;
-        int[] dp = new int[days[len - 1] + 1];
-        int dayIdx = 0;
-        for (int i = 1; i < dp.length; i++) {
-            if (i == days[dayIdx]) {
-                dp[i] = minOfThree(dp[Math.max(0, i - 1)] + costs[0],
-                                   dp[Math.max(0, i - 7)] + costs[1],
-                                   dp[Math.max(0, i - 30)] + costs[2]);
-                dayIdx++;
+        int n = days.length;
+        int[] dp = new int[days[n - 1] + 1];
+        int idx = 0;
+        for (int i = 1; i <= days[n - 1]; i++) {
+            if (i == days[idx]) {
+                int oneDay = dp[i - 1] + costs[0];
+                int sevenDays = dp[Math.max(0, i - 7)] + costs[1];
+                int thirtyDays = dp[Math.max(0, i - 30)] + costs[2];
+                dp[i] = Math.min(Math.min(oneDay, sevenDays), thirtyDays);
+                idx++;
             } else {
                 dp[i] = dp[i - 1];
             }
         }
-        return dp[dp.length - 1];
-    }
-    
-    private int minOfThree(int a, int b, int c) {
-        return Math.min(Math.min(a, b), c);
+        return dp[days[n - 1]];
     }
 }
 
