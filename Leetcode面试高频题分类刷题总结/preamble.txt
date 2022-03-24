@@ -343,6 +343,19 @@ Leetcode 1043 Partition Array for Maximum Sum
 
 *Leetcode 983 Minimum Cost For Tickets
 *Leetcode 279 Perfect Squares
+*Leetcode 416 Partition Equal Subset Sum
+*Leetcode 518 Coin Change 2
+*Leetcode 1049 Last Stone Weight II
+
+0/1 knapsack vs unbounded knapsack
+https://medium.com/@logicdevildotcom/knapsack-problems-18b2714e0737
+1. 0/1 knapsack use 2-d dp array(can be optimized to 1d), unbounded knapsack use 1-d dp array
+2. state transfer for unbounded knapsack: dp[i] = max(dp[i], dp[i-wt[j]] + val[j]) if wt[j] < i (item j is taken)
+   state transfer for 0/1 knapsack:    dp[i][c] = max(dp[i-1][c], val[i] + dp[i-1][c-weights[i]]) 
+3. knapsack可以解决最大最小问题（比如1049 Last Stone Weight II），也可以解决多少种途径问题（比如518 Coin Change 2）
+4. unbounded knapsack problem: Coin Change 1，2
+   0/1 knapsack problem: lc1049, 416
+
 
 Reservoir Sampling
 binary indexed tree
