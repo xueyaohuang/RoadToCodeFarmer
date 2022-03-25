@@ -346,6 +346,7 @@ Leetcode 1043 Partition Array for Maximum Sum
 *Leetcode 416 Partition Equal Subset Sum
 *Leetcode 518 Coin Change 2
 *Leetcode 1049 Last Stone Weight II
+*Leetcode 494 Target Sum
 
 0/1 knapsack vs unbounded knapsack
 https://medium.com/@logicdevildotcom/knapsack-problems-18b2714e0737
