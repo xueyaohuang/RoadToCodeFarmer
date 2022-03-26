@@ -1,5 +1,6 @@
 // time O(n^3), space O(n^2)
 // dp[i][j]: 在i到j之间猜对需要最少的钱。
+// 不知道要guess的数是什么，所以肯定要遍历所有的情况，遍历所有情况的话，要么dp，要么backtracking
 class Solution {
     public int getMoneyAmount(int n) {
         int[][] dp = new int[n + 1][n + 1];
