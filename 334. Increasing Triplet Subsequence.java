@@ -37,21 +37,23 @@ class Solution {
 }
 
 // Extended to increasing k subsequence
-public boolean increasingTriplet(int[] nums) {
-    int k = 3;
-    int[] candidate = new int[k - 1];
-    Arrays.fill(candidate, Integer.MAX_VALUE);
-    for(int i = 0; i < nums.length; i++) {
-        for(int j = 0; j < k - 1; j++) {
-            if(nums[i] <= candidate[j]) {
-                candidate[j] = nums[i];
-                break;
-            } else if(j == k - 2) {
-                return true;
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        int k = 3;
+        int[] arr = new int[k - 1];
+        Arrays.fill(arr, Integer.MAX_VALUE);
+        for (int i : nums) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i <= arr[j]) {
+                    arr[j] = i;
+                    break;
+                } else if (j == arr.length - 1) {
+                    return true;
+                }
             }
         }
+        return false;
     }
-    return false;
 }
 
 // 怎样输出正确的triplet
