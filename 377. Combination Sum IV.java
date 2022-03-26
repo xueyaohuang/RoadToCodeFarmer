@@ -1,3 +1,6 @@
+// unbounded knapsack, 两个for loop在某些情况下可以互换，某些情况不行
+// 在这里不能互换，应为不同顺序的组合算不一样的，详见
+// https://github.com/xueyaohuang/RoadToCodeFarmer/blob/master/Data%20Structures%20and%20Algorithms/dynamicProgramming.md#%E4%B8%A4%E9%87%8D-nested-for-loop%E8%B0%81%E5%85%88%E8%B0%81%E5%90%8E%E5%8C%BA%E5%88%AB%E6%98%AF%E6%95%B0%E4%B8%8D%E6%95%B0%E5%85%83%E7%B4%A0%E9%A1%BA%E5%BA%8F%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%84%E5%90%88
 class Solution {   
     public int combinationSum4(int[] nums, int target) {
         int[] dp = new int[target + 1];
