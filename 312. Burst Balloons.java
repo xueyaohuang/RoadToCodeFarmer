@@ -1,3 +1,4 @@
+// dp[i][j]: coins obtained from bursting all the balloons between index i and j (not including i or j)
 class Solution {
     public int maxCoins(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -11,12 +12,11 @@ class Solution {
         for (int i = 1; i < n - 1; i++) {
             balloons[i] = nums[i - 1];   
         }
-        for (int j = 2; j < n; j++) {
-            for (int i = 0; i + j < n; i++) {
+        for (int j = 2; j < n; j++) { // j = 区间end - 区间start，最小单元是1个气球，所以j从2开始
+            for (int i = 0; i + j < n; i++) { // i是区间开始位置
                 int temp = balloons[i] * balloons[i + j];
-                for (int k = i + 1; k < i + j; k++) {
+                for (int k = i + 1; k < i + j; k++) { //最后burst的位置（注意，不是最开始戳破的位置）
                     dp[i][i + j] = Math.max(dp[i][i + j], dp[i][k] + dp[k][i + j] + temp * balloons[k]);
-                    
                 }
             }
         }
@@ -38,7 +38,7 @@ class Solution {
         for (int i = 1; i < n - 1; i++) {
             balloons[i] = nums[i - 1];   
         }
-        for (int j = 2; j < n; j++) { // j = 区间end - 区间start，最小单元是三个气球，所以j从2开始
+        for (int j = 2; j < n; j++) { // j = 区间end - 区间start，最小单元是1个气球，所以j从2开始
             for (int i = 0; i + j < n; i++) { // 区间开始位置
                 optimize(balloons, dp, i, i + j);
             }
