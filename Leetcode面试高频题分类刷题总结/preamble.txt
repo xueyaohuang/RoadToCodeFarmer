@@ -229,10 +229,11 @@ Leetcode 139 Word Break I,II
 Leetcode 1235 Maximum Profit in Job Scheduling
 Leetcode 1335 Minimum Difficulty of a Job Schedule
 Leetcode 1216 Valid Palindrome III
-Leetcode 97 Interleaving String
+*Leetcode 97 Interleaving String
 Leetcode 472 Concatenated Words
 *Leetcode 403 Frog Jump
-Leetcode 329 Longest Increasing Path in a Matrix
+*Leetcode 329 Longest Increasing Path in a Matrix
+*Leetcode 337. House Robber III
 
 
 8. 前缀和（Prefix Sum）
@@ -347,6 +348,10 @@ Leetcode 1043 Partition Array for Maximum Sum
 *Leetcode 518 Coin Change 2
 *Leetcode 1049 Last Stone Weight II
 *Leetcode 494 Target Sum
+*Leetcode 312 Burst Balloons
+*Leetcode 375 Guess Number Higher or Lower II
+*Leetcode 300 Longest Increasing Subsequence (673. Number of Longest Increasing Subsequence)
+*Leetcode 718. Maximum Length of Repeated Subarray(and subsequence)
 
 0/1 knapsack vs unbounded knapsack
 https://medium.com/@logicdevildotcom/knapsack-problems-18b2714e0737
