@@ -1,5 +1,18 @@
 class Solution {
     public int rob(int[] nums) {
+        int rob = nums[0];
+        int notRob = 0;
+        for (int i = 1; i < nums.length; i++) {
+            int temp = notRob;
+            notRob = Math.max(rob, notRob);
+            rob = temp + nums[i];
+        }
+        return Math.max(rob, notRob);
+    }
+}
+
+class Solution {
+    public int rob(int[] nums) {
         int rob = 0, notRob = 0;
         for (int i : nums) {
             int preRob = rob;
