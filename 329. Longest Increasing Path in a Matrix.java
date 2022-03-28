@@ -1,6 +1,40 @@
 // DP + DFS
 class Solution {
     public int longestIncreasingPath(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        int[][] dp = new int[m][n];
+        int max = 1;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                max = Math.max(max, dfs(matrix, i, j, Integer.MIN_VALUE, dp));
+            }
+        }
+        return max;
+    }
+    
+    private int dfs(int[][] matrix, int i, int j, int prev, int[][] dp) {
+        if (i < 0 || i >= matrix.length || j < 0 || j >= matrix[0].length || matrix[i][j] <= prev) {
+            return 0;
+        }
+        if (dp[i][j] != 0) {
+            return dp[i][j];
+        }
+        int res = 1;
+        res += maxOfFour(dfs(matrix, i + 1, j, matrix[i][j], dp),
+                        dfs(matrix, i - 1, j, matrix[i][j], dp),
+                        dfs(matrix, i, j + 1, matrix[i][j], dp),
+                        dfs(matrix, i, j - 1, matrix[i][j], dp));
+        dp[i][j] = res;
+        return res;
+    }
+    
+    private int maxOfFour(int a, int b, int c, int d) {
+        return Math.max(Math.max(a, b), Math.max(c, d));
+    }
+}
+
+class Solution {
+    public int longestIncreasingPath(int[][] matrix) {
         int max = 0;
         // 这里的dp相当于其他dfs里的visited
         int[][] dp = new int[matrix.length][matrix[0].length];
