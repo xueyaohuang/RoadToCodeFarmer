@@ -7,7 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-
+// Time complexity: O(N) since we visit all nodes once, post order travsal.
 class Solution {
     public int rob(TreeNode root) {
         int[] res = robHelper(root);
