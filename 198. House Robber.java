@@ -5,7 +5,7 @@ class Solution {
         for (int i = 1; i < nums.length; i++) {
             int temp = notRob;
             notRob = Math.max(rob, notRob);
-            rob = temp + nums[i];
+            rob = temp + nums[i]; // 不需要rob = Math.max(rob, temp + nums[i]), 因为rob第i个就一定不能rob i-1，而temp就是不rob i-1的最大值
         }
         return Math.max(rob, notRob);
     }
