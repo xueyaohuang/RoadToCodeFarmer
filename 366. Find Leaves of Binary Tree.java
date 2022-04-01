@@ -8,7 +8,7 @@
  * }
  */
 
-// level order dfs的变种
+// level order dfs的变种, 给人的第一感觉就是要bottom-up，post order travsal
 class Solution {
     public List<List<Integer>> findLeaves(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
