@@ -12,21 +12,19 @@
 class Solution {
     public List<List<Integer>> findLeaves(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
-        height(root, res);
+        getHeight(root, res);
         return res;
     }
-    
     // 得到每个node距离地面有多高
-    private int height(TreeNode root, List<List<Integer>> res) {
+    private int getHeight(TreeNode root, List<List<Integer>> list) {
         if (root == null) {
             return -1;
         }
-        int height = 1 + Math.max(height(root.left, res), height(root.right, res));
-        if (height == res.size()) {
-            res.add(new ArrayList<Integer>());
+        int height = 1 + Math.max(getHeight(root.left, list), getHeight(root.right, list));
+        if (list.size() == height) {
+            list.add(new ArrayList<>());
         }
-        res.get(height).add(root.val);
-        root = null;
+        list.get(height).add(root.val);
         return height;
     }
 }
