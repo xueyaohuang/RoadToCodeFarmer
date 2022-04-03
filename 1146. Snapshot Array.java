@@ -1,3 +1,4 @@
+//  O(1) snap O(logN) get/set
 class SnapshotArray {
     
     TreeMap<Integer, Map<Integer, Integer>> map;
