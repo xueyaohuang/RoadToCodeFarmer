@@ -35,3 +35,29 @@ class Solution {
         return moves.length < n * n ? "Pending" : "Draw";
     }
 }
+
+class Solution {
+    public String tictactoe(int[][] moves) {
+        int[] row = new int[3];
+        int[] col = new int[3];
+        int dia = 0;
+        int antiDia = 0;
+        for (int i = 0; i < moves.length; i++) {
+            int num = i % 2 == 0 ? 1 : -1;
+            int r = moves[i][0];
+            int c = moves[i][1];
+            row[r] += num;
+            col[c] += num;
+            if (r == c) {
+                dia += num;
+            }
+            if (r + c == 2) {
+                antiDia += num;
+            }
+            if (Math.abs(row[r]) == 3 || Math.abs(col[c]) == 3 || Math.abs(dia) == 3 || Math.abs(antiDia) == 3) {
+                return i % 2 == 0 ? "A" : "B";
+            }
+        }
+        return moves.length == 9 ? "Draw" : "Pending";
+    }
+}
