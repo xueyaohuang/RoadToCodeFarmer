@@ -8,7 +8,7 @@ class Solution {
             for (int i = 0; i < w.length(); i++) {
                 StringBuilder sb = new StringBuilder(w);
                 sb.deleteCharAt(i);
-                String s = sb.toString();
+                String s = sb.toString(); // String s = w.substring(0, i) + w.substring(i + 1);
                 if (map.containsKey(s) && map.get(s) + 1 > map.get(w)) {
                     map.put(w, map.get(s) + 1);
                 }
